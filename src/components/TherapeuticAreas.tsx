@@ -1,30 +1,30 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight } from "lucide-react";
-import patientCareImg from "@/assets/patient-care.jpg";
-import manufacturingImg from "@/assets/manufacturing.jpg";
-import researchCloseupImg from "@/assets/research-closeup.jpg";
-import researchLabImg from "@/assets/research-lab.jpg";
+import liraglutideImg from "@/assets/liraglutide.png";
+import tirzepatideImg from "@/assets/tirzepatide.png";
+import dulaglutideImg from "@/assets/dulaglutide.png";
+import semaglutideImg from "@/assets/semaglutide.png";
 
 const areas = [
   {
     title: "Liraglutide",
     description: "First-generation GLP-1 receptor agonist for type 2 diabetes and chronic weight management.",
-    image: researchCloseupImg,
+    image: liraglutideImg,
   },
   {
     title: "Tirzepatide",
     description: "Dual GIP/GLP-1 receptor agonist delivering superior glycemic control and weight reduction outcomes.",
-    image: patientCareImg,
+    image: tirzepatideImg,
   },
   {
     title: "Dulaglutide",
     description: "Once-weekly GLP-1 agonist with proven cardiovascular risk reduction in type 2 diabetes patients.",
-    image: researchLabImg,
+    image: dulaglutideImg,
   },
   {
     title: "Semaglutide",
     description: "Next-generation GLP-1 analog with oral and injectable formulations for metabolic indications.",
-    image: manufacturingImg,
+    image: semaglutideImg,
   },
 ];
 
