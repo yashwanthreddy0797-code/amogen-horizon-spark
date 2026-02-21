@@ -20,9 +20,9 @@ const Index = () => {
         <NavigationBridge />
         <TherapeuticAreas />
         <ResearchHighlight />
+        <PipelinePreview />
         <AboutStats />
         <EditorialCards />
-        <PipelinePreview />
         <NewsPreview />
       </main>
       <Footer />
