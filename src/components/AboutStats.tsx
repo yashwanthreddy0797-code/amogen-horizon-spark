@@ -39,7 +39,7 @@ const cards = [
 
 const AboutStats = () => {
   return (
-    <section className="py-24 lg:py-36 bg-section-cream">
+    <section className="py-16 lg:py-20 bg-section-cream">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Centered headline & description */}
         <ScrollReveal>
