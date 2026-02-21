@@ -17,6 +17,11 @@ const TrustStrip = () => {
             <em className="font-extrabold italic">than just make medicine.</em>
           </h2>
         </ScrollReveal>
+        <ScrollReveal delay={0.25}>
+          <p className="text-lg text-muted-foreground mt-8 max-w-3xl mx-auto leading-relaxed">
+            Transforming metabolic health by delivering cutting-edge GLP-1 peptide therapies and scalable manufacturing solutions.
+          </p>
+        </ScrollReveal>
       </div>
     </section>
   );
