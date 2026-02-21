@@ -2,6 +2,8 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustStrip from "@/components/TrustStrip";
 import TherapeuticAreas from "@/components/TherapeuticAreas";
+import AboutStats from "@/components/AboutStats";
+import EditorialCards from "@/components/EditorialCards";
 import PipelinePreview from "@/components/PipelinePreview";
 import ResearchHighlight from "@/components/ResearchHighlight";
 import NewsPreview from "@/components/NewsPreview";
@@ -11,10 +13,12 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="pt-20">
+      <main>
         <Hero />
         <TrustStrip />
         <TherapeuticAreas />
+        <AboutStats />
+        <EditorialCards />
         <PipelinePreview />
         <ResearchHighlight />
         <NewsPreview />
