@@ -1,11 +1,67 @@
 import ScrollReveal from "@/components/ScrollReveal";
 
 const pipelineData = [
-  { candidate: "AMG-1012", phase: "Phase III", area: "Oncology", progress: 85 },
-  { candidate: "AMG-2045", phase: "Phase II", area: "Immunology", progress: 60 },
-  { candidate: "AMG-3078", phase: "Phase I", area: "Neurology", progress: 35 },
-  { candidate: "AMG-4091", phase: "Preclinical", area: "Rare Diseases", progress: 15 },
-  { candidate: "AMG-5023", phase: "Phase II", area: "Oncology", progress: 55 },
+  {
+    candidate: "Semaglutide",
+    indication: "T2DM, Obesity",
+    note: "Other indications in trials: NASH, ASCVD, CKD slow Progression, PCOS (Off-Label)",
+    progress: 95,
+    color: "from-pink-500 via-purple-500 to-violet-500",
+    accentColor: "bg-orange-500",
+    milestone: "Clinical Phase -1",
+    milestoneDate: "Dec-2025",
+    strategy: "FDF + Licensing",
+  },
+  {
+    candidate: "Liraglutide",
+    indication: "T2DM & Obesity",
+    progress: 75,
+    color: "from-orange-400 via-yellow-400 to-yellow-300",
+    accentColor: "bg-orange-500",
+    milestone: "DMF",
+    milestoneDate: "Dec-2025",
+    strategy: "API + FDF",
+  },
+  {
+    candidate: "Tirzepatide",
+    indication: "T2DM & Obesity",
+    progress: 50,
+    color: "from-blue-600 via-cyan-400 to-cyan-300",
+    accentColor: "bg-blue-500",
+    milestone: "DMF",
+    milestoneDate: "Q2-2026",
+    strategy: "API only",
+  },
+  {
+    candidate: "Dulaglutide",
+    indication: "T2DM",
+    progress: 50,
+    color: "from-blue-700 via-blue-500 to-blue-400",
+    accentColor: "bg-blue-500",
+    milestone: "DMF",
+    milestoneDate: "Q1-2026",
+    strategy: "FDF + Licensing",
+  },
+  {
+    candidate: "Insulin Degludec",
+    indication: "Type 1 & 2 Diabetes",
+    progress: 50,
+    color: "from-blue-800 via-blue-500 to-indigo-400",
+    accentColor: "bg-indigo-500",
+    milestone: "DMF",
+    milestoneDate: "Jan-2026",
+    strategy: "API + FDF",
+  },
+  {
+    candidate: "iDegLira",
+    indication: "T2DM",
+    progress: 50,
+    color: "from-blue-700 via-purple-500 to-purple-400",
+    accentColor: "bg-blue-500",
+    milestone: "Clinical Phase -1",
+    milestoneDate: "Q2-2026",
+    strategy: "FDF + Licensing",
+  },
 ];
 
 const PipelinePreview = () => {
@@ -24,49 +80,61 @@ const PipelinePreview = () => {
           </p>
         </ScrollReveal>
 
-        <div className="mt-16 space-y-0">
-          {/* Table header */}
+        {/* Table */}
+        <div className="mt-16">
+          {/* Header */}
           <ScrollReveal>
-            <div className="hidden md:grid grid-cols-4 gap-4 pb-5 border-b border-border">
-              <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">
-                Drug Candidate
-              </span>
-              <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">
-                Phase
-              </span>
-              <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">
-                Therapeutic Area
-              </span>
-              <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">
-                Progress
-              </span>
+            <div className="hidden lg:grid grid-cols-[1.2fr_1fr_2.5fr_1fr_1fr] gap-4 pb-4 border-b border-border">
+              <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">Program</span>
+              <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">Indication</span>
+              <div className="grid grid-cols-3 text-center">
+                <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">Development</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">Characterisation</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">Pre-Clinical</span>
+              </div>
+              <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">Key Milestone</span>
+              <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">Strategy</span>
             </div>
           </ScrollReveal>
 
           {/* Rows */}
           {pipelineData.map((item, i) => (
             <ScrollReveal key={item.candidate} delay={i * 0.08}>
-              <div className="grid md:grid-cols-4 gap-4 py-6 border-b border-border items-center group hover:bg-card/50 transition-colors -mx-4 px-4 rounded-lg">
-                <span className="text-lg font-bold text-foreground">
-                  {item.candidate}
-                </span>
-                <span>
-                  <span className="inline-block text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full bg-primary/10 text-primary">
-                    {item.phase}
-                  </span>
-                </span>
-                <span className="text-sm text-muted-foreground font-medium">
-                  {item.area}
-                </span>
-                <div className="flex items-center gap-3">
-                  <div className="flex-1 h-2 bg-border rounded-full overflow-hidden">
+              <div className="grid lg:grid-cols-[1.2fr_1fr_2.5fr_1fr_1fr] gap-4 py-8 border-b border-border items-center">
+                {/* Program */}
+                <div className="flex items-start gap-3">
+                  <div className={`w-1 h-full min-h-[40px] rounded-full ${item.accentColor} shrink-0 mt-1`} />
+                  <div>
+                    <span className="text-lg font-bold text-foreground block">{item.candidate}</span>
+                    {item.note && (
+                      <span className="text-xs text-muted-foreground italic leading-snug block mt-1">{item.note}</span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Indication */}
+                <span className="text-sm text-muted-foreground italic">{item.indication}</span>
+
+                {/* Progress bar */}
+                <div className="w-full">
+                  <div className="h-3 bg-border/60 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-primary rounded-full transition-all duration-1000"
+                      className={`h-full rounded-full bg-gradient-to-r ${item.color} transition-all duration-1000`}
                       style={{ width: `${item.progress}%` }}
                     />
                   </div>
-                  <span className="text-xs font-bold text-muted-foreground w-8">
-                    {item.progress}%
+                </div>
+
+                {/* Milestone */}
+                <div>
+                  <span className="text-sm font-bold text-primary block">{item.milestone}</span>
+                  <span className="text-xs text-muted-foreground">({item.milestoneDate})</span>
+                </div>
+
+                {/* Strategy */}
+                <div>
+                  <span className="inline-block text-xs font-semibold text-primary border border-primary/30 rounded-full px-4 py-1.5">
+                    {item.strategy}
                   </span>
                 </div>
               </div>
