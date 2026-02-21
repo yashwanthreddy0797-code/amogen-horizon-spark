@@ -1,12 +1,52 @@
-import { useState, useEffect } from "react";
-import { Menu, X, Search, Globe } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Search, Globe, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const navItems = ["About", "Therapeutic Areas", "Pipeline", "News", "Contact"];
+const menuData: Record<string, { description: string; links: string[][] }> = {
+  About: {
+    description: "Learn about AMOGEN's mission to advance biopharmaceutical innovation worldwide.",
+    links: [
+      ["Who We Are", "What We Do", "Leadership"],
+      ["Governance", "Sustainability"],
+    ],
+  },
+  Products: {
+    description: "Explore our portfolio of innovative medicines and therapeutic solutions.",
+    links: [
+      ["Pipeline Overview", "Molecule Details"],
+      ["Product Labels"],
+    ],
+  },
+  CDMO: {
+    description: "World-class contract development and manufacturing capabilities.",
+    links: [
+      ["Manufacturing Services", "Quality Systems"],
+      ["Capacity Dashboard", "RFP Process"],
+    ],
+  },
+  Science: {
+    description: "Pioneering research driving the next generation of biopharmaceutical breakthroughs.",
+    links: [
+      ["Technology Stack", "Publications"],
+      ["Comparability Data", "Research Capabilities"],
+    ],
+  },
+  News: {
+    description: "Stay informed with the latest from AMOGEN Bio Pharma.",
+    links: [
+      ["Press Releases", "Blog"],
+      ["Document Library", "Latest Updates"],
+    ],
+  },
+};
+
+const navItems = Object.keys(menuData);
 
 const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -14,106 +54,153 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleMouseEnter = (item: string) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setActiveMenu(item);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => setActiveMenu(null), 150);
+  };
+
+  const handleDropdownEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  };
+
+  const handleDropdownLeave = () => {
+    timeoutRef.current = setTimeout(() => setActiveMenu(null), 150);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 pt-4 md:pt-6">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Left pill: Logo + Menu */}
+      <div
+        ref={navRef}
+        className="max-w-7xl mx-auto"
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Main nav container — dark rounded box like Lilly */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className={`flex items-center gap-3 bg-nav-dark text-nav-dark-foreground rounded-full px-5 py-3 transition-all duration-300 ${scrolled ? "shadow-lg" : ""}`}
+          className={`bg-nav-dark text-nav-dark-foreground transition-all duration-300 ${
+            activeMenu ? "rounded-t-[1.5rem]" : "rounded-full"
+          } ${scrolled ? "shadow-2xl" : "shadow-lg"}`}
         >
-          <a href="/" className="flex items-center gap-1.5 shrink-0">
-            <span className="text-base font-bold tracking-tight text-nav-dark-foreground">
-              AMOGEN
-            </span>
-          </a>
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
-        </motion.div>
+          {/* Top bar */}
+          <div className="flex items-center justify-between px-6 md:px-8 py-3">
+            {/* Logo */}
+            <a href="/" className="shrink-0">
+              <span className="text-base md:text-lg font-bold tracking-tight text-nav-dark-foreground">
+                AMOGEN
+              </span>
+            </a>
 
-        {/* Right pill: Search + Globe + Partner */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className={`hidden md:flex items-center gap-2 bg-nav-dark text-nav-dark-foreground rounded-full px-3 py-2 transition-all duration-300 ${scrolled ? "shadow-lg" : ""}`}
-        >
-          <button className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors" aria-label="Search">
-            <Search size={17} />
-          </button>
-          <button className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors" aria-label="Language">
-            <Globe size={17} />
-          </button>
-          <a
-            href="#contact"
-            className="flex items-center gap-2 text-sm font-medium px-5 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-          >
-            Partner With Us
-          </a>
+            {/* Center nav items — desktop */}
+            <nav className="hidden md:flex items-center gap-1">
+              {navItems.map((item) => (
+                <button
+                  key={item}
+                  onMouseEnter={() => handleMouseEnter(item)}
+                  onClick={() => setActiveMenu(activeMenu === item ? null : item)}
+                  className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
+                    activeMenu === item
+                      ? "bg-nav-dark-foreground/15 text-nav-dark-foreground"
+                      : "text-nav-dark-foreground/80 hover:text-nav-dark-foreground hover:bg-nav-dark-foreground/5"
+                  }`}
+                >
+                  {item}
+                </button>
+              ))}
+            </nav>
+
+            {/* Right side */}
+            <div className="flex items-center gap-1">
+              <button
+                className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                aria-label="Search"
+              >
+                <Search size={17} />
+              </button>
+              <button
+                className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                aria-label="Language"
+              >
+                <Globe size={17} />
+              </button>
+              <a
+                href="#contact"
+                className="hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+              >
+                Partner With Us
+              </a>
+
+              {/* Mobile menu toggle */}
+              <button
+                className="md:hidden flex items-center gap-2 px-3 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors text-sm font-medium"
+                onClick={() => setActiveMenu(activeMenu ? null : navItems[0])}
+              >
+                Menu
+                <ChevronDown
+                  size={14}
+                  className={`transition-transform duration-200 ${activeMenu ? "rotate-180" : ""}`}
+                />
+              </button>
+            </div>
+          </div>
+
+          {/* Megamenu dropdown — inside the same dark container */}
+          <AnimatePresence>
+            {activeMenu && menuData[activeMenu] && (
+              <motion.div
+                key={activeMenu}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+                className="overflow-hidden"
+                onMouseEnter={handleDropdownEnter}
+                onMouseLeave={handleDropdownLeave}
+              >
+                {/* Divider line */}
+                <div className="mx-8 border-t border-nav-dark-foreground/15" />
+
+                <div className="px-8 md:px-10 py-8 md:py-10">
+                  {/* Section title */}
+                  <h3 className="text-2xl md:text-3xl font-bold text-nav-dark-foreground mb-2 italic">
+                    {activeMenu}
+                  </h3>
+
+                  <div className="flex flex-col md:flex-row gap-8 mt-4">
+                    {/* Description */}
+                    <p className="text-nav-dark-foreground/60 text-sm md:text-base max-w-xs leading-relaxed">
+                      {menuData[activeMenu].description}
+                    </p>
+
+                    {/* Link columns */}
+                    <div className="flex gap-12 md:gap-16">
+                      {menuData[activeMenu].links.map((col, colIndex) => (
+                        <div key={colIndex} className="flex flex-col gap-3">
+                          {col.map((link) => (
+                            <a
+                              key={link}
+                              href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
+                              className="text-sm md:text-base text-nav-dark-foreground/90 hover:text-nav-dark-foreground underline underline-offset-4 decoration-nav-dark-foreground/30 hover:decoration-nav-dark-foreground/70 transition-colors"
+                              onClick={() => setActiveMenu(null)}
+                            >
+                              {link}
+                            </a>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </div>
-
-      {/* Fullscreen menu overlay */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 top-0 left-0 bg-nav-dark z-40"
-          >
-            <div className="flex flex-col items-start justify-center h-full px-8 md:px-16 lg:px-24">
-              <nav className="flex flex-col gap-2">
-                {navItems.map((item, i) => (
-                  <motion.a
-                    key={item}
-                    href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.07 }}
-                    className="text-4xl md:text-6xl lg:text-7xl font-bold text-nav-dark-foreground hover:text-nav-dark-foreground/70 transition-colors duration-200 py-2"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {item}
-                  </motion.a>
-                ))}
-              </nav>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="mt-12"
-              >
-                <a
-                  href="#contact"
-                  className="text-lg font-medium text-nav-dark-foreground/60 hover:text-nav-dark-foreground transition-colors"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Partner With Us →
-                </a>
-              </motion.div>
-            </div>
-
-            {/* Close button in overlay */}
-            <button
-              onClick={() => setMobileOpen(false)}
-              className="absolute top-6 left-8 md:left-12 flex items-center gap-3 bg-nav-dark-foreground/10 text-nav-dark-foreground rounded-full px-5 py-3"
-              aria-label="Close menu"
-            >
-              <span className="text-base font-bold tracking-tight">AMOGEN</span>
-              <X size={18} />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
   );
 };
