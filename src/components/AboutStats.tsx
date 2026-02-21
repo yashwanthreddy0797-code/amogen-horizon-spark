@@ -7,7 +7,7 @@ import patientCareImg from "@/assets/patient-care.jpg";
 const stats = [
   { category: "Technology Edge", value: "24/7", label: "proprietary fermentation platform" },
   { category: "Peptide Innovation", value: "5 +", label: "complex peptide programs" },
-  { category: "Manufacturing Scale", value: "900 Kg/yr", label: "annual GLP-1 API capacity" },
+  { category: "Manufacturing Scale", value: "900", unit: "Kg/yr", label: "annual GLP-1 API capacity" },
 ];
 
 const cards = [
@@ -69,6 +69,7 @@ const AboutStats = () => {
                 </p>
                 <span className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary leading-none">
                   {stat.value}
+                  {stat.unit && <span className="text-2xl md:text-3xl lg:text-4xl"> {stat.unit}</span>}
                 </span>
                 <p className="text-sm md:text-base font-medium text-muted-foreground mt-3">
                   {stat.label}
