@@ -30,7 +30,7 @@ const areas = [
 
 const TherapeuticAreas = () => {
   return (
-    <section id="therapeutic-areas" className="py-24 lg:py-36 bg-background">
+    <section id="therapeutic-areas" className="pt-12 lg:pt-16 pb-24 lg:pb-36 bg-background">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-4">
