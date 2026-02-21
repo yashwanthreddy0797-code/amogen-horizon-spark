@@ -1,3 +1,6 @@
+import ScrollReveal from "@/components/ScrollReveal";
+import { ArrowRight } from "lucide-react";
+
 const newsItems = [
   {
     date: "February 10, 2026",
@@ -21,33 +24,36 @@ const newsItems = [
 
 const NewsPreview = () => {
   return (
-    <section id="news" className="py-20 lg:py-28 bg-background">
-      <div className="container max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="mb-16">
-          <p className="text-sm uppercase tracking-[0.2em] text-accent font-medium mb-4">
+    <section id="news" className="py-24 lg:py-36 bg-background">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+        <ScrollReveal>
+          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-4">
             News & Media
           </p>
-          <h2 className="text-3xl md:text-4xl font-display text-foreground font-semibold">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight max-w-2xl mb-16">
             Latest Updates
           </h2>
-        </div>
+        </ScrollReveal>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {newsItems.map((item) => (
-            <article
-              key={item.headline}
-              className="group border-t-2 border-border pt-6 hover:border-accent transition-colors duration-300"
-            >
-              <time className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">
-                {item.date}
-              </time>
-              <h3 className="text-base font-semibold text-foreground mt-3 mb-3 leading-snug group-hover:text-accent transition-colors duration-200">
-                {item.headline}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {item.description}
-              </p>
-            </article>
+          {newsItems.map((item, i) => (
+            <ScrollReveal key={item.headline} delay={i * 0.1}>
+              <a href="#" className="group block">
+                <time className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-semibold">
+                  {item.date}
+                </time>
+                <h3 className="text-lg font-bold text-foreground mt-4 mb-3 leading-snug group-hover:text-primary transition-colors duration-200">
+                  {item.headline}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  {item.description}
+                </p>
+                <div className="flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all">
+                  <span>Read more</span>
+                  <ArrowRight size={14} />
+                </div>
+              </a>
+            </ScrollReveal>
           ))}
         </div>
       </div>

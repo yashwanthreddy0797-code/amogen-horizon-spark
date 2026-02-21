@@ -1,19 +1,20 @@
 const footerLinks = {
-  Company: ["About", "Pipeline", "Therapeutic Areas", "News", "Contact"],
-  Legal: ["Privacy Policy", "Terms of Use", "Cookie Policy"],
+  Company: ["About", "Pipeline", "Therapeutic Areas", "Careers", "Contact"],
+  Science: ["Research", "Clinical Trials", "Publications", "Innovation"],
+  Legal: ["Privacy Policy", "Terms of Use", "Cookie Policy", "Accessibility"],
 };
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
+    <footer id="contact" className="bg-nav-dark text-nav-dark-foreground">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-20 lg:py-24">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div>
-            <span className="text-lg font-semibold tracking-tight">
-              AMOGEN <span className="font-light">BIO PHARMA</span>
+            <span className="text-xl font-bold tracking-tight">
+              AMOGEN
             </span>
-            <p className="text-sm text-primary-foreground/60 mt-4 leading-relaxed max-w-xs">
+            <p className="text-sm text-nav-dark-foreground/50 mt-5 leading-relaxed max-w-xs">
               Dedicated to advancing biopharmaceutical innovation for patients worldwide.
             </p>
           </div>
@@ -21,7 +22,7 @@ const Footer = () => {
           {/* Links */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="text-xs uppercase tracking-[0.2em] font-semibold text-primary-foreground/50 mb-6">
+              <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-nav-dark-foreground/40 mb-6">
                 {title}
               </h4>
               <ul className="space-y-3">
@@ -29,7 +30,7 @@ const Footer = () => {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-200"
+                      className="text-sm text-nav-dark-foreground/60 hover:text-nav-dark-foreground transition-colors duration-200"
                     >
                       {link}
                     </a>
@@ -41,14 +42,14 @@ const Footer = () => {
         </div>
 
         {/* Disclaimer & Copyright */}
-        <div className="border-t border-primary-foreground/10 mt-16 pt-8">
-          <p className="text-xs text-primary-foreground/40 leading-relaxed mb-4">
+        <div className="border-t border-nav-dark-foreground/10 mt-20 pt-8">
+          <p className="text-xs text-nav-dark-foreground/30 leading-relaxed mb-4 max-w-4xl">
             Scientific Disclaimer: The information on this website is intended for informational
             purposes only and does not constitute medical advice. AMOGEN BIO PHARMA products
             are investigational and have not been approved by regulatory authorities unless
-            otherwise stated.
+            otherwise stated. Always consult your healthcare provider for medical advice.
           </p>
-          <p className="text-xs text-primary-foreground/40">
+          <p className="text-xs text-nav-dark-foreground/30">
             © {new Date().getFullYear()} AMOGEN BIO PHARMA. All rights reserved.
           </p>
         </div>
