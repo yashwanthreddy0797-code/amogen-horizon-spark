@@ -10,7 +10,7 @@ const pipelineData = [
 
 const PipelinePreview = () => {
   return (
-    <section id="pipeline" className="py-24 lg:py-36 bg-section-cream">
+    <section id="pipeline" className="py-20 lg:py-28 bg-section-cream">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-4">
