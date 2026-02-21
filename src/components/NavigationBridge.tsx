@@ -28,12 +28,12 @@ const cards = [
 
 const NavigationBridge = () => {
   return (
-    <section className="py-24 lg:py-36 bg-section-cream">
+    <section className="pt-0 pb-24 lg:pb-36 bg-section-cream">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        <div className="grid md:grid-cols-3 gap-x-12 gap-y-16">
+        <div className="grid md:grid-cols-3 gap-x-8 gap-y-10">
           {cards.map((card, i) => (
             <ScrollReveal key={card.title} delay={i * 0.1}>
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-4 border-t border-border pt-6">
                 <h3 className="text-2xl font-bold text-foreground leading-tight">
                   {card.title}
                 </h3>
