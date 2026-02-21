@@ -16,8 +16,8 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <NavigationBridge />
         <TrustStrip />
+        <NavigationBridge />
         <TherapeuticAreas />
         <AboutStats />
         <EditorialCards />
