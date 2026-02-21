@@ -4,7 +4,6 @@ import NavigationBridge from "@/components/NavigationBridge";
 import TrustStrip from "@/components/TrustStrip";
 import TherapeuticAreas from "@/components/TherapeuticAreas";
 import AboutStats from "@/components/AboutStats";
-import EditorialCards from "@/components/EditorialCards";
 import PipelinePreview from "@/components/PipelinePreview";
 import ResearchHighlight from "@/components/ResearchHighlight";
 import NewsPreview from "@/components/NewsPreview";
@@ -22,7 +21,6 @@ const Index = () => {
         <ResearchHighlight />
         <PipelinePreview />
         <AboutStats />
-        <EditorialCards />
         <NewsPreview />
       </main>
       <Footer />
