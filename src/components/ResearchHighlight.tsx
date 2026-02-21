@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 const ResearchHighlight = () => {
   return (
-    <section className="py-24 lg:py-36 bg-primary">
+    <section className="py-20 lg:py-28 bg-primary">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text */}
