@@ -12,14 +12,19 @@ const TrustStrip = () => {
           </div>
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
-          <h2 className="text-3xl lg:text-5xl font-extrabold text-foreground leading-[1.15] md:text-6xl">
-            A biopharma company should do more{" "}
-            <em className="font-extrabold italic">than just make medicine.</em>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-[1.15]">
+            Where peptide science meets{" "}
+            <em className="font-extrabold italic">global scale.</em>
           </h2>
         </ScrollReveal>
+        <ScrollReveal delay={0.25}>
+          <p className="text-lg text-muted-foreground mt-8 max-w-3xl mx-auto leading-relaxed">
+            Transforming metabolic health by delivering cutting-edge GLP-1 peptide therapies and scalable manufacturing solutions.
+          </p>
+        </ScrollReveal>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default TrustStrip;
