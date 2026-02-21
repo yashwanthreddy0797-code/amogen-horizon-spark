@@ -7,23 +7,23 @@ import researchLabImg from "@/assets/research-lab.jpg";
 
 const areas = [
   {
-    title: "Oncology",
-    description: "Developing next-generation targeted therapies and immuno-oncology treatments to advance precision medicine in cancer care.",
+    title: "Liraglutide",
+    description: "First-generation GLP-1 receptor agonist for type 2 diabetes and chronic weight management.",
     image: researchCloseupImg,
   },
   {
-    title: "Immunology",
-    description: "Pioneering novel approaches to modulate the immune system for autoimmune and inflammatory conditions.",
+    title: "Tirzepatide",
+    description: "Dual GIP/GLP-1 receptor agonist delivering superior glycemic control and weight reduction outcomes.",
     image: patientCareImg,
   },
   {
-    title: "Neurology",
-    description: "Advancing research in neurodegenerative diseases with a focus on disease-modifying therapies.",
+    title: "Dulaglutide",
+    description: "Once-weekly GLP-1 agonist with proven cardiovascular risk reduction in type 2 diabetes patients.",
     image: researchLabImg,
   },
   {
-    title: "Rare Diseases",
-    description: "Addressing critical unmet needs in orphan indications through innovative biologics and gene-based therapeutics.",
+    title: "Semaglutide",
+    description: "Next-generation GLP-1 analog with oral and injectable formulations for metabolic indications.",
     image: manufacturingImg,
   },
 ];
@@ -34,13 +34,13 @@ const TherapeuticAreas = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-4">
-            Condition Support
+            Pipeline & Product Portfolio
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight max-w-2xl">
-            Get a better understanding of a condition.
+            Our molecule portfolio.
           </h2>
           <p className="text-lg text-muted-foreground mt-6 max-w-2xl leading-relaxed">
-            One of the healthiest actions a patient or a loved one can take is getting informed. Part of our job is getting you the information you need.
+            From development through commercialization, our GLP-1 portfolio addresses the full spectrum of metabolic health needs.
           </p>
         </ScrollReveal>
 
