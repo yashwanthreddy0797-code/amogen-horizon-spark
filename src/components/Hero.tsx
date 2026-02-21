@@ -57,6 +57,13 @@ const Hero = () => {
             Integrated development, manufacturing & fill-finish for Yeast based
             semaglutide biosimilar—capacity built for global launches, not pilot runs!
           </p>
+
+          <a
+            href="#research"
+            className="inline-flex items-center mt-5 px-5 py-2.5 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+          >
+            Why Our Synthesis Matters →
+          </a>
         </motion.div>
       </div>
 
