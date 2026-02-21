@@ -5,9 +5,9 @@ import researchCloseupImg from "@/assets/research-closeup.jpg";
 import patientCareImg from "@/assets/patient-care.jpg";
 
 const stats = [
-  { value: "25+", label: "Years making medicine" },
-  { value: "40+", label: "Patented therapies" },
-  { value: "5", label: "Therapeutic areas" },
+  { category: "Technology Edge", value: "24/7", label: "proprietary fermentation platform" },
+  { category: "Peptide Innovation", value: "5 +", label: "complex peptide programs" },
+  { category: "Manufacturing Scale", value: "900 Kg/yr", label: "annual GLP-1 API capacity" },
 ];
 
 const cards = [
@@ -60,16 +60,22 @@ const AboutStats = () => {
         </ScrollReveal>
 
         {/* Stats row with top borders */}
-        <div className="grid grid-cols-3 gap-8 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
           {stats.map((stat, i) => (
-            <ScrollReveal key={stat.label} delay={i * 0.12}>
-              <div className="border-t border-border pt-6">
-                <span className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground">
+            <ScrollReveal key={stat.category} delay={i * 0.12}>
+              <div className="bg-card rounded-2xl p-8 shadow-sm">
+                <p className="text-xs uppercase tracking-[0.15em] font-bold text-primary mb-4">
+                  {stat.category}
+                </p>
+                <span className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary leading-none">
                   {stat.value}
                 </span>
-                <p className="text-sm md:text-base font-medium text-muted-foreground mt-2">
+                <p className="text-sm md:text-base font-medium text-muted-foreground mt-3">
                   {stat.label}
                 </p>
+                <a href="#" className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline mt-4">
+                  Learn more <span>→</span>
+                </a>
               </div>
             </ScrollReveal>
           ))}
