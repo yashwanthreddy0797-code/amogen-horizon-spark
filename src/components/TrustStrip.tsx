@@ -13,8 +13,8 @@ const TrustStrip = () => {
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-[1.15]">
-            A biopharma company should do more{" "}
-            <em className="font-extrabold italic">than just make medicine.</em>
+            Where peptide science meets{" "}
+            <em className="font-extrabold italic">global scale.</em>
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.25}>
