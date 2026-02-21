@@ -166,42 +166,50 @@ const ManufacturingProcess = () => {
             <ChevronRight size={20} className="text-white" />
           </button>
 
-          {/* Cards */}
-          <AnimatePresence mode="popLayout" custom={direction}>
-            <div className="hidden md:grid grid-cols-3 gap-6 px-8">
-              {[
-                { idx: leftIdx, pos: "left" as const },
-                { idx: centerIdx, pos: "center" as const },
-                { idx: rightIdx, pos: "right" as const },
-              ].map(({ idx, pos }) => (
-                <motion.div
-                  key={`${pos}-${idx}`}
-                  custom={direction}
-                  initial={{ opacity: 0, x: direction > 0 ? 80 : -80, scale: 0.9 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: direction > 0 ? -80 : 80, scale: 0.9 }}
-                  transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
-                >
-                  {renderCard(idx, pos)}
-                </motion.div>
-              ))}
-            </div>
-          </AnimatePresence>
+          {/* Cards - Desktop */}
+          <div className="hidden md:block px-8 overflow-hidden">
+            <AnimatePresence initial={false} mode="wait" custom={direction}>
+              <motion.div
+                key={activeIndex}
+                custom={direction}
+                variants={{
+                  initial: (dir: number) => ({ x: dir > 0 ? "33%" : "-33%", opacity: 0.5 }),
+                  animate: { x: 0, opacity: 1 },
+                  exit: (dir: number) => ({ x: dir > 0 ? "-33%" : "33%", opacity: 0.5 }),
+                }}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                className="grid grid-cols-3 gap-6"
+              >
+                {renderCard(leftIdx, "left")}
+                {renderCard(centerIdx, "center")}
+                {renderCard(rightIdx, "right")}
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
           {/* Mobile: single card */}
-          <AnimatePresence mode="popLayout" custom={direction}>
-            <motion.div
-              key={`mobile-${centerIdx}`}
-              className="md:hidden px-4"
-              custom={direction}
-              initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
-              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            >
-              {renderCard(centerIdx, "center")}
-            </motion.div>
-          </AnimatePresence>
+          <div className="md:hidden px-4 overflow-hidden">
+            <AnimatePresence initial={false} mode="wait" custom={direction}>
+              <motion.div
+                key={activeIndex}
+                custom={direction}
+                variants={{
+                  initial: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
+                  animate: { x: 0, opacity: 1 },
+                  exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
+                }}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+              >
+                {renderCard(centerIdx, "center")}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
