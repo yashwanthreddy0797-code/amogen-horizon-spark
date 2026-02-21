@@ -12,7 +12,7 @@ const TrustStrip = () => {
           </div>
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-[1.15]">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.15]">
             Where peptide science meets{" "}
             <em className="font-extrabold italic">global scale.</em>
           </h2>
