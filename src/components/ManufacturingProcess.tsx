@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, FlaskConical, Droplets, Beaker, TestTube, ShieldCheck, Syringe, Settings } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const steps = [
@@ -56,9 +57,16 @@ const steps = [
 
 const ManufacturingProcess = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
 
-  const prev = () => setActiveIndex((i) => (i === 0 ? steps.length - 1 : i - 1));
-  const next = () => setActiveIndex((i) => (i === steps.length - 1 ? 0 : i + 1));
+  const prev = () => {
+    setDirection(-1);
+    setActiveIndex((i) => (i === 0 ? steps.length - 1 : i - 1));
+  };
+  const next = () => {
+    setDirection(1);
+    setActiveIndex((i) => (i === steps.length - 1 ? 0 : i + 1));
+  };
 
   const getVisibleIndices = () => {
     const prevIdx = activeIndex === 0 ? steps.length - 1 : activeIndex - 1;
@@ -159,16 +167,41 @@ const ManufacturingProcess = () => {
           </button>
 
           {/* Cards */}
-          <div className="hidden md:grid grid-cols-3 gap-6 px-8">
-            {renderCard(leftIdx, "left")}
-            {renderCard(centerIdx, "center")}
-            {renderCard(rightIdx, "right")}
-          </div>
+          <AnimatePresence mode="popLayout" custom={direction}>
+            <div className="hidden md:grid grid-cols-3 gap-6 px-8">
+              {[
+                { idx: leftIdx, pos: "left" as const },
+                { idx: centerIdx, pos: "center" as const },
+                { idx: rightIdx, pos: "right" as const },
+              ].map(({ idx, pos }) => (
+                <motion.div
+                  key={`${pos}-${idx}`}
+                  custom={direction}
+                  initial={{ opacity: 0, x: direction > 0 ? 80 : -80, scale: 0.9 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: direction > 0 ? -80 : 80, scale: 0.9 }}
+                  transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  {renderCard(idx, pos)}
+                </motion.div>
+              ))}
+            </div>
+          </AnimatePresence>
 
           {/* Mobile: single card */}
-          <div className="md:hidden px-4">
-            {renderCard(centerIdx, "center")}
-          </div>
+          <AnimatePresence mode="popLayout" custom={direction}>
+            <motion.div
+              key={`mobile-${centerIdx}`}
+              className="md:hidden px-4"
+              custom={direction}
+              initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
+              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              {renderCard(centerIdx, "center")}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>
