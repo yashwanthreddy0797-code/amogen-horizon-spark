@@ -28,7 +28,7 @@ const cards = [
 
 const NavigationBridge = () => {
   return (
-    <section className="pt-0 pb-24 lg:pb-36 bg-section-cream">
+    <section className="pt-0 pb-16 lg:pb-20 bg-section-cream">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <div className="grid md:grid-cols-3 gap-x-8 gap-y-10">
           {cards.map((card, i) => (
