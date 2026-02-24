@@ -143,7 +143,7 @@ const ResearchHighlight = () => {
   };
 
   return (
-    <section className="pt-20 lg:pt-28 pb-10 lg:pb-14 bg-background">
+    <section className="pt-10 lg:pt-14 pb-10 lg:pb-14 bg-background">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-4">{t.research.label}</p>
