@@ -4,7 +4,6 @@ import AboutHero from "@/components/AboutHero";
 
 
 
-import AboutStats from "@/components/AboutStats";
 import PipelinePreview from "@/components/PipelinePreview";
 import ResearchHighlight from "@/components/ResearchHighlight";
 import ManufacturingProcess from "@/components/ManufacturingProcess";
@@ -23,7 +22,7 @@ const Index = () => {
         
         <ResearchHighlight />
         <PipelinePreview />
-        <AboutStats />
+        
         <ManufacturingProcess />
         <NewsPreview />
       </main>
