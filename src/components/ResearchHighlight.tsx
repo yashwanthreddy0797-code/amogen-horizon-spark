@@ -74,15 +74,15 @@ const FacilityCard = ({ facility, isExpanded, onToggle }: {
             </div>
             <div className="flex-1 flex flex-col justify-between p-6 bg-secondary">
               <div>
-                <h3 className={`text-xl font-bold transition-colors duration-300 ${hovered ? "text-primary" : "text-foreground"}`}>
+                <h3 className={`text-xl font-bold transition-colors duration-300 ${hovered ? "text-footer-bg" : "text-foreground"}`}>
                   {facility.title}
                 </h3>
-                <p className={`text-sm transition-colors duration-300 ${hovered ? "text-primary" : "text-muted-foreground"}`}>
+                <p className={`text-sm transition-colors duration-300 ${hovered ? "text-footer-bg" : "text-muted-foreground"}`}>
                   {facility.subtitle}
                 </p>
               </div>
               <div className="flex justify-end">
-                <Plus className={`transition-colors duration-300 ${hovered ? "text-primary" : "text-primary"}`} size={24} />
+                <Plus className="transition-colors duration-300 text-footer-bg" size={24} />
               </div>
             </div>
           </motion.div>
@@ -93,7 +93,7 @@ const FacilityCard = ({ facility, isExpanded, onToggle }: {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="flex flex-col h-full bg-primary text-primary-foreground p-6"
+            className="flex flex-col h-full bg-footer-bg text-footer-foreground p-6"
             style={{ minHeight: 420 }}
           >
             <div className="mb-6">
@@ -143,7 +143,7 @@ const ResearchHighlight = () => {
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section className="pt-20 lg:pt-28 pb-10 lg:pb-14 bg-background">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-4">{t.research.label}</p>
@@ -168,7 +168,7 @@ const ResearchHighlight = () => {
 
         <ScrollReveal delay={0.25}>
           <div className="mt-10">
-            <a href="#" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+            <a href="#" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-md bg-footer-bg text-footer-foreground hover:bg-footer-bg/90 transition-colors">
               <span>{t.research.cta}</span>
               <ArrowRight size={14} />
             </a>
