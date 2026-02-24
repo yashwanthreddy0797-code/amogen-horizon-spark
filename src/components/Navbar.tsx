@@ -109,7 +109,7 @@ const Navbar = () => {
           transition={{ duration: 0.5 }}
           className={`text-nav-dark-foreground transition-all duration-300 ${
             activeMenu ? "rounded-t-[1.5rem]" : "rounded-full"
-          } ${hovered || activeMenu ? "bg-nav-dark shadow-2xl" : "bg-transparent shadow-none"}`}
+          } ${hovered || activeMenu || scrolled ? "bg-nav-dark shadow-2xl" : "bg-transparent shadow-none"}`}
         >
           <div className="flex items-center justify-between px-6 md:px-8 py-3">
             <a href="/" className="shrink-0">
