@@ -17,7 +17,7 @@ const PipelinePreview = () => {
     <section id="pipeline" className="py-16 lg:py-20 bg-section-cream">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
-          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-4">{t.pipeline.label}</p>
+          
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight max-w-2xl">{t.pipeline.title}</h2>
           <p className="text-lg text-muted-foreground mt-6 max-w-2xl leading-relaxed">{t.pipeline.description}</p>
         </ScrollReveal>
