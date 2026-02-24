@@ -77,7 +77,7 @@ export const en = {
   // PipelinePreview
   pipeline: {
     label: "Pipeline",
-    title: "Our Clinical",
+    title: "Our Clinical Pipeline",
     description: "From discovery through regulatory approval, our pipeline represents our commitment to advancing transformative therapies.",
     program: "Program",
     indication: "Indication",
