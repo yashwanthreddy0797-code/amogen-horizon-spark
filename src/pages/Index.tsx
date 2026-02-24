@@ -6,7 +6,7 @@ import AboutHero from "@/components/AboutHero";
 
 import PipelinePreview from "@/components/PipelinePreview";
 import ResearchHighlight from "@/components/ResearchHighlight";
-import ManufacturingProcess from "@/components/ManufacturingProcess";
+
 import NewsPreview from "@/components/NewsPreview";
 import Footer from "@/components/Footer";
 
@@ -22,8 +22,7 @@ const Index = () => {
         
         <ResearchHighlight />
         <PipelinePreview />
-        
-        <ManufacturingProcess />
+
         <NewsPreview />
       </main>
       <Footer />
