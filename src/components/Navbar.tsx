@@ -15,6 +15,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { language, setLanguage, t } = useLanguage();
@@ -92,7 +93,11 @@ const Navbar = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 px-4 md:px-8 pt-4 md:pt-6 transition-all duration-500 ${hidden ? "opacity-0 -translate-y-full pointer-events-none" : "opacity-100 translate-y-0"}`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 px-4 md:px-8 pt-4 md:pt-6 transition-all duration-500 ${hidden ? "opacity-0 -translate-y-full pointer-events-none" : "opacity-100 translate-y-0"}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
       <div
         ref={navRef}
         className="max-w-7xl mx-auto"
@@ -102,9 +107,9 @@ const Navbar = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className={`bg-nav-dark text-nav-dark-foreground transition-all duration-300 ${
+          className={`text-nav-dark-foreground transition-all duration-300 ${
             activeMenu ? "rounded-t-[1.5rem]" : "rounded-full"
-          } ${scrolled ? "shadow-2xl" : "shadow-lg"}`}
+          } ${hovered || activeMenu ? "bg-nav-dark shadow-2xl" : "bg-transparent shadow-none"}`}
         >
           <div className="flex items-center justify-between px-6 md:px-8 py-3">
             <a href="/" className="shrink-0">
