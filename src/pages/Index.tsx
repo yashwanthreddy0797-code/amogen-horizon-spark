@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import AboutHero from "@/components/AboutHero";
 import NavigationBridge from "@/components/NavigationBridge";
-import TrustStrip from "@/components/TrustStrip";
+
 
 import AboutStats from "@/components/AboutStats";
 import PipelinePreview from "@/components/PipelinePreview";
@@ -18,7 +18,7 @@ const Index = () => {
       <main>
         <Hero />
         <AboutHero />
-        <TrustStrip />
+        
         <NavigationBridge />
         
         <ResearchHighlight />
