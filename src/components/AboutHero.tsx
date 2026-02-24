@@ -29,8 +29,8 @@ const AboutHero = () => {
       <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-16 text-center">
         <ScrollReveal delay={0.1}>
           <h2 className="text-4xl md:text-5xl lg:text-[4rem] font-extrabold text-foreground leading-[1.1]">
-            Our job is to put health<br />
-            <em className="font-extrabold italic">above all.</em>
+            We manufacture with precision.<br />
+            <em className="font-extrabold italic">Because the right molecule, made wrong, helps no one.</em>
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
