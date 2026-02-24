@@ -2,12 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import { Search, Globe, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const menuData: Record<string, { description: string; href?: string; links: string[][] }> = {
+type NavLinkItem = string | { label: string; href: string };
+
+const menuData: Record<string, { description: string; href?: string; links: NavLinkItem[][] }> = {
   About: {
     description: "Learn about AMOGEN's mission to advance biopharmaceutical innovation worldwide.",
     href: "/about",
     links: [
-      ["Who We Are", "What We Do", "Leadership"],
+      ["Who We Are", "What We Do", { label: "Leadership", href: "/about/leadership" }],
       ["Governance", "Sustainability"],
     ],
   },
@@ -192,16 +194,22 @@ const Navbar = () => {
                     <div className="flex gap-12 md:gap-16">
                       {menuData[activeMenu].links.map((col, colIndex) => (
                         <div key={colIndex} className="flex flex-col gap-3">
-                          {col.map((link) => (
+                        {col.map((link) => {
+                          const label = typeof link === "string" ? link : link.label;
+                          const href = typeof link === "string"
+                            ? `#${link.toLowerCase().replace(/\s+/g, "-")}`
+                            : link.href;
+                          return (
                             <a
-                              key={link}
-                              href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
+                              key={label}
+                              href={href}
                               className="text-sm md:text-base text-nav-dark-foreground/90 hover:text-nav-dark-foreground underline underline-offset-4 decoration-nav-dark-foreground/30 hover:decoration-nav-dark-foreground/70 transition-colors"
                               onClick={() => setActiveMenu(null)}
                             >
-                              {link}
+                              {label}
                             </a>
-                          ))}
+                          );
+                        })}
                         </div>
                       ))}
                     </div>
