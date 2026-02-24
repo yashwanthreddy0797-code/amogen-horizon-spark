@@ -54,8 +54,7 @@ const Hero = () => {
           </div>
 
           <p className="mt-8 text-lg md:text-xl text-primary-foreground/80 max-w-2xl leading-relaxed font-light">
-            Integrated development, manufacturing & fill-finish for Yeast based
-            semaglutide biosimilar—capacity built for global launches, not pilot runs!
+            Amogen is a precision manufacturing company turning complex peptide science into medicines and partnerships that reach the markets that need them most.
           </p>
 
           <a
