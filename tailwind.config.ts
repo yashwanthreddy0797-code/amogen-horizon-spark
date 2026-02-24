@@ -53,6 +53,8 @@ export default {
         "section-cream": "hsl(var(--section-cream))",
         "nav-dark": "hsl(var(--nav-dark))",
         "nav-dark-foreground": "hsl(var(--nav-dark-foreground))",
+        "footer-bg": "hsl(var(--footer-bg))",
+        "footer-foreground": "hsl(var(--footer-foreground))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

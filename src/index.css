@@ -46,8 +46,10 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
 
     --section-cream: 30 20% 96%;
-    --nav-dark: 227 100% 20%;
+    --nav-dark: 220 20% 10%;
     --nav-dark-foreground: 0 0% 100%;
+    --footer-bg: 227 100% 20%;
+    --footer-foreground: 0 0% 100%;
   }
 
   .dark {
