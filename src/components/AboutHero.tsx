@@ -16,10 +16,10 @@ const cards = [
     description: "complex peptide programs",
   },
   {
-    label: "Manufacturing Scale",
-    value: "900",
-    unit: "Kg/yr",
-    description: "annual GLP-1 API capacity",
+    label: "GLP-1 Capacity",
+    value: "5",
+    unit: "T",
+    description: "Capacity target by 2029",
   },
 ];
 
