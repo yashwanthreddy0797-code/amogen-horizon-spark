@@ -27,11 +27,6 @@ const AboutHero = () => {
   return (
     <section className="py-20 lg:py-28 bg-section-cream">
       <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-16 text-center">
-        <ScrollReveal>
-          <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground font-semibold mb-6">
-            About AMOGEN
-          </p>
-        </ScrollReveal>
         <ScrollReveal delay={0.1}>
           <h2 className="text-4xl md:text-5xl lg:text-[4rem] font-extrabold text-foreground leading-[1.1]">
             Our job is to put health<br />
