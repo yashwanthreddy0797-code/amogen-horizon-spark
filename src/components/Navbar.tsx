@@ -29,6 +29,7 @@ const menuData: Record<string, { description: string; href?: string; links: NavL
   },
   Science: {
     description: "Pioneering research driving the next generation of biopharmaceutical breakthroughs.",
+    href: "/science",
     links: [
       ["Technology Stack", "Publications"],
       ["Comparability Data", "Research Capabilities"],
