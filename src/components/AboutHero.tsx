@@ -1,6 +1,4 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const cards = [
   {
@@ -57,14 +55,7 @@ const AboutHero = () => {
                     <span className="text-2xl font-bold ml-1">{card.unit}</span>
                   )}
                 </p>
-                <p className="text-base text-muted-foreground mt-2 mb-6">{card.description}</p>
-                <Link
-                  to="/about"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors group"
-                >
-                  Learn more
-                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                </Link>
+                <p className="text-base text-muted-foreground mt-2">{card.description}</p>
               </div>
             </ScrollReveal>
           ))}
