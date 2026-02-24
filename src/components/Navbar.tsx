@@ -50,6 +50,7 @@ const languages = [
   { code: "en", label: "English" },
   { code: "zh", label: "中文" },
   { code: "ja", label: "日本語" },
+  { code: "es", label: "Español" },
 ];
 
 const Navbar = () => {
