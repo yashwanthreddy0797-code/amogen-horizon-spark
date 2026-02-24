@@ -13,6 +13,7 @@ const languages = [
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -61,7 +62,14 @@ const Navbar = () => {
   const navItems = Object.keys(menuData);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 50);
+      const footer = document.getElementById("contact");
+      if (footer) {
+        const footerTop = footer.getBoundingClientRect().top;
+        setHidden(footerTop <= window.innerHeight);
+      }
+    };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -84,7 +92,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 pt-4 md:pt-6">
+    <header className={`fixed top-0 left-0 right-0 z-50 px-4 md:px-8 pt-4 md:pt-6 transition-all duration-500 ${hidden ? "opacity-0 -translate-y-full pointer-events-none" : "opacity-100 translate-y-0"}`}>
       <div
         ref={navRef}
         className="max-w-7xl mx-auto"
