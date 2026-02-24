@@ -14,7 +14,7 @@ const PipelinePreview = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="pipeline" className="py-16 lg:py-20 bg-section-cream">
+    <section id="pipeline" className="pt-10 lg:pt-14 pb-16 lg:pb-20 bg-section-cream">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           
