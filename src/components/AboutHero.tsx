@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 const cards = [
   {
-    label: "Technology Edge",
-    value: "24/7",
-    unit: "",
-    description: "proprietary fermentation platform",
+    label: "Microbial Fermentation",
+    value: "75,000",
+    unit: "L",
+    description: "Integrated Capacity",
   },
   {
     label: "Peptide Innovation",
