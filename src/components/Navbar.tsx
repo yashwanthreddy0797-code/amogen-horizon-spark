@@ -46,9 +46,17 @@ const menuData: Record<string, { description: string; href?: string; links: NavL
 
 const navItems = Object.keys(menuData);
 
+const languages = [
+  { code: "en", label: "English" },
+  { code: "zh", label: "中文" },
+  { code: "ja", label: "日本語" },
+];
+
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const [currentLang, setCurrentLang] = useState("en");
   const navRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -136,12 +144,32 @@ const Navbar = () => {
               >
                 <Search size={17} />
               </button>
-              <button
-                className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-                aria-label="Language"
-              >
-                <Globe size={17} />
-              </button>
+              <div className="relative">
+                <button
+                  className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                  aria-label="Language"
+                  onClick={() => setLangOpen(!langOpen)}
+                >
+                  <Globe size={17} />
+                </button>
+                {langOpen && (
+                  <div className="absolute right-0 top-full mt-2 bg-nav-dark border border-nav-dark-foreground/15 rounded-xl shadow-xl overflow-hidden min-w-[140px]">
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => { setCurrentLang(lang.code); setLangOpen(false); }}
+                        className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                          currentLang === lang.code
+                            ? "bg-nav-dark-foreground/15 text-nav-dark-foreground font-medium"
+                            : "text-nav-dark-foreground/70 hover:bg-nav-dark-foreground/10 hover:text-nav-dark-foreground"
+                        }`}
+                      >
+                        {lang.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
               <a
                 href="#contact"
                 className="hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
