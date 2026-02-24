@@ -12,7 +12,7 @@ const NewsPreview = () => {
   ];
 
   return (
-    <section id="news" className="py-24 lg:py-36 bg-background">
+    <section id="news" className="pt-10 lg:pt-14 pb-24 lg:pb-36 bg-background">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-4">{t.newsPreview.label}</p>
