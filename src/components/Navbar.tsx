@@ -2,9 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { Search, Globe, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const menuData: Record<string, { description: string; links: string[][] }> = {
+const menuData: Record<string, { description: string; href?: string; links: string[][] }> = {
   About: {
     description: "Learn about AMOGEN's mission to advance biopharmaceutical innovation worldwide.",
+    href: "/about",
     links: [
       ["Who We Are", "What We Do", "Leadership"],
       ["Governance", "Sustainability"],
@@ -98,20 +99,30 @@ const Navbar = () => {
 
             {/* Center nav items — desktop */}
             <nav className="hidden md:flex items-center gap-1">
-              {navItems.map((item) => (
-                <button
-                  key={item}
-                  onMouseEnter={() => handleMouseEnter(item)}
-                  onClick={() => setActiveMenu(activeMenu === item ? null : item)}
-                  className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
-                    activeMenu === item
-                      ? "bg-nav-dark-foreground/15 text-nav-dark-foreground"
-                      : "text-nav-dark-foreground/80 hover:text-nav-dark-foreground hover:bg-nav-dark-foreground/5"
-                  }`}
-                >
-                  {item}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                const data = menuData[item];
+                return (
+                  <div key={item} className="relative">
+                    <button
+                      onMouseEnter={() => handleMouseEnter(item)}
+                      onClick={() => {
+                        if (data.href) {
+                          window.location.href = data.href;
+                        } else {
+                          setActiveMenu(activeMenu === item ? null : item);
+                        }
+                      }}
+                      className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
+                        activeMenu === item
+                          ? "bg-nav-dark-foreground/15 text-nav-dark-foreground"
+                          : "text-nav-dark-foreground/80 hover:text-nav-dark-foreground hover:bg-nav-dark-foreground/5"
+                      }`}
+                    >
+                      {item}
+                    </button>
+                  </div>
+                );
+              })}
             </nav>
 
             {/* Right side */}
