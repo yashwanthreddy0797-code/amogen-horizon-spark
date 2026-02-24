@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
-import researchLabImg from "@/assets/research-lab.jpg";
+
 import facility1Img from "@/assets/facility-1.jpg";
 import facility2Img from "@/assets/facility-2.jpg";
 import facility3Img from "@/assets/facility-3.jpg";
@@ -152,23 +152,9 @@ const ResearchHighlight = () => {
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mb-10">{t.research.description}</p>
         </ScrollReveal>
-        <ScrollReveal delay={0.15}>
-          <div className="relative rounded-3xl overflow-hidden">
-            <img src={researchLabImg} alt="AMOGEN research laboratory" className="w-full h-[420px] md:h-[520px] lg:h-[600px] object-cover" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/40 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 lg:p-16">
-              <p className="text-base text-primary-foreground/70 leading-relaxed max-w-xl mb-6">{t.research.overlayText}</p>
-              <a href="#" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-                <span>{t.research.cta}</span>
-                <ArrowRight size={14} />
-              </a>
-            </div>
-          </div>
-        </ScrollReveal>
-
         {/* Facility Cards */}
-        <ScrollReveal delay={0.25}>
-          <div className="grid md:grid-cols-3 gap-5 mt-12">
+        <ScrollReveal delay={0.15}>
+          <div className="grid md:grid-cols-3 gap-5">
             {facilities.map((facility, i) => (
               <FacilityCard
                 key={facility.title}
@@ -177,6 +163,15 @@ const ResearchHighlight = () => {
                 onToggle={() => handleToggle(i)}
               />
             ))}
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.25}>
+          <div className="mt-10">
+            <a href="#" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+              <span>{t.research.cta}</span>
+              <ArrowRight size={14} />
+            </a>
           </div>
         </ScrollReveal>
       </div>
