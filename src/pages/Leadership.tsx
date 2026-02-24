@@ -4,6 +4,10 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { motion } from "framer-motion";
 import { User } from "lucide-react";
 import leadershipHero from "@/assets/leadership-hero.jpg";
+import leaderRaju from "@/assets/leader-raju.png";
+import leaderAkhilesh from "@/assets/leader-akhilesh.png";
+import leaderKalyan from "@/assets/leader-kalyan.png";
+import leaderHarmeet from "@/assets/leader-harmeet.png";
 
 /* ── Leadership Data ── */
 
@@ -12,26 +16,31 @@ const leaders = [
     name: "P.V.S.N. Raju",
     title: "Chairman",
     bio: "Visionary leader with decades of experience in pharmaceutical innovation, guiding AMOGEN's strategic direction and governance with a commitment to advancing global healthcare.",
+    photo: leaderRaju,
   },
   {
     name: "Akhilesh Raju",
     title: "Chief Executive Officer",
     bio: "Driving AMOGEN's mission to deliver high-quality, affordable peptide therapeutics through bold scientific strategy and operational excellence across global markets.",
+    photo: leaderAkhilesh,
   },
   {
     name: "T. Devi Kalyan",
     title: "Chief Operating Officer",
     bio: "Overseeing end-to-end operations from manufacturing to supply chain, ensuring AMOGEN delivers on its promise of quality, scalability, and regulatory compliance worldwide.",
+    photo: leaderKalyan,
   },
   {
     name: "Mr. Harmeet Lamba",
     title: "Advisor",
     bio: "Bringing deep industry expertise and strategic counsel to AMOGEN's growth trajectory, advising on market expansion, partnerships, and long-term business development.",
+    photo: leaderHarmeet,
   },
   {
     name: "Dr. Manpreet Singh",
     title: "President, Business Development",
     bio: "Leading AMOGEN's global business development initiatives, forging strategic partnerships across North America, Europe, and Asia-Pacific to accelerate patient access.",
+    photo: null,
   },
 ];
 
@@ -111,12 +120,14 @@ const Leadership = () => {
               {leaders.map((leader, i) => (
                 <ScrollReveal key={leader.name} delay={i * 0.08}>
                   <div className="group bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
-                    {/* Photo placeholder — gray area with icon */}
                     <div className="relative aspect-square bg-muted flex items-center justify-center overflow-hidden">
-                      <div className="w-24 h-24 rounded-full bg-border flex items-center justify-center">
-                        <User size={40} className="text-muted-foreground/50" />
-                      </div>
-                      {/* Subtle overlay on hover */}
+                      {leader.photo ? (
+                        <img src={leader.photo} alt={leader.name} className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-24 h-24 rounded-full bg-border flex items-center justify-center">
+                          <User size={40} className="text-muted-foreground/50" />
+                        </div>
+                      )}
                       <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
 
