@@ -8,6 +8,7 @@ import leaderRaju from "@/assets/leader-raju.png";
 import leaderAkhilesh from "@/assets/leader-akhilesh.png";
 import leaderKalyan from "@/assets/leader-kalyan.png";
 import leaderHarmeet from "@/assets/leader-harmeet.png";
+import leaderManpreet from "@/assets/leader-manpreet.png";
 
 /* ── Leadership Data ── */
 
@@ -40,7 +41,7 @@ const leaders = [
     name: "Dr. Manpreet Singh",
     title: "President, Business Development",
     bio: "Leading AMOGEN's global business development initiatives, forging strategic partnerships across North America, Europe, and Asia-Pacific to accelerate patient access.",
-    photo: null,
+    photo: leaderManpreet,
   },
 ];
 
