@@ -11,7 +11,7 @@ const AboutHero = () => {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-section-cream">
+    <section className="py-20 lg:py-28 pb-10 lg:pb-14 bg-section-cream">
       <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-16 text-center">
         <ScrollReveal delay={0.1}>
           <h2 className="text-[36px] md:text-[40px] font-extrabold text-foreground leading-[1.2]">
