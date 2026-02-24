@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 const ProductsBanner = () => {
   return (
-    <section className="py-20 lg:py-28 pb-10 lg:pb-14 bg-background">
+    <section className="pt-20 lg:pt-28 pb-0 bg-section-cream">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <div className="relative rounded-3xl overflow-hidden min-h-[340px] md:min-h-[380px] flex items-center"
