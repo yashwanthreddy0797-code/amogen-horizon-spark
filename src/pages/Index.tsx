@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import AboutHero from "@/components/AboutHero";
-import NavigationBridge from "@/components/NavigationBridge";
+
 
 
 import AboutStats from "@/components/AboutStats";
@@ -19,7 +19,7 @@ const Index = () => {
         <Hero />
         <AboutHero />
         
-        <NavigationBridge />
+        
         
         <ResearchHighlight />
         <PipelinePreview />
