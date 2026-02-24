@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import AboutHero from "@/components/AboutHero";
 import NavigationBridge from "@/components/NavigationBridge";
 import TrustStrip from "@/components/TrustStrip";
 
@@ -16,6 +17,7 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
+        <AboutHero />
         <TrustStrip />
         <NavigationBridge />
         
