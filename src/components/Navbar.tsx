@@ -255,27 +255,25 @@ const Navbar = () => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div
-        ref={navRef}
-        className="max-w-7xl mx-auto"
-        onMouseLeave={!scrolled ? handleMouseLeave : undefined}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className={`text-nav-dark-foreground transition-all duration-300 ${
-            (activeMenu && !scrolled) || mobileMenuOpen ? "rounded-t-[1.5rem]" : "rounded-full"
-          } ${
-            scrolled
-              ? "bg-nav-dark shadow-2xl"
-              : hovered || activeMenu
+      {/* ===== DEFAULT (not scrolled) - single bar ===== */}
+      {!scrolled && (
+        <div
+          ref={navRef}
+          className="max-w-7xl mx-auto"
+          onMouseLeave={handleMouseLeave}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className={`text-nav-dark-foreground transition-all duration-300 ${
+              activeMenu ? "rounded-t-[1.5rem]" : "rounded-full"
+            } ${
+              hovered || activeMenu
                 ? "bg-nav-dark shadow-2xl"
                 : "bg-transparent shadow-none"
-          }`}
-        >
-          {/* ===== DEFAULT (not scrolled) ===== */}
-          {!scrolled && (
+            }`}
+          >
             <div className="flex items-center justify-between px-6 md:px-8 py-3">
               <a href="/" className="shrink-0">
                 <span className="text-base md:text-lg font-bold tracking-tight text-nav-dark-foreground">
@@ -362,78 +360,93 @@ const Navbar = () => {
                 </button>
               </div>
             </div>
-          )}
 
-          {/* ===== SCROLLED (compact Lilly-style) ===== */}
-          {scrolled && (
-            <div className="flex items-center justify-between px-5 md:px-6 py-2.5">
-              {/* Left: Logo + Hamburger */}
-              <div className="flex items-center gap-3">
-                <a href="/" className="shrink-0">
-                  <span className="text-base font-bold tracking-tight text-nav-dark-foreground">
-                    AMOGEN
-                  </span>
-                </a>
-                <button
-                  onClick={toggleScrolledMenu}
-                  className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-                  aria-label={t.nav.menu}
-                >
-                  {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-                </button>
-              </div>
+            {renderMegaMenu()}
+          </motion.div>
+        </div>
+      )}
 
-              {/* Right: Search, Globe, Partner */}
-              <div className="flex items-center gap-1">
-                <button
-                  className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-                  aria-label={t.nav.search}
-                >
-                  <Search size={17} />
-                </button>
-                <div className="relative">
-                  <button
-                    className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-                    aria-label={t.nav.language}
-                    onClick={() => setLangOpen(!langOpen)}
-                  >
-                    <Globe size={17} />
-                  </button>
-                  {langOpen && (
-                    <div className="absolute right-0 top-full mt-2 bg-nav-dark border border-nav-dark-foreground/15 rounded-xl shadow-xl overflow-hidden min-w-[140px] z-50">
-                      {languages.map((lang) => (
-                        <button
-                          key={lang.code}
-                          onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
-                          className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
-                            language === lang.code
-                              ? "bg-nav-dark-foreground/15 text-nav-dark-foreground font-medium"
-                              : "text-nav-dark-foreground/70 hover:bg-nav-dark-foreground/10 hover:text-nav-dark-foreground"
-                          }`}
-                        >
-                          {lang.label}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                <a
-                  href="#contact"
-                  className="hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-                >
-                  {t.nav.partnerWithUs}
-                </a>
-              </div>
+      {/* ===== SCROLLED (split into two separate pills like Lilly) ===== */}
+      {scrolled && (
+        <div className="max-w-7xl mx-auto flex items-start justify-between text-nav-dark-foreground">
+          {/* Left pill: Logo + Hamburger */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.35 }}
+            className={`bg-nav-dark shadow-2xl transition-all duration-300 ${
+              mobileMenuOpen ? "rounded-t-[1.5rem] rounded-br-[1.5rem]" : "rounded-full"
+            }`}
+          >
+            <div className="flex items-center gap-2 px-4 md:px-5 py-2.5">
+              <a href="/" className="shrink-0">
+                <span className="text-base font-bold tracking-tight text-nav-dark-foreground">
+                  AMOGEN
+                </span>
+              </a>
+              <button
+                onClick={toggleScrolledMenu}
+                className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                aria-label={t.nav.menu}
+              >
+                {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+              </button>
             </div>
-          )}
 
-          {/* Mega menu for default mode */}
-          {!scrolled && renderMegaMenu()}
+            {/* Scrolled menu panel drops from the left pill */}
+            {renderScrolledMenuPanel()}
+          </motion.div>
 
-          {/* Scrolled menu panel */}
-          {scrolled && renderScrolledMenuPanel()}
-        </motion.div>
-      </div>
+          {/* Right pill: Search, Globe, Partner With Us */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.35 }}
+            className="bg-nav-dark shadow-2xl rounded-full"
+          >
+            <div className="flex items-center gap-1 px-3 md:px-4 py-2.5">
+              <button
+                className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                aria-label={t.nav.search}
+              >
+                <Search size={17} />
+              </button>
+              <div className="relative">
+                <button
+                  className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                  aria-label={t.nav.language}
+                  onClick={() => setLangOpen(!langOpen)}
+                >
+                  <Globe size={17} />
+                </button>
+                {langOpen && (
+                  <div className="absolute right-0 top-full mt-2 bg-nav-dark border border-nav-dark-foreground/15 rounded-xl shadow-xl overflow-hidden min-w-[140px] z-50">
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
+                        className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                          language === lang.code
+                            ? "bg-nav-dark-foreground/15 text-nav-dark-foreground font-medium"
+                            : "text-nav-dark-foreground/70 hover:bg-nav-dark-foreground/10 hover:text-nav-dark-foreground"
+                        }`}
+                      >
+                        {lang.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <a
+                href="#contact"
+                className="hidden md:flex items-center text-sm font-medium px-4 py-1.5 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+              >
+                {t.nav.partnerWithUs}
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </header>
   );
 };
