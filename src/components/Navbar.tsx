@@ -77,10 +77,17 @@ const Navbar = () => {
   }, []);
 
   // Close menus when transitioning between scrolled states
+  const prevScrolled = useRef(scrolled);
   useEffect(() => {
-    setActiveMenu(null);
-    setMobileMenuOpen(false);
-    setLangOpen(false);
+    if (prevScrolled.current !== scrolled) {
+      prevScrolled.current = scrolled;
+      // Defer state resets to after the animation frame to avoid mid-transition re-renders
+      requestAnimationFrame(() => {
+        setActiveMenu(null);
+        setMobileMenuOpen(false);
+        setLangOpen(false);
+      });
+    }
   }, [scrolled]);
 
   const handleMouseEnter = (item: string) => {
