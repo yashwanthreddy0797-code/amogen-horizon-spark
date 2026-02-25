@@ -55,6 +55,7 @@ export default {
         "nav-dark-foreground": "hsl(var(--nav-dark-foreground))",
         "footer-bg": "hsl(var(--footer-bg))",
         "footer-foreground": "hsl(var(--footer-foreground))",
+        "timeline-red": "hsl(var(--timeline-red))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
