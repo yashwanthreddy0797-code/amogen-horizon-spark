@@ -101,7 +101,7 @@ const Navbar = () => {
   }, [scrolled]);
 
   const handleMouseEnter = (item: string) => {
-    if (scrolled) return; // No hover menus in scrolled mode
+    if (scrolled && !mobileMenuOpen) return;
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setActiveMenu(item);
   };
@@ -136,8 +136,8 @@ const Navbar = () => {
           exit={{ height: 0, opacity: 0 }}
           transition={{ duration: 0.25, ease: "easeInOut" }}
           className="overflow-hidden"
-          onMouseEnter={!scrolled ? handleDropdownEnter : undefined}
-          onMouseLeave={!scrolled ? handleDropdownLeave : undefined}
+          onMouseEnter={handleDropdownEnter}
+          onMouseLeave={handleDropdownLeave}
         >
           <div className="mx-8 border-t border-nav-dark-foreground/15" />
           <div className="px-8 md:px-10 py-8 md:py-10">
@@ -441,109 +441,206 @@ const Navbar = () => {
           {/* ===== SCROLLED (split into two separate pills like Lilly) ===== */}
           <motion.div
             key="split-nav"
-            className="max-w-7xl mx-auto flex items-start justify-between text-nav-dark-foreground"
+            className="max-w-7xl mx-auto text-nav-dark-foreground"
             initial={false}
             animate={{ opacity: scrolled ? 1 : 0, y: scrolled ? 0 : -10, visibility: scrolled ? "visible" as const : "hidden" as const }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], visibility: { delay: scrolled ? 0 : 0.4 } }}
             style={{ pointerEvents: scrolled ? "auto" : "none", position: scrolled ? "relative" : "absolute", left: 0, right: 0 }}
           >
-            {/* Left pill: Logo + Hamburger */}
-            <motion.div
-              initial={false}
-              animate={{ x: scrolled ? 0 : -20, scale: scrolled ? 1 : 0.95 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className={`bg-nav-dark shadow-2xl transition-all duration-300 ${
-                mobileMenuOpen ? "rounded-t-[1.5rem] rounded-br-[1.5rem]" : "rounded-full"
-              }`}
-            >
-              <div className="flex items-center gap-2 px-4 md:px-5 py-2.5">
-                <a href="/" className="shrink-0">
-                  <span className="text-base font-bold tracking-tight text-nav-dark-foreground">
-                    AMOGEN
-                  </span>
-                </a>
-                <button
-                  onClick={toggleScrolledMenu}
-                  className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-                  aria-label={t.nav.menu}
+            {/* Collapsed: two pills side by side */}
+            <AnimatePresence>
+              {!mobileMenuOpen && (
+                <motion.div
+                  className="flex items-start justify-between"
+                  initial={{ opacity: 0, scale: 0.97 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <AnimatePresence mode="wait">
-                    {mobileMenuOpen ? (
-                      <motion.span
-                        key="close"
-                        initial={{ rotate: -90, opacity: 0 }}
-                        animate={{ rotate: 0, opacity: 1 }}
-                        exit={{ rotate: 90, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <X size={18} />
-                      </motion.span>
-                    ) : (
-                      <motion.span
-                        key="menu"
-                        initial={{ rotate: 90, opacity: 0 }}
-                        animate={{ rotate: 0, opacity: 1 }}
-                        exit={{ rotate: -90, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
+                  {/* Left pill: Logo + Hamburger */}
+                  <motion.div
+                    initial={false}
+                    animate={{ x: scrolled ? 0 : -20, scale: scrolled ? 1 : 0.95 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="bg-nav-dark shadow-2xl rounded-full"
+                  >
+                    <div className="flex items-center gap-2 px-4 md:px-5 py-2.5">
+                      <a href="/" className="shrink-0">
+                        <span className="text-base font-bold tracking-tight text-nav-dark-foreground">
+                          AMOGEN
+                        </span>
+                      </a>
+                      <button
+                        onClick={toggleScrolledMenu}
+                        className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                        aria-label={t.nav.menu}
                       >
                         <Menu size={18} />
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-                </button>
-              </div>
-
-              {renderScrolledMenuPanel()}
-            </motion.div>
-
-            {/* Right pill: Search, Globe, Partner With Us */}
-            <motion.div
-              initial={false}
-              animate={{ x: scrolled ? 0 : 20, scale: scrolled ? 1 : 0.95 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-nav-dark shadow-2xl rounded-full"
-            >
-              <div className="flex items-center gap-1 px-3 md:px-4 py-2.5">
-                <button
-                  className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-                  aria-label={t.nav.search}
-                >
-                  <Search size={17} />
-                </button>
-                <div className="relative">
-                  <button
-                    className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-                    aria-label={t.nav.language}
-                    onClick={() => setLangOpen(!langOpen)}
-                  >
-                    <Globe size={17} />
-                  </button>
-                  {langOpen && (
-                    <div className="absolute right-0 top-full mt-2 bg-nav-dark border border-nav-dark-foreground/15 rounded-xl shadow-xl overflow-hidden min-w-[140px] z-50">
-                      {languages.map((lang) => (
-                        <button
-                          key={lang.code}
-                          onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
-                          className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
-                            language === lang.code
-                              ? "bg-nav-dark-foreground/15 text-nav-dark-foreground font-medium"
-                              : "text-nav-dark-foreground/70 hover:bg-nav-dark-foreground/10 hover:text-nav-dark-foreground"
-                          }`}
-                        >
-                          {lang.label}
-                        </button>
-                      ))}
+                      </button>
                     </div>
-                  )}
-                </div>
-                <a
-                  href="#contact"
-                  className="hidden md:flex items-center text-sm font-medium px-4 py-1.5 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                  </motion.div>
+
+                  {/* Right pill: Search, Globe, Partner With Us */}
+                  <motion.div
+                    initial={false}
+                    animate={{ x: scrolled ? 0 : 20, scale: scrolled ? 1 : 0.95 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="bg-nav-dark shadow-2xl rounded-full"
+                  >
+                    <div className="flex items-center gap-1 px-3 md:px-4 py-2.5">
+                      <button
+                        className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                        aria-label={t.nav.search}
+                      >
+                        <Search size={17} />
+                      </button>
+                      <div className="relative">
+                        <button
+                          className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                          aria-label={t.nav.language}
+                          onClick={() => setLangOpen(!langOpen)}
+                        >
+                          <Globe size={17} />
+                        </button>
+                        {langOpen && (
+                          <div className="absolute right-0 top-full mt-2 bg-nav-dark border border-nav-dark-foreground/15 rounded-xl shadow-xl overflow-hidden min-w-[140px] z-50">
+                            {languages.map((lang) => (
+                              <button
+                                key={lang.code}
+                                onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
+                                className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                                  language === lang.code
+                                    ? "bg-nav-dark-foreground/15 text-nav-dark-foreground font-medium"
+                                    : "text-nav-dark-foreground/70 hover:bg-nav-dark-foreground/10 hover:text-nav-dark-foreground"
+                                }`}
+                              >
+                                {lang.label}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <a
+                        href="#contact"
+                        className="hidden md:flex items-center text-sm font-medium px-4 py-1.5 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                      >
+                        {t.nav.partnerWithUs}
+                      </a>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Expanded: full-width mega menu (like the static nav) */}
+            <AnimatePresence>
+              {mobileMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.97, y: -10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.97, y: -10 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  onMouseLeave={() => { /* keep open, user must click X */ }}
                 >
-                  {t.nav.partnerWithUs}
-                </a>
-              </div>
-            </motion.div>
+                  <div
+                    className={`bg-nav-dark shadow-2xl text-nav-dark-foreground transition-all duration-300 ${
+                      activeMenu ? "rounded-t-[1.5rem]" : "rounded-full"
+                    }`}
+                  >
+                    {/* Top bar with logo, nav items, and close button */}
+                    <div className="flex items-center justify-between px-6 md:px-8 py-3">
+                      <a href="/" className="shrink-0">
+                        <span className="text-base md:text-lg font-bold tracking-tight text-nav-dark-foreground">
+                          AMOGEN
+                        </span>
+                      </a>
+
+                      <nav className="hidden md:flex items-center gap-1">
+                        {navItems.map((item) => {
+                          const data = menuData[item];
+                          return (
+                            <div key={item} className="relative">
+                              <button
+                                onMouseEnter={() => {
+                                  if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                                  setActiveMenu(item);
+                                }}
+                                onClick={() => {
+                                  if (data.href) {
+                                    window.location.href = data.href;
+                                    setMobileMenuOpen(false);
+                                  } else {
+                                    setActiveMenu(activeMenu === item ? null : item);
+                                  }
+                                }}
+                                className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
+                                  activeMenu === item
+                                    ? "bg-nav-dark-foreground/15 text-nav-dark-foreground"
+                                    : "text-nav-dark-foreground/80 hover:text-nav-dark-foreground hover:bg-nav-dark-foreground/5"
+                                }`}
+                              >
+                                {item}
+                              </button>
+                            </div>
+                          );
+                        })}
+                      </nav>
+
+                      <div className="flex items-center gap-1">
+                        <button
+                          className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                          aria-label={t.nav.search}
+                        >
+                          <Search size={17} />
+                        </button>
+                        <div className="relative">
+                          <button
+                            className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                            aria-label={t.nav.language}
+                            onClick={() => setLangOpen(!langOpen)}
+                          >
+                            <Globe size={17} />
+                          </button>
+                          {langOpen && (
+                            <div className="absolute right-0 top-full mt-2 bg-nav-dark border border-nav-dark-foreground/15 rounded-xl shadow-xl overflow-hidden min-w-[140px] z-50">
+                              {languages.map((lang) => (
+                                <button
+                                  key={lang.code}
+                                  onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
+                                  className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                                    language === lang.code
+                                      ? "bg-nav-dark-foreground/15 text-nav-dark-foreground font-medium"
+                                      : "text-nav-dark-foreground/70 hover:bg-nav-dark-foreground/10 hover:text-nav-dark-foreground"
+                                  }`}
+                                >
+                                  {lang.label}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                        <a
+                          href="#contact"
+                          className="hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                        >
+                          {t.nav.partnerWithUs}
+                        </a>
+                        <button
+                          onClick={() => { setMobileMenuOpen(false); setActiveMenu(null); }}
+                          className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                          aria-label="Close menu"
+                        >
+                          <X size={18} />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Reuse the same mega menu renderer */}
+                    {renderMegaMenu()}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
     </header>
   );
