@@ -26,12 +26,12 @@ const PipelinePreview = () => {
         <div className="mt-16 bg-footer-bg rounded-2xl px-8 md:px-12 py-10">
           <ScrollReveal>
             <div className="hidden lg:grid grid-cols-[1.2fr_2.5fr] gap-6 pb-4 border-b border-footer-foreground/20">
-              <span className="text-xs uppercase tracking-[0.15em] text-footer-foreground/60 font-bold">{t.pipeline.program}</span>
+              <span className="text-xs uppercase tracking-[0.15em] text-footer-foreground font-bold">{t.pipeline.program}</span>
               <div className="grid grid-cols-4 gap-4">
-                <span className="text-xs uppercase tracking-[0.15em] text-footer-foreground/60 font-bold leading-tight">{t.pipeline.technicalDev}</span>
-                <span className="text-xs uppercase tracking-[0.15em] text-footer-foreground/60 font-bold">{t.pipeline.manufacturing}</span>
-                <span className="text-xs uppercase tracking-[0.15em] text-footer-foreground/60 font-bold leading-tight">{t.pipeline.clinicalDev}</span>
-                <span className="text-xs uppercase tracking-[0.15em] text-footer-foreground/60 font-bold leading-tight">{t.pipeline.approvalProcess}</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-footer-foreground font-bold leading-tight">{t.pipeline.technicalDev}</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-footer-foreground font-bold">{t.pipeline.manufacturing}</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-footer-foreground font-bold leading-tight">{t.pipeline.clinicalDev}</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-footer-foreground font-bold leading-tight">{t.pipeline.approvalProcess}</span>
               </div>
             </div>
           </ScrollReveal>
