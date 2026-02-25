@@ -26,10 +26,11 @@ const PipelinePreview = () => {
             <div className="hidden lg:grid grid-cols-[1.2fr_1fr_2.5fr] gap-4 pb-4 border-b border-border">
               <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">{t.pipeline.program}</span>
               <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">{t.pipeline.indication}</span>
-              <div className="grid grid-cols-3 text-center">
-                <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">{t.pipeline.development}</span>
-                <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">{t.pipeline.characterisation}</span>
-                <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">{t.pipeline.preClinical}</span>
+              <div className="grid grid-cols-4 text-center">
+                <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold leading-tight">{t.pipeline.technicalDev}</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">{t.pipeline.manufacturing}</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold leading-tight">{t.pipeline.clinicalDev}</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold leading-tight">{t.pipeline.approvalProcess}</span>
               </div>
             </div>
           </ScrollReveal>
