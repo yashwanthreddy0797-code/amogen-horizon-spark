@@ -269,8 +269,8 @@ const Navbar = () => {
         className="max-w-7xl mx-auto"
         onMouseLeave={handleMouseLeave}
         initial={false}
-        animate={{ opacity: scrolled ? 0 : 1, y: scrolled ? -10 : 0, scale: scrolled ? 0.97 : 1 }}
-        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        animate={{ opacity: scrolled ? 0 : 1, y: scrolled ? -10 : 0, scale: scrolled ? 0.97 : 1, visibility: scrolled ? "hidden" as const : "visible" as const }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], visibility: { delay: scrolled ? 0.4 : 0 } }}
         style={{ pointerEvents: scrolled ? "none" : "auto", position: scrolled ? "absolute" : "relative", left: 0, right: 0 }}
       >
             <div
@@ -378,8 +378,8 @@ const Navbar = () => {
             key="split-nav"
             className="max-w-7xl mx-auto flex items-start justify-between text-nav-dark-foreground"
             initial={false}
-            animate={{ opacity: scrolled ? 1 : 0, y: scrolled ? 0 : -10 }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            animate={{ opacity: scrolled ? 1 : 0, y: scrolled ? 0 : -10, visibility: scrolled ? "visible" as const : "hidden" as const }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], visibility: { delay: scrolled ? 0 : 0.4 } }}
             style={{ pointerEvents: scrolled ? "auto" : "none", position: scrolled ? "relative" : "absolute", left: 0, right: 0 }}
           >
             {/* Left pill: Logo + Hamburger */}
