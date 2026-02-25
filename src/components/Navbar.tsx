@@ -261,10 +261,13 @@ const Navbar = () => {
                   className="overflow-hidden"
                 >
                   <div className="px-4 py-4 mt-2 rounded-xl bg-nav-dark-foreground/5">
+                    <h3 className="text-lg font-bold text-nav-dark-foreground mb-1 italic">
+                      {activeMenu}
+                    </h3>
                     <p className="text-nav-dark-foreground/60 text-sm mb-4 leading-relaxed">
                       {menuData[activeMenu].description}
                     </p>
-                    <div className="flex gap-10">
+                    <div className="flex gap-10 mb-4">
                       {menuData[activeMenu].links.map((col, colIndex) => (
                         <div key={colIndex} className="flex flex-col gap-2.5">
                           {col.map((link) => {
@@ -286,6 +289,28 @@ const Navbar = () => {
                         </div>
                       ))}
                     </div>
+                    {/* Featured image card */}
+                    <a
+                      href={menuData[activeMenu].image.href}
+                      className="relative block w-full h-[140px] rounded-xl overflow-hidden group cursor-pointer"
+                      onClick={() => { setActiveMenu(null); setMobileMenuOpen(false); }}
+                    >
+                      <img
+                        src={menuData[activeMenu].image.src}
+                        alt={menuData[activeMenu].image.title}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                        <div>
+                          <h4 className="text-sm font-semibold text-white">{menuData[activeMenu].image.title}</h4>
+                          <p className="text-white/70 text-xs mt-0.5">{menuData[activeMenu].image.subtitle}</p>
+                        </div>
+                        <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20 group-hover:bg-white/20 transition-colors">
+                          <ArrowRight size={14} className="text-white" />
+                        </div>
+                      </div>
+                    </a>
                   </div>
                 </motion.div>
               )}
