@@ -251,80 +251,205 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 px-4 md:px-8 pt-4 md:pt-6 transition-all duration-500 ${hidden ? "opacity-0 -translate-y-full pointer-events-none" : "opacity-100 translate-y-0"}`}
+      className={`fixed top-0 left-0 right-0 z-50 px-4 md:px-8 pt-4 md:pt-6 transition-all duration-700 ease-out ${hidden ? "opacity-0 -translate-y-full pointer-events-none" : "opacity-100 translate-y-0"}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* ===== DEFAULT (not scrolled) - single bar ===== */}
-      {!scrolled && (
-        <div
-          ref={navRef}
-          className="max-w-7xl mx-auto"
-          onMouseLeave={handleMouseLeave}
-        >
+      <AnimatePresence mode="wait">
+        {!scrolled ? (
+          /* ===== DEFAULT (not scrolled) - single bar ===== */
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className={`text-nav-dark-foreground transition-all duration-300 ${
-              activeMenu ? "rounded-t-[1.5rem]" : "rounded-full"
-            } ${
-              hovered || activeMenu
-                ? "bg-nav-dark shadow-2xl"
-                : "bg-transparent shadow-none"
-            }`}
+            key="full-nav"
+            ref={navRef}
+            className="max-w-7xl mx-auto"
+            onMouseLeave={handleMouseLeave}
+            initial={{ opacity: 0, y: -12, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.97 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="flex items-center justify-between px-6 md:px-8 py-3">
-              <a href="/" className="shrink-0">
-                <span className="text-base md:text-lg font-bold tracking-tight text-nav-dark-foreground">
-                  AMOGEN
-                </span>
-              </a>
+            <div
+              className={`text-nav-dark-foreground transition-all duration-500 ease-out ${
+                activeMenu ? "rounded-t-[1.5rem]" : "rounded-full"
+              } ${
+                hovered || activeMenu
+                  ? "bg-nav-dark shadow-2xl"
+                  : "bg-transparent shadow-none"
+              }`}
+            >
+              <div className="flex items-center justify-between px-6 md:px-8 py-3">
+                <a href="/" className="shrink-0">
+                  <span className="text-base md:text-lg font-bold tracking-tight text-nav-dark-foreground">
+                    AMOGEN
+                  </span>
+                </a>
 
-              <nav className="hidden md:flex items-center gap-1">
-                {navItems.map((item) => {
-                  const data = menuData[item];
-                  return (
-                    <div key={item} className="relative">
-                      <button
-                        onMouseEnter={() => handleMouseEnter(item)}
-                        onClick={() => {
-                          if (data.href) {
-                            window.location.href = data.href;
-                          } else {
-                            setActiveMenu(activeMenu === item ? null : item);
-                          }
-                        }}
-                        className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
-                          activeMenu === item
-                            ? "bg-nav-dark-foreground/15 text-nav-dark-foreground"
-                            : "text-nav-dark-foreground/80 hover:text-nav-dark-foreground hover:bg-nav-dark-foreground/5"
-                        }`}
-                      >
-                        {item}
-                      </button>
-                    </div>
-                  );
-                })}
-              </nav>
+                <nav className="hidden md:flex items-center gap-1">
+                  {navItems.map((item) => {
+                    const data = menuData[item];
+                    return (
+                      <div key={item} className="relative">
+                        <button
+                          onMouseEnter={() => handleMouseEnter(item)}
+                          onClick={() => {
+                            if (data.href) {
+                              window.location.href = data.href;
+                            } else {
+                              setActiveMenu(activeMenu === item ? null : item);
+                            }
+                          }}
+                          className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
+                            activeMenu === item
+                              ? "bg-nav-dark-foreground/15 text-nav-dark-foreground"
+                              : "text-nav-dark-foreground/80 hover:text-nav-dark-foreground hover:bg-nav-dark-foreground/5"
+                          }`}
+                        >
+                          {item}
+                        </button>
+                      </div>
+                    );
+                  })}
+                </nav>
 
-              <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1">
+                  <button
+                    className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                    aria-label={t.nav.search}
+                  >
+                    <Search size={17} />
+                  </button>
+                  <div className="relative">
+                    <button
+                      className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                      aria-label={t.nav.language}
+                      onClick={() => setLangOpen(!langOpen)}
+                    >
+                      <Globe size={17} />
+                    </button>
+                    {langOpen && (
+                      <div className="absolute right-0 top-full mt-2 bg-nav-dark border border-nav-dark-foreground/15 rounded-xl shadow-xl overflow-hidden min-w-[140px]">
+                        {languages.map((lang) => (
+                          <button
+                            key={lang.code}
+                            onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
+                            className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                              language === lang.code
+                                ? "bg-nav-dark-foreground/15 text-nav-dark-foreground font-medium"
+                                : "text-nav-dark-foreground/70 hover:bg-nav-dark-foreground/10 hover:text-nav-dark-foreground"
+                            }`}
+                          >
+                            {lang.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <a
+                    href="#contact"
+                    className="hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                  >
+                    {t.nav.partnerWithUs}
+                  </a>
+
+                  <button
+                    className="md:hidden flex items-center gap-2 px-3 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors text-sm font-medium"
+                    onClick={() => setActiveMenu(activeMenu ? null : navItems[0])}
+                  >
+                    {t.nav.menu}
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform duration-200 ${activeMenu ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                </div>
+              </div>
+
+              {renderMegaMenu()}
+            </div>
+          </motion.div>
+        ) : (
+          /* ===== SCROLLED (split into two separate pills like Lilly) ===== */
+          <motion.div
+            key="split-nav"
+            className="max-w-7xl mx-auto flex items-start justify-between text-nav-dark-foreground"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* Left pill: Logo + Hamburger */}
+            <motion.div
+              initial={{ opacity: 0, x: -30, scale: 0.92 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+              className={`bg-nav-dark shadow-2xl transition-all duration-300 ${
+                mobileMenuOpen ? "rounded-t-[1.5rem] rounded-br-[1.5rem]" : "rounded-full"
+              }`}
+            >
+              <div className="flex items-center gap-2 px-4 md:px-5 py-2.5">
+                <a href="/" className="shrink-0">
+                  <span className="text-base font-bold tracking-tight text-nav-dark-foreground">
+                    AMOGEN
+                  </span>
+                </a>
                 <button
-                  className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                  onClick={toggleScrolledMenu}
+                  className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                  aria-label={t.nav.menu}
+                >
+                  <AnimatePresence mode="wait">
+                    {mobileMenuOpen ? (
+                      <motion.span
+                        key="close"
+                        initial={{ rotate: -90, opacity: 0 }}
+                        animate={{ rotate: 0, opacity: 1 }}
+                        exit={{ rotate: 90, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <X size={18} />
+                      </motion.span>
+                    ) : (
+                      <motion.span
+                        key="menu"
+                        initial={{ rotate: 90, opacity: 0 }}
+                        animate={{ rotate: 0, opacity: 1 }}
+                        exit={{ rotate: -90, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <Menu size={18} />
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </button>
+              </div>
+
+              {renderScrolledMenuPanel()}
+            </motion.div>
+
+            {/* Right pill: Search, Globe, Partner With Us */}
+            <motion.div
+              initial={{ opacity: 0, x: 30, scale: 0.92 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+              className="bg-nav-dark shadow-2xl rounded-full"
+            >
+              <div className="flex items-center gap-1 px-3 md:px-4 py-2.5">
+                <button
+                  className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
                   aria-label={t.nav.search}
                 >
                   <Search size={17} />
                 </button>
                 <div className="relative">
                   <button
-                    className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                    className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
                     aria-label={t.nav.language}
                     onClick={() => setLangOpen(!langOpen)}
                   >
                     <Globe size={17} />
                   </button>
                   {langOpen && (
-                    <div className="absolute right-0 top-full mt-2 bg-nav-dark border border-nav-dark-foreground/15 rounded-xl shadow-xl overflow-hidden min-w-[140px]">
+                    <div className="absolute right-0 top-full mt-2 bg-nav-dark border border-nav-dark-foreground/15 rounded-xl shadow-xl overflow-hidden min-w-[140px] z-50">
                       {languages.map((lang) => (
                         <button
                           key={lang.code}
@@ -343,110 +468,15 @@ const Navbar = () => {
                 </div>
                 <a
                   href="#contact"
-                  className="hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                  className="hidden md:flex items-center text-sm font-medium px-4 py-1.5 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
                 >
                   {t.nav.partnerWithUs}
                 </a>
-
-                <button
-                  className="md:hidden flex items-center gap-2 px-3 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors text-sm font-medium"
-                  onClick={() => setActiveMenu(activeMenu ? null : navItems[0])}
-                >
-                  {t.nav.menu}
-                  <ChevronDown
-                    size={14}
-                    className={`transition-transform duration-200 ${activeMenu ? "rotate-180" : ""}`}
-                  />
-                </button>
               </div>
-            </div>
-
-            {renderMegaMenu()}
+            </motion.div>
           </motion.div>
-        </div>
-      )}
-
-      {/* ===== SCROLLED (split into two separate pills like Lilly) ===== */}
-      {scrolled && (
-        <div className="max-w-7xl mx-auto flex items-start justify-between text-nav-dark-foreground">
-          {/* Left pill: Logo + Hamburger */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.35 }}
-            className={`bg-nav-dark shadow-2xl transition-all duration-300 ${
-              mobileMenuOpen ? "rounded-t-[1.5rem] rounded-br-[1.5rem]" : "rounded-full"
-            }`}
-          >
-            <div className="flex items-center gap-2 px-4 md:px-5 py-2.5">
-              <a href="/" className="shrink-0">
-                <span className="text-base font-bold tracking-tight text-nav-dark-foreground">
-                  AMOGEN
-                </span>
-              </a>
-              <button
-                onClick={toggleScrolledMenu}
-                className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-                aria-label={t.nav.menu}
-              >
-                {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-              </button>
-            </div>
-
-            {/* Scrolled menu panel drops from the left pill */}
-            {renderScrolledMenuPanel()}
-          </motion.div>
-
-          {/* Right pill: Search, Globe, Partner With Us */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.35 }}
-            className="bg-nav-dark shadow-2xl rounded-full"
-          >
-            <div className="flex items-center gap-1 px-3 md:px-4 py-2.5">
-              <button
-                className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-                aria-label={t.nav.search}
-              >
-                <Search size={17} />
-              </button>
-              <div className="relative">
-                <button
-                  className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-                  aria-label={t.nav.language}
-                  onClick={() => setLangOpen(!langOpen)}
-                >
-                  <Globe size={17} />
-                </button>
-                {langOpen && (
-                  <div className="absolute right-0 top-full mt-2 bg-nav-dark border border-nav-dark-foreground/15 rounded-xl shadow-xl overflow-hidden min-w-[140px] z-50">
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
-                        className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
-                          language === lang.code
-                            ? "bg-nav-dark-foreground/15 text-nav-dark-foreground font-medium"
-                            : "text-nav-dark-foreground/70 hover:bg-nav-dark-foreground/10 hover:text-nav-dark-foreground"
-                        }`}
-                      >
-                        {lang.label}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <a
-                href="#contact"
-                className="hidden md:flex items-center text-sm font-medium px-4 py-1.5 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-              >
-                {t.nav.partnerWithUs}
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </header>
   );
 };
