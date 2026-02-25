@@ -113,6 +113,7 @@ const Navbar = () => {
 
   const handleDropdownEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    if (scrolledExpandTimeout.current) clearTimeout(scrolledExpandTimeout.current);
   };
 
   const handleDropdownLeave = () => {
@@ -459,21 +460,19 @@ const Navbar = () => {
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], visibility: { delay: scrolled ? 0 : 0.4 } }}
             style={{ pointerEvents: scrolled ? "auto" : "none", position: scrolled ? "relative" : "absolute", left: 0, right: 0 }}
           >
-            {/* Collapsed: two pills side by side */}
-            <AnimatePresence>
-              {!mobileMenuOpen && (
+            {/* Pills & Expanded share the same space — crossfade with mode="wait" */}
+            <AnimatePresence mode="wait">
+              {!mobileMenuOpen ? (
                 <motion.div
+                  key="pills"
                   className="flex items-start justify-between"
-                  initial={{ opacity: 0, scale: 0.97 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
                 >
                   {/* Left pill: Logo + Hamburger */}
-                  <motion.div
-                    initial={false}
-                    animate={{ x: scrolled ? 0 : -20, scale: scrolled ? 1 : 0.95 }}
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  <div
                     className="bg-nav-dark shadow-2xl rounded-full cursor-pointer"
                     onMouseEnter={handleScrolledPillEnter}
                   >
@@ -490,15 +489,10 @@ const Navbar = () => {
                         <Menu size={18} />
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
 
                   {/* Right pill: Search, Globe, Partner With Us */}
-                  <motion.div
-                    initial={false}
-                    animate={{ x: scrolled ? 0 : 20, scale: scrolled ? 1 : 0.95 }}
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="bg-nav-dark shadow-2xl rounded-full"
-                  >
+                  <div className="bg-nav-dark shadow-2xl rounded-full">
                     <div className="flex items-center gap-1 px-3 md:px-4 py-2.5">
                       <button
                         className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
@@ -539,20 +533,16 @@ const Navbar = () => {
                         {t.nav.partnerWithUs}
                       </a>
                     </div>
-                  </motion.div>
+                  </div>
                 </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Expanded: full-width mega menu (like the static nav) */}
-            <AnimatePresence>
-              {mobileMenuOpen && (
+              ) : (
                 <motion.div
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  animate={{ scaleX: 1, opacity: 1 }}
-                  exit={{ scaleX: 0, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  style={{ transformOrigin: "left center" }}
+                  key="expanded"
+                  initial={{ opacity: 0, width: "200px" }}
+                  animate={{ opacity: 1, width: "100%" }}
+                  exit={{ opacity: 0, width: "200px" }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ overflow: "hidden" }}
                   onMouseEnter={handleScrolledBarEnter}
                   onMouseLeave={handleScrolledBarLeave}
                 >
