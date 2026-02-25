@@ -48,7 +48,7 @@ const PipelinePreview = () => {
                     <div key={si} className="h-[5px] bg-footer-foreground/20 rounded-full overflow-hidden">
                       {fill > 0 && (
                         <div
-                          className="h-full rounded-full bg-yellow-400 transition-all duration-1000"
+                          className="h-full rounded-full bg-teal-400 transition-all duration-1000"
                           style={{ width: `${fill}%` }}
                         />
                       )}
