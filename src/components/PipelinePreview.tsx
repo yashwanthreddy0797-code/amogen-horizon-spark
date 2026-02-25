@@ -23,7 +23,7 @@ const PipelinePreview = () => {
         </ScrollReveal>
         <div className="mt-16">
           <ScrollReveal>
-            <div className="hidden lg:grid grid-cols-[1.2fr_1fr_2.5fr_1fr_1fr] gap-4 pb-4 border-b border-border">
+            <div className="hidden lg:grid grid-cols-[1.2fr_1fr_2.5fr] gap-4 pb-4 border-b border-border">
               <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">{t.pipeline.program}</span>
               <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">{t.pipeline.indication}</span>
               <div className="grid grid-cols-3 text-center">
@@ -31,13 +31,11 @@ const PipelinePreview = () => {
                 <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">{t.pipeline.characterisation}</span>
                 <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">{t.pipeline.preClinical}</span>
               </div>
-              <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">{t.pipeline.keyMilestone}</span>
-              <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-bold">{t.pipeline.strategy}</span>
             </div>
           </ScrollReveal>
           {pipelineData.map((item, i) => (
             <ScrollReveal key={item.candidate} delay={i * 0.08}>
-              <div className="grid lg:grid-cols-[1.2fr_1fr_2.5fr_1fr_1fr] gap-4 py-8 border-b border-border items-center">
+              <div className="grid lg:grid-cols-[1.2fr_1fr_2.5fr] gap-4 py-8 border-b border-border items-center">
                 <div className="flex items-start gap-3">
                   <div className={`w-1 h-full min-h-[40px] rounded-full ${item.accentColor} shrink-0 mt-1`} />
                   <div>
@@ -50,13 +48,6 @@ const PipelinePreview = () => {
                   <div className="h-3 bg-border/60 rounded-full overflow-hidden">
                     <div className={`h-full rounded-full bg-gradient-to-r ${item.color} transition-all duration-1000`} style={{ width: `${item.progress}%` }} />
                   </div>
-                </div>
-                <div>
-                  <span className="text-sm font-bold text-primary block">{item.milestone}</span>
-                  <span className="text-xs text-muted-foreground">({item.milestoneDate})</span>
-                </div>
-                <div>
-                  <span className="inline-block text-xs font-semibold text-primary border border-primary/30 rounded-full px-4 py-1.5">{item.strategy}</span>
                 </div>
               </div>
             </ScrollReveal>
