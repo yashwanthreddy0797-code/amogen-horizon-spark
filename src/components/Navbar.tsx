@@ -103,6 +103,7 @@ const Navbar = () => {
   const handleMouseEnter = (item: string) => {
     if (scrolled && !mobileMenuOpen) return;
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    if (scrolledExpandTimeout.current) clearTimeout(scrolledExpandTimeout.current);
     setActiveMenu(item);
   };
 
@@ -118,11 +119,22 @@ const Navbar = () => {
     timeoutRef.current = setTimeout(() => setActiveMenu(null), 150);
   };
 
-  const toggleScrolledMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-    if (mobileMenuOpen) {
+  const scrolledExpandTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleScrolledPillEnter = () => {
+    if (scrolledExpandTimeout.current) clearTimeout(scrolledExpandTimeout.current);
+    setMobileMenuOpen(true);
+  };
+
+  const handleScrolledBarLeave = () => {
+    scrolledExpandTimeout.current = setTimeout(() => {
+      setMobileMenuOpen(false);
       setActiveMenu(null);
-    }
+    }, 200);
+  };
+
+  const handleScrolledBarEnter = () => {
+    if (scrolledExpandTimeout.current) clearTimeout(scrolledExpandTimeout.current);
   };
 
   // Mega menu content (shared between both modes)
@@ -462,7 +474,8 @@ const Navbar = () => {
                     initial={false}
                     animate={{ x: scrolled ? 0 : -20, scale: scrolled ? 1 : 0.95 }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="bg-nav-dark shadow-2xl rounded-full"
+                    className="bg-nav-dark shadow-2xl rounded-full cursor-pointer"
+                    onMouseEnter={handleScrolledPillEnter}
                   >
                     <div className="flex items-center gap-2 px-4 md:px-5 py-2.5">
                       <a href="/" className="shrink-0">
@@ -470,13 +483,12 @@ const Navbar = () => {
                           AMOGEN
                         </span>
                       </a>
-                      <button
-                        onClick={toggleScrolledMenu}
+                      <div
                         className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
                         aria-label={t.nav.menu}
                       >
                         <Menu size={18} />
-                      </button>
+                      </div>
                     </div>
                   </motion.div>
 
@@ -536,11 +548,13 @@ const Navbar = () => {
             <AnimatePresence>
               {mobileMenuOpen && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.97, y: -10 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.97, y: -10 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  onMouseLeave={() => { /* keep open, user must click X */ }}
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  animate={{ scaleX: 1, opacity: 1 }}
+                  exit={{ scaleX: 0, opacity: 0 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ transformOrigin: "left center" }}
+                  onMouseEnter={handleScrolledBarEnter}
+                  onMouseLeave={handleScrolledBarLeave}
                 >
                   <div
                     className={`bg-nav-dark shadow-2xl text-nav-dark-foreground transition-all duration-300 ${
