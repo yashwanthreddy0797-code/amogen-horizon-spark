@@ -352,9 +352,7 @@ const Navbar = () => {
         style={{ pointerEvents: scrolled ? "none" : "auto", position: scrolled ? "absolute" : "relative", left: 0, right: 0 }}
       >
             <div
-              className={`text-nav-dark-foreground transition-all duration-500 ease-out ${
-                activeMenu ? "rounded-t-[1.5rem]" : "rounded-full"
-              } ${
+              className={`text-nav-dark-foreground transition-all duration-500 ease-out overflow-hidden rounded-[1.5rem] ${
                 hovered || activeMenu
                   ? "bg-nav-dark shadow-2xl"
                   : "bg-transparent shadow-none"
@@ -547,9 +545,7 @@ const Navbar = () => {
                   onMouseLeave={handleScrolledBarLeave}
                 >
                   <div
-                    className={`bg-nav-dark shadow-2xl text-nav-dark-foreground transition-all duration-300 ${
-                      activeMenu ? "rounded-t-[1.5rem]" : "rounded-full"
-                    }`}
+                    className="bg-nav-dark shadow-2xl text-nav-dark-foreground transition-all duration-300 rounded-[1.5rem] overflow-hidden"
                   >
                     {/* Top bar with logo, nav items, and close button */}
                     <div className="flex items-center justify-between px-6 md:px-8 py-3">
