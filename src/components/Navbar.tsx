@@ -262,19 +262,17 @@ const Navbar = () => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <AnimatePresence mode="wait">
-        {!scrolled ? (
-          /* ===== DEFAULT (not scrolled) - single bar ===== */
-          <motion.div
-            key="full-nav"
-            ref={navRef}
-            className="max-w-7xl mx-auto"
-            onMouseLeave={handleMouseLeave}
-            initial={{ opacity: 0, y: -12, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.97 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          >
+      {/* Both navs render simultaneously; opacity crossfade avoids unmount blink */}
+      <motion.div
+        key="full-nav"
+        ref={navRef}
+        className="max-w-7xl mx-auto"
+        onMouseLeave={handleMouseLeave}
+        initial={false}
+        animate={{ opacity: scrolled ? 0 : 1, y: scrolled ? -10 : 0, scale: scrolled ? 0.97 : 1 }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        style={{ pointerEvents: scrolled ? "none" : "auto", position: scrolled ? "absolute" : "relative", left: 0, right: 0 }}
+      >
             <div
               className={`text-nav-dark-foreground transition-all duration-500 ease-out ${
                 activeMenu ? "rounded-t-[1.5rem]" : "rounded-full"
@@ -374,21 +372,21 @@ const Navbar = () => {
               {renderMegaMenu()}
             </div>
           </motion.div>
-        ) : (
-          /* ===== SCROLLED (split into two separate pills like Lilly) ===== */
+
+          {/* ===== SCROLLED (split into two separate pills like Lilly) ===== */}
           <motion.div
             key="split-nav"
             className="max-w-7xl mx-auto flex items-start justify-between text-nav-dark-foreground"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            initial={false}
+            animate={{ opacity: scrolled ? 1 : 0, y: scrolled ? 0 : -10 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            style={{ pointerEvents: scrolled ? "auto" : "none", position: scrolled ? "relative" : "absolute", left: 0, right: 0 }}
           >
             {/* Left pill: Logo + Hamburger */}
             <motion.div
-              initial={{ opacity: 0, x: -30, scale: 0.92 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+              initial={false}
+              animate={{ x: scrolled ? 0 : -20, scale: scrolled ? 1 : 0.95 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className={`bg-nav-dark shadow-2xl transition-all duration-300 ${
                 mobileMenuOpen ? "rounded-t-[1.5rem] rounded-br-[1.5rem]" : "rounded-full"
               }`}
@@ -435,9 +433,9 @@ const Navbar = () => {
 
             {/* Right pill: Search, Globe, Partner With Us */}
             <motion.div
-              initial={{ opacity: 0, x: 30, scale: 0.92 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+              initial={false}
+              animate={{ x: scrolled ? 0 : 20, scale: scrolled ? 1 : 0.95 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="bg-nav-dark shadow-2xl rounded-full"
             >
               <div className="flex items-center gap-1 px-3 md:px-4 py-2.5">
@@ -482,8 +480,6 @@ const Navbar = () => {
               </div>
             </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
     </header>
   );
 };
