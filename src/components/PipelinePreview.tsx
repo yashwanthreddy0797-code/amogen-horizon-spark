@@ -18,8 +18,8 @@ const PipelinePreview = () => {
     <section id="pipeline" className="pt-14 lg:pt-20 pb-10 lg:pb-14 bg-section-cream">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight max-w-2xl">{t.pipeline.title}</h2>
-          <p className="text-lg text-muted-foreground mt-6 max-w-2xl leading-relaxed">{t.pipeline.description}</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight max-w-2xl">{t.pipeline.title}</h2>
+          <p className="text-lg text-white/70 mt-6 max-w-2xl leading-relaxed">{t.pipeline.description}</p>
         </ScrollReveal>
 
         {/* True Blue pipeline table */}
