@@ -79,7 +79,7 @@ export const en = {
     label: "Pipeline",
     title: "Our Clinical Pipeline",
     description: "From discovery through regulatory approval, our pipeline represents our commitment to advancing transformative therapies.",
-    program: "Program",
+    program: "Bio-similar Candidate",
     indication: "Indication",
     technicalDev: "Technical Development",
     manufacturing: "Manufacturing",

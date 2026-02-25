@@ -72,7 +72,7 @@ export const zh: typeof en = {
     label: "管线",
     title: "我们的临床管线",
     description: "从发现到监管批准，我们的管线代表了我们推进变革性疗法的承诺。",
-    program: "项目",
+    program: "生物类似药候选",
     indication: "适应症",
     technicalDev: "技术开发",
     manufacturing: "制造",

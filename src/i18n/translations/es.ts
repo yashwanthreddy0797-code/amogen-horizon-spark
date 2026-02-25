@@ -72,7 +72,7 @@ export const es: typeof en = {
     label: "Pipeline",
     title: "Nuestro Pipeline Clínico",
     description: "Desde el descubrimiento hasta la aprobación regulatoria, nuestro pipeline representa nuestro compromiso con el avance de terapias transformadoras.",
-    program: "Programa",
+    program: "Candidato Biosimilar",
     indication: "Indicación",
     technicalDev: "Desarrollo Técnico",
     manufacturing: "Fabricación",

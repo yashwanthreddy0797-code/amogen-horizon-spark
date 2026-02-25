@@ -72,7 +72,7 @@ export const ja: typeof en = {
     label: "パイプライン",
     title: "臨床パイプライン",
     description: "発見から規制承認まで、パイプラインは変革的治療法の推進への取り組みを表しています。",
-    program: "プログラム",
+    program: "バイオシミラー候補",
     indication: "適応症",
     technicalDev: "技術開発",
     manufacturing: "製造",
