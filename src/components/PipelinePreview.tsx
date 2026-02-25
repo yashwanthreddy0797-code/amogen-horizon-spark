@@ -15,13 +15,15 @@ const PipelinePreview = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="pipeline" className="pt-14 lg:pt-20 pb-10 lg:pb-14 bg-footer-bg">
+    <section id="pipeline" className="pt-14 lg:pt-20 pb-10 lg:pb-14 bg-section-cream">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-footer-foreground leading-tight max-w-2xl">{t.pipeline.title}</h2>
-          <p className="text-lg text-footer-foreground/70 mt-6 max-w-2xl leading-relaxed">{t.pipeline.description}</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight max-w-2xl">{t.pipeline.title}</h2>
+          <p className="text-lg text-muted-foreground mt-6 max-w-2xl leading-relaxed">{t.pipeline.description}</p>
         </ScrollReveal>
-        <div className="mt-16">
+
+        {/* True Blue pipeline table */}
+        <div className="mt-16 bg-footer-bg rounded-2xl px-8 md:px-12 py-10">
           <ScrollReveal>
             <div className="hidden lg:grid grid-cols-[1.2fr_2.5fr] gap-6 pb-4 border-b border-footer-foreground/20">
               <span className="text-xs uppercase tracking-[0.15em] text-footer-foreground/60 font-bold">{t.pipeline.program}</span>
@@ -35,7 +37,7 @@ const PipelinePreview = () => {
           </ScrollReveal>
           {pipelineData.map((item, i) => (
             <ScrollReveal key={item.candidate} delay={i * 0.08}>
-              <div className="grid lg:grid-cols-[1.2fr_2.5fr] gap-6 py-10 border-b border-footer-foreground/20 items-center">
+              <div className="grid lg:grid-cols-[1.2fr_2.5fr] gap-6 py-10 border-b border-footer-foreground/20 last:border-b-0 items-center">
                 <div>
                   <span className="text-lg font-bold text-footer-foreground block">{item.candidate}</span>
                   <span className="text-sm text-footer-foreground/60 block mt-0.5">{item.indication}</span>
