@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Search, Globe, ChevronDown } from "lucide-react";
+import { Search, Globe, ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage, Language } from "@/i18n/LanguageContext";
 
@@ -16,6 +16,7 @@ const Navbar = () => {
   const [hidden, setHidden] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { language, setLanguage, t } = useLanguage();
@@ -75,7 +76,15 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close menus when transitioning between scrolled states
+  useEffect(() => {
+    setActiveMenu(null);
+    setMobileMenuOpen(false);
+    setLangOpen(false);
+  }, [scrolled]);
+
   const handleMouseEnter = (item: string) => {
+    if (scrolled) return; // No hover menus in scrolled mode
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setActiveMenu(item);
   };
@@ -92,136 +101,125 @@ const Navbar = () => {
     timeoutRef.current = setTimeout(() => setActiveMenu(null), 150);
   };
 
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 px-4 md:px-8 pt-4 md:pt-6 transition-all duration-500 ${hidden ? "opacity-0 -translate-y-full pointer-events-none" : "opacity-100 translate-y-0"}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <div
-        ref={navRef}
-        className="max-w-7xl mx-auto"
-        onMouseLeave={handleMouseLeave}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className={`text-nav-dark-foreground transition-all duration-300 ${
-            activeMenu ? "rounded-t-[1.5rem]" : "rounded-full"
-          } ${hovered || activeMenu || scrolled ? "bg-nav-dark shadow-2xl" : "bg-transparent shadow-none"}`}
-        >
-          <div className="flex items-center justify-between px-6 md:px-8 py-3">
-            <a href="/" className="shrink-0">
-              <span className="text-base md:text-lg font-bold tracking-tight text-nav-dark-foreground">
-                AMOGEN
-              </span>
-            </a>
+  const toggleScrolledMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+    if (mobileMenuOpen) {
+      setActiveMenu(null);
+    }
+  };
 
-            <nav className="hidden md:flex items-center gap-1">
+  // Mega menu content (shared between both modes)
+  const renderMegaMenu = () => (
+    <AnimatePresence>
+      {activeMenu && menuData[activeMenu] && (
+        <motion.div
+          key={activeMenu}
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.25, ease: "easeInOut" }}
+          className="overflow-hidden"
+          onMouseEnter={!scrolled ? handleDropdownEnter : undefined}
+          onMouseLeave={!scrolled ? handleDropdownLeave : undefined}
+        >
+          <div className="mx-8 border-t border-nav-dark-foreground/15" />
+          <div className="px-8 md:px-10 py-8 md:py-10">
+            <h3 className="text-2xl md:text-3xl font-bold text-nav-dark-foreground mb-2 italic">
+              {activeMenu}
+            </h3>
+            <div className="flex flex-col md:flex-row gap-8 mt-4">
+              <p className="text-nav-dark-foreground/60 text-sm md:text-base max-w-xs leading-relaxed">
+                {menuData[activeMenu].description}
+              </p>
+              <div className="flex gap-12 md:gap-16">
+                {menuData[activeMenu].links.map((col, colIndex) => (
+                  <div key={colIndex} className="flex flex-col gap-3">
+                    {col.map((link) => {
+                      const label = typeof link === "string" ? link : link.label;
+                      const href = typeof link === "string"
+                        ? `#${label.toLowerCase().replace(/\s+/g, "-")}`
+                        : link.href;
+                      return (
+                        <a
+                          key={label}
+                          href={href}
+                          className="text-sm md:text-base text-nav-dark-foreground/90 hover:text-nav-dark-foreground underline underline-offset-4 decoration-nav-dark-foreground/30 hover:decoration-nav-dark-foreground/70 transition-colors"
+                          onClick={() => { setActiveMenu(null); setMobileMenuOpen(false); }}
+                        >
+                          {label}
+                        </a>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
+  // Scrolled menu items list (shown when hamburger is clicked)
+  const renderScrolledMenuPanel = () => (
+    <AnimatePresence>
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="overflow-hidden"
+        >
+          <div className="mx-6 border-t border-nav-dark-foreground/15" />
+          <div className="px-6 py-6">
+            <div className="flex flex-col gap-1">
               {navItems.map((item) => {
                 const data = menuData[item];
                 return (
-                  <div key={item} className="relative">
-                    <button
-                      onMouseEnter={() => handleMouseEnter(item)}
-                      onClick={() => {
-                        if (data.href) {
-                          window.location.href = data.href;
-                        } else {
-                          setActiveMenu(activeMenu === item ? null : item);
-                        }
-                      }}
-                      className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
-                        activeMenu === item
-                          ? "bg-nav-dark-foreground/15 text-nav-dark-foreground"
-                          : "text-nav-dark-foreground/80 hover:text-nav-dark-foreground hover:bg-nav-dark-foreground/5"
-                      }`}
-                    >
-                      {item}
-                    </button>
-                  </div>
+                  <button
+                    key={item}
+                    onClick={() => {
+                      if (activeMenu === item) {
+                        setActiveMenu(null);
+                      } else {
+                        setActiveMenu(item);
+                      }
+                    }}
+                    className={`flex items-center justify-between w-full text-left px-4 py-3 text-base font-medium rounded-xl transition-colors duration-200 ${
+                      activeMenu === item
+                        ? "bg-nav-dark-foreground/10 text-nav-dark-foreground"
+                        : "text-nav-dark-foreground/80 hover:text-nav-dark-foreground hover:bg-nav-dark-foreground/5"
+                    }`}
+                  >
+                    {item}
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform duration-200 ${activeMenu === item ? "rotate-180" : ""}`}
+                    />
+                  </button>
                 );
               })}
-            </nav>
-
-            <div className="flex items-center gap-1">
-              <button
-                className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-                aria-label={t.nav.search}
-              >
-                <Search size={17} />
-              </button>
-              <div className="relative">
-                <button
-                  className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-                  aria-label={t.nav.language}
-                  onClick={() => setLangOpen(!langOpen)}
-                >
-                  <Globe size={17} />
-                </button>
-                {langOpen && (
-                  <div className="absolute right-0 top-full mt-2 bg-nav-dark border border-nav-dark-foreground/15 rounded-xl shadow-xl overflow-hidden min-w-[140px]">
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
-                        className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
-                          language === lang.code
-                            ? "bg-nav-dark-foreground/15 text-nav-dark-foreground font-medium"
-                            : "text-nav-dark-foreground/70 hover:bg-nav-dark-foreground/10 hover:text-nav-dark-foreground"
-                        }`}
-                      >
-                        {lang.label}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <a
-                href="#contact"
-                className="hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
-              >
-                {t.nav.partnerWithUs}
-              </a>
-
-              <button
-                className="md:hidden flex items-center gap-2 px-3 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors text-sm font-medium"
-                onClick={() => setActiveMenu(activeMenu ? null : navItems[0])}
-              >
-                {t.nav.menu}
-                <ChevronDown
-                  size={14}
-                  className={`transition-transform duration-200 ${activeMenu ? "rotate-180" : ""}`}
-                />
-              </button>
             </div>
-          </div>
 
-          <AnimatePresence>
-            {activeMenu && menuData[activeMenu] && (
-              <motion.div
-                key={activeMenu}
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.25, ease: "easeInOut" }}
-                className="overflow-hidden"
-                onMouseEnter={handleDropdownEnter}
-                onMouseLeave={handleDropdownLeave}
-              >
-                <div className="mx-8 border-t border-nav-dark-foreground/15" />
-                <div className="px-8 md:px-10 py-8 md:py-10">
-                  <h3 className="text-2xl md:text-3xl font-bold text-nav-dark-foreground mb-2 italic">
-                    {activeMenu}
-                  </h3>
-                  <div className="flex flex-col md:flex-row gap-8 mt-4">
-                    <p className="text-nav-dark-foreground/60 text-sm md:text-base max-w-xs leading-relaxed">
+            {/* Expanded sub-menu inside scrolled panel */}
+            <AnimatePresence>
+              {activeMenu && menuData[activeMenu] && (
+                <motion.div
+                  key={activeMenu}
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-4 py-4 mt-2 rounded-xl bg-nav-dark-foreground/5">
+                    <p className="text-nav-dark-foreground/60 text-sm mb-4 leading-relaxed">
                       {menuData[activeMenu].description}
                     </p>
-                    <div className="flex gap-12 md:gap-16">
+                    <div className="flex gap-10">
                       {menuData[activeMenu].links.map((col, colIndex) => (
-                        <div key={colIndex} className="flex flex-col gap-3">
+                        <div key={colIndex} className="flex flex-col gap-2.5">
                           {col.map((link) => {
                             const label = typeof link === "string" ? link : link.label;
                             const href = typeof link === "string"
@@ -231,8 +229,8 @@ const Navbar = () => {
                               <a
                                 key={label}
                                 href={href}
-                                className="text-sm md:text-base text-nav-dark-foreground/90 hover:text-nav-dark-foreground underline underline-offset-4 decoration-nav-dark-foreground/30 hover:decoration-nav-dark-foreground/70 transition-colors"
-                                onClick={() => setActiveMenu(null)}
+                                className="text-sm text-nav-dark-foreground/90 hover:text-nav-dark-foreground underline underline-offset-4 decoration-nav-dark-foreground/30 hover:decoration-nav-dark-foreground/70 transition-colors"
+                                onClick={() => { setActiveMenu(null); setMobileMenuOpen(false); }}
                               >
                                 {label}
                               </a>
@@ -242,10 +240,198 @@ const Navbar = () => {
                       ))}
                     </div>
                   </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 px-4 md:px-8 pt-4 md:pt-6 transition-all duration-500 ${hidden ? "opacity-0 -translate-y-full pointer-events-none" : "opacity-100 translate-y-0"}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div
+        ref={navRef}
+        className="max-w-7xl mx-auto"
+        onMouseLeave={!scrolled ? handleMouseLeave : undefined}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className={`text-nav-dark-foreground transition-all duration-300 ${
+            (activeMenu && !scrolled) || mobileMenuOpen ? "rounded-t-[1.5rem]" : "rounded-full"
+          } ${
+            scrolled
+              ? "bg-nav-dark shadow-2xl"
+              : hovered || activeMenu
+                ? "bg-nav-dark shadow-2xl"
+                : "bg-transparent shadow-none"
+          }`}
+        >
+          {/* ===== DEFAULT (not scrolled) ===== */}
+          {!scrolled && (
+            <div className="flex items-center justify-between px-6 md:px-8 py-3">
+              <a href="/" className="shrink-0">
+                <span className="text-base md:text-lg font-bold tracking-tight text-nav-dark-foreground">
+                  AMOGEN
+                </span>
+              </a>
+
+              <nav className="hidden md:flex items-center gap-1">
+                {navItems.map((item) => {
+                  const data = menuData[item];
+                  return (
+                    <div key={item} className="relative">
+                      <button
+                        onMouseEnter={() => handleMouseEnter(item)}
+                        onClick={() => {
+                          if (data.href) {
+                            window.location.href = data.href;
+                          } else {
+                            setActiveMenu(activeMenu === item ? null : item);
+                          }
+                        }}
+                        className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
+                          activeMenu === item
+                            ? "bg-nav-dark-foreground/15 text-nav-dark-foreground"
+                            : "text-nav-dark-foreground/80 hover:text-nav-dark-foreground hover:bg-nav-dark-foreground/5"
+                        }`}
+                      >
+                        {item}
+                      </button>
+                    </div>
+                  );
+                })}
+              </nav>
+
+              <div className="flex items-center gap-1">
+                <button
+                  className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                  aria-label={t.nav.search}
+                >
+                  <Search size={17} />
+                </button>
+                <div className="relative">
+                  <button
+                    className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                    aria-label={t.nav.language}
+                    onClick={() => setLangOpen(!langOpen)}
+                  >
+                    <Globe size={17} />
+                  </button>
+                  {langOpen && (
+                    <div className="absolute right-0 top-full mt-2 bg-nav-dark border border-nav-dark-foreground/15 rounded-xl shadow-xl overflow-hidden min-w-[140px]">
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
+                          className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                            language === lang.code
+                              ? "bg-nav-dark-foreground/15 text-nav-dark-foreground font-medium"
+                              : "text-nav-dark-foreground/70 hover:bg-nav-dark-foreground/10 hover:text-nav-dark-foreground"
+                          }`}
+                        >
+                          {lang.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                <a
+                  href="#contact"
+                  className="hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                >
+                  {t.nav.partnerWithUs}
+                </a>
+
+                <button
+                  className="md:hidden flex items-center gap-2 px-3 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors text-sm font-medium"
+                  onClick={() => setActiveMenu(activeMenu ? null : navItems[0])}
+                >
+                  {t.nav.menu}
+                  <ChevronDown
+                    size={14}
+                    className={`transition-transform duration-200 ${activeMenu ? "rotate-180" : ""}`}
+                  />
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* ===== SCROLLED (compact Lilly-style) ===== */}
+          {scrolled && (
+            <div className="flex items-center justify-between px-5 md:px-6 py-2.5">
+              {/* Left: Logo + Hamburger */}
+              <div className="flex items-center gap-3">
+                <a href="/" className="shrink-0">
+                  <span className="text-base font-bold tracking-tight text-nav-dark-foreground">
+                    AMOGEN
+                  </span>
+                </a>
+                <button
+                  onClick={toggleScrolledMenu}
+                  className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                  aria-label={t.nav.menu}
+                >
+                  {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+                </button>
+              </div>
+
+              {/* Right: Search, Globe, Partner */}
+              <div className="flex items-center gap-1">
+                <button
+                  className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                  aria-label={t.nav.search}
+                >
+                  <Search size={17} />
+                </button>
+                <div className="relative">
+                  <button
+                    className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                    aria-label={t.nav.language}
+                    onClick={() => setLangOpen(!langOpen)}
+                  >
+                    <Globe size={17} />
+                  </button>
+                  {langOpen && (
+                    <div className="absolute right-0 top-full mt-2 bg-nav-dark border border-nav-dark-foreground/15 rounded-xl shadow-xl overflow-hidden min-w-[140px] z-50">
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
+                          className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                            language === lang.code
+                              ? "bg-nav-dark-foreground/15 text-nav-dark-foreground font-medium"
+                              : "text-nav-dark-foreground/70 hover:bg-nav-dark-foreground/10 hover:text-nav-dark-foreground"
+                          }`}
+                        >
+                          {lang.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <a
+                  href="#contact"
+                  className="hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                >
+                  {t.nav.partnerWithUs}
+                </a>
+              </div>
+            </div>
+          )}
+
+          {/* Mega menu for default mode */}
+          {!scrolled && renderMegaMenu()}
+
+          {/* Scrolled menu panel */}
+          {scrolled && renderScrolledMenuPanel()}
         </motion.div>
       </div>
     </header>
