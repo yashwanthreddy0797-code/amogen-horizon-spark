@@ -1,7 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { Search, Globe, ChevronDown, Menu, X } from "lucide-react";
+import { Search, Globe, ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage, Language } from "@/i18n/LanguageContext";
+import aboutHero from "@/assets/about-hero.jpg";
+import productsVials from "@/assets/products-vials.jpg";
+import manufacturing from "@/assets/manufacturing.jpg";
+import scienceHero from "@/assets/science-hero.jpg";
+import researchLab from "@/assets/research-lab.jpg";
 
 const languages = [
   { code: "en" as Language, label: "English" },
@@ -25,6 +30,7 @@ const Navbar = () => {
     [t.nav.about]: {
       description: t.nav.aboutDesc,
       href: "/about",
+      image: { src: aboutHero, title: "A Medicine Company", subtitle: "Explore who we are", href: "/about" },
       links: [
         [t.nav.whoWeAre, t.nav.whatWeDo, { label: t.nav.leadership, href: "/about/leadership" }],
         [t.nav.governance, t.nav.sustainability],
@@ -32,6 +38,7 @@ const Navbar = () => {
     },
     [t.nav.products]: {
       description: t.nav.productsDesc,
+      image: { src: productsVials, title: "Our Medicines", subtitle: "Discover our portfolio", href: "#products" },
       links: [
         [t.nav.pipelineOverview, t.nav.moleculeDetails],
         [t.nav.productLabels],
@@ -39,6 +46,7 @@ const Navbar = () => {
     },
     [t.nav.cdmo]: {
       description: t.nav.cdmoDesc,
+      image: { src: manufacturing, title: "Manufacturing Excellence", subtitle: "World-class capabilities", href: "#cdmo" },
       links: [
         [t.nav.manufacturingServices, t.nav.qualitySystems],
         [t.nav.capacityDashboard, t.nav.rfpProcess],
@@ -47,6 +55,7 @@ const Navbar = () => {
     [t.nav.science]: {
       description: t.nav.scienceDesc,
       href: "/science",
+      image: { src: scienceHero, title: "Innovation & Research", subtitle: "Advancing science", href: "/science" },
       links: [
         [t.nav.technologyStack, t.nav.publications],
         [t.nav.comparabilityData, t.nav.researchCapabilities],
@@ -54,12 +63,13 @@ const Navbar = () => {
     },
     [t.nav.news]: {
       description: t.nav.newsDesc,
+      image: { src: researchLab, title: "Latest Updates", subtitle: "News & insights", href: "#news" },
       links: [
         [t.nav.pressReleases, t.nav.blog],
         [t.nav.documentLibrary, t.nav.latestUpdates],
       ],
     },
-  } as Record<string, { description: string; href?: string; links: (string | { label: string; href: string })[][] }>;
+  } as Record<string, { description: string; href?: string; image: { src: string; title: string; subtitle: string; href: string }; links: (string | { label: string; href: string })[][] }>;
 
   const navItems = Object.keys(menuData);
 
@@ -135,31 +145,61 @@ const Navbar = () => {
               {activeMenu}
             </h3>
             <div className="flex flex-col md:flex-row gap-8 mt-4">
-              <p className="text-nav-dark-foreground/60 text-sm md:text-base max-w-xs leading-relaxed">
-                {menuData[activeMenu].description}
-              </p>
-              <div className="flex gap-12 md:gap-16">
-                {menuData[activeMenu].links.map((col, colIndex) => (
-                  <div key={colIndex} className="flex flex-col gap-3">
-                    {col.map((link) => {
-                      const label = typeof link === "string" ? link : link.label;
-                      const href = typeof link === "string"
-                        ? `#${label.toLowerCase().replace(/\s+/g, "-")}`
-                        : link.href;
-                      return (
-                        <a
-                          key={label}
-                          href={href}
-                          className="text-sm md:text-base text-nav-dark-foreground/90 hover:text-nav-dark-foreground underline underline-offset-4 decoration-nav-dark-foreground/30 hover:decoration-nav-dark-foreground/70 transition-colors"
-                          onClick={() => { setActiveMenu(null); setMobileMenuOpen(false); }}
-                        >
-                          {label}
-                        </a>
-                      );
-                    })}
-                  </div>
-                ))}
+              {/* Left side: description + links */}
+              <div className="flex flex-col gap-6 md:min-w-[280px]">
+                <p className="text-nav-dark-foreground/60 text-sm md:text-base max-w-xs leading-relaxed">
+                  {menuData[activeMenu].description}
+                </p>
+                <div className="flex gap-12 md:gap-16">
+                  {menuData[activeMenu].links.map((col, colIndex) => (
+                    <div key={colIndex} className="flex flex-col gap-3">
+                      {col.map((link) => {
+                        const label = typeof link === "string" ? link : link.label;
+                        const href = typeof link === "string"
+                          ? `#${label.toLowerCase().replace(/\s+/g, "-")}`
+                          : link.href;
+                        return (
+                          <a
+                            key={label}
+                            href={href}
+                            className="text-sm md:text-base text-nav-dark-foreground/90 hover:text-nav-dark-foreground underline underline-offset-4 decoration-nav-dark-foreground/30 hover:decoration-nav-dark-foreground/70 transition-colors"
+                            onClick={() => { setActiveMenu(null); setMobileMenuOpen(false); }}
+                          >
+                            {label}
+                          </a>
+                        );
+                      })}
+                    </div>
+                  ))}
+                </div>
               </div>
+
+              {/* Right side: Featured image card (Lilly-style) */}
+              <a
+                href={menuData[activeMenu].image.href}
+                className="relative ml-auto flex-shrink-0 w-full md:w-[420px] h-[200px] md:h-[220px] rounded-2xl overflow-hidden group cursor-pointer"
+                onClick={() => { setActiveMenu(null); setMobileMenuOpen(false); }}
+              >
+                <img
+                  src={menuData[activeMenu].image.src}
+                  alt={menuData[activeMenu].image.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">
+                      {menuData[activeMenu].image.title}
+                    </h4>
+                    <p className="text-white/70 text-sm mt-0.5">
+                      {menuData[activeMenu].image.subtitle}
+                    </p>
+                  </div>
+                  <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20 group-hover:bg-white/20 transition-colors">
+                    <ArrowRight size={18} className="text-white" />
+                  </div>
+                </div>
+              </a>
             </div>
           </div>
         </motion.div>
