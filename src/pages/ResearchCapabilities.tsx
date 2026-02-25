@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import HistoryTimeline from "@/components/HistoryTimeline";
 import { motion } from "framer-motion";
 import { ArrowRight, Microscope, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -34,17 +35,6 @@ const ResearchCapabilities = () => {
 
   const nextSlide = () => setCurrentSlide((prev) => Math.min(prev + 1, therapeuticAreas.length - 1));
   const prevSlide = () => setCurrentSlide((prev) => Math.max(prev - 1, 0));
-
-  // Timeline milestones
-  const milestones = [
-    { year: "2018", event: rd.timeline1 },
-    { year: "2020", event: rd.timeline2 },
-    { year: "2022", event: rd.timeline3 },
-    { year: "2024", event: rd.timeline4 },
-    { year: "2026", event: rd.timeline5 },
-  ];
-
-  const [timelineIndex, setTimelineIndex] = useState(0);
 
   // Champions
   const champions = [
@@ -224,48 +214,7 @@ const ResearchCapabilities = () => {
         </section>
 
         {/* GAME-CHANGING MOMENTS TIMELINE */}
-        <section className="py-20 lg:py-28 bg-section-cream">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-            <ScrollReveal>
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-                  {rd.timelineTitle}
-                </h2>
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight italic">
-                  {rd.timelineTitleEm}
-                </h3>
-              </div>
-            </ScrollReveal>
-
-            {/* Horizontal timeline */}
-            <div className="relative">
-              <div className="flex items-start justify-between gap-4 overflow-x-auto pb-8">
-                {milestones.map((m, i) => (
-                  <ScrollReveal key={m.year} delay={i * 0.08}>
-                    <button
-                      onClick={() => setTimelineIndex(i)}
-                      className={`flex flex-col items-center min-w-[160px] md:min-w-[200px] cursor-pointer group transition-all`}
-                    >
-                      <div className={`w-16 h-16 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                        timelineIndex === i ? "bg-primary" : "bg-muted"
-                      }`}>
-                        <span className={`text-sm font-bold transition-colors duration-300 ${
-                          timelineIndex === i ? "text-primary-foreground" : "text-foreground"
-                        }`}>{m.year}</span>
-                      </div>
-                      <div className={`w-px h-8 transition-colors duration-300 ${timelineIndex === i ? "bg-primary" : "bg-border"}`} />
-                      <p className={`text-sm text-center leading-relaxed mt-2 max-w-[180px] transition-colors duration-300 ${
-                        timelineIndex === i ? "text-foreground font-medium" : "text-muted-foreground"
-                      }`}>{m.event}</p>
-                    </button>
-                  </ScrollReveal>
-                ))}
-              </div>
-              {/* Connecting line */}
-              <div className="absolute top-8 left-8 right-8 h-px bg-border -z-0" />
-            </div>
-          </div>
-        </section>
+        <HistoryTimeline />
 
         {/* CHAMPIONS OF BOLD SCIENCE */}
         <section className="py-20 lg:py-28 bg-background">
