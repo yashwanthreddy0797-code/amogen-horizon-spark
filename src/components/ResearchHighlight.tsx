@@ -72,17 +72,21 @@ const FacilityCard = ({ facility, isExpanded, onToggle }: {
                 loading="lazy"
               />
             </div>
-            <div className="flex-1 flex flex-col justify-between p-6 bg-secondary">
+            <div
+              className={`flex-1 flex flex-col justify-between p-6 transition-all duration-500 ease-out ${
+                hovered ? "bg-footer-bg -translate-y-3" : "bg-secondary translate-y-0"
+              }`}
+            >
               <div>
-                <h3 className={`text-xl font-bold transition-colors duration-300 ${hovered ? "text-footer-bg" : "text-foreground"}`}>
+                <h3 className={`text-xl font-bold transition-colors duration-300 ${hovered ? "text-footer-foreground" : "text-foreground"}`}>
                   {facility.title}
                 </h3>
-                <p className={`text-sm transition-colors duration-300 ${hovered ? "text-footer-bg" : "text-muted-foreground"}`}>
+                <p className={`text-sm transition-colors duration-300 ${hovered ? "text-footer-foreground/70" : "text-muted-foreground"}`}>
                   {facility.subtitle}
                 </p>
               </div>
               <div className="flex justify-end">
-                <Plus className="transition-colors duration-300 text-footer-bg" size={24} />
+                <Plus className={`transition-colors duration-300 ${hovered ? "text-footer-foreground" : "text-footer-bg"}`} size={24} />
               </div>
             </div>
           </motion.div>
