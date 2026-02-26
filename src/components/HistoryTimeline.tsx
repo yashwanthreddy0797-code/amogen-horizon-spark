@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -26,18 +26,45 @@ const HistoryTimeline = () => {
     { year: rd.timeline7Year, event: rd.timeline7, image: rdHero },
   ];
 
-  // Show 4 items per page on desktop
   const itemsPerPage = 4;
-  const totalPages = Math.ceil(milestones.length / 2); // 2 milestones visible per "row" (top+bottom)
   const [currentPage, setCurrentPage] = useState(0);
   const maxPage = Math.ceil(milestones.length / itemsPerPage) - 1;
 
   const nextPage = () => setCurrentPage((p) => Math.min(p + 1, maxPage));
   const prevPage = () => setCurrentPage((p) => Math.max(p - 1, 0));
 
-  // Get visible milestones for current page
   const startIdx = currentPage * itemsPerPage;
   const visibleMilestones = milestones.slice(startIdx, startIdx + itemsPerPage);
+
+  // Circle sizes
+  const circleSize = 200; // px for lg
+  const circleSizeMd = 170;
+  const lineColor = "hsl(var(--timeline-red))";
+
+  // Build a smooth curved SVG path that weaves up and down through circle centers
+  const buildCurvedPath = (count: number, width: number, amplitude: number, centerY: number) => {
+    if (count < 2) return "";
+    const colWidth = width / count;
+    const points: { x: number; y: number }[] = [];
+    for (let i = 0; i < count; i++) {
+      const x = colWidth / 2 + i * colWidth;
+      const y = i % 2 === 0 ? centerY - amplitude : centerY + amplitude;
+      points.push({ x, y });
+    }
+    // Build smooth cubic bezier through points
+    let d = `M ${points[0].x} ${points[0].y}`;
+    for (let i = 0; i < points.length - 1; i++) {
+      const curr = points[i];
+      const next = points[i + 1];
+      const cpOffset = colWidth * 0.45;
+      const cp1x = curr.x + cpOffset;
+      const cp1y = curr.y;
+      const cp2x = next.x - cpOffset;
+      const cp2y = next.y;
+      d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${next.x} ${next.y}`;
+    }
+    return d;
+  };
 
   return (
     <section className="py-20 lg:py-28 bg-section-cream overflow-hidden">
@@ -64,54 +91,61 @@ const HistoryTimeline = () => {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="relative"
             >
-              {/* Top row: year + text for odd-indexed items (0, 2 = positions 1, 3) */}
-              <div className="grid grid-cols-4 gap-0 mb-6">
-                {visibleMilestones.map((m, i) => (
-                  <div key={m.year} className="px-4">
-                    {i % 2 === 0 ? (
-                      <div className="min-h-[120px]">
-                        <p className="text-3xl lg:text-4xl font-extrabold text-timeline-red mb-3">
-                          {m.year}
-                        </p>
-                        <p className="text-sm text-foreground leading-relaxed max-w-[280px]">
-                          {m.event}
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="min-h-[120px]" />
-                    )}
-                  </div>
-                ))}
+              {/* SVG curved path behind everything */}
+              <div className="absolute inset-0 z-0 pointer-events-none">
+                <svg
+                  viewBox="0 0 1000 500"
+                  preserveAspectRatio="none"
+                  className="w-full h-full"
+                  fill="none"
+                >
+                  {/* Entry curve on first page */}
+                  {currentPage === 0 && (
+                    <path
+                      d="M -20 400 Q 0 400, 20 250"
+                      stroke={lineColor}
+                      strokeWidth="6"
+                      fill="none"
+                      strokeLinecap="round"
+                    />
+                  )}
+                  <path
+                    d={buildCurvedPath(visibleMilestones.length, 1000, 120, 250)}
+                    stroke={lineColor}
+                    strokeWidth="6"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  {/* Continuation arrow on right if not last page */}
+                  {currentPage < maxPage && (
+                    <path
+                      d={`M ${1000 / visibleMilestones.length * (visibleMilestones.length - 1) + 1000 / visibleMilestones.length / 2} ${(visibleMilestones.length - 1) % 2 === 0 ? 250 - 120 : 250 + 120} Q 1010 250, 1020 250`}
+                      stroke={lineColor}
+                      strokeWidth="6"
+                      fill="none"
+                      strokeLinecap="round"
+                    />
+                  )}
+                </svg>
               </div>
 
-              {/* Red line with circular images */}
-              <div className="relative">
-                {/* The red line */}
-                <div className="absolute top-1/2 left-0 right-0 h-[6px] bg-timeline-red -translate-y-1/2 z-0" />
-                
-                {/* Curved entry on left */}
-                {currentPage === 0 && (
-                  <div className="absolute -left-8 top-1/2 -translate-y-1/2 w-16 h-32 z-0">
-                    <svg viewBox="0 0 64 128" fill="none" className="w-full h-full">
-                      <path
-                        d="M0 128 C0 80, 32 64, 64 64"
-                        stroke="hsl(var(--timeline-red))"
-                        strokeWidth="6"
-                        fill="none"
-                      />
-                    </svg>
-                  </div>
-                )}
+              {/* Grid of milestone items */}
+              <div className="relative z-10 grid grid-cols-4 gap-0" style={{ minHeight: "500px" }}>
+                {visibleMilestones.map((m, i) => {
+                  const isTop = i % 2 === 0;
+                  return (
+                    <div key={m.year} className="flex flex-col items-center" style={{ paddingTop: isTop ? "0" : "140px" }}>
+                      {/* Text above circle for top items */}
+                      {isTop && (
+                        <div className="text-center mb-4 min-h-[90px] flex flex-col justify-end px-2">
+                          <p className="text-3xl lg:text-4xl font-extrabold text-timeline-red mb-2">{m.year}</p>
+                          <p className="text-sm text-foreground leading-relaxed max-w-[240px] mx-auto">{m.event}</p>
+                        </div>
+                      )}
 
-                {/* Continuation line on right */}
-                {currentPage < maxPage && (
-                  <div className="absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-[6px] bg-timeline-red z-0" />
-                )}
-
-                <div className="grid grid-cols-4 gap-0 relative z-10">
-                  {visibleMilestones.map((m, i) => (
-                    <div key={m.year} className="flex justify-center">
-                      <div className="w-[180px] h-[180px] lg:w-[220px] lg:h-[220px] rounded-full overflow-hidden border-[5px] border-background shadow-lg">
+                      {/* Circle image */}
+                      <div className="w-[170px] h-[170px] lg:w-[200px] lg:h-[200px] rounded-full overflow-hidden border-[5px] border-background shadow-xl flex-shrink-0">
                         <img
                           src={m.image}
                           alt={`AMOGEN milestone ${m.year}`}
@@ -119,29 +153,17 @@ const HistoryTimeline = () => {
                           loading="lazy"
                         />
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
 
-              {/* Bottom row: year + text for even-indexed items (1, 3 = positions 2, 4) */}
-              <div className="grid grid-cols-4 gap-0 mt-6">
-                {visibleMilestones.map((m, i) => (
-                  <div key={m.year} className="px-4">
-                    {i % 2 === 1 ? (
-                      <div className="min-h-[120px]">
-                        <p className="text-3xl lg:text-4xl font-extrabold text-timeline-red mb-3">
-                          {m.year}
-                        </p>
-                        <p className="text-sm text-foreground leading-relaxed max-w-[280px]">
-                          {m.event}
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="min-h-[120px]" />
-                    )}
-                  </div>
-                ))}
+                      {/* Text below circle for bottom items */}
+                      {!isTop && (
+                        <div className="text-center mt-4 min-h-[90px] px-2">
+                          <p className="text-3xl lg:text-4xl font-extrabold text-timeline-red mb-2">{m.year}</p>
+                          <p className="text-sm text-foreground leading-relaxed max-w-[240px] mx-auto">{m.event}</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </motion.div>
           </AnimatePresence>
