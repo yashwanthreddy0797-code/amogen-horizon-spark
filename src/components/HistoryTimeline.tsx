@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -26,15 +25,27 @@ const HistoryTimeline = () => {
     { year: rd.timeline7Year, event: rd.timeline7, image: rdHero },
   ];
 
-  const itemsPerPage = 4;
-  const [currentPage, setCurrentPage] = useState(0);
-  const maxPage = Math.ceil(milestones.length / itemsPerPage) - 1;
+  const visibleCount = 4;
+  const maxOffset = milestones.length - visibleCount;
+  const [offset, setOffset] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [itemWidth, setItemWidth] = useState(0);
 
-  const nextPage = () => setCurrentPage((p) => Math.min(p + 1, maxPage));
-  const prevPage = () => setCurrentPage((p) => Math.max(p - 1, 0));
+  useEffect(() => {
+    const measure = () => {
+      if (containerRef.current) {
+        setItemWidth(containerRef.current.offsetWidth / visibleCount);
+      }
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
-  const startIdx = currentPage * itemsPerPage;
-  const visibleMilestones = milestones.slice(startIdx, startIdx + itemsPerPage);
+  const next = () => setOffset((o) => Math.min(o + 1, maxOffset));
+  const prev = () => setOffset((o) => Math.max(o - 1, 0));
+
+  const totalPages = maxOffset + 1;
 
   return (
     <section className="py-20 lg:py-28 bg-section-cream overflow-hidden">
@@ -50,81 +61,82 @@ const HistoryTimeline = () => {
           </div>
         </ScrollReveal>
 
-        {/* Desktop timeline */}
-        <div className="hidden md:block">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentPage}
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -60 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="relative"
+        {/* Desktop timeline — continuous sliding strip */}
+        <div className="hidden md:block" ref={containerRef}>
+          <div className="relative overflow-hidden">
+            {/* Horizontal line through circle centers */}
+            <div className="absolute left-0 right-0 z-0" style={{ top: "50%" }}>
+              <div className="h-[6px] bg-timeline-red w-full rounded-full -translate-y-1/2" />
+            </div>
+
+            {/* Sliding strip */}
+            <div
+              className="relative z-10 flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              style={{
+                transform: `translateX(-${offset * itemWidth}px)`,
+                width: `${milestones.length * itemWidth}px`,
+              }}
             >
-              {/* The straight horizontal line through circle centers */}
-              <div className="absolute left-0 right-0 z-0" style={{ top: "50%" }}>
-                <div className="h-[6px] bg-timeline-red w-full rounded-full -translate-y-1/2" />
-              </div>
-
-              {/* Milestone circles + text in a single row */}
-              <div className="relative z-10 grid gap-4" style={{ gridTemplateColumns: `repeat(${visibleMilestones.length}, 1fr)` }}>
-                {visibleMilestones.map((m, i) => {
-                  const isTop = i % 2 === 0;
-                  return (
-                    <div key={m.year} className="flex flex-col items-center">
-                      {/* Text ABOVE for even indices */}
-                      {isTop ? (
-                        <div className="text-center mb-5 px-2 min-h-[100px] flex flex-col justify-end">
-                          <p className="text-3xl lg:text-4xl font-extrabold text-timeline-red mb-2">{m.year}</p>
-                          <p className="text-sm text-foreground leading-relaxed max-w-[240px] mx-auto">{m.event}</p>
-                        </div>
-                      ) : (
-                        <div className="min-h-[100px]" />
-                      )}
-
-                      {/* Circle image */}
-                      <div className="w-[180px] h-[180px] lg:w-[210px] lg:h-[210px] rounded-full overflow-hidden border-[5px] border-timeline-red shadow-xl flex-shrink-0 bg-background">
-                        <img
-                          src={m.image}
-                          alt={`AMOGEN milestone ${m.year}`}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
+              {milestones.map((m, i) => {
+                const isTop = i % 2 === 0;
+                return (
+                  <div
+                    key={m.year}
+                    className="flex flex-col items-center flex-shrink-0"
+                    style={{ width: `${itemWidth}px` }}
+                  >
+                    {/* Text ABOVE for even indices */}
+                    {isTop ? (
+                      <div className="text-center mb-5 px-2 min-h-[100px] flex flex-col justify-end">
+                        <p className="text-3xl lg:text-4xl font-extrabold text-timeline-red mb-2">{m.year}</p>
+                        <p className="text-sm text-foreground leading-relaxed max-w-[240px] mx-auto">{m.event}</p>
                       </div>
+                    ) : (
+                      <div className="min-h-[100px]" />
+                    )}
 
-                      {/* Text BELOW for odd indices */}
-                      {!isTop ? (
-                        <div className="text-center mt-5 px-2 min-h-[100px]">
-                          <p className="text-3xl lg:text-4xl font-extrabold text-timeline-red mb-2">{m.year}</p>
-                          <p className="text-sm text-foreground leading-relaxed max-w-[240px] mx-auto">{m.event}</p>
-                        </div>
-                      ) : (
-                        <div className="min-h-[100px]" />
-                      )}
+                    {/* Circle image */}
+                    <div className="w-[180px] h-[180px] lg:w-[210px] lg:h-[210px] rounded-full overflow-hidden border-[5px] border-timeline-red shadow-xl flex-shrink-0 bg-background">
+                      <img
+                        src={m.image}
+                        alt={`AMOGEN milestone ${m.year}`}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
                     </div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </AnimatePresence>
+
+                    {/* Text BELOW for odd indices */}
+                    {!isTop ? (
+                      <div className="text-center mt-5 px-2 min-h-[100px]">
+                        <p className="text-3xl lg:text-4xl font-extrabold text-timeline-red mb-2">{m.year}</p>
+                        <p className="text-sm text-foreground leading-relaxed max-w-[240px] mx-auto">{m.event}</p>
+                      </div>
+                    ) : (
+                      <div className="min-h-[100px]" />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
 
           {/* Pagination */}
           <div className="flex items-center gap-4 mt-14">
             <button
-              onClick={prevPage}
-              disabled={currentPage === 0}
+              onClick={prev}
+              disabled={offset === 0}
               className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-30"
               aria-label="Previous"
             >
               <ChevronLeft size={18} className="text-foreground" />
             </button>
             <span className="text-sm text-foreground font-medium">
-              <span className="font-bold underline underline-offset-4">{currentPage + 1}</span>
-              {" "}of {maxPage + 1}
+              <span className="font-bold underline underline-offset-4">{offset + 1}</span>
+              {" "}of {totalPages}
             </span>
             <button
-              onClick={nextPage}
-              disabled={currentPage >= maxPage}
+              onClick={next}
+              disabled={offset >= maxOffset}
               className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-30"
               aria-label="Next"
             >
