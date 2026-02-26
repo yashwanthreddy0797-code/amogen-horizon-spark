@@ -36,41 +36,60 @@ const HistoryTimeline = () => {
   const startIdx = currentPage * itemsPerPage;
   const visibleMilestones = milestones.slice(startIdx, startIdx + itemsPerPage);
 
-  // Circle sizes
-  const circleSize = 200; // px for lg
-  const circleSizeMd = 170;
   const lineColor = "hsl(var(--timeline-red))";
 
-  // Build a smooth curved SVG path that weaves up and down through circle centers
-  const buildCurvedPath = (count: number, width: number, amplitude: number, centerY: number) => {
-    if (count < 2) return "";
-    const colWidth = width / count;
-    const points: { x: number; y: number }[] = [];
-    for (let i = 0; i < count; i++) {
-      const x = colWidth / 2 + i * colWidth;
-      const y = i % 2 === 0 ? centerY - amplitude : centerY + amplitude;
-      points.push({ x, y });
-    }
-    // Build smooth cubic bezier through points
-    let d = `M ${points[0].x} ${points[0].y}`;
-    for (let i = 0; i < points.length - 1; i++) {
-      const curr = points[i];
-      const next = points[i + 1];
-      const cpOffset = colWidth * 0.45;
-      const cp1x = curr.x + cpOffset;
-      const cp1y = curr.y;
-      const cp2x = next.x - cpOffset;
-      const cp2y = next.y;
-      d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${next.x} ${next.y}`;
+  // SVG viewBox dimensions
+  const svgW = 1200;
+  const svgH = 600;
+  const circleR = 110; // visual radius of circles in SVG space
+  const topY = 160; // center Y for top circles (even index: 0, 2)
+  const botY = 440; // center Y for bottom circles (odd index: 1, 3)
+  const count = visibleMilestones.length;
+  const colW = svgW / count;
+
+  // Circle center positions
+  const centers = visibleMilestones.map((_, i) => ({
+    x: colW / 2 + i * colW,
+    y: i % 2 === 0 ? topY : botY,
+  }));
+
+  // Build smooth S-curve through circle centers
+  const buildPath = () => {
+    if (centers.length < 2) return "";
+    let d = `M ${centers[0].x} ${centers[0].y}`;
+    for (let i = 0; i < centers.length - 1; i++) {
+      const curr = centers[i];
+      const next = centers[i + 1];
+      const cpOffset = colW * 0.45;
+      d += ` C ${curr.x + cpOffset} ${curr.y}, ${next.x - cpOffset} ${next.y}, ${next.x} ${next.y}`;
     }
     return d;
   };
+
+  // Entry tail from bottom-left corner to the first circle center
+  const entryPath = () => {
+    const first = centers[0];
+    if (!first) return "";
+    // Start from off-screen bottom-left, curve up to first circle center
+    return `M -40 ${svgH + 60} C 0 ${svgH - 40}, ${first.x - 60} ${first.y + 80}, ${first.x} ${first.y}`;
+  };
+
+  // Exit tail from last circle to off-screen right
+  const exitPath = () => {
+    const last = centers[centers.length - 1];
+    if (!last) return "";
+    return `M ${last.x} ${last.y} C ${last.x + 60} ${last.y}, ${svgW + 20} ${last.y > 300 ? 300 : 500}, ${svgW + 60} ${last.y > 300 ? 250 : 550}`;
+  };
+
+  // Text + circle block height management
+  const textBlockH = 100; // px reserved for text
+  const gap = 20; // px gap between text and circle
 
   return (
     <section className="py-20 lg:py-28 bg-section-cream overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
-          <div className="mb-16">
+          <div className="mb-20">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
               {rd.timelineTitle}
             </h2>
@@ -90,39 +109,41 @@ const HistoryTimeline = () => {
               exit={{ opacity: 0, x: -60 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="relative"
+              style={{ minHeight: "620px" }}
             >
-              {/* SVG curved path behind everything */}
+              {/* SVG curved path */}
               <div className="absolute inset-0 z-0 pointer-events-none">
                 <svg
-                  viewBox="0 0 1000 500"
-                  preserveAspectRatio="none"
+                  viewBox={`0 0 ${svgW} ${svgH}`}
+                  preserveAspectRatio="xMidYMid meet"
                   className="w-full h-full"
                   fill="none"
                 >
-                  {/* Entry curve on first page */}
+                  {/* Entry tail on first page */}
                   {currentPage === 0 && (
                     <path
-                      d="M -20 400 Q 0 400, 20 250"
+                      d={entryPath()}
                       stroke={lineColor}
-                      strokeWidth="6"
+                      strokeWidth="7"
                       fill="none"
                       strokeLinecap="round"
                     />
                   )}
+                  {/* Main curve through centers */}
                   <path
-                    d={buildCurvedPath(visibleMilestones.length, 1000, 120, 250)}
+                    d={buildPath()}
                     stroke={lineColor}
-                    strokeWidth="6"
+                    strokeWidth="7"
                     fill="none"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  {/* Continuation arrow on right if not last page */}
+                  {/* Exit tail if not last page */}
                   {currentPage < maxPage && (
                     <path
-                      d={`M ${1000 / visibleMilestones.length * (visibleMilestones.length - 1) + 1000 / visibleMilestones.length / 2} ${(visibleMilestones.length - 1) % 2 === 0 ? 250 - 120 : 250 + 120} Q 1010 250, 1020 250`}
+                      d={exitPath()}
                       stroke={lineColor}
-                      strokeWidth="6"
+                      strokeWidth="7"
                       fill="none"
                       strokeLinecap="round"
                     />
@@ -131,21 +152,27 @@ const HistoryTimeline = () => {
               </div>
 
               {/* Grid of milestone items */}
-              <div className="relative z-10 grid grid-cols-4 gap-0" style={{ minHeight: "500px" }}>
+              <div className="relative z-10 grid grid-cols-4 gap-0" style={{ height: "600px" }}>
                 {visibleMilestones.map((m, i) => {
                   const isTop = i % 2 === 0;
                   return (
-                    <div key={m.year} className="flex flex-col items-center" style={{ paddingTop: isTop ? "0" : "140px" }}>
+                    <div
+                      key={m.year}
+                      className="flex flex-col items-center justify-start"
+                      style={{
+                        paddingTop: isTop ? "0px" : "180px",
+                      }}
+                    >
                       {/* Text above circle for top items */}
                       {isTop && (
-                        <div className="text-center mb-4 min-h-[90px] flex flex-col justify-end px-2">
+                        <div className="text-center mb-5 flex flex-col justify-end px-3" style={{ minHeight: `${textBlockH}px` }}>
                           <p className="text-3xl lg:text-4xl font-extrabold text-timeline-red mb-2">{m.year}</p>
-                          <p className="text-sm text-foreground leading-relaxed max-w-[240px] mx-auto">{m.event}</p>
+                          <p className="text-sm text-foreground leading-relaxed max-w-[260px] mx-auto">{m.event}</p>
                         </div>
                       )}
 
                       {/* Circle image */}
-                      <div className="w-[170px] h-[170px] lg:w-[200px] lg:h-[200px] rounded-full overflow-hidden border-[5px] border-background shadow-xl flex-shrink-0">
+                      <div className="w-[180px] h-[180px] lg:w-[210px] lg:h-[210px] rounded-full overflow-hidden border-[5px] border-background shadow-xl flex-shrink-0">
                         <img
                           src={m.image}
                           alt={`AMOGEN milestone ${m.year}`}
@@ -156,9 +183,9 @@ const HistoryTimeline = () => {
 
                       {/* Text below circle for bottom items */}
                       {!isTop && (
-                        <div className="text-center mt-4 min-h-[90px] px-2">
+                        <div className="text-center mt-5 px-3" style={{ minHeight: `${textBlockH}px` }}>
                           <p className="text-3xl lg:text-4xl font-extrabold text-timeline-red mb-2">{m.year}</p>
-                          <p className="text-sm text-foreground leading-relaxed max-w-[240px] mx-auto">{m.event}</p>
+                          <p className="text-sm text-foreground leading-relaxed max-w-[260px] mx-auto">{m.event}</p>
                         </div>
                       )}
                     </div>
