@@ -21,7 +21,23 @@ const About = () => {
       <main>
         {/* HERO */}
         <section className="relative min-h-[85vh] flex items-end overflow-hidden" style={{ backgroundColor: "#EEA7BF" }}>
-          <div className="relative w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pb-20 pt-40">
+          {/* Decorative sweeping golden line */}
+          <svg
+            className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-[200px] pointer-events-none"
+            viewBox="0 0 1400 200"
+            fill="none"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M-20 180 Q200 20 500 60 Q800 100 1000 30 Q1200 -20 1420 50"
+              stroke="#D4A017"
+              strokeWidth="4"
+              strokeLinecap="round"
+              fill="none"
+            />
+          </svg>
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pb-20 pt-40">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
               <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-4" style={{ color: "#001965", opacity: 0.6 }}>
                 <a href="/" className="hover:opacity-100 underline underline-offset-4" style={{ color: "#001965" }}>Home</a>
