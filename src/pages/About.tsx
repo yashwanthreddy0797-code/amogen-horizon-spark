@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import aboutHero from "@/assets/about-hero.jpg";
 import AboutAtGlance from "@/components/about/AboutAtGlance";
 import AboutVisionMission from "@/components/about/AboutVisionMission";
+import AboutCultureWay from "@/components/about/AboutCultureWay";
 import AboutWhoWeAre from "@/components/about/AboutWhoWeAre";
 import AboutWhatWeDo from "@/components/about/AboutWhatWeDo";
 import AboutLeadership from "@/components/about/AboutLeadership";
@@ -46,6 +47,9 @@ const About = () => {
 
         {/* Vision & Mission */}
         <AboutVisionMission />
+
+        {/* Culture — Way */}
+        <AboutCultureWay />
 
         {/* Who We Are */}
         <AboutWhoWeAre />
