@@ -29,7 +29,7 @@ const CDMOCapabilities = () => {
             <ScrollReveal key={cap.title} delay={i * 0.06}>
               <a
                 href="#"
-                className="group bg-muted rounded-xl p-6 md:p-8 flex flex-col justify-between h-[180px] md:h-[200px] hover:bg-primary/5 transition-colors"
+                className="group rounded-xl p-6 md:p-8 flex flex-col justify-between h-[180px] md:h-[200px] hover:opacity-80 transition-colors" style={{ backgroundColor: "#ccc5bd" }}
               >
                 <h3 className="text-base md:text-lg font-bold text-primary whitespace-pre-line leading-snug">
                   {cap.title}
