@@ -31,12 +31,12 @@ const CDMOCapabilities = () => {
                 href="#"
                 className="group rounded-xl p-6 md:p-8 flex flex-col justify-between h-[180px] md:h-[200px] hover:opacity-80 transition-colors" style={{ backgroundColor: "#ccc5bd" }}
               >
-                <h3 className="text-base md:text-lg font-bold text-primary whitespace-pre-line leading-snug">
+                <h3 className="text-base md:text-lg font-bold text-[#001965] whitespace-pre-line leading-snug">
                   {cap.title}
                 </h3>
                 <ArrowRight
                   size={18}
-                  className="text-primary mt-auto self-end opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all"
+                  className="text-[#001965] mt-auto self-end opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all"
                 />
               </a>
             </ScrollReveal>
