@@ -13,7 +13,7 @@ const ProductsBanner = () => {
           className="w-full h-full object-cover"
           loading="lazy" />
 
-        <div className="absolute inset-0 bg-gradient-to-l from-transparent to-footer-bg" />
+        <div className="absolute inset-0 bg-gradient-to-l from-transparent to-footer-bg border-0" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full">
@@ -33,13 +33,13 @@ const ProductsBanner = () => {
             <a
               href="#"
               className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold rounded-full border-2 border-footer-foreground text-footer-foreground hover:bg-footer-foreground hover:text-footer-bg transition-colors">
-              <span>Our products</span>
+              <span>
+              </span>
             </a>
           </div>
         </ScrollReveal>
       </div>
     </section>);
-
 };
 
 export default ProductsBanner;
