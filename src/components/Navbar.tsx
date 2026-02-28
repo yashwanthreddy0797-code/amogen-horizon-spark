@@ -46,10 +46,11 @@ const Navbar = () => {
     },
     [t.nav.cdmo]: {
       description: t.nav.cdmoDesc,
-      image: { src: manufacturing, title: "Manufacturing Excellence", subtitle: "World-class capabilities", href: "#cdmo" },
+      href: "/cdmo",
+      image: { src: manufacturing, title: "Manufacturing Excellence", subtitle: "World-class capabilities", href: "/cdmo" },
       links: [
-        [t.nav.manufacturingServices, t.nav.qualitySystems],
-        [t.nav.capacityDashboard, t.nav.rfpProcess],
+        [{ label: t.nav.manufacturingServices, href: "/cdmo#manufacturing-services" }, { label: t.nav.qualitySystems, href: "/cdmo#quality-systems" }],
+        [{ label: t.nav.capacityDashboard, href: "/cdmo#capacity-dashboard" }, { label: t.nav.rfpProcess, href: "/cdmo#rfp-process" }],
       ],
     },
     [t.nav.science]: {
