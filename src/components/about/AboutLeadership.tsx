@@ -1,134 +1,120 @@
+import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
+import { Plus, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import leaderRaju from "@/assets/leader-raju.png";
+import leaderAkhilesh from "@/assets/leader-akhilesh.png";
+import leaderKalyan from "@/assets/leader-kalyan.png";
+import leaderHarmeet from "@/assets/leader-harmeet.png";
+import leaderManpreet from "@/assets/leader-manpreet.png";
 
-interface Leader {
-  name: string;
-  title: string;
-  stat: string;
-  statLabel: string;
-  education: string;
-  institution: string;
-  tags: string[];
-}
-
-const leaders: Leader[] = [
+const leaders: { name: string; title: string; bio: string; photo: string; stat?: string; statLabel?: string }[] = [
   {
-    name: "P.V.S.N Raju",
+    name: "P.V.S.N. Raju",
     title: "Chairman & MD",
     stat: "30+",
     statLabel: "Years of experience",
-    education: "Seasoned Entrepreneur &\nEngineering Excellence",
-    institution: "",
-    tags: [],
+    bio: "Seasoned Entrepreneur & Engineering Excellence",
+    photo: leaderRaju,
+  },
+  {
+    name: "Akhilesh Raju",
+    title: "Director – Business Development",
+    bio: "Akhilesh drives AMOGEN's global partnerships and market expansion strategy, leveraging deep expertise in international pharmaceutical business development.",
+    photo: leaderAkhilesh,
+  },
+  {
+    name: "T. Devi Kalyan",
+    title: "Director – Operations",
+    bio: "With extensive experience in pharmaceutical operations, Kalyan oversees AMOGEN's manufacturing excellence and ensures the highest standards of quality and efficiency.",
+    photo: leaderKalyan,
   },
   {
     name: "Harmeet Lamba",
-    title: "Advisor",
-    stat: "30+",
-    statLabel: "Years of experience",
-    education: "MBA",
-    institution: "Wharton BS",
-    tags: ["Ranbaxy", "Dr. Reddy's"],
+    title: "Vice President – Quality",
+    bio: "Harmeet leads quality assurance and regulatory compliance, bringing deep expertise in cGMP practices and international quality standards to AMOGEN's operations.",
+    photo: leaderHarmeet,
   },
   {
     name: "Dr. Manpreet Singh",
-    title: "Vice President, BD",
-    stat: "16+",
-    statLabel: "Years of experience",
-    education: "PhD",
-    institution: "NIPER",
-    tags: ["Dr. Reddy's", "Aurisco"],
-  },
-  {
-    name: "P. Akhilesh Raju",
-    title: "Chief Executive Officer",
-    stat: "6+",
-    statLabel: "Years of experience",
-    education: "MBA",
-    institution: "Anglia Ruskin",
-    tags: ["Pardha Group"],
-  },
-  {
-    name: "Dr. T Devi Kalyan",
-    title: "Chief Operating Officer",
-    stat: "18+",
-    statLabel: "Years of experience",
-    education: "PhD",
-    institution: "DRDO",
-    tags: ["Biological E", "Dr. Reddy's"],
-  },
-  {
-    name: "Dr. A Vikram Kumar",
-    title: "Vice President, Biologics",
-    stat: "16+",
-    statLabel: "Years of experience",
-    education: "PhD",
-    institution: "JNTU H",
-    tags: ["Biological E", "Evolva Biotech"],
+    title: "Vice President – R&D",
+    bio: "Dr. Singh heads research and development initiatives, driving innovation in peptide biosimilar formulation and analytical method development.",
+    photo: leaderManpreet,
   },
 ];
 
 const AboutLeadership = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
     <section id="leadership" className="py-24 lg:py-32" style={{ backgroundColor: "#e8e4df" }}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Top rule */}
         <div className="border-t-2 border-foreground" />
 
-        <div className="pt-10">
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 pt-10">
+          {/* Left – Label */}
           <ScrollReveal>
-            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-12">Leadership</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground">Leadership</h2>
           </ScrollReveal>
 
-          {/* Card grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {leaders.map((leader, i) => (
-              <ScrollReveal key={leader.name} delay={i * 0.06}>
-                <div className="border-t-2 border-primary pt-6 pb-8 h-full flex flex-col">
-                  {/* Left accent line container */}
-                  <div className="pl-5 border-l-[3px] border-primary/60 flex flex-col flex-1">
-                    <h3 className="text-2xl md:text-3xl font-extrabold" style={{ color: "#001965" }}>
+          {/* Right – Accordion list */}
+          <div>
+            {leaders.map((leader, i) => {
+              const isOpen = openIndex === i;
+              return (
+                <div key={leader.name}>
+                  <button
+                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                    className="w-full flex items-center justify-between py-5 text-left group"
+                  >
+                    <span className="text-xl md:text-2xl font-semibold text-foreground">
                       {leader.name}
-                    </h3>
-                    <p className="text-base font-medium mt-1" style={{ color: "#3366cc" }}>
-                      {leader.title}
-                    </p>
+                    </span>
+                    <span className="w-10 h-10 rounded-full border border-foreground/40 flex items-center justify-center flex-shrink-0 ml-4 group-hover:border-foreground transition-colors">
+                      {isOpen ? <X size={16} /> : <Plus size={16} />}
+                    </span>
+                  </button>
 
-                    {/* Stat */}
-                    <p className="text-4xl md:text-5xl font-extrabold mt-6" style={{ color: "#001965" }}>
-                      {leader.stat}
-                    </p>
-                    <p className="text-sm font-semibold mt-1" style={{ color: "#001965" }}>
-                      {leader.statLabel}
-                    </p>
-
-                    {/* Education */}
-                    <p className="text-sm font-semibold mt-5 whitespace-pre-line" style={{ color: "#001965" }}>
-                      {leader.education}
-                    </p>
-                    {leader.institution && (
-                      <p className="text-sm font-semibold" style={{ color: "#001965" }}>
-                        {leader.institution}
-                      </p>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pb-6 grid md:grid-cols-[1fr_200px] gap-6 items-start">
+                          <div>
+                            <p className="text-base font-semibold text-primary">{leader.title}</p>
+                            {leader.stat && (
+                              <div className="mt-6">
+                                <p className="text-4xl font-extrabold text-foreground">{leader.stat}</p>
+                                <p className="text-sm font-semibold text-foreground mt-1">{leader.statLabel}</p>
+                              </div>
+                            )}
+                            <p className="text-sm font-semibold text-foreground mt-5 leading-relaxed max-w-lg">
+                              {leader.bio}
+                            </p>
+                          </div>
+                          <div className="rounded-lg overflow-hidden">
+                            <img
+                              src={leader.photo}
+                              alt={leader.name}
+                              className="w-full h-[240px] object-cover"
+                            />
+                          </div>
+                        </div>
+                      </motion.div>
                     )}
+                  </AnimatePresence>
 
-                    {/* Tags */}
-                    {leader.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-6">
-                        {leader.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs px-3 py-1.5 border rounded font-medium"
-                            style={{ borderColor: "#001965", color: "#001965" }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  {/* Divider */}
+                  <div className="border-b border-foreground/20" />
                 </div>
-              </ScrollReveal>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
