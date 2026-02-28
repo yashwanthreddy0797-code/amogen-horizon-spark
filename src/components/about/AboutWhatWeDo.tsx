@@ -59,7 +59,7 @@ const AboutWhatWeDo = () => {
               <img
                 src={researchLabImg}
                 alt="Team working in research lab"
-                className="w-full h-[480px] lg:h-[580px] object-cover"
+                className="w-full h-[380px] lg:h-[440px] object-cover"
                 loading="lazy"
               />
             </div>
