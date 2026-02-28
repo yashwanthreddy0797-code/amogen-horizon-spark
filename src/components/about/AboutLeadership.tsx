@@ -8,11 +8,13 @@ import leaderKalyan from "@/assets/leader-kalyan.png";
 import leaderHarmeet from "@/assets/leader-harmeet.png";
 import leaderManpreet from "@/assets/leader-manpreet.png";
 
-const leaders = [
+const leaders: { name: string; title: string; bio: string; photo: string; stat?: string; statLabel?: string }[] = [
   {
     name: "P.V.S.N. Raju",
-    title: "Managing Director",
-    bio: "Mr. Raju brings decades of visionary leadership in pharmaceutical manufacturing and business strategy, guiding AMOGEN's growth into a leading peptide biosimilar company.",
+    title: "Chairman & MD",
+    stat: "30+",
+    statLabel: "Years of experience",
+    bio: "Seasoned Entrepreneur & Engineering Excellence",
     photo: leaderRaju,
   },
   {
@@ -85,8 +87,14 @@ const AboutLeadership = () => {
                       >
                         <div className="pb-6 grid md:grid-cols-[1fr_200px] gap-6 items-start">
                           <div>
-                            <p className="text-sm font-semibold text-foreground">{leader.title}</p>
-                            <p className="text-sm text-muted-foreground mt-4 leading-relaxed max-w-lg">
+                            <p className="text-base font-semibold text-primary">{leader.title}</p>
+                            {leader.stat && (
+                              <div className="mt-6">
+                                <p className="text-4xl font-extrabold text-foreground">{leader.stat}</p>
+                                <p className="text-sm font-semibold text-foreground mt-1">{leader.statLabel}</p>
+                              </div>
+                            )}
+                            <p className="text-sm font-semibold text-foreground mt-5 leading-relaxed max-w-lg">
                               {leader.bio}
                             </p>
                           </div>
