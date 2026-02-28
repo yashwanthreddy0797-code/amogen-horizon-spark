@@ -7,11 +7,11 @@ const AboutAtGlance = () => {
       {/* Decorative background elements */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {/* Large gradient circle — top right */}
-        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#EEA7BF]/[0.15]" />
+        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#2A918B]/20" />
         {/* Smaller accent circle — bottom left */}
-        <div className="absolute -bottom-20 -left-20 w-[300px] h-[300px] rounded-full bg-primary/[0.03]" />
+        <div className="absolute -bottom-20 -left-20 w-[300px] h-[300px] rounded-full bg-[#2A918B]/15" />
         {/* Molecular / helix-inspired SVG — top right area */}
-        <svg className="absolute top-16 right-12 w-64 h-64 text-[#EEA7BF]/60" viewBox="0 0 200 200" fill="none">
+        <svg className="absolute top-16 right-12 w-64 h-64 text-[#2A918B]" viewBox="0 0 200 200" fill="none">
           <circle cx="40" cy="40" r="6" fill="currentColor" />
           <circle cx="100" cy="30" r="4" fill="currentColor" />
           <circle cx="160" cy="50" r="8" fill="currentColor" />
@@ -27,7 +27,7 @@ const AboutAtGlance = () => {
           <line x1="60" y1="120" x2="100" y2="180" stroke="currentColor" strokeWidth="1.5" />
         </svg>
         {/* Dotted grid pattern — bottom right */}
-        <svg className="absolute bottom-8 right-8 w-48 h-48 text-primary/[0.05]" viewBox="0 0 120 120" fill="currentColor">
+        <svg className="absolute bottom-8 right-8 w-48 h-48 text-[#2A918B]/20" viewBox="0 0 120 120" fill="currentColor">
           {[0, 1, 2, 3, 4, 5].map(row =>
             [0, 1, 2, 3, 4, 5].map(col => (
               <circle key={`${row}-${col}`} cx={10 + col * 20} cy={10 + row * 20} r="2" />
@@ -35,7 +35,7 @@ const AboutAtGlance = () => {
           )}
         </svg>
         {/* Subtle curved line — left side */}
-        <svg className="absolute top-1/2 -left-4 w-32 h-64 -translate-y-1/2 text-primary/[0.06]" viewBox="0 0 100 200" fill="none">
+        <svg className="absolute top-1/2 -left-4 w-32 h-64 -translate-y-1/2 text-[#2A918B]/20" viewBox="0 0 100 200" fill="none">
           <path d="M80 0 Q10 50 60 100 Q110 150 30 200" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </div>
