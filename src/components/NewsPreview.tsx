@@ -38,46 +38,41 @@ const NewsPreview = () => {
               <a
                 href="#"
                 className="group flex flex-col h-full rounded-[20px] overflow-hidden relative"
-                style={{ backgroundColor: "#ccc5bd" }}
+                style={{ backgroundColor: "#F0EFED" }}
               >
-                {/* Card image – inset with rounded corners */}
+                {/* Card image */}
                 <div className="p-4 pb-0">
                   <div className="rounded-xl overflow-hidden">
                     <img
                       src={newsItems[i].image}
                       alt={item.headline}
                       className="w-full h-[195px] object-cover group-hover:scale-105 transition-transform duration-500"
+                      style={{ borderRadius: "12px" }}
                       loading="lazy"
                     />
                   </div>
                 </div>
 
                 {/* Meta & Headline */}
-                <div className="px-5 pt-5 flex-1">
+                <div className="px-5 pt-6 flex-1">
                   <p className="text-[9.5px] uppercase tracking-[0.12em] text-muted-foreground font-mono mb-2.5 leading-none">
                     AMOGEN TEAM &nbsp;–&nbsp; {item.date}
                   </p>
-                  <h3 className="text-sm md:text-[15px] font-semibold text-foreground leading-[1.4]">
+                  <h3 className="text-sm md:text-[15px] font-medium text-foreground leading-[1.4]">
                     {item.headline}
                   </h3>
                 </div>
 
-                {/* Bottom section with curved cutout for arrow */}
+                {/* Bottom section with corner notch */}
                 <div className="relative mt-6 h-14">
-                  {/* SVG curved shape – white bg sweeps up on right side */}
-                  <svg
-                    className="absolute inset-0 w-full h-full"
-                    viewBox="0 0 400 56"
-                    preserveAspectRatio="none"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M0 24 L270 24 C290 24 300 0 330 0 L400 0 L400 56 L0 56 Z"
-                      fill="hsl(var(--background))"
-                    />
-                  </svg>
-                  {/* Content on top of SVG */}
+                  {/* Background with bottom-right notch via clip-path */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      backgroundColor: "hsl(var(--background))",
+                      clipPath: "polygon(0 40%, 65% 40%, 75% 0%, 100% 0%, 100% 100%, 0 100%)",
+                    }}
+                  />
                   <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between px-5 pb-4">
                     <span className="text-xs font-medium text-foreground">
                       {t.newsPreview.readMore}
