@@ -1,31 +1,113 @@
+import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
-import { ArrowRight } from "lucide-react";
-import aboutTeam from "@/assets/about-team.jpg";
+import { Plus, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import leaderRaju from "@/assets/leader-raju.png";
+import leaderAkhilesh from "@/assets/leader-akhilesh.png";
+import leaderKalyan from "@/assets/leader-kalyan.png";
+import leaderHarmeet from "@/assets/leader-harmeet.png";
+import leaderManpreet from "@/assets/leader-manpreet.png";
+
+const leaders = [
+  {
+    name: "P.V.S.N. Raju",
+    title: "Managing Director",
+    bio: "Mr. Raju brings decades of visionary leadership in pharmaceutical manufacturing and business strategy, guiding AMOGEN's growth into a leading peptide biosimilar company.",
+    photo: leaderRaju,
+  },
+  {
+    name: "Akhilesh Raju",
+    title: "Director – Business Development",
+    bio: "Akhilesh drives AMOGEN's global partnerships and market expansion strategy, leveraging deep expertise in international pharmaceutical business development.",
+    photo: leaderAkhilesh,
+  },
+  {
+    name: "T. Devi Kalyan",
+    title: "Director – Operations",
+    bio: "With extensive experience in pharmaceutical operations, Kalyan oversees AMOGEN's manufacturing excellence and ensures the highest standards of quality and efficiency.",
+    photo: leaderKalyan,
+  },
+  {
+    name: "Harmeet Lamba",
+    title: "Vice President – Quality",
+    bio: "Harmeet leads quality assurance and regulatory compliance, bringing deep expertise in cGMP practices and international quality standards to AMOGEN's operations.",
+    photo: leaderHarmeet,
+  },
+  {
+    name: "Dr. Manpreet Singh",
+    title: "Vice President – R&D",
+    bio: "Dr. Singh heads research and development initiatives, driving innovation in peptide biosimilar formulation and analytical method development.",
+    photo: leaderManpreet,
+  },
+];
 
 const AboutLeadership = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
-    <section id="leadership" className="py-24 lg:py-32 bg-background">
+    <section id="leadership" className="py-24 lg:py-32" style={{ backgroundColor: "#e8e4df" }}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        {/* Top rule */}
+        <div className="border-t-2 border-foreground" />
+
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 pt-10">
+          {/* Left – Label */}
           <ScrollReveal>
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-primary font-bold mb-6">Leadership</p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-                Guided by experienced leaders.
-              </h2>
-              <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
-                Our leadership team brings together decades of experience in biotechnology, pharmaceutical manufacturing, and global business development.
-              </p>
-              <a href="/about/leadership" className="inline-flex items-center gap-2 mt-8 px-6 py-3 text-sm font-bold rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-                Meet our leadership team <ArrowRight size={14} />
-              </a>
-            </div>
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground">Leadership</h2>
           </ScrollReveal>
-          <ScrollReveal delay={0.15}>
-            <div className="rounded-2xl overflow-hidden">
-              <img src={aboutTeam} alt="AMOGEN leadership team" className="w-full h-[360px] object-cover" loading="lazy" />
-            </div>
-          </ScrollReveal>
+
+          {/* Right – Accordion list */}
+          <div>
+            {leaders.map((leader, i) => {
+              const isOpen = openIndex === i;
+              return (
+                <div key={leader.name}>
+                  <button
+                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                    className="w-full flex items-center justify-between py-5 text-left group"
+                  >
+                    <span className="text-xl md:text-2xl font-semibold text-foreground">
+                      {leader.name}
+                    </span>
+                    <span className="w-10 h-10 rounded-full border border-foreground/40 flex items-center justify-center flex-shrink-0 ml-4 group-hover:border-foreground transition-colors">
+                      {isOpen ? <X size={16} /> : <Plus size={16} />}
+                    </span>
+                  </button>
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pb-6 grid md:grid-cols-[1fr_200px] gap-6 items-start">
+                          <div>
+                            <p className="text-sm font-semibold text-foreground">{leader.title}</p>
+                            <p className="text-sm text-muted-foreground mt-4 leading-relaxed max-w-lg">
+                              {leader.bio}
+                            </p>
+                          </div>
+                          <div className="rounded-lg overflow-hidden">
+                            <img
+                              src={leader.photo}
+                              alt={leader.name}
+                              className="w-full h-[240px] object-cover"
+                            />
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Divider */}
+                  <div className="border-b border-foreground/20" />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
