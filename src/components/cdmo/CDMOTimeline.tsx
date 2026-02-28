@@ -28,7 +28,7 @@ const CDMOTimeline = () => {
     `${((end - start) / (totalMonths + 0.5)) * 100}%`;
 
   return (
-    <section id="capacity-dashboard" className="py-20 lg:py-28 bg-background">
+    <section id="capacity-dashboard" className="py-20 lg:py-28" style={{ backgroundColor: "#ccc5bd" }}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <div className="max-w-4xl mb-6">
@@ -45,8 +45,8 @@ const CDMOTimeline = () => {
           {/* Desktop Gantt chart */}
           <div className="hidden md:block mt-10">
             {/* Header bar */}
-            <div className="bg-primary rounded-lg py-3 px-6 mb-6">
-              <p className="text-primary-foreground font-bold text-center text-lg">
+            <div className="rounded-lg py-3 px-6 mb-6" style={{ backgroundColor: "#001965" }}>
+              <p className="text-white font-bold text-center text-lg">
                 Standard Timeline <span className="font-normal">(Months)</span>
               </p>
             </div>
@@ -68,7 +68,7 @@ const CDMOTimeline = () => {
             </div>
 
             {/* Divider */}
-            <div className="h-px bg-primary/30 mb-4" />
+            <div className="h-px bg-[#001965]/30 mb-4" />
 
             {/* Gantt rows */}
             <div className="relative" style={{ height: `${rowCount * 48 + 20}px` }}>
@@ -85,7 +85,7 @@ const CDMOTimeline = () => {
               {bars.map((bar, i) => (
                 <div
                   key={i}
-                  className="absolute h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center px-3 text-xs font-semibold text-foreground whitespace-nowrap overflow-hidden"
+                  className="absolute h-9 rounded-lg bg-[#001965]/10 border border-[#001965]/20 flex items-center px-3 text-xs font-semibold text-[#001965] whitespace-nowrap overflow-hidden"
                   style={{
                     left: getLeft(bar.startMonth),
                     width: getWidth(bar.startMonth, bar.endMonth),
@@ -110,7 +110,7 @@ const CDMOTimeline = () => {
                   <div className="text-xs text-muted-foreground whitespace-pre-line text-center leading-tight mb-1">
                     {ms.label}
                   </div>
-                  <div className="w-3 h-3 rounded-full border-2 border-primary bg-background" />
+                  <div className="w-3 h-3 rounded-full border-2 border-[#001965] bg-white" />
                 </div>
               ))}
 
@@ -123,22 +123,22 @@ const CDMOTimeline = () => {
                   transform: "translateX(-50%)",
                 }}
               >
-                <p className="text-xs text-primary font-semibold">VC to IND filing</p>
-                <p className="text-2xl font-extrabold text-primary">11 <span className="text-sm font-semibold">months</span></p>
-                <div className="w-4 h-4 rounded-full border-2 border-primary bg-background mt-1" />
+                <p className="text-xs text-[#001965] font-semibold">VC to IND filing</p>
+                <p className="text-2xl font-extrabold text-[#001965]">11 <span className="text-sm font-semibold">months</span></p>
+                <div className="w-4 h-4 rounded-full border-2 border-[#001965] bg-white mt-1" />
               </div>
             </div>
 
             {/* Divider */}
-            <div className="h-px bg-primary/30 mt-4 mb-4" />
+            <div className="h-px bg-[#001965]/30 mt-4 mb-4" />
 
             <p className="text-xs text-muted-foreground">*VC: Vector Construction</p>
           </div>
 
           {/* Mobile: simplified list */}
           <div className="md:hidden mt-8 space-y-4">
-            <div className="bg-primary rounded-lg py-3 px-6">
-              <p className="text-primary-foreground font-bold text-center text-sm">
+            <div className="rounded-lg py-3 px-6" style={{ backgroundColor: "#001965" }}>
+              <p className="text-white font-bold text-center text-sm">
                 Standard Timeline (Months)
               </p>
             </div>
@@ -153,14 +153,14 @@ const CDMOTimeline = () => {
               { phase: "CGMP DP", time: "Month 10" },
               { phase: "Regulatory Documentation", time: "Months 8–11" },
             ].map((item) => (
-              <div key={item.phase} className="flex justify-between items-center bg-primary/5 rounded-lg px-5 py-3">
+              <div key={item.phase} className="flex justify-between items-center bg-[#001965]/5 rounded-lg px-5 py-3">
                 <span className="text-sm font-semibold text-foreground">{item.phase}</span>
-                <span className="text-xs text-primary font-bold">{item.time}</span>
+                <span className="text-xs text-[#001965] font-bold">{item.time}</span>
               </div>
             ))}
             <div className="text-center py-4">
-              <p className="text-xs text-primary font-semibold">VC to IND filing</p>
-              <p className="text-3xl font-extrabold text-primary">11 <span className="text-sm">months</span></p>
+              <p className="text-xs text-[#001965] font-semibold">VC to IND filing</p>
+              <p className="text-3xl font-extrabold text-[#001965]">11 <span className="text-sm">months</span></p>
             </div>
             <p className="text-xs text-muted-foreground">*VC: Vector Construction</p>
           </div>
