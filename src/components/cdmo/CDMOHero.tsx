@@ -36,15 +36,13 @@ const CDMOHero = () => {
           <div className="flex flex-wrap gap-4 mt-10">
             <a
               href="#rfp-process"
-              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-md border-2 transition-all duration-300 hover:bg-[#001965] hover:text-white"
-              style={{ borderColor: "#001965", color: "#001965" }}
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-md border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white"
             >
               Contact Us <ArrowRight size={14} />
             </a>
             <a
               href="#"
-              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-md border-2 transition-all duration-300 hover:bg-[#001965] hover:text-white"
-              style={{ borderColor: "#001965", color: "#001965" }}
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-md border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white"
             >
               Brochure <Download size={14} />
             </a>
