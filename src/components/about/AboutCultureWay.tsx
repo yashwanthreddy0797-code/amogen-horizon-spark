@@ -12,9 +12,9 @@ const AboutCultureWay = () => {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <div className="mt-16 flex justify-center">
+          <div className="mt-16 flex justify-center overflow-visible">
             <div
-              className="text-[140px] sm:text-[200px] md:text-[280px] lg:text-[360px] xl:text-[420px] font-black leading-[0.85] tracking-tight select-none"
+              className="text-[140px] sm:text-[200px] md:text-[280px] lg:text-[360px] xl:text-[420px] font-black leading-none tracking-tight select-none pb-4"
               style={{
                 backgroundImage: `url(${collageImg})`,
                 backgroundSize: "cover",
