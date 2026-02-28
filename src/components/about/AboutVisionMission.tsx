@@ -7,8 +7,8 @@ const AboutVisionMission = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 relative z-10">
         <div className="max-w-xl">
           <ScrollReveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-foreground/50 font-medium mb-6" style={{ fontFamily: "monospace" }}>
-              OUR MISSION
+            <p className="text-xs uppercase tracking-[0.3em] text-foreground/50 font-medium mb-6" style={{ fontFamily: "monospace" }}>OUR VISION
+
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
@@ -24,11 +24,11 @@ const AboutVisionMission = () => {
         <img
           src={missionBlobs}
           alt=""
-          className="w-full h-full object-contain object-center"
-        />
+          className="w-full h-full object-contain object-center" />
+
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default AboutVisionMission;
