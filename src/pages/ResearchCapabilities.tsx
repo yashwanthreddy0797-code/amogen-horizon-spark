@@ -216,32 +216,6 @@ const ResearchCapabilities = () => {
         {/* GAME-CHANGING MOMENTS TIMELINE */}
         <HistoryTimeline />
 
-        {/* CHAMPIONS OF BOLD SCIENCE */}
-        <section className="py-20 lg:py-28 bg-background">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-            <ScrollReveal>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight mb-12">{rd.championsTitle}</h2>
-            </ScrollReveal>
-            <div className="grid md:grid-cols-3 gap-8">
-              {champions.map((champion, i) => (
-                <ScrollReveal key={i} delay={i * 0.1}>
-                  <div className="bg-card rounded-2xl overflow-hidden shadow-sm h-full">
-                    <div className="h-[280px] bg-muted flex items-center justify-center">
-                      <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center">
-                        <span className="text-3xl font-bold text-primary">{champion.name.charAt(0)}</span>
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-lg font-bold text-foreground">{champion.name}</h3>
-                      <p className="text-sm text-muted-foreground mt-1">{champion.role}</p>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* CLOSING CTA */}
         <section className="py-20 lg:py-28 bg-section-cream">
           <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
