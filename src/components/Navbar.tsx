@@ -42,6 +42,15 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
   const navPillBg = isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
   const navBorderColor = isCdmo ? "border-[#001965]/15" : "border-nav-dark-foreground/15";
 
+  // Expanded scrolled bar: CDMO flips to True Blue bg + sand grey text
+  const navPillBgExpanded = isCdmo ? "bg-[#001965]" : "bg-nav-dark";
+  const navTextExpanded = isCdmo ? "text-[#ccc5bd]" : navText;
+  const navTextFullExpanded = isCdmo ? "text-[#ccc5bd]" : navTextFull;
+  const navTextMutedExpanded = isCdmo ? "text-[#ccc5bd]/70" : navTextMuted;
+  const navHoverBgExpanded = isCdmo ? "hover:bg-[#ccc5bd]/10" : navHoverBg;
+  const navActiveBgExpanded = isCdmo ? "bg-[#ccc5bd]/15" : navActiveBg;
+  const navBorderColorExpanded = isCdmo ? "border-[#ccc5bd]/15" : navBorderColor;
+
   const menuData = {
     [t.nav.about]: {
       description: t.nav.aboutDesc,
@@ -157,7 +166,11 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
   };
 
   // Mega menu content (shared between both modes)
-  const renderMegaMenu = () => (
+  const renderMegaMenu = (overrides?: { borderColor?: string; textFull?: string; textMuted?: string }) => {
+    const _borderColor = overrides?.borderColor || navBorderColor;
+    const _textFull = overrides?.textFull || navTextFull;
+    const _textMuted = overrides?.textMuted || navTextMuted;
+    return (
     <AnimatePresence>
       {activeMenu && menuData[activeMenu] && (
         <motion.div
@@ -170,14 +183,14 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
           onMouseEnter={handleDropdownEnter}
           onMouseLeave={handleDropdownLeave}
         >
-          <div className={`mx-8 border-t ${navBorderColor}`} />
+          <div className={`mx-8 border-t ${_borderColor}`} />
           <div className="px-8 md:px-10 py-8 md:py-10">
-            <h3 className={`text-2xl md:text-3xl font-bold ${navTextFull} mb-2 italic`}>
+            <h3 className={`text-2xl md:text-3xl font-bold ${_textFull} mb-2 italic`}>
               {activeMenu}
             </h3>
             <div className="flex flex-col md:flex-row gap-8 mt-4">
               <div className="flex flex-col gap-6 md:min-w-[280px]">
-                <p className={`${navTextMuted} text-sm md:text-base max-w-xs leading-relaxed`}>
+                <p className={`${_textMuted} text-sm md:text-base max-w-xs leading-relaxed`}>
                   {menuData[activeMenu].description}
                 </p>
                 <div className="flex gap-12 md:gap-16">
@@ -192,7 +205,7 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                           <a
                             key={label}
                             href={href}
-                            className={`text-sm md:text-base ${navTextMuted} hover:${navTextFull} underline underline-offset-4 decoration-current/30 hover:decoration-current/70 transition-colors`}
+                            className={`text-sm md:text-base ${_textMuted} hover:${_textFull} underline underline-offset-4 decoration-current/30 hover:decoration-current/70 transition-colors`}
                             onClick={() => { setActiveMenu(null); setMobileMenuOpen(false); }}
                           >
                             {label}
@@ -235,7 +248,7 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
         </motion.div>
       )}
     </AnimatePresence>
-  );
+  );};
 
   // Scrolled menu items list (shown when hamburger is clicked)
   const renderScrolledMenuPanel = () => (
@@ -562,12 +575,12 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                   onMouseLeave={handleScrolledBarLeave}
                 >
                     <div
-                      className={`${navPillBg} shadow-2xl ${navText} transition-all duration-300 rounded-[1.5rem] overflow-hidden`}
+                      className={`${navPillBgExpanded} shadow-2xl ${navTextExpanded} transition-all duration-300 rounded-[1.5rem] overflow-hidden`}
                   >
                     {/* Top bar with logo, nav items, and close button */}
                     <div className="flex items-center justify-between px-6 md:px-8 py-3">
                       <a href="/" className="shrink-0">
-                        <span className={`text-base md:text-lg font-bold tracking-tight ${navTextFull}`}>
+                        <span className={`text-base md:text-lg font-bold tracking-tight ${navTextFullExpanded}`}>
                           AMOGEN
                         </span>
                       </a>
@@ -592,8 +605,8 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                                 }}
                                 className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
                                   activeMenu === item
-                                    ? `${navActiveBg} ${navTextFull}`
-                                    : `${navTextMuted} ${navHoverBg} hover:${navTextFull}`
+                                    ? `${navActiveBgExpanded} ${navTextFullExpanded}`
+                                    : `${navTextMutedExpanded} ${navHoverBgExpanded} hover:${navTextFullExpanded}`
                                 }`}
                               >
                                 {item}
@@ -605,14 +618,14 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
 
                       <div className="flex items-center gap-1">
                         <button
-                          className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
+                          className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBgExpanded} transition-colors`}
                           aria-label={t.nav.search}
                         >
                           <Search size={17} />
                         </button>
                         <div className="relative">
                           <button
-                            className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
+                            className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBgExpanded} transition-colors`}
                             aria-label={t.nav.language}
                             onClick={() => setLangOpen(!langOpen)}
                           >
@@ -638,13 +651,13 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                         </div>
                         <a
                           href="#contact"
-                          className={`hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full ${navHoverBg} transition-colors`}
+                          className={`hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full ${navHoverBgExpanded} transition-colors`}
                         >
                           {t.nav.partnerWithUs}
                         </a>
                         <button
                           onClick={() => { setMobileMenuOpen(false); setActiveMenu(null); }}
-                          className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
+                          className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBgExpanded} transition-colors`}
                           aria-label="Close menu"
                         >
                           <X size={18} />
@@ -653,7 +666,7 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                     </div>
 
                     {/* Reuse the same mega menu renderer */}
-                    {renderMegaMenu()}
+                    {renderMegaMenu(isCdmo ? { borderColor: navBorderColorExpanded, textFull: navTextFullExpanded, textMuted: navTextMutedExpanded } : undefined)}
                   </div>
                 </motion.div>
               )}
