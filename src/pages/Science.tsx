@@ -1,15 +1,36 @@
+import { useState, useRef, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import HistoryTimeline from "@/components/HistoryTimeline";
 import { motion } from "framer-motion";
-import { ArrowRight, FlaskConical, Microscope, Dna, TestTube, Beaker, Target } from "lucide-react";
+import {
+  ArrowRight,
+  FlaskConical,
+  Microscope,
+  Dna,
+  TestTube,
+  Beaker,
+  Target,
+  BookOpen,
+  BarChart3,
+  FileText,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import scienceHero from "@/assets/science-hero.jpg";
 import sciencePatient from "@/assets/science-patient.jpg";
 import scienceResearch from "@/assets/science-research.jpg";
+import rdLabHands from "@/assets/rd-lab-hands.jpg";
+import rdPatientAlzheimer from "@/assets/rd-patient-alzheimer.jpg";
+import rdPatientCardio from "@/assets/rd-patient-cardio.jpg";
+import rdPatientImmunology from "@/assets/rd-patient-immunology.jpg";
+import rdPatientPain from "@/assets/rd-patient-pain.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const Science = () => {
   const { t } = useLanguage();
+  const rd = t.rdPage;
 
   const pipelineStats = [
     { phase: t.sciencePage.discovery, count: 3, color: "bg-primary/20" },
@@ -31,12 +52,68 @@ const Science = () => {
     { icon: TestTube, title: t.sciencePage.platform3Title, description: t.sciencePage.platform3Desc },
   ];
 
-  const milestones = [
-    { year: "2018", event: t.sciencePage.milestone1 },
-    { year: "2020", event: t.sciencePage.milestone2 },
-    { year: "2022", event: t.sciencePage.milestone3 },
-    { year: "2024", event: t.sciencePage.milestone4 },
-    { year: "2026", event: t.sciencePage.milestone5 },
+  // Core areas of innovation carousel (from R&D page)
+  const coreAreas = [
+    { title: rd.area1Title, desc: rd.area1Desc, image: rdPatientAlzheimer },
+    { title: rd.area2Title, desc: rd.area2Desc, image: rdPatientCardio },
+    { title: rd.area3Title, desc: rd.area3Desc, image: sciencePatient },
+    { title: rd.area4Title, desc: rd.area4Desc, image: rdPatientImmunology },
+    { title: rd.area5Title, desc: rd.area5Desc, image: rdPatientPain },
+    { title: rd.area6Title, desc: rd.area6Desc, image: scienceResearch },
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [carouselItemWidth, setCarouselItemWidth] = useState(0);
+
+  useEffect(() => {
+    const measure = () => {
+      if (carouselRef.current) {
+        setCarouselItemWidth(carouselRef.current.offsetWidth / 3);
+      }
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  const nextSlide = () => setCurrentSlide((prev) => Math.min(prev + 1, coreAreas.length - 3));
+  const prevSlide = () => setCurrentSlide((prev) => Math.max(prev - 1, 0));
+
+  // Publications data
+  const publications = [
+    {
+      title: "Comparative Analytical Characterization of Semaglutide Biosimilar AMG-S01",
+      journal: "Journal of Pharmaceutical Sciences",
+      year: "2025",
+      type: "Research Article",
+    },
+    {
+      title: "Process Development and Scale-Up of GLP-1 Receptor Agonist Peptides via SPPS",
+      journal: "Biotechnology & Bioengineering",
+      year: "2024",
+      type: "Research Article",
+    },
+    {
+      title: "Forced Degradation and Stability Studies of Liraglutide Biosimilar Formulations",
+      journal: "European Journal of Pharmaceutics",
+      year: "2024",
+      type: "Technical Report",
+    },
+    {
+      title: "Immunogenicity Assessment Framework for Peptide Biosimilars: A Regulatory Perspective",
+      journal: "BioDrugs",
+      year: "2025",
+      type: "Review",
+    },
+  ];
+
+  // Comparability data
+  const comparabilityMetrics = [
+    { label: "Structural Similarity", value: "99.7%", desc: "Primary & higher-order structure match vs. reference" },
+    { label: "Functional Bioequivalence", value: "98.5%", desc: "Receptor binding and cell-based bioassay concordance" },
+    { label: "Purity Profile", value: "≥99.0%", desc: "HPLC purity across all manufactured batches" },
+    { label: "Stability Match", value: "36 mo", desc: "Equivalent shelf-life demonstrated under ICH conditions" },
   ];
 
   return (
@@ -141,8 +218,8 @@ const Science = () => {
           </div>
         </ScrollReveal>
 
-        {/* TECHNOLOGY PLATFORMS */}
-        <section className="py-20 lg:py-28 bg-background">
+        {/* TECHNOLOGY STACK */}
+        <section id="technology-stack" className="py-20 lg:py-28 bg-background">
           <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
             <ScrollReveal>
               <div className="text-center max-w-3xl mx-auto mb-16">
@@ -168,8 +245,39 @@ const Science = () => {
           </div>
         </section>
 
-        {/* R&D */}
-        <section className="py-20 lg:py-28 bg-section-cream">
+        {/* COMPARABILITY DATA */}
+        <section id="comparability-data" className="py-20 lg:py-28 bg-section-cream">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+            <ScrollReveal>
+              <div className="max-w-3xl mb-16">
+                <p className="text-xs uppercase tracking-[0.2em] text-primary font-bold mb-4">Analytical Excellence</p>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
+                  Comparability <em className="italic">data</em>
+                </h2>
+                <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
+                  Comprehensive head-to-head analytical, functional, and clinical comparability studies demonstrating biosimilarity to reference products across all critical quality attributes.
+                </p>
+              </div>
+            </ScrollReveal>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {comparabilityMetrics.map((metric, i) => (
+                <ScrollReveal key={metric.label} delay={i * 0.1}>
+                  <div className="bg-card rounded-2xl p-8 shadow-sm h-full text-center">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
+                      <BarChart3 size={24} className="text-primary" />
+                    </div>
+                    <p className="text-4xl font-extrabold text-primary mb-2">{metric.value}</p>
+                    <h3 className="text-base font-bold text-foreground mb-2">{metric.label}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{metric.desc}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* RESEARCH CAPABILITIES */}
+        <section id="research-capabilities" className="py-20 lg:py-28 bg-background">
           <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <ScrollReveal>
@@ -183,43 +291,135 @@ const Science = () => {
                   <h3 className="text-2xl md:text-3xl font-extrabold text-foreground leading-tight">{t.sciencePage.rdTitle}</h3>
                   <p className="text-base text-muted-foreground mt-6 leading-relaxed">{t.sciencePage.rdDesc1}</p>
                   <p className="text-base text-muted-foreground mt-4 leading-relaxed">{t.sciencePage.rdDesc2}</p>
-                  <a href="#" className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline mt-6">{t.sciencePage.exploreCapabilities} <ArrowRight size={14} /></a>
                 </div>
               </ScrollReveal>
             </div>
-          </div>
-        </section>
 
-        {/* TIMELINE */}
-        <section className="py-20 lg:py-28 bg-background">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-            <ScrollReveal>
-              <div className="text-center max-w-3xl mx-auto mb-16">
-                <p className="text-xs uppercase tracking-[0.2em] text-primary font-bold mb-4">{t.sciencePage.historyLabel}</p>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-                  {t.sciencePage.historyTitle}{" "}<em className="italic">{t.sciencePage.historyTitleEm}</em>
-                </h2>
-              </div>
-            </ScrollReveal>
-            <div className="max-w-3xl mx-auto">
-              {milestones.map((milestone, i) => (
-                <ScrollReveal key={milestone.year} delay={i * 0.08}>
-                  <div className="flex gap-6 md:gap-10 mb-10 last:mb-0">
-                    <div className="flex flex-col items-center">
-                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center shrink-0">
-                        <span className="text-xs font-bold text-primary-foreground">{milestone.year}</span>
-                      </div>
-                      {i < milestones.length - 1 && <div className="w-px flex-1 bg-border mt-3" />}
-                    </div>
-                    <div className="pt-2 pb-6">
-                      <p className="text-base md:text-lg font-medium text-foreground leading-relaxed">{milestone.event}</p>
-                    </div>
+            {/* Stats */}
+            <div className="grid md:grid-cols-3 gap-10 mt-20">
+              {[
+                { value: rd.stat1Value, desc: rd.stat1Desc },
+                { value: rd.stat2Value, desc: rd.stat2Desc },
+                { value: rd.stat3Value, desc: rd.stat3Desc },
+              ].map((stat, i) => (
+                <ScrollReveal key={i} delay={i * 0.1}>
+                  <div className="text-center">
+                    <p className="text-5xl md:text-6xl font-extrabold text-primary">{stat.value}</p>
+                    <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{stat.desc}</p>
                   </div>
                 </ScrollReveal>
               ))}
             </div>
           </div>
         </section>
+
+        {/* LAB IMAGE BREAK */}
+        <ScrollReveal>
+          <div className="relative h-[40vh] md:h-[50vh] overflow-hidden">
+            <img src={rdLabHands} alt="AMOGEN scientist with equipment" className="w-full h-full object-cover" loading="lazy" />
+            <div className="absolute inset-0 bg-foreground/20" />
+          </div>
+        </ScrollReveal>
+
+        {/* CORE AREAS OF INNOVATION — CAROUSEL */}
+        <section className="py-20 lg:py-28 bg-section-cream">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+            <ScrollReveal>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight mb-4">
+                {rd.coreAreasTitle} <em className="italic">{rd.coreAreasTitleEm}</em>
+              </h2>
+              <p className="text-base text-muted-foreground max-w-2xl mb-12">{rd.coreAreasDesc}</p>
+            </ScrollReveal>
+
+            {/* Desktop carousel */}
+            <div className="hidden md:block" ref={carouselRef}>
+              <div className="relative overflow-hidden">
+                <div
+                  className="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  style={{ transform: `translateX(-${currentSlide * carouselItemWidth}px)` }}
+                >
+                  {coreAreas.map((area, i) => (
+                    <div key={i} className="flex-shrink-0" style={{ width: `${carouselItemWidth - 16}px` }}>
+                      <div className="rounded-2xl overflow-hidden bg-card shadow-sm h-full">
+                        <div className="h-[300px] overflow-hidden">
+                          <img src={area.image} alt={area.title} className="w-full h-full object-cover" loading="lazy" />
+                        </div>
+                        <div className="p-6">
+                          <h3 className="text-xl font-bold text-foreground mb-3">{area.title}</h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{area.desc}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex items-center gap-4 mt-8">
+                <button onClick={prevSlide} disabled={currentSlide === 0} className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-30">
+                  <ChevronLeft size={20} className="text-foreground" />
+                </button>
+                <span className="text-sm text-muted-foreground">{currentSlide + 1} of {coreAreas.length - 2}</span>
+                <button onClick={nextSlide} disabled={currentSlide >= coreAreas.length - 3} className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-30">
+                  <ChevronRight size={20} className="text-foreground" />
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile: stacked */}
+            <div className="md:hidden flex flex-col gap-6">
+              {coreAreas.map((area, i) => (
+                <div key={i} className="rounded-2xl overflow-hidden bg-card shadow-sm">
+                  <div className="h-[220px] overflow-hidden">
+                    <img src={area.image} alt={area.title} className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-foreground mb-2">{area.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{area.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* PUBLICATIONS */}
+        <section id="publications" className="py-20 lg:py-28 bg-background">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+            <ScrollReveal>
+              <div className="max-w-3xl mb-16">
+                <p className="text-xs uppercase tracking-[0.2em] text-primary font-bold mb-4">Scientific Literature</p>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
+                  Publications
+                </h2>
+                <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
+                  Peer-reviewed research and technical publications from the AMOGEN science team, advancing knowledge in peptide therapeutics and biosimilar development.
+                </p>
+              </div>
+            </ScrollReveal>
+            <div className="grid md:grid-cols-2 gap-6">
+              {publications.map((pub, i) => (
+                <ScrollReveal key={i} delay={i * 0.08}>
+                  <div className="bg-card rounded-2xl p-8 shadow-sm h-full flex flex-col">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                        <BookOpen size={18} className="text-primary" />
+                      </div>
+                      <span className="text-xs font-bold uppercase tracking-wider text-primary">{pub.type}</span>
+                      <span className="text-xs text-muted-foreground ml-auto">{pub.year}</span>
+                    </div>
+                    <h3 className="text-base font-bold text-foreground mb-3 leading-snug flex-1">{pub.title}</h3>
+                    <p className="text-sm text-muted-foreground italic">{pub.journal}</p>
+                    <a href="#" className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline mt-4">
+                      Read paper <ArrowRight size={14} />
+                    </a>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* GAME-CHANGING MOMENTS TIMELINE */}
+        <HistoryTimeline />
 
         {/* VISION QUOTE */}
         <section className="py-20 lg:py-28 bg-section-cream">
