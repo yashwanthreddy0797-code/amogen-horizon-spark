@@ -10,7 +10,7 @@ interface BenefitCategory {
 
 const categories: BenefitCategory[] = [
   {
-    title: "Financial wellbeing",
+    title: "What are peptide biosimilars",
     items: [
       "Six weeks' paid vacation",
       "Equity / stock options",
@@ -18,7 +18,7 @@ const categories: BenefitCategory[] = [
     ],
   },
   {
-    title: "Healthcare",
+    title: "USFDA",
     items: [
       "Comprehensive medical coverage",
       "Dental and vision plans",
@@ -26,7 +26,7 @@ const categories: BenefitCategory[] = [
     ],
   },
   {
-    title: "Culture and development",
+    title: "EMA",
     items: [
       "Continuous learning opportunities",
       "Leadership development programs",
