@@ -1,12 +1,12 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Microscope, Dna, FlaskConical, ScanSearch, Factory } from "lucide-react";
 
 const capabilities = [
-  { title: "Late\nDiscovery", desc: "Early-stage molecule optimization and developability assessment to de-risk your pipeline." },
-  { title: "Cell Line\nDevelopment", desc: "Proprietary platform processes for high-expressing, stable cell line generation." },
-  { title: "Process\nDevelopment", desc: "Scalable upstream and downstream process development from bench to commercial scale." },
-  { title: "Analytical\nDevelopment", desc: "Comprehensive analytical method development, qualification, and transfer capabilities." },
-  { title: "Non-GMP/CGMP\nManufacturing", desc: "Flexible manufacturing from non-GMP toxicology to CGMP clinical and commercial supply." },
+  { title: "Late\nDiscovery", desc: "Early-stage molecule optimization and developability assessment to de-risk your pipeline.", icon: Microscope },
+  { title: "Cell Line\nDevelopment", desc: "Proprietary platform processes for high-expressing, stable cell line generation.", icon: Dna },
+  { title: "Process\nDevelopment", desc: "Scalable upstream and downstream process development from bench to commercial scale.", icon: FlaskConical },
+  { title: "Analytical\nDevelopment", desc: "Comprehensive analytical method development, qualification, and transfer capabilities.", icon: ScanSearch },
+  { title: "Non-GMP/CGMP\nManufacturing", desc: "Flexible manufacturing from non-GMP toxicology to CGMP clinical and commercial supply.", icon: Factory },
 ];
 
 const CDMOCapabilities = () => {
@@ -31,6 +31,7 @@ const CDMOCapabilities = () => {
                 href="#"
                 className="group rounded-xl p-6 md:p-8 flex flex-col justify-between h-[180px] md:h-[200px] hover:opacity-80 transition-colors" style={{ backgroundColor: "#ccc5bd" }}
               >
+                <cap.icon size={28} className="text-[#001965] opacity-70 mb-3" />
                 <h3 className="text-base md:text-lg font-bold text-[#001965] whitespace-pre-line leading-snug">
                   {cap.title}
                 </h3>
