@@ -77,19 +77,23 @@ const CDMOTimeline = () => {
               ))}
 
               {/* Bars */}
-              {bars.map((bar, i) => (
-                <div
-                  key={i}
-                  className="absolute h-9 rounded-lg bg-[#001965]/10 border border-[#001965]/20 flex items-center px-3 text-xs font-semibold text-[#001965] whitespace-nowrap overflow-hidden"
-                  style={{
-                    left: getLeft(bar.startMonth),
-                    width: getWidth(bar.startMonth, bar.endMonth),
-                    top: `${bar.row * 48}px`,
-                  }}
-                >
-                  {bar.label}
-                </div>
-              ))}
+              {bars.map((bar, i) => {
+                const left = ((bar.startMonth - 0.5) / (totalMonths + 0.5)) * 100;
+                const width = ((bar.endMonth - bar.startMonth) / (totalMonths + 0.5)) * 100;
+                return (
+                  <div
+                    key={i}
+                    className="absolute h-9 rounded-full bg-[#001965]/8 border border-[#001965]/15 flex items-center justify-center px-4 text-xs font-semibold text-[#001965] whitespace-nowrap text-center"
+                    style={{
+                      left: `${left}%`,
+                      width: `max(${width}%, fit-content)`,
+                      top: `${bar.row * 48}px`,
+                    }}
+                  >
+                    {bar.label}
+                  </div>
+                );
+              })}
 
               {/* CGMP DS Lot Release */}
               <div
