@@ -15,7 +15,11 @@ const languages = [
   { code: "es" as Language, label: "Español" },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  variant?: "default" | "cdmo";
+}
+
+const Navbar = ({ variant = "default" }: NavbarProps) => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -25,6 +29,18 @@ const Navbar = () => {
   const navRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { language, setLanguage, t } = useLanguage();
+
+  const isCdmo = variant === "cdmo";
+  // CDMO variant: true blue text on transparent/sand-grey bg; default: white text on dark bg
+  const navBg = isCdmo ? "bg-transparent" : "bg-nav-dark";
+  const navBgHover = isCdmo ? "bg-[#ccc5bd] shadow-2xl" : "bg-nav-dark shadow-2xl";
+  const navText = isCdmo ? "text-[#001965]" : "text-nav-dark-foreground";
+  const navTextMuted = isCdmo ? "text-[#001965]/70" : "text-nav-dark-foreground/80";
+  const navTextFull = isCdmo ? "text-[#001965]" : "text-nav-dark-foreground";
+  const navHoverBg = isCdmo ? "hover:bg-[#001965]/10" : "hover:bg-nav-dark-foreground/10";
+  const navActiveBg = isCdmo ? "bg-[#001965]/15" : "bg-nav-dark-foreground/15";
+  const navPillBg = isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
+  const navBorderColor = isCdmo ? "border-[#001965]/15" : "border-nav-dark-foreground/15";
 
   const menuData = {
     [t.nav.about]: {
@@ -154,15 +170,14 @@ const Navbar = () => {
           onMouseEnter={handleDropdownEnter}
           onMouseLeave={handleDropdownLeave}
         >
-          <div className="mx-8 border-t border-nav-dark-foreground/15" />
+          <div className={`mx-8 border-t ${navBorderColor}`} />
           <div className="px-8 md:px-10 py-8 md:py-10">
-            <h3 className="text-2xl md:text-3xl font-bold text-nav-dark-foreground mb-2 italic">
+            <h3 className={`text-2xl md:text-3xl font-bold ${navTextFull} mb-2 italic`}>
               {activeMenu}
             </h3>
             <div className="flex flex-col md:flex-row gap-8 mt-4">
-              {/* Left side: description + links */}
               <div className="flex flex-col gap-6 md:min-w-[280px]">
-                <p className="text-nav-dark-foreground/60 text-sm md:text-base max-w-xs leading-relaxed">
+                <p className={`${navTextMuted} text-sm md:text-base max-w-xs leading-relaxed`}>
                   {menuData[activeMenu].description}
                 </p>
                 <div className="flex gap-12 md:gap-16">
@@ -177,7 +192,7 @@ const Navbar = () => {
                           <a
                             key={label}
                             href={href}
-                            className="text-sm md:text-base text-nav-dark-foreground/90 hover:text-nav-dark-foreground underline underline-offset-4 decoration-nav-dark-foreground/30 hover:decoration-nav-dark-foreground/70 transition-colors"
+                            className={`text-sm md:text-base ${navTextMuted} hover:${navTextFull} underline underline-offset-4 decoration-current/30 hover:decoration-current/70 transition-colors`}
                             onClick={() => { setActiveMenu(null); setMobileMenuOpen(false); }}
                           >
                             {label}
@@ -354,15 +369,15 @@ const Navbar = () => {
         style={{ pointerEvents: scrolled ? "none" : "auto", position: scrolled ? "absolute" : "relative", left: 0, right: 0 }}
       >
             <div
-              className={`text-nav-dark-foreground transition-all duration-500 ease-out overflow-hidden rounded-[1.5rem] ${
+              className={`${navText} transition-all duration-500 ease-out overflow-hidden rounded-[1.5rem] ${
                 hovered || activeMenu
-                  ? "bg-nav-dark shadow-2xl"
-                  : "bg-transparent shadow-none"
+                  ? navBgHover
+                  : `${navBg} shadow-none`
               }`}
             >
               <div className="flex items-center justify-between px-6 md:px-8 py-3">
                 <a href="/" className="shrink-0">
-                  <span className="text-base md:text-lg font-bold tracking-tight text-nav-dark-foreground">
+                  <span className={`text-base md:text-lg font-bold tracking-tight ${navTextFull}`}>
                     AMOGEN
                   </span>
                 </a>
@@ -383,8 +398,8 @@ const Navbar = () => {
                           }}
                           className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
                             activeMenu === item
-                              ? "bg-nav-dark-foreground/15 text-nav-dark-foreground"
-                              : "text-nav-dark-foreground/80 hover:text-nav-dark-foreground hover:bg-nav-dark-foreground/5"
+                              ? `${navActiveBg} ${navTextFull}`
+                              : `${navTextMuted} ${navHoverBg} hover:${navTextFull}`
                           }`}
                         >
                           {item}
@@ -396,14 +411,14 @@ const Navbar = () => {
 
                 <div className="flex items-center gap-1">
                   <button
-                    className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                    className={`hidden md:flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
                     aria-label={t.nav.search}
                   >
                     <Search size={17} />
                   </button>
                   <div className="relative">
                     <button
-                      className="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                      className={`hidden md:flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
                       aria-label={t.nav.language}
                       onClick={() => setLangOpen(!langOpen)}
                     >
@@ -429,13 +444,13 @@ const Navbar = () => {
                   </div>
                   <a
                     href="#contact"
-                    className="hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                    className={`hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full ${navHoverBg} transition-colors`}
                   >
                     {t.nav.partnerWithUs}
                   </a>
 
                   <button
-                    className="md:hidden flex items-center gap-2 px-3 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors text-sm font-medium"
+                    className={`md:hidden flex items-center gap-2 px-3 py-2 rounded-full ${navHoverBg} transition-colors text-sm font-medium`}
                     onClick={() => setActiveMenu(activeMenu ? null : navItems[0])}
                   >
                     {t.nav.menu}
@@ -472,18 +487,18 @@ const Navbar = () => {
                   transition={{ duration: 0.25, ease: "easeInOut" }}
                 >
                   {/* Left pill: Logo + Hamburger */}
-                  <div
-                    className="bg-nav-dark shadow-2xl rounded-full cursor-pointer"
+                   <div
+                    className={`${navPillBg} shadow-2xl rounded-full cursor-pointer`}
                     onMouseEnter={handleScrolledPillEnter}
                   >
                     <div className="flex items-center gap-2 px-4 md:px-5 py-2.5">
                       <a href="/" className="shrink-0">
-                        <span className="text-base font-bold tracking-tight text-nav-dark-foreground">
+                         <span className={`text-base font-bold tracking-tight ${navTextFull}`}>
                           AMOGEN
                         </span>
                       </a>
                       <div
-                        className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                        className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
                         aria-label={t.nav.menu}
                       >
                         <Menu size={18} />
@@ -492,17 +507,17 @@ const Navbar = () => {
                   </div>
 
                   {/* Right pill: Search, Globe, Partner With Us */}
-                  <div className="bg-nav-dark shadow-2xl rounded-full">
+                  <div className={`${navPillBg} shadow-2xl rounded-full`}>
                     <div className="flex items-center gap-1 px-3 md:px-4 py-2.5">
                       <button
-                        className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                        className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
                         aria-label={t.nav.search}
                       >
                         <Search size={17} />
                       </button>
                       <div className="relative">
                         <button
-                          className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                          className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
                           aria-label={t.nav.language}
                           onClick={() => setLangOpen(!langOpen)}
                         >
@@ -528,7 +543,7 @@ const Navbar = () => {
                       </div>
                       <a
                         href="#contact"
-                        className="hidden md:flex items-center text-sm font-medium px-4 py-1.5 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                        className={`hidden md:flex items-center text-sm font-medium px-4 py-1.5 rounded-full ${navHoverBg} transition-colors`}
                       >
                         {t.nav.partnerWithUs}
                       </a>
@@ -546,13 +561,13 @@ const Navbar = () => {
                   onMouseEnter={handleScrolledBarEnter}
                   onMouseLeave={handleScrolledBarLeave}
                 >
-                  <div
-                    className="bg-nav-dark shadow-2xl text-nav-dark-foreground transition-all duration-300 rounded-[1.5rem] overflow-hidden"
+                    <div
+                      className={`${navPillBg} shadow-2xl ${navText} transition-all duration-300 rounded-[1.5rem] overflow-hidden`}
                   >
                     {/* Top bar with logo, nav items, and close button */}
                     <div className="flex items-center justify-between px-6 md:px-8 py-3">
                       <a href="/" className="shrink-0">
-                        <span className="text-base md:text-lg font-bold tracking-tight text-nav-dark-foreground">
+                        <span className={`text-base md:text-lg font-bold tracking-tight ${navTextFull}`}>
                           AMOGEN
                         </span>
                       </a>
@@ -577,8 +592,8 @@ const Navbar = () => {
                                 }}
                                 className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
                                   activeMenu === item
-                                    ? "bg-nav-dark-foreground/15 text-nav-dark-foreground"
-                                    : "text-nav-dark-foreground/80 hover:text-nav-dark-foreground hover:bg-nav-dark-foreground/5"
+                                    ? `${navActiveBg} ${navTextFull}`
+                                    : `${navTextMuted} ${navHoverBg} hover:${navTextFull}`
                                 }`}
                               >
                                 {item}
@@ -590,14 +605,14 @@ const Navbar = () => {
 
                       <div className="flex items-center gap-1">
                         <button
-                          className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                          className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
                           aria-label={t.nav.search}
                         >
                           <Search size={17} />
                         </button>
                         <div className="relative">
                           <button
-                            className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                            className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
                             aria-label={t.nav.language}
                             onClick={() => setLangOpen(!langOpen)}
                           >
@@ -623,13 +638,13 @@ const Navbar = () => {
                         </div>
                         <a
                           href="#contact"
-                          className="hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                          className={`hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full ${navHoverBg} transition-colors`}
                         >
                           {t.nav.partnerWithUs}
                         </a>
                         <button
                           onClick={() => { setMobileMenuOpen(false); setActiveMenu(null); }}
-                          className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-nav-dark-foreground/10 transition-colors"
+                          className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
                           aria-label="Close menu"
                         >
                           <X size={18} />
