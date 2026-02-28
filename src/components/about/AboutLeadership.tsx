@@ -8,7 +8,19 @@ import leaderKalyan from "@/assets/leader-kalyan.png";
 import leaderHarmeet from "@/assets/leader-harmeet.png";
 import leaderManpreet from "@/assets/leader-manpreet.png";
 
-const leaders: { name: string; title: string; bio: string; photo: string; stat?: string; statLabel?: string }[] = [
+interface Leader {
+  name: string;
+  title: string;
+  photo: string;
+  stat: string;
+  statLabel: string;
+  bio?: string;
+  education?: string;
+  almaMater?: string;
+  previousCompanies?: string[];
+}
+
+const leaders: Leader[] = [
   {
     name: "P.V.S.N. Raju",
     title: "Chairman & MD",
@@ -18,27 +30,43 @@ const leaders: { name: string; title: string; bio: string; photo: string; stat?:
     photo: leaderRaju,
   },
   {
-    name: "Akhilesh Raju",
-    title: "Director – Business Development",
-    bio: "Akhilesh drives AMOGEN's global partnerships and market expansion strategy, leveraging deep expertise in international pharmaceutical business development.",
+    name: "P. Akhilesh Raju",
+    title: "Chief Executive Officer",
+    stat: "6+",
+    statLabel: "Years of experience",
+    education: "MBA",
+    almaMater: "Anglia Ruskin",
+    previousCompanies: ["Pardha Group"],
     photo: leaderAkhilesh,
   },
   {
-    name: "T. Devi Kalyan",
-    title: "Director – Operations",
-    bio: "With extensive experience in pharmaceutical operations, Kalyan oversees AMOGEN's manufacturing excellence and ensures the highest standards of quality and efficiency.",
+    name: "Dr. T Devi Kalyan",
+    title: "Chief Operating Officer",
+    stat: "18+",
+    statLabel: "Years of experience",
+    education: "PhD",
+    almaMater: "DRDO",
+    previousCompanies: ["Biological E", "Dr. Reddy's"],
     photo: leaderKalyan,
   },
   {
     name: "Harmeet Lamba",
-    title: "Vice President – Quality",
-    bio: "Harmeet leads quality assurance and regulatory compliance, bringing deep expertise in cGMP practices and international quality standards to AMOGEN's operations.",
+    title: "Advisor",
+    stat: "30+",
+    statLabel: "Years of experience",
+    education: "MBA",
+    almaMater: "Wharton BS",
+    previousCompanies: ["Ranbaxy", "Dr. Reddy's"],
     photo: leaderHarmeet,
   },
   {
     name: "Dr. Manpreet Singh",
-    title: "Vice President – R&D",
-    bio: "Dr. Singh heads research and development initiatives, driving innovation in peptide biosimilar formulation and analytical method development.",
+    title: "Vice President, BD",
+    stat: "16+",
+    statLabel: "Years of experience",
+    education: "PhD",
+    almaMater: "NIPER",
+    previousCompanies: ["Dr. Reddy's", "Aurisco"],
     photo: leaderManpreet,
   },
 ];
@@ -88,15 +116,33 @@ const AboutLeadership = () => {
                         <div className="pb-6 grid md:grid-cols-[1fr_200px] gap-6 items-start">
                           <div>
                             <p className="text-base font-semibold text-primary">{leader.title}</p>
-                            {leader.stat && (
-                              <div className="mt-6">
-                                <p className="text-4xl font-extrabold text-foreground">{leader.stat}</p>
-                                <p className="text-sm font-semibold text-foreground mt-1">{leader.statLabel}</p>
+                            <div className="mt-6">
+                              <p className="text-4xl font-extrabold text-foreground">{leader.stat}</p>
+                              <p className="text-sm font-semibold text-foreground mt-1">{leader.statLabel}</p>
+                            </div>
+                            {leader.bio && (
+                              <p className="text-sm font-semibold text-foreground mt-5 leading-relaxed max-w-lg">
+                                {leader.bio}
+                              </p>
+                            )}
+                            {leader.education && (
+                              <div className="mt-5">
+                                <p className="text-sm font-semibold text-foreground">{leader.education}</p>
+                                <p className="text-sm font-semibold text-foreground">{leader.almaMater}</p>
                               </div>
                             )}
-                            <p className="text-sm font-semibold text-foreground mt-5 leading-relaxed max-w-lg">
-                              {leader.bio}
-                            </p>
+                            {leader.previousCompanies && leader.previousCompanies.length > 0 && (
+                              <div className="flex flex-wrap gap-2 mt-5">
+                                {leader.previousCompanies.map((company) => (
+                                  <span
+                                    key={company}
+                                    className="text-xs font-medium text-primary border border-primary/40 rounded px-3 py-1"
+                                  >
+                                    {company}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </div>
                           <div className="rounded-lg overflow-hidden">
                             <img
