@@ -10,7 +10,7 @@ import CDMORelatedContent from "@/components/cdmo/CDMORelatedContent";
 const CDMO = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <Navbar variant="cdmo" />
       <main>
         <CDMOHero />
         <CDMOCapabilities />
