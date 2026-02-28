@@ -16,7 +16,7 @@ const languages = [
 ];
 
 interface NavbarProps {
-  variant?: "default" | "cdmo";
+  variant?: "default" | "cdmo" | "about";
 }
 
 const Navbar = ({ variant = "default" }: NavbarProps) => {
@@ -31,25 +31,30 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
   const { language, setLanguage, t } = useLanguage();
 
   const isCdmo = variant === "cdmo";
-  // CDMO variant: true blue text on transparent/sand-grey bg; default: white text on dark bg
-  const navBg = isCdmo ? "bg-transparent" : "bg-nav-dark";
-  const navBgHover = isCdmo ? "bg-[#001965] shadow-2xl" : "bg-nav-dark shadow-2xl";
-  const navText = isCdmo ? "text-[#001965]" : "text-nav-dark-foreground";
-  const navTextMuted = isCdmo ? "text-[#001965]/70" : "text-nav-dark-foreground/80";
-  const navTextFull = isCdmo ? "text-[#001965]" : "text-nav-dark-foreground";
-  const navHoverBg = isCdmo ? "hover:bg-[#001965]/10" : "hover:bg-nav-dark-foreground/10";
-  const navActiveBg = isCdmo ? "bg-[#001965]/15" : "bg-nav-dark-foreground/15";
-  const navPillBg = isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
-  const navBorderColor = isCdmo ? "border-[#001965]/15" : "border-nav-dark-foreground/15";
+  const isAbout = variant === "about";
+  const isBlueText = isCdmo || isAbout;
+  const pillColor = isAbout ? "bg-[#EEA7BF]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
+  const pillColorExpanded = isAbout ? "bg-[#EEA7BF]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
+  // CDMO/About variant: true blue text on transparent bg; default: white text on dark bg
+  const navBg = isBlueText ? "bg-transparent" : "bg-nav-dark";
+  const navBgHover = isBlueText ? "bg-[#001965] shadow-2xl" : "bg-nav-dark shadow-2xl";
+  const navText = isBlueText ? "text-[#001965]" : "text-nav-dark-foreground";
+  const navTextMuted = isBlueText ? "text-[#001965]/70" : "text-nav-dark-foreground/80";
+  const navTextFull = isBlueText ? "text-[#001965]" : "text-nav-dark-foreground";
+  const navHoverBg = isBlueText ? "hover:bg-[#001965]/10" : "hover:bg-nav-dark-foreground/10";
+  const navActiveBg = isBlueText ? "bg-[#001965]/15" : "bg-nav-dark-foreground/15";
+  const navPillBg = pillColor;
+  const navBorderColor = isBlueText ? "border-[#001965]/15" : "border-nav-dark-foreground/15";
 
-  // Expanded scrolled bar: CDMO flips to True Blue bg + sand grey text
-  const navPillBgExpanded = isCdmo ? "bg-[#001965]" : "bg-nav-dark";
-  const navTextExpanded = isCdmo ? "text-[#ccc5bd]" : navText;
-  const navTextFullExpanded = isCdmo ? "text-[#ccc5bd]" : navTextFull;
-  const navTextMutedExpanded = isCdmo ? "text-[#ccc5bd]/70" : navTextMuted;
-  const navHoverBgExpanded = isCdmo ? "hover:bg-[#ccc5bd]/10" : navHoverBg;
-  const navActiveBgExpanded = isCdmo ? "bg-[#ccc5bd]/15" : navActiveBg;
-  const navBorderColorExpanded = isCdmo ? "border-[#ccc5bd]/15" : navBorderColor;
+  // Expanded scrolled bar: flips to True Blue bg + light text
+  const expandedTextColor = isAbout ? "text-[#EEA7BF]" : isCdmo ? "text-[#ccc5bd]" : navText;
+  const navPillBgExpanded = isBlueText ? "bg-[#001965]" : "bg-nav-dark";
+  const navTextExpanded = expandedTextColor;
+  const navTextFullExpanded = expandedTextColor;
+  const navTextMutedExpanded = isAbout ? "text-[#EEA7BF]/70" : isCdmo ? "text-[#ccc5bd]/70" : navTextMuted;
+  const navHoverBgExpanded = isAbout ? "hover:bg-[#EEA7BF]/10" : isCdmo ? "hover:bg-[#ccc5bd]/10" : navHoverBg;
+  const navActiveBgExpanded = isAbout ? "bg-[#EEA7BF]/15" : isCdmo ? "bg-[#ccc5bd]/15" : navActiveBg;
+  const navBorderColorExpanded = isAbout ? "border-[#EEA7BF]/15" : isCdmo ? "border-[#ccc5bd]/15" : navBorderColor;
 
   const menuData = {
     [t.nav.about]: {
@@ -384,16 +389,16 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
             <div
               className={`transition-all duration-500 ease-out overflow-hidden rounded-[1.5rem] ${
                 hovered || activeMenu
-                  ? `${navBgHover} ${isCdmo ? "text-[#ccc5bd]" : navText}`
+                  ? `${navBgHover} ${isBlueText ? "text-[#ccc5bd]" : navText}`
                   : `${navBg} ${navText} shadow-none`
               }`}
             >
               {(() => {
                 const isActive = hovered || !!activeMenu;
-                const _text = isCdmo && isActive ? navTextFullExpanded : navTextFull;
-                const _textMuted = isCdmo && isActive ? navTextMutedExpanded : navTextMuted;
-                const _hoverBg = isCdmo && isActive ? navHoverBgExpanded : navHoverBg;
-                const _activeBg = isCdmo && isActive ? navActiveBgExpanded : navActiveBg;
+                const _text = isBlueText && isActive ? navTextFullExpanded : navTextFull;
+                const _textMuted = isBlueText && isActive ? navTextMutedExpanded : navTextMuted;
+                const _hoverBg = isBlueText && isActive ? navHoverBgExpanded : navHoverBg;
+                const _activeBg = isBlueText && isActive ? navActiveBgExpanded : navActiveBg;
                 return (
               <div className="relative flex items-center justify-between px-6 md:px-8 py-2">
                 <a href="/" className="shrink-0 z-10">
@@ -484,7 +489,7 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                 );
               })()}
 
-              {renderMegaMenu(isCdmo && (hovered || !!activeMenu) ? { borderColor: navBorderColorExpanded, textFull: navTextFullExpanded, textMuted: navTextMutedExpanded } : undefined)}
+              {renderMegaMenu(isBlueText && (hovered || !!activeMenu) ? { borderColor: navBorderColorExpanded, textFull: navTextFullExpanded, textMuted: navTextMutedExpanded } : undefined)}
             </div>
           </motion.div>
 
