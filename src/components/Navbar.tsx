@@ -64,10 +64,11 @@ const Navbar = () => {
     },
     [t.nav.news]: {
       description: t.nav.newsDesc,
-      image: { src: researchLab, title: "Latest Updates", subtitle: "News & insights", href: "#news" },
+      href: "/news",
+      image: { src: researchLab, title: "Latest Updates", subtitle: "News & insights", href: "/news" },
       links: [
-        [t.nav.pressReleases, t.nav.blog],
-        [t.nav.documentLibrary, t.nav.latestUpdates],
+        [{ label: t.nav.pressReleases, href: "/news#press-releases" }, { label: t.nav.blog, href: "/news#blog" }],
+        [{ label: t.nav.documentLibrary, href: "/news#document-library" }, { label: t.nav.latestUpdates, href: "/news#latest-updates" }],
       ],
     },
   } as Record<string, { description: string; href?: string; image: { src: string; title: string; subtitle: string; href: string }; links: (string | { label: string; href: string })[][] }>;
