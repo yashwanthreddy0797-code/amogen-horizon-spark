@@ -5,21 +5,16 @@ const bars = [
   { label: "VC*", startMonth: 1, endMonth: 1.5, row: 0 },
   { label: "Cell Line Development", startMonth: 2, endMonth: 4, row: 0 },
   { label: "Process Development", startMonth: 4, endMonth: 8, row: 1 },
-  { label: "Non-GMP DS", startMonth: 5, endMonth: 7, row: 2 },
+  { label: "Non-GMP DS", startMonth: 5, endMonth: 7.5, row: 2 },
   { label: "DP", startMonth: 8, endMonth: 8.5, row: 2 },
   { label: "Analytical Tech Transfer", startMonth: 7, endMonth: 9, row: 3 },
   { label: "CGMP DS", startMonth: 8, endMonth: 9.5, row: 4 },
-  { label: "CGMP DP", startMonth: 10, endMonth: 10.5, row: 4 },
+  { label: "CGMP DP", startMonth: 10, endMonth: 10.8, row: 4 },
   { label: "Regulatory Documentation", startMonth: 8, endMonth: 11, row: 5 },
 ];
 
-const milestones = [
-  { label: "CGMP DS\nLot Release", month: 10, row: 1 },
-  { label: "CGMP DP\nLot Release", month: 11, row: 3 },
-];
-
 const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-const totalMonths = 11;
+const totalMonths = 12.5;
 const rowCount = 6;
 
 const CDMOTimeline = () => {
@@ -96,36 +91,47 @@ const CDMOTimeline = () => {
                 </div>
               ))}
 
-              {/* Milestones */}
-              {milestones.map((ms, i) => (
-                <div
-                  key={i}
-                  className="absolute flex flex-col items-center"
-                  style={{
-                    left: getLeft(ms.month),
-                    top: `${ms.row * 48}px`,
-                    transform: "translateX(-50%)",
-                  }}
-                >
-                  <div className="text-xs text-muted-foreground whitespace-pre-line text-center leading-tight mb-1">
-                    {ms.label}
-                  </div>
-                  <div className="w-3 h-3 rounded-full border-2 border-[#001965] bg-white" />
-                </div>
-              ))}
-
-              {/* IND filing callout */}
+              {/* CGMP DS Lot Release */}
               <div
                 className="absolute flex flex-col items-center"
                 style={{
-                  left: getLeft(11),
-                  top: `${2 * 48}px`,
+                  left: getLeft(10.5),
+                  top: `${0.5 * 48}px`,
+                  transform: "translateX(-50%)",
+                }}
+              >
+                <div className="text-xs text-[#001965]/60 whitespace-pre-line text-center leading-tight mb-1">
+                  CGMP DS{"\n"}Lot Release
+                </div>
+                <div className="w-3.5 h-3.5 rounded-full border-2 border-[#001965] bg-white" />
+              </div>
+
+              {/* VC to IND filing callout */}
+              <div
+                className="absolute flex flex-col items-center"
+                style={{
+                  left: getLeft(11.5),
+                  top: `${1.5 * 48}px`,
                   transform: "translateX(-50%)",
                 }}
               >
                 <p className="text-xs text-[#001965] font-semibold">VC to IND filing</p>
                 <p className="text-2xl font-extrabold text-[#001965]">11 <span className="text-sm font-semibold">months</span></p>
-                <div className="w-4 h-4 rounded-full border-2 border-[#001965] bg-white mt-1" />
+              </div>
+
+              {/* CGMP DP Lot Release */}
+              <div
+                className="absolute flex flex-col items-center"
+                style={{
+                  left: getLeft(11.5),
+                  top: `${3.2 * 48}px`,
+                  transform: "translateX(-50%)",
+                }}
+              >
+                <div className="text-xs text-[#001965]/60 whitespace-pre-line text-center leading-tight mb-1">
+                  CGMP DP{"\n"}Lot Release
+                </div>
+                <div className="w-3.5 h-3.5 rounded-full border-2 border-[#001965] bg-white" />
               </div>
             </div>
 
