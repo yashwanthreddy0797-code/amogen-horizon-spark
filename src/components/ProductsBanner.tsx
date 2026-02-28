@@ -14,15 +14,6 @@ const ProductsBanner = () => {
           loading="lazy" />
 
         <div className="absolute inset-0 bg-gradient-to-l from-transparent to-footer-bg" />
-        {/* Button overlaid on image */}
-        <div className="absolute inset-0 z-20 flex items-center justify-center">
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold rounded-full border-2 border-footer-foreground text-footer-foreground hover:bg-footer-foreground hover:text-footer-bg transition-colors backdrop-blur-sm bg-footer-bg/20">
-
-            <span>Our products</span>
-          </a>
-        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full">
@@ -39,7 +30,11 @@ const ProductsBanner = () => {
             <p className="text-base text-footer-foreground/70 leading-relaxed max-w-lg mb-8">
               Check out a list of active pharmaceutical ingredients (APIs) and Finished Dosage Forms (FDFs) we offer
             </p>
-            <span className="text-sm text-footer-foreground/70">Contact our sales team to learn more</span>
+            <a
+              href="#"
+              className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold rounded-full border-2 border-footer-foreground text-footer-foreground hover:bg-footer-foreground hover:text-footer-bg transition-colors">
+              <span>Our products</span>
+            </a>
           </div>
         </ScrollReveal>
       </div>
