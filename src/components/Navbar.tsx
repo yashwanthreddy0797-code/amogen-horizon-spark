@@ -33,8 +33,8 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
   const isCdmo = variant === "cdmo";
   const isAbout = variant === "about";
   const isBlueText = isCdmo || isAbout;
-  const pillColor = isAbout ? "bg-[#EEA7BF]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
-  const pillColorExpanded = isAbout ? "bg-[#EEA7BF]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
+  const pillColor = isAbout ? "bg-[#3897DE]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
+  const pillColorExpanded = isAbout ? "bg-[#3897DE]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
   // CDMO/About variant: true blue text on transparent bg; default: white text on dark bg
   const navBg = isBlueText ? "bg-transparent" : "bg-nav-dark";
   const navBgHover = isBlueText ? "bg-[#001965] shadow-2xl" : "bg-nav-dark shadow-2xl";
@@ -47,7 +47,7 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
   const navBorderColor = isBlueText ? "border-[#001965]/15" : "border-nav-dark-foreground/15";
 
   // Expanded scrolled bar: flips to True Blue bg + light text
-  const expandedTextColor = isAbout ? "text-[#EEA7BF]" : isCdmo ? "text-[#ccc5bd]" : navText;
+  const expandedTextColor = isAbout ? "text-[#3897DE]" : isCdmo ? "text-[#ccc5bd]" : navText;
   const navPillBgExpanded = isBlueText ? "bg-[#001965]" : "bg-nav-dark";
   const navTextExpanded = isBlueText ? "text-white" : navText;
   const navTextFullExpanded = isBlueText ? "text-white" : navTextFull;
