@@ -11,15 +11,15 @@ const ProductsBanner = () => {
           src={productsImg}
           alt="Pharmaceutical vials"
           className="w-full h-full object-cover"
-          loading="lazy"
-        />
+          loading="lazy" />
+
         <div className="absolute inset-0 bg-gradient-to-l from-transparent to-footer-bg" />
         {/* Button overlaid on image */}
         <div className="absolute inset-0 z-20 flex items-center justify-center">
           <a
             href="#"
-            className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold rounded-full border-2 border-footer-foreground text-footer-foreground hover:bg-footer-foreground hover:text-footer-bg transition-colors backdrop-blur-sm bg-footer-bg/20"
-          >
+            className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold rounded-full border-2 border-footer-foreground text-footer-foreground hover:bg-footer-foreground hover:text-footer-bg transition-colors backdrop-blur-sm bg-footer-bg/20">
+
             <span>Our products</span>
           </a>
         </div>
@@ -33,8 +33,8 @@ const ProductsBanner = () => {
               APIs and FDFs
             </p>
             <div className="w-full h-px bg-footer-foreground/20 mb-6" />
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-footer-foreground leading-tight mb-5">
-              Our products
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-footer-foreground leading-tight mb-5">Explore our API's
+
             </h2>
             <p className="text-base text-footer-foreground/70 leading-relaxed max-w-lg mb-8">
               Check out a list of active pharmaceutical ingredients (APIs) and Finished Dosage Forms (FDFs) we offer
@@ -43,8 +43,8 @@ const ProductsBanner = () => {
           </div>
         </ScrollReveal>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default ProductsBanner;
