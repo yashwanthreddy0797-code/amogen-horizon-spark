@@ -20,8 +20,8 @@ const ProductsBanner = () => {
         <ScrollReveal>
           {/* Content - left side */}
           <div className="relative z-10 w-full md:w-[50%] py-12 md:py-16">
-            <p className="text-xs uppercase tracking-[0.2em] text-footer-foreground/70 font-semibold mb-2">
-              APIs and FDFs
+            <p className="text-xs uppercase tracking-[0.2em] text-footer-foreground/70 font-semibold mb-2">API AND FDF
+
             </p>
             <div className="w-full h-px bg-footer-foreground/20 mb-6" />
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-footer-foreground leading-tight mb-5">Explore our API's
