@@ -31,7 +31,7 @@ const CDMOCapabilities = () => {
                 href="#"
                 className="group rounded-xl p-6 md:p-8 flex flex-col h-[200px] md:h-[220px] hover:opacity-80 transition-colors" style={{ backgroundColor: "#ccc5bd" }}
               >
-                <cap.icon size={40} className="text-[#001965] opacity-70" />
+                <cap.icon size={40} className="text-[#001965]" />
                 <div className="mt-auto flex items-end justify-between">
                   <h3 className="text-base md:text-lg font-bold text-[#001965] whitespace-pre-line leading-snug">
                     {cap.title}
