@@ -6,7 +6,7 @@ const AboutAtGlance = () => {
     <section className="py-24 lg:py-32 bg-card relative overflow-hidden">
       {/* Decorative sweeping golden line */}
       <svg
-        className="absolute top-12 left-0 w-full h-[200px] pointer-events-none"
+        className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-[200px] pointer-events-none"
         viewBox="0 0 1400 200"
         fill="none"
         preserveAspectRatio="none"
