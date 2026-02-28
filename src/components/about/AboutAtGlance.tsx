@@ -7,11 +7,11 @@ const AboutAtGlance = () => {
       {/* Decorative background elements */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {/* Large gradient circle — top right */}
-        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-primary/[0.04]" />
+        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#EEA7BF]/[0.15]" />
         {/* Smaller accent circle — bottom left */}
         <div className="absolute -bottom-20 -left-20 w-[300px] h-[300px] rounded-full bg-primary/[0.03]" />
         {/* Molecular / helix-inspired SVG — top right area */}
-        <svg className="absolute top-16 right-12 w-64 h-64 text-primary/[0.06]" viewBox="0 0 200 200" fill="none">
+        <svg className="absolute top-16 right-12 w-64 h-64 text-[#EEA7BF]/60" viewBox="0 0 200 200" fill="none">
           <circle cx="40" cy="40" r="6" fill="currentColor" />
           <circle cx="100" cy="30" r="4" fill="currentColor" />
           <circle cx="160" cy="50" r="8" fill="currentColor" />
