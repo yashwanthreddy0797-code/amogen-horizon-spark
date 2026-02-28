@@ -33,7 +33,7 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
   const isCdmo = variant === "cdmo";
   // CDMO variant: true blue text on transparent/sand-grey bg; default: white text on dark bg
   const navBg = isCdmo ? "bg-transparent" : "bg-nav-dark";
-  const navBgHover = isCdmo ? "bg-[#ccc5bd] shadow-2xl" : "bg-nav-dark shadow-2xl";
+  const navBgHover = isCdmo ? "bg-[#001965] shadow-2xl" : "bg-nav-dark shadow-2xl";
   const navText = isCdmo ? "text-[#001965]" : "text-nav-dark-foreground";
   const navTextMuted = isCdmo ? "text-[#001965]/70" : "text-nav-dark-foreground/80";
   const navTextFull = isCdmo ? "text-[#001965]" : "text-nav-dark-foreground";
@@ -382,15 +382,22 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
         style={{ pointerEvents: scrolled ? "none" : "auto", position: scrolled ? "absolute" : "relative", left: 0, right: 0 }}
       >
             <div
-              className={`${navText} transition-all duration-500 ease-out overflow-hidden rounded-[1.5rem] ${
+              className={`transition-all duration-500 ease-out overflow-hidden rounded-[1.5rem] ${
                 hovered || activeMenu
-                  ? navBgHover
-                  : `${navBg} shadow-none`
+                  ? `${navBgHover} ${isCdmo ? "text-[#ccc5bd]" : navText}`
+                  : `${navBg} ${navText} shadow-none`
               }`}
             >
+              {(() => {
+                const isActive = hovered || !!activeMenu;
+                const _text = isCdmo && isActive ? navTextFullExpanded : navTextFull;
+                const _textMuted = isCdmo && isActive ? navTextMutedExpanded : navTextMuted;
+                const _hoverBg = isCdmo && isActive ? navHoverBgExpanded : navHoverBg;
+                const _activeBg = isCdmo && isActive ? navActiveBgExpanded : navActiveBg;
+                return (
               <div className="flex items-center justify-between px-6 md:px-8 py-3">
                 <a href="/" className="shrink-0">
-                  <span className={`text-base md:text-lg font-bold tracking-tight ${navTextFull}`}>
+                  <span className={`text-base md:text-lg font-bold tracking-tight ${_text}`}>
                     AMOGEN
                   </span>
                 </a>
@@ -411,8 +418,8 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                           }}
                           className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
                             activeMenu === item
-                              ? `${navActiveBg} ${navTextFull}`
-                              : `${navTextMuted} ${navHoverBg} hover:${navTextFull}`
+                              ? `${_activeBg} ${_text}`
+                              : `${_textMuted} ${_hoverBg} hover:${_text}`
                           }`}
                         >
                           {item}
@@ -424,14 +431,14 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
 
                 <div className="flex items-center gap-1">
                   <button
-                    className={`hidden md:flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
+                    className={`hidden md:flex items-center justify-center w-9 h-9 rounded-full ${_hoverBg} transition-colors`}
                     aria-label={t.nav.search}
                   >
                     <Search size={17} />
                   </button>
                   <div className="relative">
                     <button
-                      className={`hidden md:flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
+                      className={`hidden md:flex items-center justify-center w-9 h-9 rounded-full ${_hoverBg} transition-colors`}
                       aria-label={t.nav.language}
                       onClick={() => setLangOpen(!langOpen)}
                     >
@@ -457,13 +464,13 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                   </div>
                   <a
                     href="#contact"
-                    className={`hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full ${navHoverBg} transition-colors`}
+                    className={`hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full ${_hoverBg} transition-colors`}
                   >
                     {t.nav.partnerWithUs}
                   </a>
 
                   <button
-                    className={`md:hidden flex items-center gap-2 px-3 py-2 rounded-full ${navHoverBg} transition-colors text-sm font-medium`}
+                    className={`md:hidden flex items-center gap-2 px-3 py-2 rounded-full ${_hoverBg} transition-colors text-sm font-medium`}
                     onClick={() => setActiveMenu(activeMenu ? null : navItems[0])}
                   >
                     {t.nav.menu}
@@ -474,8 +481,10 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                   </button>
                 </div>
               </div>
+                );
+              })()}
 
-              {renderMegaMenu()}
+              {renderMegaMenu(isCdmo && (hovered || !!activeMenu) ? { borderColor: navBorderColorExpanded, textFull: navTextFullExpanded, textMuted: navTextMutedExpanded } : undefined)}
             </div>
           </motion.div>
 
