@@ -11,7 +11,7 @@ const capabilities = [
 
 const CDMOCapabilities = () => {
   return (
-    <section id="manufacturing-services" className="py-20 lg:py-28 bg-section-cream">
+    <section id="manufacturing-services" className="pt-20 lg:pt-28 pb-0 bg-section-cream">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <div className="max-w-4xl mb-14">
