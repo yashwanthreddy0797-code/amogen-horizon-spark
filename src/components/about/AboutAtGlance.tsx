@@ -3,28 +3,8 @@ import { motion } from "framer-motion";
 
 const AboutAtGlance = () => {
   return (
-    <section className="py-24 lg:py-32 bg-card relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        {/* Large gradient circle — top right */}
-        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#2A918B]/20" />
-        {/* Smaller accent circle — bottom left */}
-        <div className="absolute -bottom-20 -left-20 w-[300px] h-[300px] rounded-full bg-[#2A918B]/15" />
-        {/* Dotted grid pattern — bottom right */}
-        <svg className="absolute bottom-8 right-8 w-48 h-48 text-[#2A918B]/20" viewBox="0 0 120 120" fill="currentColor">
-          {[0, 1, 2, 3, 4, 5].map(row =>
-            [0, 1, 2, 3, 4, 5].map(col => (
-              <circle key={`${row}-${col}`} cx={10 + col * 20} cy={10 + row * 20} r="2" />
-            ))
-          )}
-        </svg>
-        {/* Subtle curved line — left side */}
-        <svg className="absolute top-1/2 -left-4 w-32 h-64 -translate-y-1/2 text-[#2A918B]/20" viewBox="0 0 100 200" fill="none">
-          <path d="M80 0 Q10 50 60 100 Q110 150 30 200" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 relative z-10">
+    <section className="py-24 lg:py-32 bg-card">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <p className="text-xs uppercase tracking-[0.25em] text-primary font-bold mb-6">
             Who We Are
