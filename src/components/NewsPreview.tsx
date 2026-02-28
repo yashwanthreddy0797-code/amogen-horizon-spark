@@ -37,37 +37,55 @@ const NewsPreview = () => {
             <ScrollReveal key={item.headline} delay={i * 0.1}>
               <a
                 href="#"
-                className="group flex flex-col h-full rounded-[20px] p-4 pb-5"
+                className="group flex flex-col h-full rounded-[20px] overflow-hidden relative"
                 style={{ backgroundColor: "hsl(var(--muted) / 0.55)" }}
               >
                 {/* Card image – inset with rounded corners */}
-                <div className="rounded-xl overflow-hidden mb-5">
-                  <img
-                    src={newsItems[i].image}
-                    alt={item.headline}
-                    className="w-full h-[195px] object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
+                <div className="p-4 pb-0">
+                  <div className="rounded-xl overflow-hidden">
+                    <img
+                      src={newsItems[i].image}
+                      alt={item.headline}
+                      className="w-full h-[195px] object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
 
-                {/* Meta */}
-                <p className="text-[10.5px] uppercase tracking-[0.12em] text-muted-foreground font-mono mb-3 leading-none">
-                  AMOGEN TEAM &nbsp;–&nbsp; {item.date}
-                </p>
+                {/* Meta & Headline */}
+                <div className="px-5 pt-5 flex-1">
+                  <p className="text-[10.5px] uppercase tracking-[0.12em] text-muted-foreground font-mono mb-3 leading-none">
+                    AMOGEN TEAM &nbsp;–&nbsp; {item.date}
+                  </p>
+                  <h3 className="text-[17px] md:text-lg font-semibold text-foreground leading-[1.35]">
+                    {item.headline}
+                  </h3>
+                </div>
 
-                {/* Headline */}
-                <h3 className="text-[17px] md:text-lg font-semibold text-foreground leading-[1.35] mb-0 flex-1">
-                  {item.headline}
-                </h3>
-
-                {/* Read more – bottom-pinned, no border */}
-                <div className="flex items-center justify-between mt-8">
-                  <span className="text-sm font-medium text-foreground">
-                    {t.newsPreview.readMore}
-                  </span>
-                  <span className="text-muted-foreground text-lg group-hover:translate-x-1 transition-transform">
-                    →
-                  </span>
+                {/* Bottom section with curved cutout for arrow */}
+                <div className="relative mt-6 h-14">
+                  {/* SVG curved shape – white bg sweeps up on right side */}
+                  <svg
+                    className="absolute inset-0 w-full h-full"
+                    viewBox="0 0 400 56"
+                    preserveAspectRatio="none"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 24 L270 24 C290 24 300 0 330 0 L400 0 L400 56 L0 56 Z"
+                      fill="hsl(var(--background))"
+                    />
+                  </svg>
+                  {/* Content on top of SVG */}
+                  <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between px-5 pb-4">
+                    <span className="text-sm font-medium text-foreground">
+                      {t.newsPreview.readMore}
+                    </span>
+                    <span className="text-muted-foreground text-xl group-hover:translate-x-1 transition-transform leading-none">
+                      →
+                    </span>
+                  </div>
                 </div>
               </a>
             </ScrollReveal>
