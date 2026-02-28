@@ -17,7 +17,7 @@ import AboutHelp from "@/components/about/AboutHelp";
 const About = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar variant="cdmo" />
+      <Navbar variant="about" />
       <main>
         {/* HERO */}
         <section className="relative min-h-[85vh] flex items-end overflow-hidden" style={{ backgroundColor: "#EEA7BF" }}>
