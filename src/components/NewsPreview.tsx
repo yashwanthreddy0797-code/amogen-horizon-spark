@@ -32,44 +32,42 @@ const NewsPreview = () => {
           </h2>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-5 lg:gap-6">
           {items.map((item, i) => (
             <ScrollReveal key={item.headline} delay={i * 0.1}>
               <a
                 href="#"
-                className="group block bg-muted/50 rounded-2xl overflow-hidden h-full flex flex-col"
+                className="group flex flex-col h-full rounded-[20px] p-4 pb-5"
+                style={{ backgroundColor: "hsl(var(--muted) / 0.55)" }}
               >
-                {/* Card image */}
-                <div className="p-4 pb-0">
-                  <div className="rounded-xl overflow-hidden">
-                    <img
-                      src={newsItems[i].image}
-                      alt={item.headline}
-                      className="w-full h-[200px] object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
+                {/* Card image – inset with rounded corners */}
+                <div className="rounded-xl overflow-hidden mb-5">
+                  <img
+                    src={newsItems[i].image}
+                    alt={item.headline}
+                    className="w-full h-[195px] object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
 
-                {/* Card content */}
-                <div className="p-5 pt-4 flex flex-col flex-1">
-                  <p className="text-[11px] uppercase tracking-[0.15em] text-muted-foreground font-mono mb-3">
-                    AMOGEN TEAM – {item.date}
-                  </p>
-                  <h3 className="text-base md:text-lg font-bold text-foreground leading-snug mb-auto">
-                    {item.headline}
-                  </h3>
+                {/* Meta */}
+                <p className="text-[10.5px] uppercase tracking-[0.12em] text-muted-foreground font-mono mb-3 leading-none">
+                  AMOGEN TEAM &nbsp;–&nbsp; {item.date}
+                </p>
 
-                  {/* Read more footer */}
-                  <div className="flex items-center justify-between mt-6 pt-4 border-t border-border/60">
-                    <span className="text-sm font-medium text-foreground">
-                      {t.newsPreview.readMore}
-                    </span>
-                    <ArrowRight
-                      size={18}
-                      className="text-muted-foreground group-hover:translate-x-1 transition-transform"
-                    />
-                  </div>
+                {/* Headline */}
+                <h3 className="text-[17px] md:text-lg font-semibold text-foreground leading-[1.35] mb-0 flex-1">
+                  {item.headline}
+                </h3>
+
+                {/* Read more – bottom-pinned, no border */}
+                <div className="flex items-center justify-between mt-8">
+                  <span className="text-sm font-medium text-foreground">
+                    {t.newsPreview.readMore}
+                  </span>
+                  <span className="text-muted-foreground text-lg group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
                 </div>
               </a>
             </ScrollReveal>
