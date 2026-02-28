@@ -20,7 +20,7 @@ const About = () => {
       <Navbar variant="about" />
       <main>
         {/* HERO */}
-        <section className="relative min-h-[85vh] flex items-end overflow-hidden" style={{ backgroundColor: "#EEA7BF" }}>
+        <section className="relative min-h-[85vh] flex items-end overflow-hidden" style={{ backgroundColor: "#3897DE" }}>
           {/* Decorative sweeping golden line */}
           <svg
             className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-[200px] pointer-events-none"
