@@ -31,7 +31,7 @@ const About = () => {
           >
             <path
               d="M-20 180 Q200 20 500 60 Q800 100 1000 30 Q1200 -20 1420 50"
-              stroke="#D4A017"
+              stroke="#FFFFFF"
               strokeWidth="4"
               strokeLinecap="round"
               fill="none"
