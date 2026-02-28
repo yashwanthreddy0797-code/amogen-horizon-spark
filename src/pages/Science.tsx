@@ -121,11 +121,8 @@ const Science = () => {
       <Navbar />
       <main>
         {/* HERO */}
-        <section className="relative min-h-[85vh] flex items-end overflow-hidden">
-          <div className="absolute inset-0">
-            <img src={scienceHero} alt="AMOGEN scientist in laboratory" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/40 to-foreground/20" />
-          </div>
+        <section className="relative min-h-[85vh] flex items-end overflow-hidden" style={{ backgroundColor: "#88C59F" }}>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           <div className="relative w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pb-20 pt-40">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
               <p className="text-xs uppercase tracking-[0.25em] text-primary-foreground/60 font-semibold mb-4">
