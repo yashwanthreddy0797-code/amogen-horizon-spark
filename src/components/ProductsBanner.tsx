@@ -33,8 +33,7 @@ const ProductsBanner = () => {
             <a
               href="#"
               className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold rounded-full border-2 border-footer-foreground text-footer-foreground hover:bg-footer-foreground hover:text-footer-bg transition-colors">
-              <span>
-              </span>
+              <span>Learn More</span>
             </a>
           </div>
         </ScrollReveal>
