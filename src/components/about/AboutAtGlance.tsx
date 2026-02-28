@@ -18,9 +18,9 @@ const AboutAtGlance = () => {
         </ScrollReveal>
 
         {/* Stats — horizontal row */}
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
+        <div className="grid md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-0 mt-16">
           <ScrollReveal delay={0.1}>
-            <div className="py-8">
+            <div className="py-8 pr-8">
               <span className="text-5xl md:text-6xl font-extrabold text-primary leading-none">70+</span>
               <p className="text-sm font-bold text-foreground mt-3">Employees</p>
               <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
@@ -29,8 +29,10 @@ const AboutAtGlance = () => {
             </div>
           </ScrollReveal>
 
+          <div className="hidden md:block w-px bg-border self-stretch" />
+
           <ScrollReveal delay={0.2}>
-            <div className="py-8">
+            <div className="py-8 px-8 border-t md:border-t-0 border-border">
               <span className="text-5xl md:text-6xl font-extrabold text-primary leading-none">15 years</span>
               <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
                 of average peptide R&D expertise among key personal with a validated platform that has delivered two drugs to market and a rich pipeline of clinical and pre-clinical programs.
@@ -38,8 +40,10 @@ const AboutAtGlance = () => {
             </div>
           </ScrollReveal>
 
+          <div className="hidden md:block w-px bg-border self-stretch" />
+
           <ScrollReveal delay={0.3}>
-            <div className="py-8">
+            <div className="py-8 pl-8 border-t md:border-t-0 border-border">
               <span className="text-5xl md:text-6xl font-extrabold text-primary leading-none">980 Kg</span>
               <p className="text-sm font-bold text-foreground mt-3">Total GLP-1 Volume</p>
               <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
