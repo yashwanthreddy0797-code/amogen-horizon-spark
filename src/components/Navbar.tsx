@@ -57,8 +57,8 @@ const Navbar = () => {
       href: "/science",
       image: { src: scienceHero, title: "Innovation & Research", subtitle: "Advancing science", href: "/science" },
       links: [
-        [t.nav.technologyStack, t.nav.publications],
-        [t.nav.comparabilityData, { label: t.nav.researchCapabilities, href: "/science/research-development" }],
+        [{ label: t.nav.technologyStack, href: "/science#technology-stack" }, { label: t.nav.publications, href: "/science#publications" }],
+        [{ label: t.nav.comparabilityData, href: "/science#comparability-data" }, { label: t.nav.researchCapabilities, href: "/science#research-capabilities" }],
       ],
     },
     [t.nav.news]: {
