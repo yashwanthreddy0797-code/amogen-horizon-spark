@@ -49,12 +49,12 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
   // Expanded scrolled bar: flips to True Blue bg + light text
   const expandedTextColor = isAbout ? "text-[#EEA7BF]" : isCdmo ? "text-[#ccc5bd]" : navText;
   const navPillBgExpanded = isBlueText ? "bg-[#001965]" : "bg-nav-dark";
-  const navTextExpanded = expandedTextColor;
-  const navTextFullExpanded = expandedTextColor;
-  const navTextMutedExpanded = isAbout ? "text-[#EEA7BF]/70" : isCdmo ? "text-[#ccc5bd]/70" : navTextMuted;
-  const navHoverBgExpanded = isAbout ? "hover:bg-[#EEA7BF]/10" : isCdmo ? "hover:bg-[#ccc5bd]/10" : navHoverBg;
-  const navActiveBgExpanded = isAbout ? "bg-[#EEA7BF]/15" : isCdmo ? "bg-[#ccc5bd]/15" : navActiveBg;
-  const navBorderColorExpanded = isAbout ? "border-[#EEA7BF]/15" : isCdmo ? "border-[#ccc5bd]/15" : navBorderColor;
+  const navTextExpanded = isBlueText ? "text-white" : navText;
+  const navTextFullExpanded = isBlueText ? "text-white" : navTextFull;
+  const navTextMutedExpanded = isBlueText ? "text-white/70" : navTextMuted;
+  const navHoverBgExpanded = isBlueText ? "hover:bg-white/10" : navHoverBg;
+  const navActiveBgExpanded = isBlueText ? "bg-white/15" : navActiveBg;
+  const navBorderColorExpanded = isBlueText ? "border-white/15" : navBorderColor;
 
   const menuData = {
     [t.nav.about]: {
