@@ -5,21 +5,30 @@ import { ArrowRight } from "lucide-react";
 const ProductsBanner = () => {
   return (
     <section className="relative overflow-hidden min-h-[340px] md:min-h-[380px] flex items-center bg-footer-bg">
-      {/* Image - left side, full bleed */}
-      <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[45%]">
+      {/* Image - right side, full bleed */}
+      <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[45%]">
         <img
           src={productsImg}
           alt="Pharmaceutical vials"
           className="w-full h-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-footer-bg" />
+        <div className="absolute inset-0 bg-gradient-to-l from-transparent to-footer-bg" />
+        {/* Button overlaid on image */}
+        <div className="absolute inset-0 z-20 flex items-center justify-center">
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold rounded-full border-2 border-footer-foreground text-footer-foreground hover:bg-footer-foreground hover:text-footer-bg transition-colors backdrop-blur-sm bg-footer-bg/20"
+          >
+            <span>Our products</span>
+          </a>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full">
         <ScrollReveal>
-          {/* Content - right side */}
-          <div className="relative z-10 ml-auto w-full md:w-[55%] py-12 md:py-16 md:pl-12 lg:pl-16">
+          {/* Content - left side */}
+          <div className="relative z-10 w-full md:w-[50%] py-12 md:py-16">
             <p className="text-xs uppercase tracking-[0.2em] text-footer-foreground/70 font-semibold mb-2">
               APIs and FDFs
             </p>
@@ -30,15 +39,7 @@ const ProductsBanner = () => {
             <p className="text-base text-footer-foreground/70 leading-relaxed max-w-lg mb-8">
               Check out a list of active pharmaceutical ingredients (APIs) and Finished Dosage Forms (FDFs) we offer
             </p>
-            <div className="flex flex-wrap items-center gap-6">
-              <span className="text-sm text-footer-foreground/70">Contact our sales team to learn more</span>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-full border border-footer-foreground text-footer-foreground hover:bg-footer-foreground hover:text-footer-bg transition-colors"
-              >
-                <span>Our products</span>
-              </a>
-            </div>
+            <span className="text-sm text-footer-foreground/70">Contact our sales team to learn more</span>
           </div>
         </ScrollReveal>
       </div>
