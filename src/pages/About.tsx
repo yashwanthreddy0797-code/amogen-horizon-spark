@@ -52,14 +52,14 @@ const About = () => {
               <div className="flex flex-wrap gap-4 mt-10">
                 <a
                   href="#who-we-are"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 transition-colors hover:opacity-80"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 transition-all duration-300 hover:bg-[#001965] hover:text-white"
                   style={{ borderColor: "#001965", color: "#001965" }}
                 >
                   Learn More <ArrowRight size={14} />
                 </a>
                 <a
                   href="#careers"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 transition-colors hover:opacity-80"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 transition-all duration-300 hover:bg-[#001965] hover:text-white"
                   style={{ borderColor: "#001965", color: "#001965" }}
                 >
                   Careers <ArrowRight size={14} />
