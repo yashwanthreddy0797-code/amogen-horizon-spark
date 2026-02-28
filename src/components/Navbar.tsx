@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Search, Globe, ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage, Language } from "@/i18n/LanguageContext";
+import { useLocation } from "react-router-dom";
 import aboutHero from "@/assets/about-hero.jpg";
 import productsVials from "@/assets/products-vials.jpg";
 import manufacturing from "@/assets/manufacturing.jpg";
@@ -29,6 +30,8 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
   const navRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { language, setLanguage, t } = useLanguage();
+  const location = useLocation();
+  const isMainPage = location.pathname === "/";
 
   const isCdmo = variant === "cdmo";
   const isAbout = variant === "about";
@@ -107,7 +110,7 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(isMainPage && window.scrollY > 50);
       const footer = document.getElementById("contact");
       if (footer) {
         const footerTop = footer.getBoundingClientRect().top;
