@@ -11,18 +11,18 @@ const AboutVisionMission = () => {
             <ScrollReveal>
               <p
                 className="text-xs uppercase tracking-[0.3em] text-foreground/50 font-medium mb-5"
-                style={{ fontFamily: "monospace" }}
-              >
+                style={{ fontFamily: "monospace" }}>
+
                 OUR VISION
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <p className="text-lg md:text-xl lg:text-[22px] font-medium text-foreground/70 leading-[1.5]">
-                Our vision is to improve the wellbeing of patients suffering
-                from debilitating illnesses. We're committed to realizing that
-                potential by delivering high quality, cost-effective biosimilars
-                and scalable peptide manufacturing that reaches markets that need
-                them the most.
+              <p className="text-lg md:text-xl lg:text-[22px] font-medium text-foreground/70 leading-[1.5]">To improve the wellbeing of patients suffering from debilitating illnesses. We're committed to realizing that potential by delivering high quality, cost-effective biosimilars and scalable peptide manufacturing that reaches markets that need them the most.
+
+
+
+
+
               </p>
             </ScrollReveal>
           </div>
@@ -32,8 +32,8 @@ const AboutVisionMission = () => {
             <ScrollReveal delay={0.2}>
               <p
                 className="text-xs uppercase tracking-[0.3em] text-foreground/50 font-medium mb-5"
-                style={{ fontFamily: "monospace" }}
-              >
+                style={{ fontFamily: "monospace" }}>
+
                 OUR MISSION
               </p>
             </ScrollReveal>
@@ -52,16 +52,16 @@ const AboutVisionMission = () => {
       {/* Blob image */}
       <div
         className="absolute top-1/2 -translate-y-1/2 right-0 w-[45%] h-[90%] pointer-events-none hidden lg:block"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
+
         <img
           src={missionBlobs}
           alt=""
-          className="w-full h-full object-contain object-center"
-        />
+          className="w-full h-full object-contain object-center" />
+
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default AboutVisionMission;
