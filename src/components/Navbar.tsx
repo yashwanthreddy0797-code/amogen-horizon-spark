@@ -395,14 +395,14 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                 const _hoverBg = isCdmo && isActive ? navHoverBgExpanded : navHoverBg;
                 const _activeBg = isCdmo && isActive ? navActiveBgExpanded : navActiveBg;
                 return (
-              <div className="flex items-center justify-between px-6 md:px-8 py-2">
-                <a href="/" className="shrink-0">
+              <div className="relative flex items-center justify-between px-6 md:px-8 py-2">
+                <a href="/" className="shrink-0 z-10">
                   <span className={`text-base md:text-lg font-bold tracking-tight ${_text}`}>
                     AMOGEN
                   </span>
                 </a>
 
-                <nav className="hidden md:flex items-center gap-1">
+                <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
                   {navItems.map((item) => {
                     const data = menuData[item];
                     return (
@@ -429,7 +429,7 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                   })}
                 </nav>
 
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 z-10">
                   <button
                     className={`hidden md:flex items-center justify-center w-9 h-9 rounded-full ${_hoverBg} transition-colors`}
                     aria-label={t.nav.search}
@@ -587,14 +587,14 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                       className={`${navPillBgExpanded} shadow-2xl ${navTextExpanded} transition-all duration-300 rounded-[1.5rem] overflow-hidden`}
                   >
                     {/* Top bar with logo, nav items, and close button */}
-                    <div className="flex items-center justify-between px-6 md:px-8 py-2">
-                      <a href="/" className="shrink-0">
+                    <div className="relative flex items-center justify-between px-6 md:px-8 py-2">
+                      <a href="/" className="shrink-0 z-10">
                         <span className={`text-base md:text-lg font-bold tracking-tight ${navTextFullExpanded}`}>
                           AMOGEN
                         </span>
                       </a>
 
-                      <nav className="hidden md:flex items-center gap-1">
+                      <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
                         {navItems.map((item) => {
                           const data = menuData[item];
                           return (
@@ -625,7 +625,7 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                         })}
                       </nav>
 
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-1 z-10">
                         <button
                           className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBgExpanded} transition-colors`}
                           aria-label={t.nav.search}
