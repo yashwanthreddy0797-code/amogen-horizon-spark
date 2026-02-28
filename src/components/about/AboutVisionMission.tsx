@@ -1,99 +1,102 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import { Mountain, Globe, TrendingUp } from "lucide-react";
-import peopleChild from "@/assets/people-child.jpg";
-import peopleWoman from "@/assets/people-woman.jpg";
-import peopleElderly from "@/assets/people-elderly.jpg";
-import peopleMan from "@/assets/people-man.jpg";
-import peopleDoctor from "@/assets/people-doctor.jpg";
-
-const missionItems = [
-  {
-    icon: Mountain,
-    text: "Deliver exceptional value to stakeholders and better health outcomes to patients by becoming a leading global biosimilars developer by 2030.",
-  },
-  {
-    icon: Globe,
-    text: "Build deep capabilities in development and manufacturing to deliver quality and cost-effective biosimilars for patients across the globe.",
-  },
-  {
-    icon: TrendingUp,
-    text: "Create a sustainable and broad portfolio of biosimilars with a focus on peptide and protein-based therapies.",
-  },
-];
 
 const AboutVisionMission = () => {
   return (
-    <section className="py-24 lg:py-32 bg-background">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
-          {/* Left — Vision & Mission text */}
-          <div>
-            <ScrollReveal>
-              <p className="text-xs uppercase tracking-[0.25em] text-primary font-bold mb-4">
-                Who We Are
-              </p>
-              <div className="w-[280px] h-[3px] bg-primary mb-12" />
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.1}>
-              <h3 className="text-3xl md:text-4xl font-extrabold text-foreground leading-tight mb-5">
-                Our Vision
-              </h3>
-              <p className="text-base text-muted-foreground leading-relaxed mb-16">
-                Our vision is to improve the wellbeing of patients suffering from debilitating illnesses by providing them with access to high quality and cost-effective biosimilars.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.2}>
-              <h3 className="text-3xl md:text-4xl font-extrabold text-foreground leading-tight mb-8">
-                Our Mission
-              </h3>
-            </ScrollReveal>
-
-            <div className="space-y-8">
-              {missionItems.map((item, i) => (
-                <ScrollReveal key={i} delay={0.25 + i * 0.1}>
-                  <div className="flex items-start gap-5">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <item.icon className="w-7 h-7 text-primary" />
-                    </div>
-                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed pt-1">
-                      {item.text}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-
-          {/* Right — Image mosaic */}
-          <div className="hidden lg:block">
-            <ScrollReveal delay={0.15}>
-              <div className="grid grid-cols-5 grid-rows-6 gap-4 h-[700px]">
-                {/* Small top-left */}
-                <div className="col-span-2 row-span-2 rounded-2xl overflow-hidden">
-                  <img src={peopleChild} alt="Young patient" className="w-full h-full object-cover" />
-                </div>
-                {/* Large top-right */}
-                <div className="col-span-3 row-span-3 rounded-2xl overflow-hidden">
-                  <img src={peopleWoman} alt="Woman patient" className="w-full h-full object-cover" />
-                </div>
-                {/* Small middle-left */}
-                <div className="col-span-2 row-span-2 rounded-2xl overflow-hidden">
-                  <img src={peopleElderly} alt="Elderly patient" className="w-full h-full object-cover" />
-                </div>
-                {/* Large bottom-left */}
-                <div className="col-span-3 row-span-3 rounded-2xl overflow-hidden">
-                  <img src={peopleMan} alt="Man smiling" className="w-full h-full object-cover" />
-                </div>
-                {/* Small bottom-right */}
-                <div className="col-span-2 row-span-2 rounded-2xl overflow-hidden">
-                  <img src={peopleDoctor} alt="Doctor" className="w-full h-full object-cover" />
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
+    <section className="relative py-32 lg:py-44 bg-[#f0eeeb] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 relative z-10">
+        <div className="max-w-2xl">
+          <ScrollReveal>
+            <p className="text-xs uppercase tracking-[0.3em] text-foreground/50 font-medium mb-8" style={{ fontFamily: "monospace" }}>
+              OUR MISSION
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <p className="text-[28px] md:text-[34px] lg:text-[40px] font-medium text-foreground/70 leading-[1.35]">
+              Our vision is to improve the wellbeing of patients suffering from debilitating illnesses. We're committed to realizing that potential by delivering high quality, cost-effective biosimilars and scalable peptide manufacturing that reaches markets that need them the most.
+            </p>
+          </ScrollReveal>
         </div>
+      </div>
+
+      {/* Abstract gradient blobs */}
+      <div className="absolute top-0 right-0 w-[55%] h-full pointer-events-none" aria-hidden="true">
+        {/* Blob 1 — top right, purple-orange */}
+        <div
+          className="absolute"
+          style={{
+            top: "5%",
+            right: "15%",
+            width: "220px",
+            height: "200px",
+            borderRadius: "42% 58% 70% 30% / 45% 45% 55% 55%",
+            background: "linear-gradient(135deg, #e8845c 0%, #c77dba 40%, #b88dd9 70%, #9a7fe0 100%)",
+            filter: "blur(1px)",
+            opacity: 0.9,
+          }}
+        />
+        {/* Blob 2 — top center, pink-purple */}
+        <div
+          className="absolute"
+          style={{
+            top: "0%",
+            right: "30%",
+            width: "180px",
+            height: "170px",
+            borderRadius: "50% 50% 40% 60% / 60% 40% 60% 40%",
+            background: "linear-gradient(160deg, #d88cc4 0%, #c78dd9 50%, #a98ae8 100%)",
+            filter: "blur(1px)",
+            opacity: 0.85,
+          }}
+        />
+        {/* Blob 3 — right edge, blue */}
+        <div
+          className="absolute"
+          style={{
+            top: "20%",
+            right: "-2%",
+            width: "160px",
+            height: "200px",
+            borderRadius: "40% 60% 55% 45% / 50% 45% 55% 50%",
+            background: "linear-gradient(200deg, #7ba4e8 0%, #5b7de0 50%, #4a5fd0 100%)",
+            filter: "blur(1px)",
+            opacity: 0.9,
+          }}
+        />
+        {/* Blob 4 — center, large dark purple-blue */}
+        <div
+          className="absolute"
+          style={{
+            top: "30%",
+            right: "12%",
+            width: "260px",
+            height: "240px",
+            borderRadius: "55% 45% 50% 50% / 45% 55% 45% 55%",
+            background: "linear-gradient(180deg, #8a6cc7 0%, #5c4da0 30%, #2c2860 70%, #1a1a4a 100%)",
+            filter: "blur(1px)",
+            opacity: 0.9,
+          }}
+        />
+        {/* Blob 5 — bottom, large blue-purple */}
+        <div
+          className="absolute"
+          style={{
+            bottom: "0%",
+            right: "18%",
+            width: "300px",
+            height: "260px",
+            borderRadius: "50% 50% 45% 55% / 40% 60% 40% 60%",
+            background: "linear-gradient(160deg, #7b6cc7 0%, #4a5aaa 30%, #2a3878 60%, #1e2a60 100%)",
+            filter: "blur(1px)",
+            opacity: 0.9,
+          }}
+        />
+        {/* Grainy texture overlay */}
+        <svg className="absolute inset-0 w-full h-full opacity-40 mix-blend-overlay" aria-hidden="true">
+          <filter id="grain">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#grain)" />
+        </svg>
       </div>
     </section>
   );
