@@ -76,8 +76,6 @@ const About = () => {
         {/* Culture — Way */}
         <AboutCultureWay />
 
-        {/* Who We Are */}
-        <AboutWhoWeAre />
 
         {/* What We Do */}
         <AboutWhatWeDo />
