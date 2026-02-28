@@ -51,34 +51,19 @@ const AboutLeadership = () => {
         <div className="border-t-2 border-foreground" />
 
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 pt-10">
-          {/* Left – Label + Featured leader (Raju) */}
+          {/* Left – Label */}
           <ScrollReveal>
             <h2 className="text-2xl md:text-3xl font-semibold text-foreground">Leadership</h2>
-            <div className="mt-10">
-              <div className="rounded-lg overflow-hidden mb-6">
-                <img
-                  src={leaders[0].photo}
-                  alt={leaders[0].name}
-                  className="w-full h-[300px] object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-foreground">{leaders[0].name}</h3>
-              <p className="text-sm font-medium text-foreground/70 mt-1">{leaders[0].title}</p>
-              <p className="text-sm text-muted-foreground mt-4 leading-relaxed">
-                {leaders[0].bio}
-              </p>
-            </div>
           </ScrollReveal>
 
-          {/* Right – Accordion list (remaining leaders) */}
+          {/* Right – Accordion list */}
           <div>
-            {leaders.slice(1).map((leader, i) => {
-              const actualIndex = i + 1;
-              const isOpen = openIndex === actualIndex;
+            {leaders.map((leader, i) => {
+              const isOpen = openIndex === i;
               return (
                 <div key={leader.name}>
                   <button
-                    onClick={() => setOpenIndex(isOpen ? null : actualIndex)}
+                    onClick={() => setOpenIndex(isOpen ? null : i)}
                     className="w-full flex items-center justify-between py-5 text-left group"
                   >
                     <span className="text-xl md:text-2xl font-semibold text-foreground">
