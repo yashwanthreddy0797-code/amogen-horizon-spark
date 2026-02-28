@@ -27,15 +27,15 @@ const About = () => {
             viewBox="0 0 1400 200"
             fill="none"
             preserveAspectRatio="none"
-            aria-hidden="true"
-          >
+            aria-hidden="true">
+
             <path
               d="M-20 180 Q200 20 500 60 Q800 100 1000 30 Q1200 -20 1420 50"
               stroke="#FFFFFF"
               strokeWidth="4"
               strokeLinecap="round"
-              fill="none"
-            />
+              fill="none" />
+
           </svg>
           <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pb-20 pt-40">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
@@ -46,20 +46,20 @@ const About = () => {
               <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[1.05] max-w-5xl" style={{ color: "#001965" }}>
                 We are a peptide manufacturing company.
               </h1>
-              <p className="mt-8 text-lg md:text-xl max-w-2xl leading-relaxed font-light" style={{ color: "#001965", opacity: 0.75 }}>
-                From groundbreaking research to record investments in manufacturing, we ruthlessly prioritize giving everyone a chance at health.
+              <p className="mt-8 text-lg md:text-xl max-w-2xl leading-relaxed font-light" style={{ color: "#001965", opacity: 0.75 }}>Turning complex peptide science into medicines & partnerships that reach markets that need them the most 
+
               </p>
               <div className="flex flex-wrap gap-4 mt-10">
                 <a
                   href="#who-we-are"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white"
-                >
+                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white">
+
                   Learn More <ArrowRight size={14} />
                 </a>
                 <a
                   href="#careers"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white"
-                >
+                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white">
+
                   Careers <ArrowRight size={14} />
                 </a>
               </div>
@@ -98,8 +98,8 @@ const About = () => {
         <AboutHelp />
       </main>
       <Footer />
-    </div>
-  );
+    </div>);
+
 };
 
 export default About;
