@@ -395,7 +395,7 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                 const _hoverBg = isCdmo && isActive ? navHoverBgExpanded : navHoverBg;
                 const _activeBg = isCdmo && isActive ? navActiveBgExpanded : navActiveBg;
                 return (
-              <div className="flex items-center justify-between px-6 md:px-8 py-3">
+              <div className="flex items-center justify-between px-6 md:px-8 py-2">
                 <a href="/" className="shrink-0">
                   <span className={`text-base md:text-lg font-bold tracking-tight ${_text}`}>
                     AMOGEN
@@ -587,7 +587,7 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                       className={`${navPillBgExpanded} shadow-2xl ${navTextExpanded} transition-all duration-300 rounded-[1.5rem] overflow-hidden`}
                   >
                     {/* Top bar with logo, nav items, and close button */}
-                    <div className="flex items-center justify-between px-6 md:px-8 py-3">
+                    <div className="flex items-center justify-between px-6 md:px-8 py-2">
                       <a href="/" className="shrink-0">
                         <span className={`text-base md:text-lg font-bold tracking-tight ${navTextFullExpanded}`}>
                           AMOGEN
