@@ -38,7 +38,7 @@ const NewsPreview = () => {
               <a
                 href="#"
                 className="group flex flex-col h-full rounded-[20px] overflow-hidden relative"
-                style={{ backgroundColor: "hsl(var(--muted) / 0.55)" }}
+                style={{ backgroundColor: "#ccc5bd" }}
               >
                 {/* Card image – inset with rounded corners */}
                 <div className="p-4 pb-0">
@@ -54,10 +54,10 @@ const NewsPreview = () => {
 
                 {/* Meta & Headline */}
                 <div className="px-5 pt-5 flex-1">
-                  <p className="text-[10.5px] uppercase tracking-[0.12em] text-muted-foreground font-mono mb-3 leading-none">
+                  <p className="text-[9.5px] uppercase tracking-[0.12em] text-muted-foreground font-mono mb-2.5 leading-none">
                     AMOGEN TEAM &nbsp;–&nbsp; {item.date}
                   </p>
-                  <h3 className="text-[17px] md:text-lg font-semibold text-foreground leading-[1.35]">
+                  <h3 className="text-sm md:text-[15px] font-semibold text-foreground leading-[1.4]">
                     {item.headline}
                   </h3>
                 </div>
@@ -79,7 +79,7 @@ const NewsPreview = () => {
                   </svg>
                   {/* Content on top of SVG */}
                   <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between px-5 pb-4">
-                    <span className="text-sm font-medium text-foreground">
+                    <span className="text-xs font-medium text-foreground">
                       {t.newsPreview.readMore}
                     </span>
                     <span className="text-muted-foreground text-xl group-hover:translate-x-1 transition-transform leading-none">
