@@ -1,73 +1,126 @@
+import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 import researchLabImg from "@/assets/research-lab.jpg";
-import manufacturingImg from "@/assets/manufacturing.jpg";
+import { CheckCircle2 } from "lucide-react";
+
+interface BenefitCategory {
+  title: string;
+  items: string[];
+}
+
+const categories: BenefitCategory[] = [
+  {
+    title: "Financial wellbeing",
+    items: [
+      "Six weeks' paid vacation",
+      "Equity / stock options",
+      "RRSP, 401(k), and Pension Scheme contributions",
+    ],
+  },
+  {
+    title: "Healthcare",
+    items: [
+      "Comprehensive medical coverage",
+      "Dental and vision plans",
+      "Mental health support programs",
+    ],
+  },
+  {
+    title: "Culture and development",
+    items: [
+      "Continuous learning opportunities",
+      "Leadership development programs",
+      "Global mobility and exchange",
+    ],
+  },
+];
 
 const AboutWhatWeDo = () => {
+  const [openIndex, setOpenIndex] = useState(0);
+
   return (
-    <section id="what-we-do" className="py-24 lg:py-32 bg-[#f0eeeb]">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 space-y-24 lg:space-y-32">
-        {/* Row 1: Text left, Image right */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section id="what-we-do" className="py-24 lg:py-32 bg-background">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+        {/* Header */}
+        <ScrollReveal>
+          <p className="text-xs uppercase tracking-[0.3em] font-semibold text-muted-foreground mb-3">
+            What we do
+          </p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight mb-16">
+            Peptide Biosimilars
+          </h2>
+        </ScrollReveal>
+
+        {/* Content grid */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+          {/* Left: Image */}
           <ScrollReveal>
-            <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
-                Pioneering biosimilars
-              </h2>
-              <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
-                Biosimilars are 'new' versions of a type of medicine called biologics. These are powerful medicines made from living cells. They can transform the lives of patients with life-threatening or debilitating diseases such as cancer, diabetes and arthritis.
-              </p>
-              <p className="text-base md:text-lg text-muted-foreground mt-4 leading-relaxed">
-                At Amogen, we are very proud to be the pioneer in this area. We started our first biosimilar development program and we were among the first companies to receive approval for a biosimilar in key global markets.
-              </p>
-              <a
-                href="#"
-                className="inline-flex items-center mt-8 px-6 py-2.5 text-sm font-semibold rounded-full border-2 border-primary text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-              >
-                Learn more
-              </a>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={0.15}>
             <div className="rounded-2xl overflow-hidden">
               <img
                 src={researchLabImg}
-                alt="Scientists working in research laboratory"
-                className="w-full h-[360px] lg:h-[420px] object-cover"
+                alt="Team working in research lab"
+                className="w-full h-[480px] lg:h-[580px] object-cover"
                 loading="lazy"
               />
             </div>
           </ScrollReveal>
-        </div>
 
-        {/* Row 2: Image left, Text right */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <ScrollReveal>
-            <div className="rounded-2xl overflow-hidden lg:order-none order-last">
-              <img
-                src={manufacturingImg}
-                alt="Manufacturing facility with quality control"
-                className="w-full h-[360px] lg:h-[420px] object-cover"
-                loading="lazy"
-              />
-            </div>
-          </ScrollReveal>
+          {/* Right: Accordion list */}
           <ScrollReveal delay={0.15}>
-            <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
-                High-quality generics
-              </h2>
-              <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
-                Generic medicines contain the same active ingredients as the reference medicines, with identical quality and safety profiles.
-              </p>
-              <p className="text-base md:text-lg text-muted-foreground mt-4 leading-relaxed">
-                With a portfolio of quality generic medicines, including an unrivalled offering of more than 50 critical generic antibiotics, we're involved in almost every major disease area.
-              </p>
-              <a
-                href="#"
-                className="inline-flex items-center mt-8 px-6 py-2.5 text-sm font-semibold rounded-full border-2 border-primary text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-              >
-                Learn more
-              </a>
+            <div className="flex flex-col justify-center h-full">
+              {categories.map((cat, i) => {
+                const isOpen = openIndex === i;
+                return (
+                  <div key={cat.title}>
+                    {/* Gradient line for the open item */}
+                    {i === 0 || isOpen ? (
+                      <div
+                        className={`h-[3px] w-full ${
+                          isOpen
+                            ? "bg-gradient-to-r from-destructive to-primary"
+                            : "bg-border"
+                        }`}
+                      />
+                    ) : (
+                      <div className="h-px w-full bg-border" />
+                    )}
+
+                    <button
+                      onClick={() => setOpenIndex(isOpen ? -1 : i)}
+                      className="w-full text-left py-5 cursor-pointer"
+                    >
+                      <h3
+                        className={`text-xl md:text-2xl font-bold transition-colors ${
+                          isOpen ? "text-foreground" : "text-foreground/70"
+                        }`}
+                      >
+                        {cat.title}
+                      </h3>
+                    </button>
+
+                    {/* Expandable content */}
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        isOpen ? "max-h-60 opacity-100 pb-6" : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <ul className="space-y-3">
+                        {cat.items.map((item) => (
+                          <li
+                            key={item}
+                            className="flex items-center gap-3 text-muted-foreground text-sm md:text-base"
+                          >
+                            <CheckCircle2 size={18} className="text-muted-foreground/60 shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              })}
+              {/* Bottom border */}
+              <div className="h-px w-full bg-border" />
             </div>
           </ScrollReveal>
         </div>
