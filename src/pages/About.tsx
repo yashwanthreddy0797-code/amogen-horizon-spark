@@ -44,7 +44,7 @@ const About = () => {
                 <span className="mx-2">/</span>About
               </p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[1.05] max-w-5xl" style={{ color: "#001965" }}>
-                We are a peptide medicine company.
+                We are a peptide manufacturing company.
               </h1>
               <p className="mt-8 text-lg md:text-xl max-w-2xl leading-relaxed font-light" style={{ color: "#001965", opacity: 0.75 }}>
                 From groundbreaking research to record investments in manufacturing, we ruthlessly prioritize giving everyone a chance at health.
