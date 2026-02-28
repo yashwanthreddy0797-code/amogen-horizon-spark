@@ -4,22 +4,6 @@ import { motion } from "framer-motion";
 const AboutAtGlance = () => {
   return (
     <section className="py-24 lg:py-32 bg-card relative overflow-hidden">
-      {/* Decorative sweeping golden line */}
-      <svg
-        className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-[200px] pointer-events-none"
-        viewBox="0 0 1400 200"
-        fill="none"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M-20 180 Q200 20 500 60 Q800 100 1000 30 Q1200 -20 1420 50"
-          stroke="#D4A017"
-          strokeWidth="4"
-          strokeLinecap="round"
-          fill="none"
-        />
-      </svg>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 relative z-10">
         <ScrollReveal>
