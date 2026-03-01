@@ -602,30 +602,16 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                       <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
                         {navItems.map((item) => {
                           const data = menuData[item];
+                          const href = data.href || "/";
                           return (
-                            <div key={item} className="relative">
-                              <button
-                                onMouseEnter={() => {
-                                  if (timeoutRef.current) clearTimeout(timeoutRef.current);
-                                  setActiveMenu(item);
-                                }}
-                                onClick={() => {
-                                  if (data.href) {
-                                    window.location.href = data.href;
-                                    setMobileMenuOpen(false);
-                                  } else {
-                                    setActiveMenu(activeMenu === item ? null : item);
-                                  }
-                                }}
-                                className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
-                                  activeMenu === item
-                                    ? `${navActiveBgExpanded} ${navTextFullExpanded}`
-                                    : `${navTextMutedExpanded} ${navHoverBgExpanded} hover:${navTextFullExpanded}`
-                                }`}
-                              >
-                                {item}
-                              </button>
-                            </div>
+                            <a
+                              key={item}
+                              href={href}
+                              onClick={() => { setMobileMenuOpen(false); setActiveMenu(null); }}
+                              className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${navTextMutedExpanded} ${navHoverBgExpanded} hover:${navTextFullExpanded}`}
+                            >
+                              {item}
+                            </a>
                           );
                         })}
                       </nav>
@@ -679,8 +665,7 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                       </div>
                     </div>
 
-                    {/* Reuse the same mega menu renderer */}
-                    {renderMegaMenu(isCdmo ? { borderColor: navBorderColorExpanded, textFull: navTextFullExpanded, textMuted: navTextMutedExpanded } : undefined)}
+                    {/* No mega menu in scrolled state — direct links only */}
                   </div>
                 </motion.div>
               )}
