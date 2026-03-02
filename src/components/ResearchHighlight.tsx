@@ -62,6 +62,9 @@ const FacilityCard = ({ facility, isExpanded, onToggle }: {
             alt={facility.title}
             className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
             loading="lazy"
+            width={371}
+            height={260}
+            decoding="async"
           />
         </div>
         <div

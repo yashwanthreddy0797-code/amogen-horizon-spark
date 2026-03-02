@@ -11,7 +11,10 @@ const ProductsBanner = () => {
           src={productsImg}
           alt="Pharmaceutical vials"
           className="w-full h-full object-cover"
-          loading="lazy" />
+          loading="lazy"
+          width={770}
+          height={385}
+          decoding="async" />
 
         <div className="absolute inset-0 bg-gradient-to-l from-transparent to-footer-bg border-0" />
       </div>
