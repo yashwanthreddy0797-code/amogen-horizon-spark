@@ -195,30 +195,49 @@ const CDMOMicrobialExpertise = () => {
                 Microbial Thought Leadership
               </h2>
               <p className="text-sm md:text-base text-muted-foreground mt-4 leading-relaxed">
-                We are proud to be one of the thought leaders in the microbial technology space. Our teams continuously contribute expert insights and innovations to advance the field.
+                We are proud to be one of the thought leaders in the microbial technology space. Take a look at our featured expert content pieces on microbial or adjacent topics.
               </p>
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <div className="rounded-2xl overflow-hidden shadow-lg mt-6">
-              <img
-                src={microbialThoughtLeadershipImg}
-                alt="Laboratory expert examining vials"
-                className="w-full h-[28rem] md:h-[34rem] lg:h-[40rem] object-cover"
-                loading="lazy" />
-            </div>
-          </ScrollReveal>
+            <div className="rounded-2xl overflow-hidden mt-6" style={{ backgroundColor: "#001965" }}>
+              <div className="grid md:grid-cols-2">
+                {/* Left: Image */}
+                <div className="h-64 md:h-auto">
+                  <img
+                    src={microbialThoughtLeadershipImg}
+                    alt="Laboratory expert examining vials"
+                    className="w-full h-full object-cover"
+                    loading="lazy" />
+                </div>
 
-          <ScrollReveal delay={0.15}>
-            <div className="grid sm:grid-cols-2 gap-4 mt-10">
-              <div className="rounded-xl p-5 border border-[#001965]/10 hover:border-[#001965]/30 transition-colors" style={{ backgroundColor: "#F7F6F5" }}>
-                <h4 className="text-xs font-bold text-[#001965] mb-1">Featured Expert Content</h4>
-                <p className="text-xs text-muted-foreground">Advancements in microbial manufacturing of biopharmaceuticals</p>
-              </div>
-              <div className="rounded-xl p-5 border border-[#001965]/10 hover:border-[#001965]/30 transition-colors" style={{ backgroundColor: "#F7F6F5" }}>
-                <h4 className="text-xs font-bold text-[#001965] mb-1">Featured Expert Content</h4>
-                <p className="text-xs text-muted-foreground">Setting the standard with plasmid DNA production</p>
+                {/* Right: Featured content */}
+                <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-center">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-6">
+                    Featured Expert Content
+                  </h3>
+
+                  <div className="space-y-8">
+                    <div>
+                      <p className="text-sm md:text-base text-white/80 leading-relaxed">
+                        Advancements in microbial manufacturing of biopharmaceuticals
+                      </p>
+                      <button className="mt-3 inline-flex items-center gap-1 text-sm font-semibold px-5 py-2 rounded-md bg-[#8B9E3C] text-white hover:bg-[#7a8c34] transition-colors">
+                        Read more &gt;
+                      </button>
+                    </div>
+
+                    <div>
+                      <p className="text-sm md:text-base text-white/80 leading-relaxed">
+                        Setting the standard with plasmid DNA production
+                      </p>
+                      <button className="mt-3 inline-flex items-center gap-1 text-sm font-semibold px-5 py-2 rounded-md bg-[#8B9E3C] text-white hover:bg-[#7a8c34] transition-colors">
+                        Read more &gt;
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </ScrollReveal>
