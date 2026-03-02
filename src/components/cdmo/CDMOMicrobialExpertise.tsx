@@ -118,35 +118,8 @@ const CDMOMicrobialExpertise = () => {
         </div>
       </section>
 
-      {/* Section 4: Advanced Technology */}
-      <section className="py-20 lg:py-28" style={{ backgroundColor: "#F7F6F5" }}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-          <ScrollReveal>
-            <div className="max-w-4xl mb-10">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-                Advanced Technology for Faster Delivery
-              </h2>
-              <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
-                Once the molecule format has been defined, our highly automated, high-throughput platforms can shorten time to clinical trial. Our SMART PROCESS DESIGN tool uses machine learning or mechanistic process models to simulate and optimize manufacturing processes, helping us to predict the right process parameters for optimal output.
-              </p>
-              <p className="text-base md:text-lg text-muted-foreground mt-4 leading-relaxed">
-                Our CASPON® fusion protein system, for non-platform molecules, includes a peptide fused to the N-terminus of the protein of interest and a highly specific protease to remove the tag after purification, leaving the authentic N-terminus of the target protein. This increases product yield (up to tenfold depending on the target molecule), enhances product solubility, provides a recognition sequence for the protease, and includes a histidine stretch for platform affinity purification.
-              </p>
-            </div>
-          </ScrollReveal>
 
-          <ScrollReveal delay={0.1}>
-            <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm mt-6">
-              <img
-                src={microbialCapabilitiesImg}
-                alt="Microbial capabilities including E. coli and yeast platforms, high-throughput development and commercial manufacturing"
-                className="w-full h-auto object-cover"
-                loading="lazy" />
 
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* Section 5: Thought Leadership */}
       <section className="py-20 lg:py-28 bg-white">
