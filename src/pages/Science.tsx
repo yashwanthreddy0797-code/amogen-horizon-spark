@@ -138,8 +138,7 @@ const Science = () => {
         </section>
 
         {/* GETTING MEDICINE FASTER */}
-        <section className="py-24 lg:py-32 bg-white">
-          
+        
 
 
 
@@ -169,8 +168,9 @@ const Science = () => {
 
 
 
-          
-        </section>
+
+
+        
 
         {/* THERAPEUTIC AREAS */}
         <section className="py-20 lg:py-28 bg-white">
