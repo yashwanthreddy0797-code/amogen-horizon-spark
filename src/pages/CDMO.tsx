@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import CDMOHero from "@/components/cdmo/CDMOHero";
 import CDMOCapabilities from "@/components/cdmo/CDMOCapabilities";
 import CDMOTimeline from "@/components/cdmo/CDMOTimeline";
+import CDMOMicrobialExpertise from "@/components/cdmo/CDMOMicrobialExpertise";
 import CDMOPeptideCards from "@/components/cdmo/CDMOPeptideCards";
 import CDMOSolutions from "@/components/cdmo/CDMOSolutions";
 import CDMORfpProcess from "@/components/cdmo/CDMORfpProcess";
@@ -16,6 +17,7 @@ const CDMO = () => {
         <CDMOHero />
         <CDMOCapabilities />
         <CDMOTimeline />
+        <CDMOMicrobialExpertise />
         <CDMOPeptideCards />
         <CDMOSolutions />
         <CDMORfpProcess />
