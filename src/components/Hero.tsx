@@ -18,7 +18,7 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroPortrait} alt="Patient looking hopeful" className="w-full h-full object-cover" loading="eager" />
+        <img src={heroPortrait} alt="Patient looking hopeful" className="w-full h-full object-cover" loading="eager" width={1534} height={1080} decoding="async" fetchPriority="high" />
         <div className="absolute inset-0 bg-foreground/40" />
       </div>
       <div className="relative w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-32">
