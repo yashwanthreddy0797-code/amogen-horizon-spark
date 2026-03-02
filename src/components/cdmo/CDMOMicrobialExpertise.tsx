@@ -64,59 +64,8 @@ const CDMOMicrobialExpertise = () => {
 
 
 
-      {/* Section 3: cGMP Facilities */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-          <ScrollReveal>
-            <div className="max-w-4xl mb-10">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-                Our cGMP Facilities — Quality and Reliability
-              </h2>
-              <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
-                Our microbial manufacturing is comprised of two fermentation facilities, allowing for flexibility on cGMP scales from 200 L up to 4,500 L working volume — designed for high cell density processes. Both fermentation facilities are multi-licensed, with a strong manufacturing track record for global markets. Our extensive microbial downstream purification capabilities can handle a great variety of molecule formats, including <em>E. coli</em> and yeast systems.
-              </p>
-            </div>
-          </ScrollReveal>
 
-          <ScrollReveal delay={0.1}>
-            <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm mt-6">
-              <img
-                src={microbialFacilitiesImg}
-                alt="Microbial manufacturing facility capabilities including fermentation and downstream purification"
-                className="w-full h-auto object-cover"
-                loading="lazy" />
 
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.15}>
-            <p className="text-base md:text-lg text-muted-foreground mt-10 leading-relaxed max-w-4xl">
-              At the heart of our success lies strong abilities in protein refolding, as well as large-scale soluble expression and purification. We have commercial-scale purification columns up to 1.8 m in diameter, plus special techniques (e.g., handling organic solvents, large-scale HPLC columns, bulk lyophilization) and explosion-proof facilities for hard-to-manufacture proteins and peptides. We also offer chemical modifications to prolong protein half-life, including PEGylation and albumin fusion.
-            </p>
-          </ScrollReveal>
-
-          {/* Downstream Services Cards */}
-          <ScrollReveal delay={0.2}>
-            <div className="mt-12">
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
-                Downstream Processing Capabilities
-              </h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {downstreamServices.map((service, i) =>
-                <div
-                  key={i}
-                  className="rounded-xl p-6 border border-[#001965]/10 flex items-start gap-3"
-                  style={{ backgroundColor: "#F7F6F5" }}>
-
-                    <span className="mt-1 w-2 h-2 rounded-full bg-[#001965] shrink-0" />
-                    <p className="text-sm font-medium text-foreground leading-relaxed">{service}</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
 
 
 
