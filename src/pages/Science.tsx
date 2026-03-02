@@ -319,7 +319,7 @@ const Science = () => {
         <ScrollReveal>
           <div className="relative h-[40vh] md:h-[50vh] overflow-hidden">
             <img src={rdLabHands} alt="AMOGEN scientist with equipment" className="w-full h-full object-cover" loading="lazy" />
-            <div className="absolute inset-0 bg-foreground/20" />
+            
           </div>
         </ScrollReveal>
 
