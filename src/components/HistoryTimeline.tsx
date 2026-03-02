@@ -48,7 +48,7 @@ const HistoryTimeline = () => {
   const totalPages = maxOffset + 1;
 
   return (
-    <section className="py-20 lg:py-28 bg-section-cream overflow-hidden">
+    <section className="py-20 lg:py-28 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <div className="mb-20">
