@@ -28,6 +28,7 @@ import rdPatientCardio from "@/assets/rd-patient-cardio.jpg";
 import rdPatientImmunology from "@/assets/rd-patient-immunology.jpg";
 import rdPatientPain from "@/assets/rd-patient-pain.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
+import ScienceTechnologyAccordion from "@/components/science/ScienceTechnologyAccordion";
 
 const Science = () => {
   const { t } = useLanguage();
@@ -242,6 +243,9 @@ const Science = () => {
             </div>
           </div>
         </section>
+
+        {/* TECHNOLOGY ACCORDION */}
+        <ScienceTechnologyAccordion />
 
         {/* COMPARABILITY DATA */}
         <section id="comparability-data" className="py-20 lg:py-28 bg-white">
