@@ -62,7 +62,7 @@ const CDMOMicrobialExpertise = () => {
 
 
       {/* Section 2: Why Microbial? */}
-      <section className="py-20 lg:py-28" style={{ backgroundColor: "#F7F6F5" }}>
+      <section className="py-20 lg:py-[25px]" style={{ backgroundColor: "#F7F6F5" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
           <ScrollReveal>
             <div className="max-w-4xl mb-10">
