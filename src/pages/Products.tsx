@@ -176,36 +176,24 @@ const Products = () => {
 
                     {/* Right: Stage progress */}
                     <div className="flex flex-col justify-center">
-                      <div className="flex gap-1 md:gap-2">
+                      <div className="flex">
                         {stages.map((stage, si) => {
                           const isActive = si < product.activeStages;
                           return (
-                            <div key={stage} className="flex-1 flex flex-col items-center gap-2">
-                              <div
-                                className={`w-full h-12 md:h-14 rounded-md flex items-center justify-center transition-colors ${
-                                isActive ?
-                                "bg-primary text-primary-foreground" :
-                                "bg-muted text-muted-foreground"}`
-                                }>
-                                
-                                <span className="text-[10px] md:text-xs font-semibold text-center leading-tight px-1">
-                                  {stage}
-                                </span>
-                              </div>
-                            </div>);
-
+                            <div
+                              key={stage}
+                              className={`flex-1 h-16 md:h-[72px] flex items-center justify-center border-r border-background/30 last:border-r-0 transition-colors ${
+                                isActive
+                                  ? "bg-primary text-primary-foreground"
+                                  : "bg-muted text-muted-foreground"
+                              } ${si === 0 ? "rounded-l-lg" : ""} ${si === stages.length - 1 ? "rounded-r-lg" : ""}`}
+                            >
+                              <span className="text-xs md:text-sm font-semibold text-center leading-tight px-2">
+                                {stage}
+                              </span>
+                            </div>
+                          );
                         })}
-                      </div>
-
-                      {/* Progress connector line */}
-                      <div className="relative mt-4 mx-2">
-                        <div className="h-1 bg-muted rounded-full" />
-                        <div
-                          className="absolute top-0 left-0 h-1 bg-primary rounded-full transition-all duration-700"
-                          style={{
-                            width: `${product.activeStages / stages.length * 100}%`
-                          }} />
-                        
                       </div>
                     </div>
                   </div>
