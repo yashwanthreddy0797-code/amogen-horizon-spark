@@ -1,6 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { FlaskConical, Factory, Cpu, Microscope, ShieldCheck, Beaker } from "lucide-react";
-import microbialExpertsImg from "@/assets/microbial-experts.jpg";
+import microbialChemBioImg from "@/assets/microbial-chemical-vs-bio.png";
 import microbialAntibodiesImg from "@/assets/microbial-antibodies.jpg";
 import microbialFacilitiesImg from "@/assets/microbial-facilities.jpg";
 import microbialCapabilitiesImg from "@/assets/microbial-capabilities.jpg";
@@ -76,23 +76,13 @@ const CDMOMicrobialExpertise = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <div className="grid md:grid-cols-2 gap-8 mt-10">
-              <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm">
-                <img
-                  src={microbialExpertsImg}
-                  alt="Chemical drugs vs biopharmaceuticals comparison infographic"
-                  className="w-full h-auto object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm">
-                <img
-                  src={microbialAntibodiesImg}
-                  alt="Microbial vs mammalian expression systems comparison"
-                  className="w-full h-auto object-cover"
-                  loading="lazy"
-                />
-              </div>
+            <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm mt-10">
+              <img
+                src={microbialChemBioImg}
+                alt="Chemical drugs vs biopharmaceuticals comparison infographic"
+                className="w-full h-auto object-cover"
+                loading="lazy"
+              />
             </div>
           </ScrollReveal>
 
@@ -100,6 +90,17 @@ const CDMOMicrobialExpertise = () => {
             <p className="text-base md:text-lg text-muted-foreground mt-10 leading-relaxed max-w-4xl">
               It's also a versatile technology that allows for production of a wide and diverse range of molecule formats. Our facility has experience delivering recombinant proteins like growth hormones and peptides, as well as antibody-like molecules (e.g., fragments, scaffold proteins), sub-unit vaccines, virus-like particles, and pDNA (plasmid DNA) products.
             </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2}>
+            <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm mt-10">
+              <img
+                src={microbialAntibodiesImg}
+                alt="Microbial vs mammalian expression systems comparison"
+                className="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </div>
           </ScrollReveal>
         </div>
       </section>
