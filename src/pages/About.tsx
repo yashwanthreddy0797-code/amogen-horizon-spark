@@ -9,8 +9,6 @@ import AboutCultureWay from "@/components/about/AboutCultureWay";
 import AboutWhoWeAre from "@/components/about/AboutWhoWeAre";
 import AboutWhatWeDo from "@/components/about/AboutWhatWeDo";
 import AboutLeadership from "@/components/about/AboutLeadership";
-import AboutGovernance from "@/components/about/AboutGovernance";
-import AboutSustainability from "@/components/about/AboutSustainability";
 import AboutCareers from "@/components/about/AboutCareers";
 import AboutHelp from "@/components/about/AboutHelp";
 
@@ -83,11 +81,6 @@ const About = () => {
         {/* Leadership */}
         <AboutLeadership />
 
-        {/* Governance */}
-        <AboutGovernance />
-
-        {/* Sustainability */}
-        <AboutSustainability />
 
         {/* Careers CTA */}
         <AboutCareers />
