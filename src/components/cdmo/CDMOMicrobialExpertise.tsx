@@ -46,20 +46,20 @@ const CDMOMicrobialExpertise = () => {
   return (
     <>
       {/* Section 1: Expertise and Excellence */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-          <ScrollReveal>
-            <div className="max-w-4xl mb-10">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-                Expertise and Excellence in a Thriving Sector
-              </h2>
-              <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
-                The microbial product market is a market with attractive growth — and that growth is coming from diverse molecule formats and process formats where our team has outstanding development and manufacturing experience. We're proud to be pioneers in the microbial field, with a track record of success going back to the 1980s and our work on recombinant interferons. Since then, we have brought 20 microbial manufactured products to the global market: some our own, some as a trusted manufacturing partner.
-              </p>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       {/* Section 2: Why Microbial? */}
       <section className="py-20 lg:py-28" style={{ backgroundColor: "#F7F6F5" }}>
