@@ -317,10 +317,10 @@ const Science = () => {
 
         {/* LAB IMAGE BREAK */}
         <ScrollReveal>
-          <div className="relative h-[40vh] md:h-[50vh] overflow-hidden">
-            
-            
-          </div>
+          
+
+
+          
         </ScrollReveal>
 
         {/* CORE AREAS OF INNOVATION — CAROUSEL */}
