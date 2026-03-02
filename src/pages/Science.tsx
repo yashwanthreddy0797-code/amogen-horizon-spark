@@ -279,8 +279,7 @@ const Science = () => {
         </section>
 
         {/* RESEARCH CAPABILITIES */}
-        <section id="research-capabilities" className="py-20 lg:py-28 bg-white">
-          
+        
 
 
 
@@ -312,8 +311,9 @@ const Science = () => {
 
 
 
-          
-        </section>
+
+
+        
 
         {/* LAB IMAGE BREAK */}
         <ScrollReveal>
