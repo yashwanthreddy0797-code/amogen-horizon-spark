@@ -39,7 +39,7 @@ const rfpSteps = [
 const CDMORfpProcess = () => {
   const [activeStep, setActiveStep] = useState(0);
 
-  return;
+  return null;
 
 
 
