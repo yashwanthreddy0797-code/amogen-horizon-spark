@@ -16,9 +16,9 @@ const CDMO = () => {
       <Navbar variant="cdmo" />
       <main>
         <CDMOHero />
-        <CDMOCapabilities />
-        <CDMOTimeline />
         <CDMOServicesOverview />
+        <CDMOTimeline />
+        <CDMOCapabilities />
         <CDMOMicrobialExpertise />
         <CDMOPeptideCards />
         <CDMOSolutions />
