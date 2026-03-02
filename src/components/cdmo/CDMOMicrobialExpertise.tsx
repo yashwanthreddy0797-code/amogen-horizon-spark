@@ -245,39 +245,39 @@ const CDMOMicrobialExpertise = () => {
       </section>
 
       {/* Section 6: An Ideal Partner */}
-      <section className="py-20 lg:py-28" style={{ backgroundColor: "#001965" }}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-          <ScrollReveal>
-            <div className="max-w-4xl mb-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
-                An Ideal Partner
-              </h2>
-              <p className="text-base md:text-lg text-white/75 mt-6 leading-relaxed">
-                In the last 40 years, our processes have yielded over 250 molecules — and long-standing, in-depth experience of both development and manufacturing of biopharmaceuticals. Blending that experience with broad commercial expertise, development capabilities, and state-of-the-art facilities, we can offer the whole value chain: from early stage, to launch, to commercial supply.
-              </p>
-            </div>
-          </ScrollReveal>
+      
 
-          <ScrollReveal delay={0.1}>
-            <div className="mt-12">
-              <h3 className="text-xl md:text-2xl font-bold text-[#8B9E3C] mb-8">
-                In short, we are the ideal partner in microbials.
-              </h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {idealPartnerPoints.map((point, i) =>
-                <div
-                  key={i}
-                  className="rounded-xl p-6 bg-white/5 border border-white/10 hover:border-white/20 transition-colors">
 
-                    <point.icon size={32} className="text-[#8B9E3C] mb-4" />
-                    <p className="text-sm text-white/85 leading-relaxed">{point.text}</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </>);
 
 };
