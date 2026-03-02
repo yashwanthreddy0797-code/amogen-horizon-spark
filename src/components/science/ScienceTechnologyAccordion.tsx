@@ -4,19 +4,16 @@ import { ArrowRight } from "lucide-react";
 
 const items = [
   {
-    num: "01",
     label: "Advanced Peptide Synthesis Platform",
     heading: "Versatile toolbox maximizing peptide production",
     body: "Our 15+ years of experience, and development of sophisticated solid-phase peptide synthesis (SPPS) tools & strategies, allow us to unlock full manufacturing potential — providing enhanced product yields and quality. We fine-tune the synthesis of your peptide by optimizing resin selection, coupling strategies, and purification protocols, paired with a robust and reliable analytical screening system.",
   },
   {
-    num: "02",
     label: "Scalable & Cost-Efficient Manufacturing",
     heading: "Intensified processes considering safety, economy, and regulatory requirements",
     body: "In addition to improving efficiency by adopting continuous manufacturing approaches, major advantages of our scalable platform include a reduction in production costs and waste. This significantly reduces time-to-market and in turn lowers capital requirements for commercial-scale production. Further manufacturing savings are realized through our optimized purification protocols, increasing space-time yields across all GLP-1 analog programs.",
   },
   {
-    num: "03",
     label: "Industry Proven & Regulatory Compliant",
     heading: "Comprehensively documented elements of a characterized toolbox simplifying regulatory procedures",
     body: "All components of AMOGEN's biosimilar development toolbox are thoroughly characterized and full documentation is readily available to support regulatory filings for your peptide candidate. Processes developed by AMOGEN have been used to produce biosimilar peptides for clinical applications including GLP-1 receptor agonists, as well as GMP products for clinical studies — meeting the requirements for regulatory filings (US, Europe, and ROW) for the relevant field of application.",
@@ -63,7 +60,7 @@ const ScienceTechnologyAccordion = () => {
                       }`}
                       style={{ color: "#001965" }}
                     >
-                      {item.num} {item.label}
+                      {item.label}
                     </span>
                     {isActive && (
                       <motion.span
