@@ -17,8 +17,8 @@ import {
   BarChart3,
   FileText,
   ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+  ChevronRight } from
+"lucide-react";
 import scienceHero from "@/assets/science-hero.jpg";
 import sciencePatient from "@/assets/science-patient.jpg";
 import scienceResearch from "@/assets/science-research.jpg";
@@ -35,34 +35,34 @@ const Science = () => {
   const rd = t.rdPage;
 
   const pipelineStats = [
-    { phase: t.sciencePage.discovery, count: 3, color: "bg-primary/20" },
-    { phase: t.sciencePage.preclinical, count: 2, color: "bg-primary/40" },
-    { phase: t.sciencePage.phaseI, count: 2, color: "bg-primary/60" },
-    { phase: t.sciencePage.phaseIII, count: 1, color: "bg-primary/80" },
-    { phase: t.sciencePage.regulatory, count: 1, color: "bg-primary" },
-  ];
+  { phase: t.sciencePage.discovery, count: 3, color: "bg-primary/20" },
+  { phase: t.sciencePage.preclinical, count: 2, color: "bg-primary/40" },
+  { phase: t.sciencePage.phaseI, count: 2, color: "bg-primary/60" },
+  { phase: t.sciencePage.phaseIII, count: 1, color: "bg-primary/80" },
+  { phase: t.sciencePage.regulatory, count: 1, color: "bg-primary" }];
+
 
   const therapeuticAreas = [
-    { icon: Target, title: t.sciencePage.area1Title, description: t.sciencePage.area1Desc },
-    { icon: Dna, title: t.sciencePage.area2Title, description: t.sciencePage.area2Desc },
-    { icon: Microscope, title: t.sciencePage.area3Title, description: t.sciencePage.area3Desc },
-  ];
+  { icon: Target, title: t.sciencePage.area1Title, description: t.sciencePage.area1Desc },
+  { icon: Dna, title: t.sciencePage.area2Title, description: t.sciencePage.area2Desc },
+  { icon: Microscope, title: t.sciencePage.area3Title, description: t.sciencePage.area3Desc }];
+
 
   const technologyPlatforms = [
-    { icon: FlaskConical, title: t.sciencePage.platform1Title, description: t.sciencePage.platform1Desc },
-    { icon: Beaker, title: t.sciencePage.platform2Title, description: t.sciencePage.platform2Desc },
-    { icon: TestTube, title: t.sciencePage.platform3Title, description: t.sciencePage.platform3Desc },
-  ];
+  { icon: FlaskConical, title: t.sciencePage.platform1Title, description: t.sciencePage.platform1Desc },
+  { icon: Beaker, title: t.sciencePage.platform2Title, description: t.sciencePage.platform2Desc },
+  { icon: TestTube, title: t.sciencePage.platform3Title, description: t.sciencePage.platform3Desc }];
+
 
   // Core areas of innovation carousel (from R&D page)
   const coreAreas = [
-    { title: rd.area1Title, desc: rd.area1Desc, image: rdPatientAlzheimer },
-    { title: rd.area2Title, desc: rd.area2Desc, image: rdPatientCardio },
-    { title: rd.area3Title, desc: rd.area3Desc, image: sciencePatient },
-    { title: rd.area4Title, desc: rd.area4Desc, image: rdPatientImmunology },
-    { title: rd.area5Title, desc: rd.area5Desc, image: rdPatientPain },
-    { title: rd.area6Title, desc: rd.area6Desc, image: scienceResearch },
-  ];
+  { title: rd.area1Title, desc: rd.area1Desc, image: rdPatientAlzheimer },
+  { title: rd.area2Title, desc: rd.area2Desc, image: rdPatientCardio },
+  { title: rd.area3Title, desc: rd.area3Desc, image: sciencePatient },
+  { title: rd.area4Title, desc: rd.area4Desc, image: rdPatientImmunology },
+  { title: rd.area5Title, desc: rd.area5Desc, image: rdPatientPain },
+  { title: rd.area6Title, desc: rd.area6Desc, image: scienceResearch }];
+
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -84,39 +84,39 @@ const Science = () => {
 
   // Publications data
   const publications = [
-    {
-      title: "Comparative Analytical Characterization of Semaglutide Biosimilar AMG-S01",
-      journal: "Journal of Pharmaceutical Sciences",
-      year: "2025",
-      type: "Research Article",
-    },
-    {
-      title: "Process Development and Scale-Up of GLP-1 Receptor Agonist Peptides via SPPS",
-      journal: "Biotechnology & Bioengineering",
-      year: "2024",
-      type: "Research Article",
-    },
-    {
-      title: "Forced Degradation and Stability Studies of Liraglutide Biosimilar Formulations",
-      journal: "European Journal of Pharmaceutics",
-      year: "2024",
-      type: "Technical Report",
-    },
-    {
-      title: "Immunogenicity Assessment Framework for Peptide Biosimilars: A Regulatory Perspective",
-      journal: "BioDrugs",
-      year: "2025",
-      type: "Review",
-    },
-  ];
+  {
+    title: "Comparative Analytical Characterization of Semaglutide Biosimilar AMG-S01",
+    journal: "Journal of Pharmaceutical Sciences",
+    year: "2025",
+    type: "Research Article"
+  },
+  {
+    title: "Process Development and Scale-Up of GLP-1 Receptor Agonist Peptides via SPPS",
+    journal: "Biotechnology & Bioengineering",
+    year: "2024",
+    type: "Research Article"
+  },
+  {
+    title: "Forced Degradation and Stability Studies of Liraglutide Biosimilar Formulations",
+    journal: "European Journal of Pharmaceutics",
+    year: "2024",
+    type: "Technical Report"
+  },
+  {
+    title: "Immunogenicity Assessment Framework for Peptide Biosimilars: A Regulatory Perspective",
+    journal: "BioDrugs",
+    year: "2025",
+    type: "Review"
+  }];
+
 
   // Comparability data
   const comparabilityMetrics = [
-    { label: "Structural Similarity", value: "99.7%", desc: "Primary & higher-order structure match vs. reference" },
-    { label: "Functional Bioequivalence", value: "98.5%", desc: "Receptor binding and cell-based bioassay concordance" },
-    { label: "Purity Profile", value: "≥99.0%", desc: "HPLC purity across all manufactured batches" },
-    { label: "Stability Match", value: "36 mo", desc: "Equivalent shelf-life demonstrated under ICH conditions" },
-  ];
+  { label: "Structural Similarity", value: "99.7%", desc: "Primary & higher-order structure match vs. reference" },
+  { label: "Functional Bioequivalence", value: "98.5%", desc: "Receptor binding and cell-based bioassay concordance" },
+  { label: "Purity Profile", value: "≥99.0%", desc: "HPLC purity across all manufactured batches" },
+  { label: "Stability Match", value: "36 mo", desc: "Equivalent shelf-life demonstrated under ICH conditions" }];
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -154,16 +154,16 @@ const Science = () => {
                 <div className="bg-card rounded-2xl p-8 shadow-sm" id="pipeline">
                   <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-6">{t.sciencePage.pipelineOverviewLabel}</p>
                   <div className="space-y-4">
-                    {pipelineStats.map((item) => (
-                      <div key={item.phase} className="flex items-center gap-4">
+                    {pipelineStats.map((item) =>
+                    <div key={item.phase} className="flex items-center gap-4">
                         <span className="text-sm font-medium text-foreground w-24 shrink-0">{item.phase}</span>
                         <div className="flex-1 bg-muted rounded-full h-8 overflow-hidden">
-                          <motion.div className={`h-full ${item.color} rounded-full flex items-center justify-end pr-3`} initial={{ width: 0 }} whileInView={{ width: `${(item.count / 3) * 100}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
+                          <motion.div className={`h-full ${item.color} rounded-full flex items-center justify-end pr-3`} initial={{ width: 0 }} whileInView={{ width: `${item.count / 3 * 100}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
                             <span className="text-xs font-bold text-foreground">{item.count}</span>
                           </motion.div>
                         </div>
                       </div>
-                    ))}
+                    )}
                   </div>
                   <p className="text-xs text-muted-foreground mt-6">{t.sciencePage.dataAsOf}</p>
                 </div>
@@ -195,8 +195,8 @@ const Science = () => {
                       <p className="text-sm text-muted-foreground leading-relaxed flex-1">{area.description}</p>
                       <a href="#" className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline mt-6">{t.sciencePage.learnMore} <ArrowRight size={14} /></a>
                     </div>
-                  </ScrollReveal>
-                );
+                  </ScrollReveal>);
+
               })}
             </div>
           </div>
@@ -217,6 +217,32 @@ const Science = () => {
           </div>
         </ScrollReveal>
 
+        {/* TECHNOLOGY STACK */}
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
         {/* TECHNOLOGY ACCORDION */}
         <ScienceTechnologyAccordion />
@@ -236,8 +262,8 @@ const Science = () => {
               </div>
             </ScrollReveal>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {comparabilityMetrics.map((metric, i) => (
-                <ScrollReveal key={metric.label} delay={i * 0.1}>
+              {comparabilityMetrics.map((metric, i) =>
+              <ScrollReveal key={metric.label} delay={i * 0.1}>
                   <div className="bg-card rounded-2xl p-8 shadow-sm h-full text-center">
                     <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
                       <BarChart3 size={24} className="text-primary" />
@@ -247,7 +273,7 @@ const Science = () => {
                     <p className="text-sm text-muted-foreground leading-relaxed">{metric.desc}</p>
                   </div>
                 </ScrollReveal>
-              ))}
+              )}
             </div>
           </div>
         </section>
@@ -274,17 +300,17 @@ const Science = () => {
             {/* Stats */}
             <div className="grid md:grid-cols-3 gap-10 mt-20">
               {[
-                { value: rd.stat1Value, desc: rd.stat1Desc },
-                { value: rd.stat2Value, desc: rd.stat2Desc },
-                { value: rd.stat3Value, desc: rd.stat3Desc },
-              ].map((stat, i) => (
-                <ScrollReveal key={i} delay={i * 0.1}>
+              { value: rd.stat1Value, desc: rd.stat1Desc },
+              { value: rd.stat2Value, desc: rd.stat2Desc },
+              { value: rd.stat3Value, desc: rd.stat3Desc }].
+              map((stat, i) =>
+              <ScrollReveal key={i} delay={i * 0.1}>
                   <div className="text-center">
                     <p className="text-5xl md:text-6xl font-extrabold text-primary">{stat.value}</p>
                     <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{stat.desc}</p>
                   </div>
                 </ScrollReveal>
-              ))}
+              )}
             </div>
           </div>
         </section>
@@ -312,10 +338,10 @@ const Science = () => {
               <div className="relative overflow-hidden">
                 <div
                   className="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                  style={{ transform: `translateX(-${currentSlide * carouselItemWidth}px)` }}
-                >
-                  {coreAreas.map((area, i) => (
-                    <div key={i} className="flex-shrink-0" style={{ width: `${carouselItemWidth - 16}px` }}>
+                  style={{ transform: `translateX(-${currentSlide * carouselItemWidth}px)` }}>
+                  
+                  {coreAreas.map((area, i) =>
+                  <div key={i} className="flex-shrink-0" style={{ width: `${carouselItemWidth - 16}px` }}>
                       <div className="rounded-2xl overflow-hidden bg-card shadow-sm h-full">
                         <div className="h-[300px] overflow-hidden">
                           <img src={area.image} alt={area.title} className="w-full h-full object-cover" loading="lazy" />
@@ -326,7 +352,7 @@ const Science = () => {
                         </div>
                       </div>
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
               <div className="flex items-center gap-4 mt-8">
@@ -342,8 +368,8 @@ const Science = () => {
 
             {/* Mobile: stacked */}
             <div className="md:hidden flex flex-col gap-6">
-              {coreAreas.map((area, i) => (
-                <div key={i} className="rounded-2xl overflow-hidden bg-card shadow-sm">
+              {coreAreas.map((area, i) =>
+              <div key={i} className="rounded-2xl overflow-hidden bg-card shadow-sm">
                   <div className="h-[220px] overflow-hidden">
                     <img src={area.image} alt={area.title} className="w-full h-full object-cover" loading="lazy" />
                   </div>
@@ -352,7 +378,7 @@ const Science = () => {
                     <p className="text-sm text-muted-foreground leading-relaxed">{area.desc}</p>
                   </div>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </section>
@@ -375,8 +401,8 @@ const Science = () => {
               </div>
             </ScrollReveal>
             <div className="grid md:grid-cols-2 gap-6">
-              {publications.map((pub, i) => (
-                <ScrollReveal key={i} delay={i * 0.08}>
+              {publications.map((pub, i) =>
+              <ScrollReveal key={i} delay={i * 0.08}>
                   <div className="bg-card rounded-2xl p-8 shadow-sm h-full flex flex-col">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
@@ -392,7 +418,7 @@ const Science = () => {
                     </a>
                   </div>
                 </ScrollReveal>
-              ))}
+              )}
             </div>
           </div>
         </section>
@@ -413,8 +439,8 @@ const Science = () => {
         </section>
       </main>
       <Footer />
-    </div>
-  );
+    </div>);
+
 };
 
 export default Science;
