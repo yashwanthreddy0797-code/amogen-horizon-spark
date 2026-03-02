@@ -324,64 +324,64 @@ const Science = () => {
         </ScrollReveal>
 
         {/* CORE AREAS OF INNOVATION — CAROUSEL */}
-        <section className="py-20 lg:py-28 bg-white">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-            <ScrollReveal>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight mb-4">
-                {rd.coreAreasTitle} <em className="italic">{rd.coreAreasTitleEm}</em>
-              </h2>
-              <p className="text-base text-muted-foreground max-w-2xl mb-12">{rd.coreAreasDesc}</p>
-            </ScrollReveal>
+        
 
-            {/* Desktop carousel */}
-            <div className="hidden md:block" ref={carouselRef}>
-              <div className="relative overflow-hidden">
-                <div
-                  className="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                  style={{ transform: `translateX(-${currentSlide * carouselItemWidth}px)` }}>
-                  
-                  {coreAreas.map((area, i) =>
-                  <div key={i} className="flex-shrink-0" style={{ width: `${carouselItemWidth - 16}px` }}>
-                      <div className="rounded-2xl overflow-hidden bg-card shadow-sm h-full">
-                        <div className="h-[300px] overflow-hidden">
-                          <img src={area.image} alt={area.title} className="w-full h-full object-cover" loading="lazy" />
-                        </div>
-                        <div className="p-6">
-                          <h3 className="text-xl font-bold text-foreground mb-3">{area.title}</h3>
-                          <p className="text-sm text-muted-foreground leading-relaxed">{area.desc}</p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="flex items-center gap-4 mt-8">
-                <button onClick={prevSlide} disabled={currentSlide === 0} className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-30">
-                  <ChevronLeft size={20} className="text-foreground" />
-                </button>
-                <span className="text-sm text-muted-foreground">{currentSlide + 1} of {coreAreas.length - 2}</span>
-                <button onClick={nextSlide} disabled={currentSlide >= coreAreas.length - 3} className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-30">
-                  <ChevronRight size={20} className="text-foreground" />
-                </button>
-              </div>
-            </div>
 
-            {/* Mobile: stacked */}
-            <div className="md:hidden flex flex-col gap-6">
-              {coreAreas.map((area, i) =>
-              <div key={i} className="rounded-2xl overflow-hidden bg-card shadow-sm">
-                  <div className="h-[220px] overflow-hidden">
-                    <img src={area.image} alt={area.title} className="w-full h-full object-cover" loading="lazy" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-foreground mb-2">{area.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{area.desc}</p>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
         {/* MICROBIAL SCIENCE SECTIONS */}
         <MicrobialScience />
