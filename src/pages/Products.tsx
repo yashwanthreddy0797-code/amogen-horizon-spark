@@ -73,7 +73,7 @@ const products = [
 
 const Products = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" id="products-page">
       <Navbar />
       <main>
         {/* Hero */}
