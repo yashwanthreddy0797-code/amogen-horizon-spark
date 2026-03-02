@@ -189,38 +189,39 @@ const CDMOMicrobialExpertise = () => {
       {/* Section 5: Thought Leadership */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <ScrollReveal>
-              <div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-                  Microbial Thought Leadership
-                </h2>
-                <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
-                  We are proud to be one of the thought leaders in the microbial technology space. Our teams continuously contribute expert insights and innovations to advance the field.
-                </p>
-                <div className="mt-8 space-y-4">
-                  <div className="rounded-xl p-5 border border-[#001965]/10 hover:border-[#001965]/30 transition-colors" style={{ backgroundColor: "#F7F6F5" }}>
-                    <h4 className="text-sm font-bold text-[#001965] mb-1">Featured Expert Content</h4>
-                    <p className="text-sm text-muted-foreground">Advancements in microbial manufacturing of biopharmaceuticals</p>
-                  </div>
-                  <div className="rounded-xl p-5 border border-[#001965]/10 hover:border-[#001965]/30 transition-colors" style={{ backgroundColor: "#F7F6F5" }}>
-                    <h4 className="text-sm font-bold text-[#001965] mb-1">Featured Expert Content</h4>
-                    <p className="text-sm text-muted-foreground">Setting the standard with plasmid DNA production</p>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.15}>
-              <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm">
-                <img
-                  src={microbialThoughtLeadershipImg}
-                  alt="Laboratory expert examining vials"
-                  className="w-full h-auto object-cover"
-                  loading="lazy" />
+          <ScrollReveal>
+            <div className="max-w-3xl mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
+                Microbial Thought Leadership
+              </h2>
+              <p className="text-sm md:text-base text-muted-foreground mt-4 leading-relaxed">
+                We are proud to be one of the thought leaders in the microbial technology space. Our teams continuously contribute expert insights and innovations to advance the field.
+              </p>
+            </div>
+          </ScrollReveal>
 
+          <ScrollReveal delay={0.1}>
+            <div className="rounded-2xl overflow-hidden shadow-lg mt-6">
+              <img
+                src={microbialThoughtLeadershipImg}
+                alt="Laboratory expert examining vials"
+                className="w-full h-[28rem] md:h-[34rem] lg:h-[40rem] object-cover"
+                loading="lazy" />
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.15}>
+            <div className="grid sm:grid-cols-2 gap-4 mt-10">
+              <div className="rounded-xl p-5 border border-[#001965]/10 hover:border-[#001965]/30 transition-colors" style={{ backgroundColor: "#F7F6F5" }}>
+                <h4 className="text-xs font-bold text-[#001965] mb-1">Featured Expert Content</h4>
+                <p className="text-xs text-muted-foreground">Advancements in microbial manufacturing of biopharmaceuticals</p>
               </div>
-            </ScrollReveal>
-          </div>
+              <div className="rounded-xl p-5 border border-[#001965]/10 hover:border-[#001965]/30 transition-colors" style={{ backgroundColor: "#F7F6F5" }}>
+                <h4 className="text-xs font-bold text-[#001965] mb-1">Featured Expert Content</h4>
+                <p className="text-xs text-muted-foreground">Setting the standard with plasmid DNA production</p>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
