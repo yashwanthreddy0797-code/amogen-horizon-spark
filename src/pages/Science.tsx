@@ -138,35 +138,6 @@ const Science = () => {
         </section>
 
 
-        {/* THERAPEUTIC AREAS */}
-        <section className="py-20 lg:py-28 bg-white">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-            <ScrollReveal>
-              <div className="max-w-3xl">
-                <p className="text-xs uppercase tracking-[0.2em] text-primary font-bold mb-4">{t.sciencePage.therapeuticLabel}</p>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-                  {t.sciencePage.therapeuticTitle}{" "}<em className="italic">{t.sciencePage.therapeuticTitleEm}</em>
-                </h2>
-                <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">{t.sciencePage.therapeuticDesc}</p>
-              </div>
-            </ScrollReveal>
-            <div className="grid md:grid-cols-3 gap-8 mt-14">
-              {therapeuticAreas.map((area, i) => {
-                const Icon = area.icon;
-                return (
-                  <ScrollReveal key={area.title} delay={i * 0.1}>
-                    <div className="bg-card rounded-2xl p-8 shadow-sm h-full flex flex-col">
-                      <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6"><Icon size={24} className="text-primary" /></div>
-                      <h3 className="text-xl font-bold text-foreground mb-3">{area.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed flex-1">{area.description}</p>
-                      <a href="#" className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline mt-6">{t.sciencePage.learnMore} <ArrowRight size={14} /></a>
-                    </div>
-                  </ScrollReveal>);
-
-              })}
-            </div>
-          </div>
-        </section>
 
         {/* IMAGE BREAK */}
         <ScrollReveal>
