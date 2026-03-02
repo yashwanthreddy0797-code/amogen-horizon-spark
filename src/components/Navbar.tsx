@@ -68,10 +68,11 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
     },
     [t.nav.products]: {
       description: t.nav.productsDesc,
-      image: { src: productsVials, title: "Our Medicines", subtitle: "Discover our portfolio", href: "#products" },
+      href: "/products",
+      image: { src: productsVials, title: "Our Medicines", subtitle: "Discover our portfolio", href: "/products" },
       links: [
-        [t.nav.pipelineOverview, t.nav.moleculeDetails],
-        [t.nav.productLabels],
+        [{ label: t.nav.pipelineOverview, href: "/products" }, { label: t.nav.moleculeDetails, href: "/products" }],
+        [{ label: t.nav.productLabels, href: "/products" }],
       ],
     },
     [t.nav.cdmo]: {
