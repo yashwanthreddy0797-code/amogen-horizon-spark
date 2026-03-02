@@ -8,68 +8,68 @@ import dulaglutideImg from "@/assets/dulaglutide.png";
 import productsVials from "@/assets/products-vials.jpg";
 
 const stages = [
-  "Technical Development",
-  "Manufacturing",
-  "Clinical Development",
-  "Approval Process",
-  "Launch",
-];
+"Technical Development",
+"Manufacturing",
+"Clinical Development",
+"Approval Process",
+"Launch"];
+
 
 const products = [
-  {
-    name: "Semaglutide",
-    type: "Biosimilar Candidate",
-    image: semaglutideImg,
-    molecule: "Semaglutide",
-    referenceProduct: "Ozempic® / Wegovy®",
-    therapeuticArea: "T2DM, Obesity",
-    note: "Other indications in trials: NASH, ASCVD, CKD slow Progression, PCOS (Off-Label)",
-    activeStages: 4,
-  },
-  {
-    name: "Liraglutide",
-    type: "Biosimilar Candidate",
-    image: liraglutideImg,
-    molecule: "Liraglutide",
-    referenceProduct: "Victoza® / Saxenda®",
-    therapeuticArea: "T2DM & Obesity",
-    activeStages: 2,
-  },
-  {
-    name: "Tirzepatide",
-    type: "Biosimilar Candidate",
-    image: tirzepatideImg,
-    molecule: "Tirzepatide",
-    referenceProduct: "Mounjaro® / Zepbound®",
-    therapeuticArea: "T2DM & Obesity",
-    activeStages: 1,
-  },
-  {
-    name: "Dulaglutide",
-    type: "Biosimilar Candidate",
-    image: dulaglutideImg,
-    molecule: "Dulaglutide",
-    referenceProduct: "Trulicity®",
-    therapeuticArea: "T2DM",
-    activeStages: 1,
-  },
-  {
-    name: "Insulin Degludec",
-    type: "Biosimilar Candidate",
-    molecule: "Insulin Degludec",
-    referenceProduct: "Tresiba®",
-    therapeuticArea: "Type 1 & 2 Diabetes",
-    activeStages: 1,
-  },
-  {
-    name: "iDegLira",
-    type: "Biosimilar Candidate",
-    molecule: "Insulin Degludec / Liraglutide",
-    referenceProduct: "Xultophy®",
-    therapeuticArea: "T2DM",
-    activeStages: 1,
-  },
-];
+{
+  name: "Semaglutide",
+  type: "Biosimilar Candidate",
+  image: semaglutideImg,
+  molecule: "Semaglutide",
+  referenceProduct: "Ozempic® / Wegovy®",
+  therapeuticArea: "T2DM, Obesity",
+  note: "Other indications in trials: NASH, ASCVD, CKD slow Progression, PCOS (Off-Label)",
+  activeStages: 4
+},
+{
+  name: "Liraglutide",
+  type: "Biosimilar Candidate",
+  image: liraglutideImg,
+  molecule: "Liraglutide",
+  referenceProduct: "Victoza® / Saxenda®",
+  therapeuticArea: "T2DM & Obesity",
+  activeStages: 2
+},
+{
+  name: "Tirzepatide",
+  type: "Biosimilar Candidate",
+  image: tirzepatideImg,
+  molecule: "Tirzepatide",
+  referenceProduct: "Mounjaro® / Zepbound®",
+  therapeuticArea: "T2DM & Obesity",
+  activeStages: 1
+},
+{
+  name: "Dulaglutide",
+  type: "Biosimilar Candidate",
+  image: dulaglutideImg,
+  molecule: "Dulaglutide",
+  referenceProduct: "Trulicity®",
+  therapeuticArea: "T2DM",
+  activeStages: 1
+},
+{
+  name: "Insulin Degludec",
+  type: "Biosimilar Candidate",
+  molecule: "Insulin Degludec",
+  referenceProduct: "Tresiba®",
+  therapeuticArea: "Type 1 & 2 Diabetes",
+  activeStages: 1
+},
+{
+  name: "iDegLira",
+  type: "Biosimilar Candidate",
+  molecule: "Insulin Degludec / Liraglutide",
+  referenceProduct: "Xultophy®",
+  therapeuticArea: "T2DM",
+  activeStages: 1
+}];
+
 
 const Products = () => {
   return (
@@ -81,8 +81,8 @@ const Products = () => {
           <img
             src={productsVials}
             alt="Pharmaceutical products"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+            className="absolute inset-0 w-full h-full object-cover" />
+          
           <div className="absolute inset-0 bg-footer-bg/70" />
           <div className="relative z-10 text-center px-6">
             <ScrollReveal>
@@ -115,8 +115,8 @@ const Products = () => {
           return (
             <section
               key={product.name}
-              className={`py-16 lg:py-20 ${isEven ? "bg-section-cream" : "bg-background"}`}
-            >
+              className={`py-16 lg:py-20 ${isEven ? "bg-section-cream" : "bg-background"}`}>
+              
               <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
                 <ScrollReveal>
                   <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16 items-start">
@@ -156,22 +156,22 @@ const Products = () => {
                         </div>
                       </div>
 
-                      {product.note && (
-                        <p className="text-xs text-muted-foreground/70 italic mt-4 leading-relaxed">
+                      {product.note &&
+                      <p className="text-xs text-muted-foreground/70 italic mt-4 leading-relaxed">
                           {product.note}
                         </p>
-                      )}
+                      }
 
-                      {product.image && (
-                        <div className="mt-8 flex justify-center lg:justify-start">
-                          <img
-                            src={product.image}
-                            alt={product.name}
-                            className="h-28 md:h-36 object-contain"
-                            loading="lazy"
-                          />
+                      {product.image &&
+                      <div className="mt-8 flex justify-center lg:justify-start">
+                          
+
+
+
+
+                        
                         </div>
-                      )}
+                      }
                     </div>
 
                     {/* Right: Stage progress */}
@@ -183,17 +183,17 @@ const Products = () => {
                             <div key={stage} className="flex-1 flex flex-col items-center gap-2">
                               <div
                                 className={`w-full h-12 md:h-14 rounded-md flex items-center justify-center transition-colors ${
-                                  isActive
-                                    ? "bg-primary text-primary-foreground"
-                                    : "bg-muted text-muted-foreground"
-                                }`}
-                              >
+                                isActive ?
+                                "bg-primary text-primary-foreground" :
+                                "bg-muted text-muted-foreground"}`
+                                }>
+                                
                                 <span className="text-[10px] md:text-xs font-semibold text-center leading-tight px-1">
                                   {stage}
                                 </span>
                               </div>
-                            </div>
-                          );
+                            </div>);
+
                         })}
                       </div>
 
@@ -203,21 +203,21 @@ const Products = () => {
                         <div
                           className="absolute top-0 left-0 h-1 bg-primary rounded-full transition-all duration-700"
                           style={{
-                            width: `${(product.activeStages / stages.length) * 100}%`,
-                          }}
-                        />
+                            width: `${product.activeStages / stages.length * 100}%`
+                          }} />
+                        
                       </div>
                     </div>
                   </div>
                 </ScrollReveal>
               </div>
-            </section>
-          );
+            </section>);
+
         })}
       </main>
       <Footer />
-    </div>
-  );
+    </div>);
+
 };
 
 export default Products;
