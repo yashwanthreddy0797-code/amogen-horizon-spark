@@ -1,0 +1,267 @@
+import ScrollReveal from "@/components/ScrollReveal";
+import { FlaskConical, Factory, Cpu, Microscope, ShieldCheck, Beaker } from "lucide-react";
+import microbialExpertsImg from "@/assets/microbial-experts.jpg";
+import microbialAntibodiesImg from "@/assets/microbial-antibodies.jpg";
+import microbialFacilitiesImg from "@/assets/microbial-facilities.jpg";
+import microbialCapabilitiesImg from "@/assets/microbial-capabilities.jpg";
+import microbialThoughtLeadershipImg from "@/assets/microbial-thought-leadership.jpg";
+
+const idealPartnerPoints = [
+  {
+    icon: FlaskConical,
+    text: "Proven technical expertise and in-house capabilities for diverse molecule formats manufactured in E. coli and yeast systems.",
+  },
+  {
+    icon: Factory,
+    text: "Collaboration partner for sustainable late-stage and commercial manufacturing from our microbial facilities.",
+  },
+  {
+    icon: ShieldCheck,
+    text: "Long-standing experience with a track record of 20 microbial commercial products brought to the market together with our partners.",
+  },
+  {
+    icon: Beaker,
+    text: "Microbial capabilities reflect global market: 300 L and 2 × 6,000 L for commercial microbial manufacturing.",
+  },
+  {
+    icon: Cpu,
+    text: "Digital Twin and Artificial Intelligence for fast transfers and process optimization.",
+  },
+  {
+    icon: Microscope,
+    text: "All analytical methods in-house: Microbiology, Cell & Molecular Biology, Raw Material Testing, TOC & Photometry, Chromatography and Virology.",
+  },
+];
+
+const downstreamServices = [
+  "Bulk lyophilization capabilities of proteins and peptides",
+  "Proven track record in 'downstream-processing-only' services",
+  "Intermediate materials that need further purification and/or conjugation",
+  "Hormones or other recombinant proteins like virus-like particles from inclusion bodies or biomass",
+  "Peptides from inclusion bodies, biomass, and those manufactured in solid-phase chemistry",
+  "Large-scale conjugation services like PEGylation, PASylation, or HESylation for half-life extension",
+];
+
+const CDMOMicrobialExpertise = () => {
+  return (
+    <>
+      {/* Section 1: Expertise and Excellence */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+          <ScrollReveal>
+            <div className="max-w-4xl mb-10">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
+                Expertise and Excellence in a Thriving Sector
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
+                The microbial product market is a market with attractive growth — and that growth is coming from diverse molecule formats and process formats where our team has outstanding development and manufacturing experience. We're proud to be pioneers in the microbial field, with a track record of success going back to the 1980s and our work on recombinant interferons. Since then, we have brought 20 microbial manufactured products to the global market: some our own, some as a trusted manufacturing partner.
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Section 2: Why Microbial? */}
+      <section className="py-20 lg:py-28" style={{ backgroundColor: "#F7F6F5" }}>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+          <ScrollReveal>
+            <div className="max-w-4xl mb-10">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
+                Why Microbial?
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
+                Microbial systems are ideal for synthesizing smaller and non-glycosylated proteins, complementing mammalian cell processes for larger proteins like monoclonal antibodies. With doubling times measured in minutes, not hours, microbial upstream processes can be 30 times faster than mammalian processes and yield product titers as high as 20 g/L of fermentation broth.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="grid md:grid-cols-2 gap-8 mt-10">
+              <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm">
+                <img
+                  src={microbialExpertsImg}
+                  alt="Chemical drugs vs biopharmaceuticals comparison infographic"
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm">
+                <img
+                  src={microbialAntibodiesImg}
+                  alt="Microbial vs mammalian expression systems comparison"
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.15}>
+            <p className="text-base md:text-lg text-muted-foreground mt-10 leading-relaxed max-w-4xl">
+              It's also a versatile technology that allows for production of a wide and diverse range of molecule formats. Our facility has experience delivering recombinant proteins like growth hormones and peptides, as well as antibody-like molecules (e.g., fragments, scaffold proteins), sub-unit vaccines, virus-like particles, and pDNA (plasmid DNA) products.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Section 3: cGMP Facilities */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+          <ScrollReveal>
+            <div className="max-w-4xl mb-10">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
+                Our cGMP Facilities — Quality and Reliability
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
+                Our microbial manufacturing is comprised of two fermentation facilities, allowing for flexibility on cGMP scales from 200 L up to 4,500 L working volume — designed for high cell density processes. Both fermentation facilities are multi-licensed, with a strong manufacturing track record for global markets. Our extensive microbial downstream purification capabilities can handle a great variety of molecule formats, including <em>E. coli</em> and yeast systems.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm mt-6">
+              <img
+                src={microbialFacilitiesImg}
+                alt="Microbial manufacturing facility capabilities including fermentation and downstream purification"
+                className="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.15}>
+            <p className="text-base md:text-lg text-muted-foreground mt-10 leading-relaxed max-w-4xl">
+              At the heart of our success lies strong abilities in protein refolding, as well as large-scale soluble expression and purification. We have commercial-scale purification columns up to 1.8 m in diameter, plus special techniques (e.g., handling organic solvents, large-scale HPLC columns, bulk lyophilization) and explosion-proof facilities for hard-to-manufacture proteins and peptides. We also offer chemical modifications to prolong protein half-life, including PEGylation and albumin fusion.
+            </p>
+          </ScrollReveal>
+
+          {/* Downstream Services Cards */}
+          <ScrollReveal delay={0.2}>
+            <div className="mt-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
+                Downstream Processing Capabilities
+              </h3>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {downstreamServices.map((service, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl p-6 border border-[#001965]/10 flex items-start gap-3"
+                    style={{ backgroundColor: "#F7F6F5" }}
+                  >
+                    <span className="mt-1 w-2 h-2 rounded-full bg-[#001965] shrink-0" />
+                    <p className="text-sm font-medium text-foreground leading-relaxed">{service}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Section 4: Advanced Technology */}
+      <section className="py-20 lg:py-28" style={{ backgroundColor: "#F7F6F5" }}>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+          <ScrollReveal>
+            <div className="max-w-4xl mb-10">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
+                Advanced Technology for Faster Delivery
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
+                Once the molecule format has been defined, our highly automated, high-throughput platforms can shorten time to clinical trial. Our SMART PROCESS DESIGN tool uses machine learning or mechanistic process models to simulate and optimize manufacturing processes, helping us to predict the right process parameters for optimal output.
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground mt-4 leading-relaxed">
+                Our CASPON® fusion protein system, for non-platform molecules, includes a peptide fused to the N-terminus of the protein of interest and a highly specific protease to remove the tag after purification, leaving the authentic N-terminus of the target protein. This increases product yield (up to tenfold depending on the target molecule), enhances product solubility, provides a recognition sequence for the protease, and includes a histidine stretch for platform affinity purification.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm mt-6">
+              <img
+                src={microbialCapabilitiesImg}
+                alt="Microbial capabilities including E. coli and yeast platforms, high-throughput development and commercial manufacturing"
+                className="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Section 5: Thought Leadership */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <ScrollReveal>
+              <div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
+                  Microbial Thought Leadership
+                </h2>
+                <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
+                  We are proud to be one of the thought leaders in the microbial technology space. Our teams continuously contribute expert insights and innovations to advance the field.
+                </p>
+                <div className="mt-8 space-y-4">
+                  <div className="rounded-xl p-5 border border-[#001965]/10 hover:border-[#001965]/30 transition-colors" style={{ backgroundColor: "#F7F6F5" }}>
+                    <h4 className="text-sm font-bold text-[#001965] mb-1">Featured Expert Content</h4>
+                    <p className="text-sm text-muted-foreground">Advancements in microbial manufacturing of biopharmaceuticals</p>
+                  </div>
+                  <div className="rounded-xl p-5 border border-[#001965]/10 hover:border-[#001965]/30 transition-colors" style={{ backgroundColor: "#F7F6F5" }}>
+                    <h4 className="text-sm font-bold text-[#001965] mb-1">Featured Expert Content</h4>
+                    <p className="text-sm text-muted-foreground">Setting the standard with plasmid DNA production</p>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.15}>
+              <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm">
+                <img
+                  src={microbialThoughtLeadershipImg}
+                  alt="Laboratory expert examining vials"
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: An Ideal Partner */}
+      <section className="py-20 lg:py-28" style={{ backgroundColor: "#001965" }}>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+          <ScrollReveal>
+            <div className="max-w-4xl mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+                An Ideal Partner
+              </h2>
+              <p className="text-base md:text-lg text-white/75 mt-6 leading-relaxed">
+                In the last 40 years, our processes have yielded over 250 molecules — and long-standing, in-depth experience of both development and manufacturing of biopharmaceuticals. Blending that experience with broad commercial expertise, development capabilities, and state-of-the-art facilities, we can offer the whole value chain: from early stage, to launch, to commercial supply.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="mt-12">
+              <h3 className="text-xl md:text-2xl font-bold text-[#8B9E3C] mb-8">
+                In short, we are the ideal partner in microbials.
+              </h3>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {idealPartnerPoints.map((point, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl p-6 bg-white/5 border border-white/10 hover:border-white/20 transition-colors"
+                  >
+                    <point.icon size={32} className="text-[#8B9E3C] mb-4" />
+                    <p className="text-sm text-white/85 leading-relaxed">{point.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default CDMOMicrobialExpertise;
