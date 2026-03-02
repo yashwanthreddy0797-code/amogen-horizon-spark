@@ -18,9 +18,7 @@ const solutions = [
 
 
 const CDMOSolutions = () => {
-  return (
-    <section id="quality-systems" className="py-20 lg:py-28 bg-section-cream">
-      
+  return;
 
 
 
@@ -95,7 +93,9 @@ const CDMOSolutions = () => {
 
 
 
-    </section>);
+
+
+
 
 };
 
