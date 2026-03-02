@@ -10,7 +10,7 @@ import AboutWhoWeAre from "@/components/about/AboutWhoWeAre";
 import AboutWhatWeDo from "@/components/about/AboutWhatWeDo";
 import AboutLeadership from "@/components/about/AboutLeadership";
 import AboutCareers from "@/components/about/AboutCareers";
-import AboutHelp from "@/components/about/AboutHelp";
+
 
 const About = () => {
   return (
@@ -85,8 +85,6 @@ const About = () => {
         {/* Careers CTA */}
         <AboutCareers />
 
-        {/* Help */}
-        <AboutHelp />
       </main>
       <Footer />
     </div>);
