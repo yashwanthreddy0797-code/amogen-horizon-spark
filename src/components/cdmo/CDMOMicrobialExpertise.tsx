@@ -80,7 +80,7 @@ const CDMOMicrobialExpertise = () => {
               <img
                 src={microbialChemBioImg}
                 alt="Chemical drugs vs biopharmaceuticals comparison infographic"
-                className="w-full h-auto object-cover border-0 border-none"
+                className="w-full h-auto border-0 border-none object-fill"
                 loading="lazy" />
 
             </div>
