@@ -318,7 +318,7 @@ const Science = () => {
         {/* LAB IMAGE BREAK */}
         <ScrollReveal>
           <div className="relative h-[40vh] md:h-[50vh] overflow-hidden">
-            <img src={rdLabHands} alt="AMOGEN scientist with equipment" className="w-full h-full object-cover" loading="lazy" />
+            
             
           </div>
         </ScrollReveal>
