@@ -16,7 +16,56 @@ const downstreamServices = [
 const MicrobialScience = () => {
   return (
     <>
+      {/* Why Microbial */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+          <ScrollReveal>
+            <div className="max-w-4xl mb-10">
+              <p className="text-xs uppercase tracking-[0.2em] text-primary font-bold mb-4">
+                Why Microbial
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
+                Microbial Manufacturing — <em className="italic">The Smarter Choice</em>
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
+                Microbial expression systems offer significant advantages over traditional chemical synthesis and mammalian cell culture for producing complex biological molecules. Our E. coli and yeast platforms deliver higher yields, faster timelines, and lower manufacturing costs — without compromising quality.
+              </p>
+            </div>
+          </ScrollReveal>
 
+          <ScrollReveal delay={0.1}>
+            <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm mt-6">
+              <img
+                src={microbialChemBioImg}
+                alt="Comparison of chemical synthesis versus biological manufacturing approaches"
+                className="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.15}>
+            <div className="mt-16 grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                  From Antibodies to Complex Proteins
+                </h3>
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                  Our microbial platforms are engineered to produce a wide range of molecule formats — from single-domain antibodies and nanobodies to complex multi-domain fusion proteins. With decades of experience in E. coli and yeast expression, we have optimized our systems for high-titer production, efficient refolding, and scalable purification.
+                </p>
+              </div>
+              <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm">
+                <img
+                  src={microbialAntibodiesImg}
+                  alt="Microbial antibody production and complex protein manufacturing"
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
 
       {/* cGMP Facilities */}

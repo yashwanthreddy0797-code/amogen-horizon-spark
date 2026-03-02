@@ -317,10 +317,9 @@ const Science = () => {
 
         {/* LAB IMAGE BREAK */}
         <ScrollReveal>
-          
-
-
-          
+          <div className="relative h-[40vh] md:h-[50vh] overflow-hidden rounded-xl mx-6 md:mx-12 lg:mx-16">
+            <img src={rdLabHands} alt="Researcher working in laboratory" className="w-full h-full object-cover" loading="lazy" />
+          </div>
         </ScrollReveal>
 
         {/* CORE AREAS OF INNOVATION — CAROUSEL */}
