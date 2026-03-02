@@ -280,39 +280,39 @@ const Science = () => {
 
         {/* RESEARCH CAPABILITIES */}
         <section id="research-capabilities" className="py-20 lg:py-28 bg-white">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <ScrollReveal>
-                <div className="rounded-3xl overflow-hidden">
-                  <img src={scienceResearch} alt="AMOGEN research team" className="w-full h-[400px] lg:h-[500px] object-cover" loading="lazy" />
-                </div>
-              </ScrollReveal>
-              <ScrollReveal delay={0.15}>
-                <div>
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6"><Microscope size={24} className="text-primary" /></div>
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-foreground leading-tight">{t.sciencePage.rdTitle}</h3>
-                  <p className="text-base text-muted-foreground mt-6 leading-relaxed">{t.sciencePage.rdDesc1}</p>
-                  <p className="text-base text-muted-foreground mt-4 leading-relaxed">{t.sciencePage.rdDesc2}</p>
-                </div>
-              </ScrollReveal>
-            </div>
+          
 
-            {/* Stats */}
-            <div className="grid md:grid-cols-3 gap-10 mt-20">
-              {[
-              { value: rd.stat1Value, desc: rd.stat1Desc },
-              { value: rd.stat2Value, desc: rd.stat2Desc },
-              { value: rd.stat3Value, desc: rd.stat3Desc }].
-              map((stat, i) =>
-              <ScrollReveal key={i} delay={i * 0.1}>
-                  <div className="text-center">
-                    <p className="text-5xl md:text-6xl font-extrabold text-primary">{stat.value}</p>
-                    <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{stat.desc}</p>
-                  </div>
-                </ScrollReveal>
-              )}
-            </div>
-          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
         </section>
 
         {/* LAB IMAGE BREAK */}
