@@ -76,14 +76,11 @@ const CDMOMicrobialExpertise = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm mt-10">
-              <img
-                src={microbialChemBioImg}
-                alt="Chemical drugs vs biopharmaceuticals comparison infographic"
-                className="w-full h-auto border-0 border-none object-fill"
-                loading="lazy" />
-
-            </div>
+            <img
+              src={microbialChemBioImg}
+              alt="Chemical drugs vs biopharmaceuticals comparison infographic"
+              className="w-full h-auto object-contain mt-10"
+              loading="lazy" />
           </ScrollReveal>
 
           <ScrollReveal delay={0.15}>
