@@ -139,37 +139,37 @@ const Science = () => {
 
         {/* GETTING MEDICINE FASTER */}
         <section className="py-24 lg:py-32 bg-white">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-              <ScrollReveal>
-                <div>
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
-                    {t.sciencePage.fasterTitle}{" "}<em className="italic text-primary">{t.sciencePage.fasterTitleEm}</em>
-                  </h2>
-                  <p className="text-base md:text-lg text-muted-foreground mt-8 leading-relaxed">{t.sciencePage.fasterDesc}</p>
-                  <a href="#pipeline" className="inline-flex items-center gap-2 px-6 py-3 mt-8 text-sm font-semibold rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">{t.sciencePage.viewPipeline} <ArrowRight size={14} /></a>
-                </div>
-              </ScrollReveal>
-              <ScrollReveal delay={0.15}>
-                <div className="bg-card rounded-2xl p-8 shadow-sm" id="pipeline">
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-6">{t.sciencePage.pipelineOverviewLabel}</p>
-                  <div className="space-y-4">
-                    {pipelineStats.map((item) =>
-                    <div key={item.phase} className="flex items-center gap-4">
-                        <span className="text-sm font-medium text-foreground w-24 shrink-0">{item.phase}</span>
-                        <div className="flex-1 bg-muted rounded-full h-8 overflow-hidden">
-                          <motion.div className={`h-full ${item.color} rounded-full flex items-center justify-end pr-3`} initial={{ width: 0 }} whileInView={{ width: `${item.count / 3 * 100}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
-                            <span className="text-xs font-bold text-foreground">{item.count}</span>
-                          </motion.div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-6">{t.sciencePage.dataAsOf}</p>
-                </div>
-              </ScrollReveal>
-            </div>
-          </div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
         </section>
 
         {/* THERAPEUTIC AREAS */}
