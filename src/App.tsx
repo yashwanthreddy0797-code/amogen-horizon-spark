@@ -10,6 +10,7 @@ import Leadership from "./pages/Leadership";
 import Science from "./pages/Science";
 import CDMO from "./pages/CDMO";
 import News from "./pages/News";
+import Products from "./pages/Products";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/science" element={<Science />} />
             <Route path="/cdmo" element={<CDMO />} />
             <Route path="/news" element={<News />} />
+            <Route path="/products" element={<Products />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

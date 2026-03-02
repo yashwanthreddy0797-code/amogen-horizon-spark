@@ -32,7 +32,7 @@ const articles = [
 
 
 const CDMORelatedContent = () => {
-  return;
+  return null;
 
 
 

@@ -18,7 +18,7 @@ const solutions = [
 
 
 const CDMOSolutions = () => {
-  return;
+  return null;
 
 
 
