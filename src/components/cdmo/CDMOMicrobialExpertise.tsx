@@ -61,46 +61,8 @@ const CDMOMicrobialExpertise = () => {
 
 
 
-      {/* Section 2: Why Microbial? */}
-      <section className="py-20 lg:py-[25px]" style={{ backgroundColor: "#F7F6F5" }}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-          <ScrollReveal>
-            <div className="max-w-4xl mb-10">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-                Why Microbial?
-              </h2>
-              <p className="text-base mt-6 leading-relaxed text-primary md:text-base font-sans font-thin">
-                Microbial systems are ideal for synthesizing smaller and non-glycosylated proteins, complementing mammalian cell processes for larger proteins like monoclonal antibodies. With doubling times measured in minutes, not hours, microbial upstream processes can be 30 times faster than mammalian processes and yield product titers as high as 20 g/L of fermentation broth.
-              </p>
-            </div>
-          </ScrollReveal>
 
-          <ScrollReveal delay={0.1}>
-            <img
-              src={microbialChemBioImg}
-              alt="Chemical drugs vs biopharmaceuticals comparison infographic"
-              className="w-full h-auto object-contain mt-10"
-              loading="lazy" />
-          </ScrollReveal>
 
-          <ScrollReveal delay={0.15}>
-            <p className="text-base md:text-lg text-muted-foreground mt-10 leading-relaxed max-w-4xl">
-              It's also a versatile technology that allows for production of a wide and diverse range of molecule formats. Our facility has experience delivering recombinant proteins like growth hormones and peptides, as well as antibody-like molecules (e.g., fragments, scaffold proteins), sub-unit vaccines, virus-like particles, and pDNA (plasmid DNA) products.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.2}>
-            <div className="rounded-xl overflow-hidden border border-border/40 shadow-sm mt-10">
-              <img
-                src={microbialAntibodiesImg}
-                alt="Microbial vs mammalian expression systems comparison"
-                className="w-full h-auto object-cover"
-                loading="lazy" />
-
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* Section 3: cGMP Facilities */}
       <section className="py-20 lg:py-28 bg-white">
