@@ -12,6 +12,7 @@ import CDMO from "./pages/CDMO";
 import News from "./pages/News";
 import Products from "./pages/Products";
 import NotFound from "./pages/NotFound";
+import PartnerWithUs from "./pages/PartnerWithUs";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/cdmo" element={<CDMO />} />
             <Route path="/news" element={<News />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/partner" element={<PartnerWithUs />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
