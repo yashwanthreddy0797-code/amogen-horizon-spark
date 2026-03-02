@@ -7,40 +7,40 @@ import microbialCapabilitiesImg from "@/assets/microbial-capabilities.jpg";
 import microbialThoughtLeadershipImg from "@/assets/microbial-thought-leadership.jpg";
 
 const idealPartnerPoints = [
-  {
-    icon: FlaskConical,
-    text: "Proven technical expertise and in-house capabilities for diverse molecule formats manufactured in E. coli and yeast systems.",
-  },
-  {
-    icon: Factory,
-    text: "Collaboration partner for sustainable late-stage and commercial manufacturing from our microbial facilities.",
-  },
-  {
-    icon: ShieldCheck,
-    text: "Long-standing experience with a track record of 20 microbial commercial products brought to the market together with our partners.",
-  },
-  {
-    icon: Beaker,
-    text: "Microbial capabilities reflect global market: 300 L and 2 × 6,000 L for commercial microbial manufacturing.",
-  },
-  {
-    icon: Cpu,
-    text: "Digital Twin and Artificial Intelligence for fast transfers and process optimization.",
-  },
-  {
-    icon: Microscope,
-    text: "All analytical methods in-house: Microbiology, Cell & Molecular Biology, Raw Material Testing, TOC & Photometry, Chromatography and Virology.",
-  },
-];
+{
+  icon: FlaskConical,
+  text: "Proven technical expertise and in-house capabilities for diverse molecule formats manufactured in E. coli and yeast systems."
+},
+{
+  icon: Factory,
+  text: "Collaboration partner for sustainable late-stage and commercial manufacturing from our microbial facilities."
+},
+{
+  icon: ShieldCheck,
+  text: "Long-standing experience with a track record of 20 microbial commercial products brought to the market together with our partners."
+},
+{
+  icon: Beaker,
+  text: "Microbial capabilities reflect global market: 300 L and 2 × 6,000 L for commercial microbial manufacturing."
+},
+{
+  icon: Cpu,
+  text: "Digital Twin and Artificial Intelligence for fast transfers and process optimization."
+},
+{
+  icon: Microscope,
+  text: "All analytical methods in-house: Microbiology, Cell & Molecular Biology, Raw Material Testing, TOC & Photometry, Chromatography and Virology."
+}];
+
 
 const downstreamServices = [
-  "Bulk lyophilization capabilities of proteins and peptides",
-  "Proven track record in 'downstream-processing-only' services",
-  "Intermediate materials that need further purification and/or conjugation",
-  "Hormones or other recombinant proteins like virus-like particles from inclusion bodies or biomass",
-  "Peptides from inclusion bodies, biomass, and those manufactured in solid-phase chemistry",
-  "Large-scale conjugation services like PEGylation, PASylation, or HESylation for half-life extension",
-];
+"Bulk lyophilization capabilities of proteins and peptides",
+"Proven track record in 'downstream-processing-only' services",
+"Intermediate materials that need further purification and/or conjugation",
+"Hormones or other recombinant proteins like virus-like particles from inclusion bodies or biomass",
+"Peptides from inclusion bodies, biomass, and those manufactured in solid-phase chemistry",
+"Large-scale conjugation services like PEGylation, PASylation, or HESylation for half-life extension"];
+
 
 const CDMOMicrobialExpertise = () => {
   return (
@@ -69,7 +69,7 @@ const CDMOMicrobialExpertise = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
                 Why Microbial?
               </h2>
-              <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
+              <p className="text-base mt-6 leading-relaxed text-primary md:text-base font-sans font-thin">
                 Microbial systems are ideal for synthesizing smaller and non-glycosylated proteins, complementing mammalian cell processes for larger proteins like monoclonal antibodies. With doubling times measured in minutes, not hours, microbial upstream processes can be 30 times faster than mammalian processes and yield product titers as high as 20 g/L of fermentation broth.
               </p>
             </div>
@@ -80,9 +80,9 @@ const CDMOMicrobialExpertise = () => {
               <img
                 src={microbialChemBioImg}
                 alt="Chemical drugs vs biopharmaceuticals comparison infographic"
-                className="w-full h-auto object-cover"
-                loading="lazy"
-              />
+                className="w-full h-auto object-cover border-0 border-none"
+                loading="lazy" />
+
             </div>
           </ScrollReveal>
 
@@ -98,8 +98,8 @@ const CDMOMicrobialExpertise = () => {
                 src={microbialAntibodiesImg}
                 alt="Microbial vs mammalian expression systems comparison"
                 className="w-full h-auto object-cover"
-                loading="lazy"
-              />
+                loading="lazy" />
+
             </div>
           </ScrollReveal>
         </div>
@@ -125,8 +125,8 @@ const CDMOMicrobialExpertise = () => {
                 src={microbialFacilitiesImg}
                 alt="Microbial manufacturing facility capabilities including fermentation and downstream purification"
                 className="w-full h-auto object-cover"
-                loading="lazy"
-              />
+                loading="lazy" />
+
             </div>
           </ScrollReveal>
 
@@ -143,16 +143,16 @@ const CDMOMicrobialExpertise = () => {
                 Downstream Processing Capabilities
               </h3>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {downstreamServices.map((service, i) => (
-                  <div
-                    key={i}
-                    className="rounded-xl p-6 border border-[#001965]/10 flex items-start gap-3"
-                    style={{ backgroundColor: "#F7F6F5" }}
-                  >
+                {downstreamServices.map((service, i) =>
+                <div
+                  key={i}
+                  className="rounded-xl p-6 border border-[#001965]/10 flex items-start gap-3"
+                  style={{ backgroundColor: "#F7F6F5" }}>
+
                     <span className="mt-1 w-2 h-2 rounded-full bg-[#001965] shrink-0" />
                     <p className="text-sm font-medium text-foreground leading-relaxed">{service}</p>
                   </div>
-                ))}
+                )}
               </div>
             </div>
           </ScrollReveal>
@@ -182,8 +182,8 @@ const CDMOMicrobialExpertise = () => {
                 src={microbialCapabilitiesImg}
                 alt="Microbial capabilities including E. coli and yeast platforms, high-throughput development and commercial manufacturing"
                 className="w-full h-auto object-cover"
-                loading="lazy"
-              />
+                loading="lazy" />
+
             </div>
           </ScrollReveal>
         </div>
@@ -219,8 +219,8 @@ const CDMOMicrobialExpertise = () => {
                   src={microbialThoughtLeadershipImg}
                   alt="Laboratory expert examining vials"
                   className="w-full h-auto object-cover"
-                  loading="lazy"
-                />
+                  loading="lazy" />
+
               </div>
             </ScrollReveal>
           </div>
@@ -247,22 +247,22 @@ const CDMOMicrobialExpertise = () => {
                 In short, we are the ideal partner in microbials.
               </h3>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {idealPartnerPoints.map((point, i) => (
-                  <div
-                    key={i}
-                    className="rounded-xl p-6 bg-white/5 border border-white/10 hover:border-white/20 transition-colors"
-                  >
+                {idealPartnerPoints.map((point, i) =>
+                <div
+                  key={i}
+                  className="rounded-xl p-6 bg-white/5 border border-white/10 hover:border-white/20 transition-colors">
+
                     <point.icon size={32} className="text-[#8B9E3C] mb-4" />
                     <p className="text-sm text-white/85 leading-relaxed">{point.text}</p>
                   </div>
-                ))}
+                )}
               </div>
             </div>
           </ScrollReveal>
         </div>
       </section>
-    </>
-  );
+    </>);
+
 };
 
 export default CDMOMicrobialExpertise;
