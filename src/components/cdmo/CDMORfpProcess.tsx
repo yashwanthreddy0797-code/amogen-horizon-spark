@@ -39,9 +39,7 @@ const rfpSteps = [
 const CDMORfpProcess = () => {
   const [activeStep, setActiveStep] = useState(0);
 
-  return (
-    <section id="rfp-process" className="py-20 lg:py-28 bg-background">
-      
+  return;
 
 
 
@@ -120,7 +118,9 @@ const CDMORfpProcess = () => {
 
 
 
-    </section>);
+
+
+
 
 };
 
