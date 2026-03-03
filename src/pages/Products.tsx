@@ -119,7 +119,7 @@ const Products = () => {
               
               <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
                 <ScrollReveal>
-                  <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16 items-start">
+                  <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16 items-center">
                     {/* Left: Product info */}
                     <div>
                       <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary leading-tight">
@@ -175,7 +175,7 @@ const Products = () => {
                     </div>
 
                     {/* Right: Stage progress */}
-                    <div className="flex flex-col justify-center">
+                    <div className="flex flex-col justify-center h-full">
                       <div className="flex">
                         {stages.map((stage, si) => {
                           const isActive = si < product.activeStages;
