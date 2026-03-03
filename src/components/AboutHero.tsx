@@ -5,44 +5,92 @@ import { TYPE, SPACING } from "@/typography";
 const AboutHero = () => {
   const { t } = useLanguage();
 
-  const cards = [
-    { label: t.aboutHero.card1Label, value: t.aboutHero.card1Value, unit: t.aboutHero.card1Unit, description: t.aboutHero.card1Desc },
-    { label: t.aboutHero.card2Label, value: t.aboutHero.card2Value, unit: t.aboutHero.card2Unit, description: t.aboutHero.card2Desc },
-    { label: t.aboutHero.card3Label, value: t.aboutHero.card3Value, unit: t.aboutHero.card3Unit, description: t.aboutHero.card3Desc },
-    { label: t.aboutHero.card4Label, value: t.aboutHero.card4Value, unit: t.aboutHero.card4Unit, description: t.aboutHero.card4Desc },
+  const stats = [
+    { value: t.aboutHero.card1Value, unit: t.aboutHero.card1Unit, description: t.aboutHero.card1Desc },
+    { value: t.aboutHero.card2Value, unit: t.aboutHero.card2Unit, description: t.aboutHero.card2Desc },
+    { value: t.aboutHero.card3Value, unit: t.aboutHero.card3Unit, description: t.aboutHero.card3Desc },
+    { value: t.aboutHero.card4Value, unit: t.aboutHero.card4Unit, description: t.aboutHero.card4Desc },
   ];
 
   return (
-    <section className="bg-section-cream" style={{ paddingTop: SPACING.sectionPy.desktop, paddingBottom: "56px" }}>
-      <div className="mx-auto text-center" style={{ maxWidth: "960px", paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
-        <ScrollReveal delay={0.1}>
-          <h2 style={TYPE.h2} className="text-foreground">
-            {t.aboutHero.heading}
-            <em className="italic">{t.aboutHero.headingEm}</em>
-          </h2>
-        </ScrollReveal>
-        <ScrollReveal delay={0.2}>
-          <p style={{ ...TYPE.bodyLg, color: "hsl(var(--muted-foreground))", marginTop: SPACING.headingToSub }} className="max-w-3xl mx-auto">
-            {t.aboutHero.description}
-          </p>
-        </ScrollReveal>
-      </div>
-      <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx, marginTop: "64px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: SPACING.cardGap }} className="max-lg:grid-cols-2 max-md:grid-cols-1">
-          {cards.map((card, i) => (
-            <ScrollReveal key={card.label} delay={0.15 + i * 0.1}>
-              <div className="bg-card rounded-2xl shadow-sm h-full" style={{ padding: SPACING.cardPadding }}>
-                <p style={{ ...TYPE.label, color: "hsl(var(--primary))", marginBottom: "32px" }}>{card.label}</p>
-                <p className="text-foreground" style={{ marginBottom: "8px" }}>
-                  <span style={{ ...TYPE.display, fontSize: "clamp(48px, 6vw, 72px)" }}>{card.value}</span>
-                  {card.unit && <span style={{ ...TYPE.h2, marginLeft: "4px" }}>{card.unit}</span>}
+    <section style={{ backgroundColor: "#1a2e0a", paddingTop: SPACING.sectionPy.desktop, paddingBottom: SPACING.sectionPy.desktop }}>
+      <div
+        className="mx-auto"
+        style={{
+          maxWidth: SPACING.maxWidth,
+          paddingLeft: SPACING.sectionPx,
+          paddingRight: SPACING.sectionPx,
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "80px",
+          alignItems: "center",
+        }}
+      >
+        {/* Left: Headline + Body */}
+        <div className="max-md:col-span-2">
+          <ScrollReveal delay={0.1}>
+            <h2 style={{ ...TYPE.h2, color: "white" }}>
+              {t.aboutHero.heading}
+              <em className="italic" style={{ color: "rgba(255,255,255,0.7)" }}>{t.aboutHero.headingEm}</em>
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <p style={{ ...TYPE.bodyLg, color: "rgba(255,255,255,0.6)", marginTop: SPACING.headingToSub }}>
+              {t.aboutHero.description}
+            </p>
+          </ScrollReveal>
+        </div>
+
+        {/* Right: 2×2 Stats Grid */}
+        <div
+          className="max-md:col-span-2"
+          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px 64px" }}
+        >
+          {stats.map((stat, i) => (
+            <ScrollReveal key={i} delay={0.15 + i * 0.1}>
+              <div>
+                <p style={{ marginBottom: "8px" }}>
+                  <span
+                    style={{
+                      fontFamily: "'DM Mono', 'Courier New', monospace",
+                      fontSize: "clamp(48px, 6vw, 80px)",
+                      fontWeight: 400,
+                      lineHeight: 1,
+                      letterSpacing: "-0.02em",
+                      color: "#8B9E3C",
+                    }}
+                  >
+                    {stat.value}
+                  </span>
+                  {stat.unit && (
+                    <span
+                      style={{
+                        fontFamily: "'DM Mono', 'Courier New', monospace",
+                        fontSize: "clamp(28px, 3vw, 40px)",
+                        fontWeight: 400,
+                        color: "#8B9E3C",
+                        marginLeft: "4px",
+                      }}
+                    >
+                      {stat.unit}
+                    </span>
+                  )}
                 </p>
-                <p style={{ ...TYPE.bodyLg, color: "hsl(var(--muted-foreground))", marginTop: "12px" }}>{card.description}</p>
+                <p style={{ ...TYPE.body, color: "rgba(255,255,255,0.55)" }}>{stat.description}</p>
               </div>
             </ScrollReveal>
           ))}
         </div>
       </div>
+
+      {/* Mobile responsive override */}
+      <style>{`
+        @media (max-width: 768px) {
+          section > div[style] {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
