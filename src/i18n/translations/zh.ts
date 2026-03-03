@@ -59,6 +59,10 @@ export const zh: typeof en = {
     card3Value: "5",
     card3Unit: "吨",
     card3Desc: "2029年产能目标",
+    card4Label: "我们的团队",
+    card4Value: "75+",
+    card4Unit: "",
+    card4Desc: "科学与制造专业人员",
   },
   research: {
     label: "创新与研究",

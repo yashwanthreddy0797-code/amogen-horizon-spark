@@ -59,6 +59,10 @@ export const es: typeof en = {
     card3Value: "5",
     card3Unit: "T",
     card3Desc: "Objetivo de capacidad para 2029",
+    card4Label: "Nuestro Equipo",
+    card4Value: "75+",
+    card4Unit: "",
+    card4Desc: "Profesionales Científicos y de Manufactura",
   },
   research: {
     label: "Innovación e Investigación",
