@@ -34,11 +34,6 @@ const AboutHero = () => {
               <em className="italic" style={{ color: "rgba(0,0,0,0.6)" }}>{t.aboutHero.headingEm}</em>
             </h2>
           </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <p style={{ ...TYPE.bodyLg, color: "rgba(0,0,0,0.6)", marginTop: SPACING.headingToSub }}>
-              {t.aboutHero.description}
-            </p>
-          </ScrollReveal>
         </div>
 
         {/* Right: 2×2 Stats Grid */}
@@ -57,7 +52,7 @@ const AboutHero = () => {
                       fontWeight: 400,
                       lineHeight: 1,
                       letterSpacing: "-0.02em",
-                      color: "#8B9E3C",
+                      color: "#3B97DE",
                     }}
                   >
                     {stat.value}
@@ -68,7 +63,7 @@ const AboutHero = () => {
                         fontFamily: "'DM Mono', 'Courier New', monospace",
                         fontSize: "clamp(28px, 3vw, 40px)",
                         fontWeight: 400,
-                        color: "#8B9E3C",
+                        color: "#3B97DE",
                         marginLeft: "4px",
                       }}
                     >
