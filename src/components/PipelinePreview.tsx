@@ -77,7 +77,7 @@ const PipelinePreview = () => {
           {/* RIGHT ZONE — pipeline image */}
           <div className="lg:w-[60%] flex items-center justify-center lg:justify-end py-8 lg:py-0">
             <div
-              className="w-full lg:max-w-[750px] rounded-2xl overflow-hidden"
+              className="w-full lg:max-w-[900px] rounded-2xl overflow-hidden"
               style={{
                 background: "rgba(255, 255, 255, 0.97)",
                 boxShadow: "0 32px 80px rgba(0,0,0,0.5), 0 0 60px rgba(0,0,0,0.15)",
