@@ -117,7 +117,7 @@ const Products = () => {
               key={product.name}
               className={`py-16 lg:py-24 ${isEven ? "bg-[#F0EFED]" : "bg-background"}`}>
               
-              <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+              <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-16">
                 <ScrollReveal>
                   <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-20 items-center">
                     {/* Left: Product info */}
