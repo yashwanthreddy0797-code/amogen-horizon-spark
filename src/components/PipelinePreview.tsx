@@ -177,10 +177,8 @@ const PipelinePreview = () => {
         >
           <div
             style={{
-              background: "rgba(10, 12, 16, 0.72)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.08)",
+              background: "#FFFFFF",
+              border: "1px solid rgba(0,0,0,0.08)",
               borderBottom: "none",
               borderRadius: "16px 16px 0 0",
               padding: "24px 28px",
@@ -203,7 +201,7 @@ const PipelinePreview = () => {
                   style={{
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "11px",
-                    color: "rgba(255,255,255,0.4)",
+                    color: "rgba(0,0,0,0.4)",
                     textTransform: "uppercase",
                     letterSpacing: "0.08em",
                   }}
@@ -225,8 +223,8 @@ const PipelinePreview = () => {
                   padding: "16px 0",
                   borderTop:
                     i === 0
-                      ? "1px solid rgba(255,255,255,0.06)"
-                      : "1px solid rgba(255,255,255,0.06)",
+                      ? "1px solid rgba(0,0,0,0.08)"
+                      : "1px solid rgba(0,0,0,0.08)",
                 }}
               >
                 {/* Program */}
@@ -236,7 +234,7 @@ const PipelinePreview = () => {
                       fontFamily: "'DM Sans', sans-serif",
                       fontSize: "14px",
                       fontWeight: 500,
-                      color: "#FFFFFF",
+                      color: "#1A1A1A",
                       display: "block",
                     }}
                   >
@@ -246,7 +244,7 @@ const PipelinePreview = () => {
                     style={{
                       fontFamily: "'DM Sans', sans-serif",
                       fontSize: "12px",
-                      color: "rgba(255,255,255,0.5)",
+                      color: "rgba(0,0,0,0.5)",
                     }}
                   >
                     {row.indication}
@@ -260,7 +258,7 @@ const PipelinePreview = () => {
                       width: "100%",
                       height: "6px",
                       borderRadius: "3px",
-                      background: "rgba(255,255,255,0.08)",
+                      background: "rgba(0,0,0,0.08)",
                       overflow: "hidden",
                     }}
                   >
@@ -281,7 +279,7 @@ const PipelinePreview = () => {
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "12px",
-                    color: "rgba(255,255,255,0.7)",
+                    color: "rgba(0,0,0,0.6)",
                   }}
                 >
                   {row.milestone}
