@@ -1,24 +1,25 @@
 import ScrollReveal from "@/components/ScrollReveal";
+import { TYPE, SPACING } from "@/typography";
 
 const TrustStrip = () => {
   return (
-    <section id="about" className="pt-24 lg:pt-36 pb-12 lg:pb-16 bg-section-cream">
-      <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-16 text-center">
+    <section id="about" className="bg-section-cream" style={{ paddingTop: SPACING.sectionPy.desktop, paddingBottom: "48px" }}>
+      <div className="mx-auto text-center" style={{ maxWidth: "960px", paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <ScrollReveal>
-          <div className="mb-10">
-            <span className="inline-block text-base font-bold text-primary tracking-tight">
+          <div style={{ marginBottom: "40px" }}>
+            <span style={{ ...TYPE.body, fontWeight: 600 }} className="text-primary tracking-tight">
               AMOGEN
             </span>
           </div>
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.15]">
+          <h2 style={TYPE.h2} className="text-foreground">
             Where peptide science meets{" "}
-            <em className="font-extrabold italic">global scale.</em>
+            <em className="italic">global scale.</em>
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.25}>
-          <p className="text-lg text-muted-foreground mt-8 max-w-3xl mx-auto leading-relaxed">
+          <p style={{ ...TYPE.bodyLg, color: "hsl(var(--muted-foreground))", marginTop: SPACING.headingToSub }} className="max-w-3xl mx-auto">
             Transforming metabolic health by delivering cutting-edge GLP-1 peptide therapies and scalable manufacturing solutions.
           </p>
         </ScrollReveal>

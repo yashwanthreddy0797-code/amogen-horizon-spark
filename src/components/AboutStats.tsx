@@ -4,6 +4,7 @@ import manufacturingImg from "@/assets/manufacturing.jpg";
 import researchCloseupImg from "@/assets/research-closeup.jpg";
 import patientCareImg from "@/assets/patient-care.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { TYPE, SPACING } from "@/typography";
 
 const AboutStats = () => {
   const { t } = useLanguage();
@@ -21,44 +22,44 @@ const AboutStats = () => {
   ];
 
   return (
-    <section className="py-16 lg:py-20 bg-section-cream">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+    <section className="bg-section-cream" style={{ paddingTop: SPACING.sectionPy.desktop, paddingBottom: SPACING.sectionPy.desktop }}>
+      <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto">
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-6">{t.aboutStats.label}</p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
+            <p style={{ ...TYPE.label, color: "hsl(var(--muted-foreground))", marginBottom: SPACING.labelToH2 }}>{t.aboutStats.label}</p>
+            <h2 style={TYPE.h2} className="text-foreground">
               {t.aboutStats.title}{" "}<em className="italic">{t.aboutStats.titleEm}</em>
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">{t.aboutStats.description}</p>
+            <p style={{ ...TYPE.body, color: "hsl(var(--muted-foreground))", marginTop: SPACING.headingToSub }}>{t.aboutStats.description}</p>
           </div>
         </ScrollReveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 mt-20" style={{ gap: SPACING.cardGap }}>
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.category} delay={i * 0.12}>
-              <div className="bg-card rounded-2xl p-8 shadow-sm">
-                <p className="text-xs uppercase tracking-[0.15em] font-bold text-primary mb-4">{stat.category}</p>
-                <span className="text-5xl md:text-6xl lg:text-7xl font-semibold text-primary leading-none">
+              <div className="bg-card rounded-2xl shadow-sm" style={{ padding: SPACING.cardPadding }}>
+                <p style={{ ...TYPE.label, color: "hsl(var(--primary))", marginBottom: SPACING.labelToH2 }}>{stat.category}</p>
+                <span style={{ ...TYPE.display, fontSize: "clamp(48px, 6vw, 72px)", color: "hsl(var(--primary))" }}>
                   {stat.value}
-                  {stat.unit && <span className="text-2xl md:text-3xl lg:text-4xl"> {stat.unit}</span>}
+                  {stat.unit && <span style={{ ...TYPE.h2, fontSize: "clamp(20px, 3vw, 36px)" }}> {stat.unit}</span>}
                 </span>
-                <p className="text-sm md:text-base font-medium text-muted-foreground mt-3">{stat.label}</p>
-                <a href="#" className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline mt-4">
+                <p style={{ ...TYPE.bodySm, color: "hsl(var(--muted-foreground))", marginTop: "12px" }}>{stat.label}</p>
+                <a href="#" className="inline-flex items-center gap-1.5 text-primary hover:underline mt-4" style={{ ...TYPE.bodySm, fontWeight: 600 }}>
                   {t.aboutStats.learnMore} <span>→</span>
                 </a>
               </div>
             </ScrollReveal>
           ))}
         </div>
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
+        <div className="grid md:grid-cols-3 mt-16" style={{ gap: SPACING.cardGap }}>
           {cards.map((card, i) => (
             <ScrollReveal key={card.title} delay={i * 0.1}>
               <div className="flex flex-col">
                 <div className="rounded-2xl overflow-hidden mb-6">
                   <img src={card.image} alt={card.title} className="w-full h-[240px] md:h-[260px] object-cover" loading="lazy" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-foreground leading-tight mb-3">{card.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{card.description}</p>
-                <a href={card.link} className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline">
+                <h3 style={TYPE.h3} className="text-foreground mb-3">{card.title}</h3>
+                <p style={{ ...TYPE.bodySm, color: "hsl(var(--muted-foreground))" }} className="mb-4 flex-1">{card.description}</p>
+                <a href={card.link} className="inline-flex items-center gap-1.5 text-primary hover:underline" style={{ ...TYPE.bodySm, fontWeight: 600 }}>
                   <span>{card.cta}</span>
                   <ArrowRight size={14} />
                 </a>

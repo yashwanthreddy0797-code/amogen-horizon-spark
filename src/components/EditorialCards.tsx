@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import manufacturingImg from "@/assets/manufacturing.jpg";
 import patientCareImg from "@/assets/patient-care.jpg";
 import researchCloseupImg from "@/assets/research-closeup.jpg";
+import { TYPE, SPACING } from "@/typography";
 
 const cards = [
   {
@@ -27,32 +28,20 @@ const cards = [
 
 const EditorialCards = () => {
   return (
-    <section className="py-24 lg:py-36 bg-background">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        <div className="grid md:grid-cols-3 gap-5">
+    <section className="bg-background" style={{ paddingTop: SPACING.sectionPy.desktop, paddingBottom: SPACING.sectionPy.desktop }}>
+      <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: SPACING.cardGap }} className="max-md:grid-cols-1">
           {cards.map((card, i) => (
             <ScrollReveal key={card.title} delay={i * 0.1}>
-              <a
-                href="#"
-                className="group block rounded-2xl overflow-hidden bg-card"
-              >
+              <a href="#" className="group block rounded-2xl overflow-hidden bg-card">
                 <div className="overflow-hidden h-[280px]">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
+                  <img src={card.image} alt={card.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                 </div>
-                <div className="p-7">
-                  <h3 className="text-xl font-bold text-foreground mb-3 leading-snug">
-                    {card.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                    {card.description}
-                  </p>
-                  <div className="flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all">
-                    <span>{card.cta}</span>
+                <div style={{ padding: SPACING.cardPadding }}>
+                  <h3 style={TYPE.h3} className="text-foreground mb-3">{card.title}</h3>
+                  <p style={{ ...TYPE.bodySm, color: "hsl(var(--muted-foreground))", marginBottom: SPACING.headingToSub }}>{card.description}</p>
+                  <div className="flex items-center gap-2 text-primary group-hover:gap-3 transition-all" style={TYPE.bodySm}>
+                    <span style={{ fontWeight: 600 }}>{card.cta}</span>
                     <ArrowRight size={14} />
                   </div>
                 </div>

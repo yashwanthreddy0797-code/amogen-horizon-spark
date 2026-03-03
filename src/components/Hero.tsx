@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { TYPE, SPACING } from "@/typography";
 
 const Hero = () => {
   const [wordIndex, setWordIndex] = useState(0);
@@ -21,16 +22,16 @@ const Hero = () => {
         <img src={heroPortrait} alt="Patient looking hopeful" className="w-full h-full object-cover" loading="eager" width={1534} height={1080} decoding="async" fetchPriority="high" />
         <div className="absolute inset-0 bg-foreground/40" />
       </div>
-      <div className="relative w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-32">
+      <div className="relative w-full mx-auto py-32" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-primary-foreground leading-[1.05] max-w-4xl">
+          <h1 style={{ ...TYPE.display, color: "white" }} className="max-w-4xl">
             {t.hero.title}
           </h1>
-          <div className="h-[1.15em] relative overflow-hidden mt-1 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-primary-foreground leading-[1.15]">
+          <div className="relative overflow-hidden mt-1" style={{ height: "1.15em", ...TYPE.display, color: "white" }}>
             <AnimatePresence mode="wait">
               <motion.span
                 key={wordIndex}
@@ -44,10 +45,10 @@ const Hero = () => {
               </motion.span>
             </AnimatePresence>
           </div>
-          <p className="mt-8 text-lg md:text-xl text-primary-foreground/80 max-w-2xl leading-relaxed">
+          <p style={{ ...TYPE.bodyLg, color: "rgba(255,255,255,0.8)", marginTop: SPACING.headingToSub }} className="max-w-2xl">
             {t.hero.description}
           </p>
-          <a href="#research" className="inline-flex items-center mt-5 px-5 py-2.5 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+          <a href="#research" style={{ ...TYPE.button, marginTop: SPACING.subToCta }} className="inline-flex items-center px-5 py-2.5 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
             {t.hero.cta}
           </a>
         </motion.div>
