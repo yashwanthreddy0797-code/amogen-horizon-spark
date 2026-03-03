@@ -115,7 +115,7 @@ const Products = () => {
           return (
             <section
               key={product.name}
-              className={`py-16 lg:py-24 ${isEven ? "bg-[#F0EFED]" : "bg-background"}`}>
+              className={`py-10 lg:py-14 ${isEven ? "bg-[#F0EFED]" : "bg-background"}`}>
               
               <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-16">
                 <ScrollReveal>
