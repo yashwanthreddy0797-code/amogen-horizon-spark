@@ -9,6 +9,7 @@ const AboutHero = () => {
     { label: t.aboutHero.card1Label, value: t.aboutHero.card1Value, unit: t.aboutHero.card1Unit, description: t.aboutHero.card1Desc },
     { label: t.aboutHero.card2Label, value: t.aboutHero.card2Value, unit: t.aboutHero.card2Unit, description: t.aboutHero.card2Desc },
     { label: t.aboutHero.card3Label, value: t.aboutHero.card3Value, unit: t.aboutHero.card3Unit, description: t.aboutHero.card3Desc },
+    { label: t.aboutHero.card4Label, value: t.aboutHero.card4Value, unit: t.aboutHero.card4Unit, description: t.aboutHero.card4Desc },
   ];
 
   return (
@@ -27,7 +28,7 @@ const AboutHero = () => {
         </ScrollReveal>
       </div>
       <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx, marginTop: "64px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: SPACING.cardGap }} className="max-md:grid-cols-1">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: SPACING.cardGap }} className="max-lg:grid-cols-2 max-md:grid-cols-1">
           {cards.map((card, i) => (
             <ScrollReveal key={card.label} delay={0.15 + i * 0.1}>
               <div className="bg-card rounded-2xl shadow-sm h-full" style={{ padding: SPACING.cardPadding }}>

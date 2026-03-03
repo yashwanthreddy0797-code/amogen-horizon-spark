@@ -59,6 +59,10 @@ export const ja: typeof en = {
     card3Value: "5",
     card3Unit: "T",
     card3Desc: "2029年までの生産能力目標",
+    card4Label: "私たちの人材",
+    card4Value: "75+",
+    card4Unit: "",
+    card4Desc: "科学・製造の専門家",
   },
   research: {
     label: "イノベーション＆リサーチ",
