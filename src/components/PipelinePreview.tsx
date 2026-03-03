@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import pipelineBg from "@/assets/pipeline-bg.jpg";
 
 const pipelineRows = [
   { name: "Semaglutide Biosimilar", indication: "GLP-1 · T2DM, Obesity", bars: [80, 50, 20, 5], dimmed: false },
@@ -16,25 +17,38 @@ const PipelinePreview = () => {
   return (
     <section
       id="pipeline"
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{
-        background: "radial-gradient(ellipse at 40% 50%, #050D1F 0%, #020509 100%)",
-      }}
+      className="relative h-screen min-h-[700px] overflow-hidden"
     >
+      {/* Full-bleed background image */}
+      <img
+        src={pipelineBg}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      {/* Dark overlay to ensure contrast */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse at 30% 60%, rgba(10,42,26,0.7) 0%, rgba(3,8,16,0.85) 60%, rgba(2,5,9,0.95) 100%)",
+        }}
+      />
+
       {/* Noise overlay */}
       <div
         className="absolute inset-0 pointer-events-none z-[1]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E")`,
           backgroundRepeat: "repeat",
           backgroundSize: "128px 128px",
         }}
       />
 
-      <div className="relative z-[2] w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 py-16 lg:py-0">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 gap-12">
-          {/* LEFT ZONE */}
-          <div className="lg:w-[40%] flex flex-col justify-end">
+      {/* Content wrapper */}
+      <div className="relative z-[2] h-full w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
+        <div className="flex flex-col lg:flex-row h-full">
+          {/* LEFT ZONE — bottom-anchored */}
+          <div className="lg:w-[40%] flex flex-col justify-end pb-16 lg:pb-20 pt-32 lg:pt-0">
             <span
               className="text-[11px] uppercase tracking-[0.12em] font-medium"
               style={{ color: "#8A93B2", fontFamily: "'DM Sans', sans-serif" }}
@@ -43,7 +57,7 @@ const PipelinePreview = () => {
             </span>
 
             <h2
-              className="mt-4 text-4xl md:text-5xl lg:text-[56px] font-bold text-white leading-[1.05] max-w-[420px]"
+              className="mt-4 text-5xl md:text-6xl lg:text-[72px] font-extrabold text-white leading-[1.0] max-w-[480px]"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               Our Biosimilar
@@ -67,22 +81,29 @@ const PipelinePreview = () => {
             </button>
           </div>
 
-          {/* RIGHT ZONE */}
-          <div className="lg:w-[60%] flex justify-center lg:justify-end">
+          {/* RIGHT ZONE — vertically centered */}
+          <div className="lg:w-[60%] flex items-center justify-center lg:justify-end py-8 lg:py-0">
             <div
               className="w-full lg:max-w-[680px] rounded-2xl"
               style={{
-                background: "rgba(10, 18, 50, 0.85)",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-                border: "1px solid rgba(255, 119, 89, 0.25)",
-                borderTop: "2px solid #FF7759",
-                boxShadow: "0 24px 80px rgba(0,0,0,0.5), 0 0 40px rgba(255,119,89,0.06)",
-                padding: "28px 32px",
+                background: "rgba(6, 12, 35, 0.92)",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+                border: "1px solid rgba(255, 119, 89, 0.35)",
+                boxShadow:
+                  "0 0 0 1px rgba(255, 119, 89, 0.15), 0 32px 80px rgba(0,0,0,0.7), 0 0 60px rgba(255,119,89,0.08), inset 0 1px 0 rgba(255,119,89,0.4)",
+                padding: "0",
               }}
             >
               {/* Panel header */}
-              <div className="flex items-center justify-between mb-6">
+              <div
+                className="flex items-center justify-between px-8 py-5"
+                style={{
+                  background: "rgba(255,255,255,0.02)",
+                  borderBottom: "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: "16px 16px 0 0",
+                }}
+              >
                 <span className="text-white text-lg font-semibold" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                   Pipeline Tracker
                 </span>
@@ -98,66 +119,84 @@ const PipelinePreview = () => {
                 </span>
               </div>
 
-              {/* Column headers */}
-              <div className="grid grid-cols-[1.4fr_repeat(4,1fr)] gap-3 pb-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-                <span className="text-[11px] uppercase tracking-[0.1em]" style={{ color: "#8A93B2", fontFamily: "monospace" }}>
-                  Candidate
-                </span>
-                {columns.map((col) => (
-                  <span key={col} className="text-[10px] md:text-[11px] uppercase tracking-[0.1em] text-center" style={{ color: "#8A93B2", fontFamily: "monospace" }}>
-                    {col}
-                  </span>
-                ))}
-              </div>
-
-              {/* Rows */}
-              {pipelineRows.map((row, i) => (
+              {/* Table body */}
+              <div className="px-8 pb-6">
+                {/* Column headers */}
                 <div
-                  key={row.name}
-                  className="grid grid-cols-[1.4fr_repeat(4,1fr)] gap-3 py-4 items-center"
-                  style={{
-                    borderBottom: i < pipelineRows.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
-                    opacity: row.dimmed ? 0.55 : 1,
-                  }}
+                  className="grid grid-cols-[1.4fr_repeat(4,1fr)] gap-3 py-4"
+                  style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
                 >
-                  <div>
-                    <span className="text-white text-[14px] font-semibold block leading-tight" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                      {row.name}
+                  <span className="text-[11px] uppercase tracking-[0.1em]" style={{ color: "#8A93B2", fontFamily: "monospace" }}>
+                    Candidate
+                  </span>
+                  {columns.map((col) => (
+                    <span key={col} className="text-[10px] md:text-[11px] uppercase tracking-[0.1em] text-center" style={{ color: "#8A93B2", fontFamily: "monospace" }}>
+                      {col}
                     </span>
-                    <span className="text-[12px] block mt-0.5" style={{ color: "#8A93B2", fontFamily: "'DM Sans', sans-serif" }}>
-                      {row.indication}
-                    </span>
-                  </div>
-                  {row.bars.map((fill, bi) => (
-                    <div key={bi} className="flex items-center justify-center px-1">
-                      <div className="w-full h-[4px] rounded-[2px]" style={{ background: "rgba(255,255,255,0.08)" }}>
-                        {fill > 0 && (
-                          <div
-                            className="h-full rounded-[2px] transition-all duration-700"
-                            style={{
-                              width: `${fill}%`,
-                              background: "#FF7759",
-                            }}
-                          />
-                        )}
-                      </div>
-                    </div>
                   ))}
                 </div>
-              ))}
 
-              {/* Panel footer */}
-              <div className="flex items-center justify-between mt-4 pt-3" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-                <span className="text-[11px]" style={{ color: "#8A93B2", fontFamily: "monospace" }}>
-                  Last updated: Q1 2026
-                </span>
-                <span
-                  className="text-[11px] font-medium cursor-pointer hover:underline"
-                  style={{ color: "#FF7759", fontFamily: "'DM Sans', sans-serif" }}
-                  onClick={() => navigate("/partner-with-us")}
-                >
-                  Partner for access →
-                </span>
+                {/* Rows */}
+                {pipelineRows.map((row, i) => (
+                  <div
+                    key={row.name}
+                    className="grid grid-cols-[1.4fr_repeat(4,1fr)] gap-3 items-center"
+                    style={{
+                      padding: "18px 0",
+                      borderBottom: i < pipelineRows.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                      opacity: row.dimmed ? 0.55 : 1,
+                    }}
+                  >
+                    <div>
+                      <span className="text-white text-[14px] font-semibold block leading-tight" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                        {row.name}
+                      </span>
+                      <span className="text-[12px] block mt-0.5" style={{ color: "#8A93B2", fontFamily: "'DM Sans', sans-serif" }}>
+                        {row.indication}
+                      </span>
+                    </div>
+                    {row.bars.map((fill, bi) => (
+                      <div key={bi} className="flex items-center justify-center px-1">
+                        <div className="w-full relative" style={{ height: "3px" }}>
+                          {fill > 0 && (
+                            <div
+                              className="h-full rounded-[2px] relative"
+                              style={{
+                                width: `${fill}%`,
+                                background: "#FF7759",
+                              }}
+                            >
+                              {/* Dot endpoint */}
+                              <div
+                                className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2"
+                                style={{
+                                  width: "6px",
+                                  height: "6px",
+                                  borderRadius: "50%",
+                                  background: "#FF7759",
+                                }}
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+
+                {/* Panel footer */}
+                <div className="flex items-center justify-between mt-4 pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+                  <span className="text-[11px]" style={{ color: "#8A93B2", fontFamily: "monospace" }}>
+                    Last updated: Q1 2026
+                  </span>
+                  <span
+                    className="text-[11px] font-medium cursor-pointer hover:underline"
+                    style={{ color: "#FF7759", fontFamily: "'DM Sans', sans-serif" }}
+                    onClick={() => navigate("/partner-with-us")}
+                  >
+                    Partner for access →
+                  </span>
+                </div>
               </div>
             </div>
           </div>
