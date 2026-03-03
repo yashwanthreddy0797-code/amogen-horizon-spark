@@ -65,7 +65,7 @@ export const en = {
     card4Label: "Our People",
     card4Value: "75+",
     card4Unit: "",
-    card4Desc: "Scientific & Manufacturing Professionals",
+    card4Desc: "Scientific & Manufacturing Team",
   },
 
   // ResearchHighlight
