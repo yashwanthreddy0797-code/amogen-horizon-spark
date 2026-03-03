@@ -1,20 +1,12 @@
 import heroPortrait from "@/assets/hero-portrait.jpg";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { useState, useEffect } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { TYPE, SPACING } from "@/typography";
 
 const Hero = () => {
-  const [wordIndex, setWordIndex] = useState(0);
   const { t } = useLanguage();
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % t.hero.words.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, [t.hero.words.length]);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -31,26 +23,9 @@ const Hero = () => {
           <h1 style={{ ...TYPE.display, color: "white" }} className="max-w-4xl">
             {t.hero.title}
           </h1>
-          <div className="relative overflow-hidden mt-1" style={{ height: "1.15em", ...TYPE.display, color: "white" }}>
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={wordIndex}
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: "0%", opacity: 1 }}
-                exit={{ y: "-100%", opacity: 0 }}
-                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                className="block"
-              >
-                {t.hero.words[wordIndex]}
-              </motion.span>
-            </AnimatePresence>
-          </div>
           <p style={{ ...TYPE.bodyLg, color: "rgba(255,255,255,0.8)", marginTop: SPACING.headingToSub }} className="max-w-2xl">
             {t.hero.description}
           </p>
-          <a href="#research" style={{ ...TYPE.button, marginTop: SPACING.subToCta }} className="inline-flex items-center px-5 py-2.5 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-            {t.hero.cta}
-          </a>
         </motion.div>
       </div>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="absolute bottom-8 left-6 md:left-12 lg:left-16">
