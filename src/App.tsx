@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import Index from "./pages/Index";
 
 const About = lazy(() => import("./pages/About"));
@@ -25,6 +26,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+        <ErrorBoundary>
           <Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<Index />} />
@@ -39,6 +41,7 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
+          </ErrorBoundary>
         </BrowserRouter>
       </TooltipProvider>
     </LanguageProvider>
