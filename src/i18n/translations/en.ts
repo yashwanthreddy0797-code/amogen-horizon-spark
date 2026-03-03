@@ -39,9 +39,9 @@ export const en = {
 
   // Hero
   hero: {
-    title: "Scale Breaks Peptide Quality.",
+    title: "Our Platform Delivers Consistent Quality with Scale.",
     words: [],
-    description: "Our Platform Delivers Consistent Quality with Scale.",
+    description: "Amogen is a precision manufacturing company turning complex peptide science into medicines and partnerships that reach the markets that need them most.",
     cta: "",
   },
 
