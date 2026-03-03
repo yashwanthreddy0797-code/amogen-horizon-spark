@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { Search, Globe, ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage, Language } from "@/i18n/LanguageContext";
@@ -468,12 +469,12 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                       </div>
                     )}
                   </div>
-                  <a
-                    href="#contact"
+                  <Link
+                    to="/partner"
                     className={`hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full ${_hoverBg} transition-colors`}
                   >
                     {t.nav.partnerWithUs}
-                  </a>
+                  </Link>
 
                   <button
                     className={`md:hidden flex items-center gap-2 px-3 py-2 rounded-full ${_hoverBg} transition-colors text-sm font-medium`}
@@ -569,12 +570,12 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                           </div>
                         )}
                       </div>
-                      <a
-                        href="#contact"
+                      <Link
+                        to="/partner"
                         className={`hidden md:flex items-center text-sm font-medium px-4 py-1.5 rounded-full ${navHoverBg} transition-colors`}
                       >
                         {t.nav.partnerWithUs}
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </motion.div>
@@ -650,12 +651,12 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
                             </div>
                           )}
                         </div>
-                        <a
-                          href="#contact"
+                        <Link
+                          to="/partner"
                           className={`hidden md:flex items-center text-sm font-medium px-5 py-2 rounded-full ${navHoverBgExpanded} transition-colors`}
                         >
                           {t.nav.partnerWithUs}
-                        </a>
+                        </Link>
                         <button
                           onClick={() => { setMobileMenuOpen(false); setActiveMenu(null); }}
                           className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBgExpanded} transition-colors`}
