@@ -13,7 +13,7 @@ const AboutHero = () => {
   ];
 
   return (
-    <section style={{ backgroundColor: "#1a2e0a", paddingTop: SPACING.sectionPy.desktop, paddingBottom: SPACING.sectionPy.desktop }}>
+    <section style={{ backgroundColor: "white", paddingTop: SPACING.sectionPy.desktop, paddingBottom: SPACING.sectionPy.desktop }}>
       <div
         className="mx-auto"
         style={{
@@ -29,13 +29,13 @@ const AboutHero = () => {
         {/* Left: Headline + Body */}
         <div className="max-md:col-span-2">
           <ScrollReveal delay={0.1}>
-            <h2 style={{ ...TYPE.h2, color: "white" }}>
+            <h2 style={{ ...TYPE.h2, color: "#1a1a1a" }}>
               {t.aboutHero.heading}
-              <em className="italic" style={{ color: "rgba(255,255,255,0.7)" }}>{t.aboutHero.headingEm}</em>
+              <em className="italic" style={{ color: "rgba(0,0,0,0.6)" }}>{t.aboutHero.headingEm}</em>
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <p style={{ ...TYPE.bodyLg, color: "rgba(255,255,255,0.6)", marginTop: SPACING.headingToSub }}>
+            <p style={{ ...TYPE.bodyLg, color: "rgba(0,0,0,0.6)", marginTop: SPACING.headingToSub }}>
               {t.aboutHero.description}
             </p>
           </ScrollReveal>
@@ -76,7 +76,7 @@ const AboutHero = () => {
                     </span>
                   )}
                 </p>
-                <p style={{ ...TYPE.body, color: "rgba(255,255,255,0.55)" }}>{stat.description}</p>
+                <p style={{ ...TYPE.body, color: "rgba(0,0,0,0.55)" }}>{stat.description}</p>
               </div>
             </ScrollReveal>
           ))}
