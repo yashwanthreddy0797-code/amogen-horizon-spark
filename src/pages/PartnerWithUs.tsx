@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import rdLabHands from "@/assets/rd-lab-hands.jpg";
 
 const enquiryTypes = [
   "General Inquiry",
@@ -323,33 +325,61 @@ const PartnerWithUs = () => {
         </div>
       </section>
 
-      {/* Newsletter CTA */}
+      {/* Subscribe Banner */}
       <section
         className="py-20 md:py-28"
         style={{ backgroundColor: "hsl(var(--section-cream))" }}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 text-center">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
           <ScrollReveal>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-4">
-              Stay up to date with AMOGEN
-            </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-              Join our email list to receive press releases and company updates
-              directly to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full flex-1 bg-card border border-border rounded-full px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30"
-              />
-              <button className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors whitespace-nowrap">
-                Subscribe <ArrowRight size={14} />
-              </button>
+            <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+              {/* Left: Image */}
+              <div className="rounded-2xl overflow-hidden">
+                <img
+                  src={rdLabHands}
+                  alt="Researcher working on laptop"
+                  className="w-full h-[340px] md:h-[420px] object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Right: Text + CTA + decorative arc */}
+              <div className="relative">
+                <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-foreground leading-[1.12] mb-5">
+                  Stay up to date with<br />AMOGEN Bio Pharma.
+                </h2>
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8 max-w-md">
+                  Join our email list to receive press releases and company
+                  updates directly to your inbox
+                </p>
+                <Link
+                  to="/news"
+                  className="inline-flex items-center gap-2.5 px-7 py-3 text-sm font-semibold uppercase tracking-[0.1em] rounded-full border-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
+                >
+                  Subscribe to News <ArrowRight size={15} />
+                </Link>
+
+                {/* Decorative arc */}
+                <svg
+                  className="absolute -bottom-16 right-0 w-36 h-36 md:w-48 md:h-48 text-foreground/80 pointer-events-none"
+                  viewBox="0 0 200 200"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M180 20 C180 100, 100 180, 20 180"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
             </div>
           </ScrollReveal>
         </div>
       </section>
+
+
 
       <Footer />
     </div>
