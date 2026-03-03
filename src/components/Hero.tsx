@@ -30,7 +30,7 @@ const Hero = () => {
           <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-primary-foreground leading-[1.05] max-w-4xl">
             {t.hero.title}
           </h1>
-          <div className="h-[1.15em] relative overflow-hidden mt-1 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-primary-foreground leading-[1.15]">
+          <div className="h-[1.15em] relative overflow-hidden mt-1 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-primary-foreground leading-[1.15]">
             <AnimatePresence mode="wait">
               <motion.span
                 key={wordIndex}
@@ -44,7 +44,7 @@ const Hero = () => {
               </motion.span>
             </AnimatePresence>
           </div>
-          <p className="mt-8 text-lg md:text-xl text-primary-foreground/80 max-w-2xl leading-relaxed font-light">
+          <p className="mt-8 text-lg md:text-xl text-primary-foreground/80 max-w-2xl leading-relaxed">
             {t.hero.description}
           </p>
           <a href="#research" className="inline-flex items-center mt-5 px-5 py-2.5 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">

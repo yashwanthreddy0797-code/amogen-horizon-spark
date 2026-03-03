@@ -119,8 +119,6 @@ const PipelinePreview = () => {
 
           <h2
             style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontWeight: 300,
               fontSize: "clamp(48px, 6vw, 80px)",
               letterSpacing: "-0.03em",
               lineHeight: 1.0,
@@ -135,9 +133,7 @@ const PipelinePreview = () => {
 
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
               fontSize: "16px",
-              fontWeight: 300,
               color: "rgba(255,255,255,0.6)",
               lineHeight: 1.65,
               maxWidth: "380px",
@@ -231,7 +227,6 @@ const PipelinePreview = () => {
                 <div>
                   <span
                     style={{
-                      fontFamily: "'DM Sans', sans-serif",
                       fontSize: "14px",
                       fontWeight: 500,
                       color: "#1A1A1A",
@@ -242,7 +237,6 @@ const PipelinePreview = () => {
                   </span>
                   <span
                     style={{
-                      fontFamily: "'DM Sans', sans-serif",
                       fontSize: "12px",
                       color: "rgba(0,0,0,0.5)",
                     }}
@@ -277,7 +271,6 @@ const PipelinePreview = () => {
                 {/* Milestone */}
                 <span
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
                     fontSize: "12px",
                     color: "rgba(0,0,0,0.6)",
                   }}
@@ -288,7 +281,6 @@ const PipelinePreview = () => {
                 {/* Strategy pill */}
                 <span
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
                     fontSize: "11px",
                     fontWeight: 500,
                     background: row.strategy.bg,

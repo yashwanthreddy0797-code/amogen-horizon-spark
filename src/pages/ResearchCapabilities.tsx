@@ -112,7 +112,7 @@ const ResearchCapabilities = () => {
               ].map((stat, i) => (
                 <ScrollReveal key={i} delay={i * 0.1}>
                   <div className="text-center">
-                    <p className="text-5xl md:text-6xl font-extrabold text-primary">{stat.value}</p>
+                    <p className="text-5xl md:text-6xl font-semibold text-primary">{stat.value}</p>
                     <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{stat.desc}</p>
                   </div>
                 </ScrollReveal>

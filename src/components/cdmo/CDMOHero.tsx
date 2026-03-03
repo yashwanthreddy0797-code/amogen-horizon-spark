@@ -13,7 +13,7 @@ const CDMOHero = () => {
           <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[1.05] max-w-5xl" style={{ color: "#001965" }}>
             Agile. Flexible.<br />Focused on You.
           </h1>
-          <p className="mt-8 text-lg md:text-xl max-w-2xl leading-relaxed font-light" style={{ color: "#001965", opacity: 0.75 }}>
+          <p className="mt-8 text-lg md:text-xl max-w-2xl leading-relaxed" style={{ color: "#001965", opacity: 0.75 }}>
             With a focus on commercialization, our biologics CDMO experts manage end-to-end development processes to reduce timelines and maintain regulatory-grade quality.
           </p>
           <div className="flex flex-wrap gap-4 mt-10">

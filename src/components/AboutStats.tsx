@@ -37,7 +37,7 @@ const AboutStats = () => {
             <ScrollReveal key={stat.category} delay={i * 0.12}>
               <div className="bg-card rounded-2xl p-8 shadow-sm">
                 <p className="text-xs uppercase tracking-[0.15em] font-bold text-primary mb-4">{stat.category}</p>
-                <span className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary leading-none">
+                <span className="text-5xl md:text-6xl lg:text-7xl font-semibold text-primary leading-none">
                   {stat.value}
                   {stat.unit && <span className="text-2xl md:text-3xl lg:text-4xl"> {stat.unit}</span>}
                 </span>

@@ -34,7 +34,7 @@ const AboutSustainability = () => {
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.value} delay={i * 0.08}>
               <div className="bg-card rounded-2xl p-8 shadow-sm text-center">
-                <span className="text-4xl md:text-5xl font-extrabold text-primary leading-none">{stat.value}</span>
+                <span className="text-4xl md:text-5xl font-semibold text-primary leading-none">{stat.value}</span>
                 <p className="text-sm text-muted-foreground mt-4 leading-relaxed">{stat.label}</p>
               </div>
             </ScrollReveal>

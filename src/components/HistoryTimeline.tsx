@@ -88,7 +88,7 @@ const HistoryTimeline = () => {
                     {/* Text ABOVE for even indices */}
                     {isTop ? (
                       <div className="text-center mb-5 px-2 min-h-[100px] flex flex-col justify-end">
-                        <p className="text-3xl lg:text-4xl font-extrabold text-timeline-red mb-2">{m.year}</p>
+                        <p className="text-3xl lg:text-4xl font-semibold text-timeline-red mb-2">{m.year}</p>
                         <p className="text-sm text-foreground leading-relaxed max-w-[240px] mx-auto">{m.event}</p>
                       </div>
                     ) : (
@@ -108,7 +108,7 @@ const HistoryTimeline = () => {
                     {/* Text BELOW for odd indices */}
                     {!isTop ? (
                       <div className="text-center mt-5 px-2 min-h-[100px]">
-                        <p className="text-3xl lg:text-4xl font-extrabold text-timeline-red mb-2">{m.year}</p>
+                        <p className="text-3xl lg:text-4xl font-semibold text-timeline-red mb-2">{m.year}</p>
                         <p className="text-sm text-foreground leading-relaxed max-w-[240px] mx-auto">{m.event}</p>
                       </div>
                     ) : (
@@ -154,7 +154,7 @@ const HistoryTimeline = () => {
                   <img src={m.image} alt={`Milestone ${m.year}`} className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div>
-                  <p className="text-2xl font-extrabold text-timeline-red">{m.year}</p>
+                  <p className="text-2xl font-semibold text-timeline-red">{m.year}</p>
                   <p className="text-sm text-foreground leading-relaxed mt-1">{m.event}</p>
                 </div>
               </div>

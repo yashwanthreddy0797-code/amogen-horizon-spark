@@ -30,8 +30,7 @@ const NewsHero = () =>
         <span className="text-white">News & Stories</span>
       </nav>
       <h1
-      className="text-[3rem] md:text-[4rem] lg:text-[5rem] font-bold text-white leading-[1.05] tracking-[-0.02em] font-sans"
-      style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+      className="text-[3rem] md:text-[4rem] lg:text-[5rem] text-white leading-[1.05] tracking-[-0.02em]">
       
         News & stories
       </h1>

@@ -117,7 +117,7 @@ const AboutLeadership = () => {
                           <div>
                             <p className="text-base font-semibold text-primary">{leader.title}</p>
                             <div className="mt-6">
-                              <p className="text-4xl font-extrabold text-foreground">{leader.stat}</p>
+                              <p className="text-4xl font-semibold text-foreground">{leader.stat}</p>
                               <p className="text-sm font-semibold text-foreground mt-1">{leader.statLabel}</p>
                             </div>
                             {leader.bio && (

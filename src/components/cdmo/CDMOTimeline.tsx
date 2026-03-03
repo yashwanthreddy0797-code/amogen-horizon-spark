@@ -120,7 +120,7 @@ const CDMOTimeline = () => {
                 }}>
 
                 <p className="text-xs text-[#001965] font-semibold">VC to IND filing</p>
-                <p className="text-2xl font-extrabold text-[#001965]">11 <span className="text-sm font-semibold">months</span></p>
+                <p className="text-2xl font-semibold text-[#001965]">11 <span className="text-sm font-semibold">months</span></p>
               </div>
 
               {/* CGMP DP Lot Release */}
@@ -170,7 +170,7 @@ const CDMOTimeline = () => {
             )}
             <div className="text-center py-4">
               <p className="text-xs text-[#001965] font-semibold">VC to IND filing</p>
-              <p className="text-3xl font-extrabold text-[#001965]">11 <span className="text-sm">months</span></p>
+              <p className="text-3xl font-semibold text-[#001965]">11 <span className="text-sm">months</span></p>
             </div>
             <p className="text-xs text-muted-foreground">*VC: Vector Construction</p>
           </div>

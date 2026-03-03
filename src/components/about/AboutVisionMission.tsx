@@ -11,7 +11,7 @@ const AboutVisionMission = () => {
             <ScrollReveal>
               <p
                 className="text-xs uppercase tracking-[0.3em] text-foreground/50 font-medium mb-5"
-                style={{ fontFamily: "monospace" }}>
+                style={{ fontFamily: "'DM Mono', monospace" }}>
 
                 OUR VISION
               </p>
@@ -32,7 +32,7 @@ const AboutVisionMission = () => {
             <ScrollReveal delay={0.2}>
               <p
                 className="text-xs uppercase tracking-[0.3em] text-foreground/50 font-medium mb-5"
-                style={{ fontFamily: "monospace" }}>
+                style={{ fontFamily: "'DM Mono', monospace" }}>
 
                 OUR MISSION
               </p>
