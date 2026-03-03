@@ -171,7 +171,7 @@ const Products = () => {
                            return (
                              <div
                                key={stage}
-                               className={`flex-1 h-9 md:h-10 flex items-center justify-center transition-colors rounded-[3px] ${
+                               className={`flex-1 h-14 md:h-16 flex items-center justify-center transition-colors rounded-[3px] ${
                                  isActive
                                    ? "bg-primary text-primary-foreground"
                                    : "bg-muted text-muted-foreground"
