@@ -148,20 +148,20 @@ const News = () => {
             </div>
           </ScrollReveal>
 
-          {/* ── Tabs ── */}
+          {/* ── Tabs (Cohere-style coral pills) ── */}
           <ScrollReveal delay={0.05}>
-            <div className="flex flex-wrap gap-2 mb-14">
+            <div className="flex flex-wrap gap-2.5 mb-16">
               {tabs.map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-5 py-2.5 text-sm font-semibold rounded-full border transition-all duration-200 ${
+                  className={`px-6 py-2.5 text-base font-medium rounded-full border transition-all duration-200 ${
                     activeTab === tab
-                      ? "bg-foreground text-background border-foreground"
-                      : "bg-transparent text-foreground border-border hover:border-foreground/40"
+                      ? "border-[#E8725A] text-[#E8725A] bg-[#E8725A]/5"
+                      : "border-border text-foreground/70 hover:text-foreground hover:border-foreground/30"
                   }`}
                 >
-                  {tab === "All" ? "All" : tab}
+                  {tab}
                 </button>
               ))}
             </div>
@@ -182,35 +182,35 @@ const News = () => {
                 <p className="text-muted-foreground text-lg py-20 text-center">No articles found.</p>
               )}
 
-              {/* Featured article */}
+              {/* Featured article — Cohere style: image left, text right, no card bg */}
               {featuredArticle && (
-                <a href="#" className="group block mb-14">
-                  <div className="grid lg:grid-cols-[1.15fr_1fr] gap-0 rounded-2xl overflow-hidden bg-card">
-                    <div className="h-[300px] lg:h-[420px] overflow-hidden">
+                <a href="#" className="group block mb-16">
+                  <div className="grid lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-14 items-center">
+                    <div className="rounded-xl overflow-hidden h-[280px] lg:h-[380px]">
                       <img
                         src={featuredArticle.image}
                         alt={featuredArticle.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <div className="p-8 lg:p-12 flex flex-col justify-center">
-                      <p className="text-xs text-muted-foreground mb-4 uppercase tracking-wider">
+                    <div>
+                      <p className="text-xs text-muted-foreground mb-5 uppercase tracking-[0.15em]">
                         AMOGEN Team — {featuredArticle.date}
                       </p>
-                      <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-foreground leading-[1.15] mb-6 group-hover:text-primary transition-colors">
+                      <h2 className="text-2xl md:text-3xl lg:text-[2.5rem] font-extrabold text-foreground leading-[1.15] mb-6 group-hover:text-primary transition-colors">
                         {featuredArticle.title}
                       </h2>
-                      <div className="flex flex-wrap gap-2 mb-8">
+                      <div className="flex flex-wrap gap-2 mb-7">
                         {featuredArticle.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-border text-foreground"
+                            className="text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded border border-foreground/20 text-foreground"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
-                      <span className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-foreground group-hover:gap-3 transition-all">
+                      <span className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.12em] text-foreground group-hover:gap-3 transition-all underline underline-offset-4 decoration-1">
                         Read full article <ArrowRight size={15} />
                       </span>
                     </div>
@@ -218,13 +218,13 @@ const News = () => {
                 </a>
               )}
 
-              {/* Grid */}
+              {/* Grid — Cohere style: no card bg, image → meta → title → tags → link */}
               {gridArticles.length > 0 && (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 mb-24">
                   {gridArticles.map((article, i) => (
                     <ScrollReveal key={article.title + i} delay={i * 0.06}>
                       <a href="#" className="group block h-full">
-                        <div className="rounded-2xl overflow-hidden h-[220px] mb-5">
+                        <div className="rounded-xl overflow-hidden h-[220px] mb-5">
                           <img
                             src={article.image}
                             alt={article.title}
@@ -232,7 +232,7 @@ const News = () => {
                             loading="lazy"
                           />
                         </div>
-                        <p className="text-xs text-muted-foreground mb-3 uppercase tracking-wider">
+                        <p className="text-xs text-muted-foreground mb-3 uppercase tracking-[0.15em]">
                           AMOGEN Team — {article.date}
                         </p>
                         <h3 className="text-lg font-bold text-foreground leading-snug mb-4 group-hover:text-primary transition-colors">
@@ -242,13 +242,13 @@ const News = () => {
                           {article.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-border text-foreground"
+                              className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded border border-foreground/20 text-foreground"
                             >
                               {tag}
                             </span>
                           ))}
                         </div>
-                        <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-foreground group-hover:gap-2.5 transition-all">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-foreground group-hover:gap-2.5 transition-all underline underline-offset-4 decoration-1">
                           Read full article <ArrowRight size={13} />
                         </span>
                       </a>
