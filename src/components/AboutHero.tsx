@@ -1,98 +1,48 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { TYPE, SPACING } from "@/typography";
 
 const AboutHero = () => {
   const { t } = useLanguage();
 
-  const stats = [
-    { value: t.aboutHero.card1Value, unit: t.aboutHero.card1Unit, description: t.aboutHero.card1Desc },
-    { value: t.aboutHero.card2Value, unit: t.aboutHero.card2Unit, description: t.aboutHero.card2Desc },
-    { value: t.aboutHero.card3Value, unit: t.aboutHero.card3Unit, description: t.aboutHero.card3Desc },
-    { value: t.aboutHero.card4Value, unit: t.aboutHero.card4Unit, description: t.aboutHero.card4Desc },
-  ];
+  const cards = [
+  { label: t.aboutHero.card1Label, value: t.aboutHero.card1Value, unit: t.aboutHero.card1Unit, description: t.aboutHero.card1Desc },
+  { label: t.aboutHero.card2Label, value: t.aboutHero.card2Value, unit: t.aboutHero.card2Unit, description: t.aboutHero.card2Desc },
+  { label: t.aboutHero.card3Label, value: t.aboutHero.card3Value, unit: t.aboutHero.card3Unit, description: t.aboutHero.card3Desc }];
+
 
   return (
-    <section style={{ backgroundColor: "white", paddingTop: SPACING.sectionPy.desktop, paddingBottom: SPACING.sectionPy.desktop }}>
-      <div
-        className="mx-auto"
-        style={{
-          maxWidth: SPACING.maxWidth,
-          paddingLeft: SPACING.sectionPx,
-          paddingRight: SPACING.sectionPx,
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "80px",
-          alignItems: "center",
-        }}
-      >
-        {/* Left: Headline + Body */}
-        <div className="max-md:col-span-2">
-          <ScrollReveal delay={0.1}>
-            <h2 style={{ ...TYPE.h2, color: "#1a1a1a" }}>
-              {t.aboutHero.heading}
-              <em className="italic" style={{ color: "rgba(0,0,0,0.6)" }}>{t.aboutHero.headingEm}</em>
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <p style={{ ...TYPE.bodyLg, color: "rgba(0,0,0,0.6)", marginTop: SPACING.headingToSub }}>
-              {t.aboutHero.description}
-            </p>
-          </ScrollReveal>
-        </div>
-
-        {/* Right: 2×2 Stats Grid */}
-        <div
-          className="max-md:col-span-2"
-          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px 64px" }}
-        >
-          {stats.map((stat, i) => (
-            <ScrollReveal key={i} delay={0.15 + i * 0.1}>
-              <div>
-                <p style={{ marginBottom: "8px" }}>
-                  <span
-                    style={{
-                      fontFamily: "'DM Mono', 'Courier New', monospace",
-                      fontSize: "clamp(48px, 6vw, 80px)",
-                      fontWeight: 400,
-                      lineHeight: 1,
-                      letterSpacing: "-0.02em",
-                      color: "#8B9E3C",
-                    }}
-                  >
-                    {stat.value}
-                  </span>
-                  {stat.unit && (
-                    <span
-                      style={{
-                        fontFamily: "'DM Mono', 'Courier New', monospace",
-                        fontSize: "clamp(28px, 3vw, 40px)",
-                        fontWeight: 400,
-                        color: "#8B9E3C",
-                        marginLeft: "4px",
-                      }}
-                    >
-                      {stat.unit}
-                    </span>
-                  )}
+    <section className="py-20 lg:py-28 pb-10 lg:pb-14 bg-section-cream">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-16 text-center">
+        <ScrollReveal delay={0.1}>
+          <h2 className="text-[36px] md:text-[40px] font-extrabold text-foreground leading-[1.2]">
+            {t.aboutHero.heading}
+            <em className="font-extrabold italic">{t.aboutHero.headingEm}</em>
+          </h2>
+        </ScrollReveal>
+        <ScrollReveal delay={0.2}>
+          <p className="text-lg text-muted-foreground mt-8 max-w-3xl mx-auto leading-relaxed">
+            {t.aboutHero.description}
+          </p>
+        </ScrollReveal>
+      </div>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 mt-16">
+        <div className="grid md:grid-cols-3 gap-6">
+          {cards.map((card, i) =>
+          <ScrollReveal key={card.label} delay={0.15 + i * 0.1}>
+              <div className="bg-card rounded-2xl p-12 shadow-sm h-full text-secondary-foreground">
+                <p className="text-sm uppercase tracking-[0.2em] text-primary font-bold mb-8">{card.label}</p>
+                <p className="mb-2 text-secondary-foreground">
+                  <span className="text-6xl md:text-7xl font-extrabold">{card.value}</span>
+                  {card.unit && <span className="text-3xl font-bold ml-1">{card.unit}</span>}
                 </p>
-                <p style={{ ...TYPE.body, color: "rgba(0,0,0,0.55)" }}>{stat.description}</p>
+                
               </div>
             </ScrollReveal>
-          ))}
+          )}
         </div>
       </div>
+    </section>);
 
-      {/* Mobile responsive override */}
-      <style>{`
-        @media (max-width: 768px) {
-          section > div[style] {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
-    </section>
-  );
 };
 
 export default AboutHero;
