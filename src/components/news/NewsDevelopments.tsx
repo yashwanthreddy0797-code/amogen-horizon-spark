@@ -41,24 +41,28 @@ const NewsDevelopments = () => (
     <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
       {/* Section header — centered */}
       <ScrollReveal>
-        <div className="text-center mb-14">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-4">
+        <div className="text-center mb-16 md:mb-20">
+          <p
+            className="text-[13px] font-semibold uppercase tracking-[0.25em] text-foreground mb-6"
+            style={{ letterSpacing: "0.25em" }}
+          >
             Developments
           </p>
           <h2
-            className="text-[2.5rem] md:text-[3.2rem] lg:text-[3.8rem] font-light italic leading-[1.1] text-foreground"
-            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+            className="text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] italic leading-[1] text-foreground mb-8"
+            style={{ fontFamily: "'Georgia', 'Times New Roman', 'Times', serif", fontWeight: 400 }}
           >
             What we're doing
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground mt-5 max-w-xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-10">
             Explore press releases, stories, media materials, and more.
           </p>
           <a
             href="#"
-            className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-primary hover:gap-3 transition-all"
+            className="inline-flex items-center gap-3 px-10 py-4 text-base font-semibold text-white rounded-full hover:opacity-90 transition-opacity"
+            style={{ backgroundColor: "hsl(5, 70%, 48%)" }}
           >
-            See all stories <ArrowRight size={16} />
+            See all stories <ArrowRight size={18} />
           </a>
         </div>
       </ScrollReveal>
