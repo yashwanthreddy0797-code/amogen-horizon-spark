@@ -119,68 +119,68 @@ const Products = () => {
               
               <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
                 <ScrollReveal>
-                  <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-20 items-center">
-                    {/* Left: Product info */}
-                    <div>
-                      <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary leading-[0.95] tracking-tight">
-                        {product.name}
-                      </h2>
-                      <p className="text-lg md:text-xl font-semibold text-primary/80 mt-2 italic">
-                        {product.type}
-                      </p>
+                    <div className="grid lg:grid-cols-[0.6fr_1.4fr] gap-10 lg:gap-16 items-center">
+                     {/* Left: Product info */}
+                     <div>
+                       <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-primary leading-[0.95] tracking-tight">
+                         {product.name}
+                       </h2>
+                       <p className="text-sm md:text-base font-semibold text-primary/80 mt-1.5 italic">
+                         {product.type}
+                       </p>
 
-                      <div className="mt-8 space-y-3 border-t border-border/60 pt-6">
-                        <div className="flex items-baseline">
-                          <span className="text-sm font-bold text-foreground w-44 shrink-0">
-                            Molecule
-                          </span>
-                          <span className="text-sm text-muted-foreground border-l border-border/60 pl-4">
-                            {product.molecule}
-                          </span>
-                        </div>
-                        <div className="flex items-baseline">
-                          <span className="text-sm font-bold text-foreground w-44 shrink-0">
-                            Reference Product
-                          </span>
-                          <span className="text-sm text-muted-foreground border-l border-border/60 pl-4">
-                            {product.referenceProduct}
-                          </span>
-                        </div>
-                        <div className="flex items-baseline">
-                          <span className="text-sm font-bold text-foreground w-44 shrink-0">
-                            Therapeutic Area
-                          </span>
-                          <span className="text-sm text-muted-foreground border-l border-border/60 pl-4">
-                            {product.therapeuticArea}
-                          </span>
-                        </div>
-                      </div>
+                       <div className="mt-5 space-y-2 border-t border-border/60 pt-4">
+                         <div className="flex items-baseline">
+                           <span className="text-xs font-bold text-foreground w-36 shrink-0">
+                             Molecule
+                           </span>
+                           <span className="text-xs text-muted-foreground border-l border-border/60 pl-3">
+                             {product.molecule}
+                           </span>
+                         </div>
+                         <div className="flex items-baseline">
+                           <span className="text-xs font-bold text-foreground w-36 shrink-0">
+                             Reference Product
+                           </span>
+                           <span className="text-xs text-muted-foreground border-l border-border/60 pl-3">
+                             {product.referenceProduct}
+                           </span>
+                         </div>
+                         <div className="flex items-baseline">
+                           <span className="text-xs font-bold text-foreground w-36 shrink-0">
+                             Therapeutic Area
+                           </span>
+                           <span className="text-xs text-muted-foreground border-l border-border/60 pl-3">
+                             {product.therapeuticArea}
+                           </span>
+                         </div>
+                       </div>
 
-                      {product.note &&
-                        <p className="text-xs text-muted-foreground/60 italic mt-4 leading-relaxed">
-                          {product.note}
-                        </p>
-                      }
-                    </div>
+                       {product.note &&
+                         <p className="text-[11px] text-muted-foreground/60 italic mt-3 leading-relaxed">
+                           {product.note}
+                         </p>
+                       }
+                     </div>
 
-                    {/* Right: Stage progress */}
-                    <div className="flex flex-col justify-center">
-                      <div className="flex gap-[3px]">
-                        {stages.map((stage, si) => {
-                          const isActive = si < product.activeStages;
-                          return (
-                            <div
-                              key={stage}
-                              className={`flex-1 h-14 md:h-16 flex items-center justify-center transition-colors rounded-[4px] ${
-                                isActive
-                                  ? "bg-primary text-primary-foreground"
-                                  : "bg-muted text-muted-foreground"
-                              }`}
-                            >
-                              <span className="text-xs md:text-sm font-semibold text-center leading-tight px-1">
-                                {stage}
-                              </span>
-                            </div>
+                     {/* Right: Stage progress */}
+                     <div className="flex flex-col justify-center">
+                       <div className="flex gap-[2px]">
+                         {stages.map((stage, si) => {
+                           const isActive = si < product.activeStages;
+                           return (
+                             <div
+                               key={stage}
+                               className={`flex-1 h-9 md:h-10 flex items-center justify-center transition-colors rounded-[3px] ${
+                                 isActive
+                                   ? "bg-primary text-primary-foreground"
+                                   : "bg-muted text-muted-foreground"
+                               }`}
+                             >
+                               <span className="text-[10px] md:text-xs font-semibold text-center leading-tight px-1">
+                                 {stage}
+                               </span>
+                             </div>
                           );
                         })}
                       </div>
