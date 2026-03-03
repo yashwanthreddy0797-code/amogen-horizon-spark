@@ -50,7 +50,7 @@ const NewsDevelopments = () => (
           </p>
           <h2
             className="text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] italic leading-[1] text-foreground mb-8"
-            style={{ fontFamily: "'Georgia', 'Times New Roman', 'Times', serif", fontWeight: 400 }}
+            style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 400 }}
           >
             What we're doing
           </h2>
