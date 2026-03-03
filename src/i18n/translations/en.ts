@@ -41,7 +41,7 @@ export const en = {
   hero: {
     title: "Scale breaks peptide Quality. Our Platform doesn't.",
     words: [],
-    description: "Amogen is a precision manufacturing company turning complex peptide science into medicines and partnerships that reach the markets that need them most.",
+    description: "Amogen's fermentation and chemical ligation platform manufactures complex GLP-1 agonists, insulin analogues, and immunology biosimilars — with consistent purity at commercial scale.",
     cta: "",
   },
 
