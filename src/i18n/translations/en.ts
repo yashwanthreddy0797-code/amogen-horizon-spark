@@ -39,10 +39,10 @@ export const en = {
 
   // Hero
   hero: {
-    title: "Purpose Drives",
-    words: ["AFFORDABILITY.", "ACCESS.", "ADAPTABILITY."],
-    description: "Amogen is a precision manufacturing company turning complex peptide science into medicines and partnerships that reach the markets that need them most.",
-    cta: "Why Our Synthesis Matters →",
+    title: "Scale Breaks Peptide Quality.",
+    words: [],
+    description: "Our Platform Delivers Consistent Quality with Scale.",
+    cta: "",
   },
 
   // AboutHero section
