@@ -1,5 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { TYPE, SPACING } from "@/typography";
 
 const AboutHero = () => {
   const { t } = useLanguage();
@@ -11,31 +12,31 @@ const AboutHero = () => {
   ];
 
   return (
-    <section className="py-20 lg:py-28 pb-10 lg:pb-14 bg-section-cream">
-      <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-16 text-center">
+    <section className="bg-section-cream" style={{ paddingTop: SPACING.sectionPy.desktop, paddingBottom: "56px" }}>
+      <div className="mx-auto text-center" style={{ maxWidth: "960px", paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <ScrollReveal delay={0.1}>
-          <h2 className="text-[36px] md:text-[40px] font-extrabold text-foreground leading-[1.2]">
+          <h2 style={TYPE.h2} className="text-foreground">
             {t.aboutHero.heading}
-            <em className="font-extrabold italic">{t.aboutHero.headingEm}</em>
+            <em className="italic">{t.aboutHero.headingEm}</em>
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
-          <p className="text-lg text-muted-foreground mt-8 max-w-3xl mx-auto leading-relaxed">
+          <p style={{ ...TYPE.bodyLg, color: "hsl(var(--muted-foreground))", marginTop: SPACING.headingToSub }} className="max-w-3xl mx-auto">
             {t.aboutHero.description}
           </p>
         </ScrollReveal>
       </div>
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 mt-16">
-        <div className="grid md:grid-cols-3 gap-6">
+      <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx, marginTop: "64px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: SPACING.cardGap }} className="max-md:grid-cols-1">
           {cards.map((card, i) => (
             <ScrollReveal key={card.label} delay={0.15 + i * 0.1}>
-              <div className="bg-card rounded-2xl p-12 shadow-sm h-full">
-                <p className="text-sm uppercase tracking-[0.2em] text-primary font-bold mb-8">{card.label}</p>
-                <p className="text-foreground mb-2">
-                  <span className="text-6xl md:text-7xl font-semibold">{card.value}</span>
-                  {card.unit && <span className="text-3xl font-semibold ml-1">{card.unit}</span>}
+              <div className="bg-card rounded-2xl shadow-sm h-full" style={{ padding: SPACING.cardPadding }}>
+                <p style={{ ...TYPE.label, color: "hsl(var(--primary))", marginBottom: "32px" }}>{card.label}</p>
+                <p className="text-foreground" style={{ marginBottom: "8px" }}>
+                  <span style={{ ...TYPE.display, fontSize: "clamp(48px, 6vw, 72px)" }}>{card.value}</span>
+                  {card.unit && <span style={{ ...TYPE.h2, marginLeft: "4px" }}>{card.unit}</span>}
                 </p>
-                <p className="text-lg text-muted-foreground mt-3">{card.description}</p>
+                <p style={{ ...TYPE.bodyLg, color: "hsl(var(--muted-foreground))", marginTop: "12px" }}>{card.description}</p>
               </div>
             </ScrollReveal>
           ))}

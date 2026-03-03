@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { TYPE, SPACING } from "@/typography";
 
 import researchLab from "@/assets/research-lab.jpg";
 import manufacturing from "@/assets/manufacturing.jpg";
@@ -33,9 +34,7 @@ const HistoryTimeline = () => {
 
   useEffect(() => {
     const measure = () => {
-      if (containerRef.current) {
-        setItemWidth(containerRef.current.offsetWidth / visibleCount);
-      }
+      if (containerRef.current) setItemWidth(containerRef.current.offsetWidth / visibleCount);
     };
     measure();
     window.addEventListener("resize", measure);
@@ -44,108 +43,55 @@ const HistoryTimeline = () => {
 
   const next = () => setOffset((o) => Math.min(o + 1, maxOffset));
   const prev = () => setOffset((o) => Math.max(o - 1, 0));
-
   const totalPages = maxOffset + 1;
 
   return (
-    <section className="py-20 lg:py-28 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+    <section className="bg-white overflow-hidden" style={{ paddingTop: SPACING.sectionPy.desktop, paddingBottom: SPACING.sectionPy.desktop }}>
+      <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <ScrollReveal>
-          <div className="mb-20">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
-              {rd.timelineTitle}
-            </h2>
-            <h3 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight italic">
-              {rd.timelineTitleEm}
-            </h3>
+          <div style={{ marginBottom: "80px" }}>
+            <h2 style={TYPE.h2} className="text-foreground">{rd.timelineTitle}</h2>
+            <h3 style={{ ...TYPE.h2, fontStyle: "italic" }} className="text-foreground">{rd.timelineTitleEm}</h3>
           </div>
         </ScrollReveal>
 
-        {/* Desktop timeline — continuous sliding strip */}
         <div className="hidden md:block" ref={containerRef}>
           <div className="relative overflow-hidden">
-            {/* Horizontal line through circle centers */}
             <div className="absolute left-0 right-0 z-0" style={{ top: "50%" }}>
               <div className="h-[6px] bg-timeline-red w-full rounded-full -translate-y-1/2" />
             </div>
-
-            {/* Sliding strip */}
-            <div
-              className="relative z-10 flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-              style={{
-                transform: `translateX(-${offset * itemWidth}px)`,
-                width: `${milestones.length * itemWidth}px`,
-              }}
-            >
+            <div className="relative z-10 flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" style={{ transform: `translateX(-${offset * itemWidth}px)`, width: `${milestones.length * itemWidth}px` }}>
               {milestones.map((m, i) => {
                 const isTop = i % 2 === 0;
                 return (
-                  <div
-                    key={m.year}
-                    className="flex flex-col items-center flex-shrink-0"
-                    style={{ width: `${itemWidth}px` }}
-                  >
-                    {/* Text ABOVE for even indices */}
+                  <div key={m.year} className="flex flex-col items-center flex-shrink-0" style={{ width: `${itemWidth}px` }}>
                     {isTop ? (
                       <div className="text-center mb-5 px-2 min-h-[100px] flex flex-col justify-end">
-                        <p className="text-3xl lg:text-4xl font-semibold text-timeline-red mb-2">{m.year}</p>
-                        <p className="text-sm text-foreground leading-relaxed max-w-[240px] mx-auto">{m.event}</p>
+                        <p style={{ ...TYPE.h3, color: "hsl(var(--timeline-red))", marginBottom: "8px" }}>{m.year}</p>
+                        <p style={TYPE.bodySm} className="text-foreground max-w-[240px] mx-auto">{m.event}</p>
                       </div>
-                    ) : (
-                      <div className="min-h-[100px]" />
-                    )}
-
-                    {/* Circle image */}
+                    ) : <div className="min-h-[100px]" />}
                     <div className="w-[180px] h-[180px] lg:w-[210px] lg:h-[210px] rounded-full overflow-hidden border-[5px] border-timeline-red shadow-xl flex-shrink-0 bg-background">
-                      <img
-                        src={m.image}
-                        alt={`AMOGEN milestone ${m.year}`}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
+                      <img src={m.image} alt={`AMOGEN milestone ${m.year}`} className="w-full h-full object-cover" loading="lazy" />
                     </div>
-
-                    {/* Text BELOW for odd indices */}
                     {!isTop ? (
                       <div className="text-center mt-5 px-2 min-h-[100px]">
-                        <p className="text-3xl lg:text-4xl font-semibold text-timeline-red mb-2">{m.year}</p>
-                        <p className="text-sm text-foreground leading-relaxed max-w-[240px] mx-auto">{m.event}</p>
+                        <p style={{ ...TYPE.h3, color: "hsl(var(--timeline-red))", marginBottom: "8px" }}>{m.year}</p>
+                        <p style={TYPE.bodySm} className="text-foreground max-w-[240px] mx-auto">{m.event}</p>
                       </div>
-                    ) : (
-                      <div className="min-h-[100px]" />
-                    )}
+                    ) : <div className="min-h-[100px]" />}
                   </div>
                 );
               })}
             </div>
           </div>
-
-          {/* Pagination */}
           <div className="flex items-center gap-4 mt-14">
-            <button
-              onClick={prev}
-              disabled={offset === 0}
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-30"
-              aria-label="Previous"
-            >
-              <ChevronLeft size={18} className="text-foreground" />
-            </button>
-            <span className="text-sm text-foreground font-medium">
-              <span className="font-bold underline underline-offset-4">{offset + 1}</span>
-              {" "}of {totalPages}
-            </span>
-            <button
-              onClick={next}
-              disabled={offset >= maxOffset}
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-30"
-              aria-label="Next"
-            >
-              <ChevronRight size={18} className="text-foreground" />
-            </button>
+            <button onClick={prev} disabled={offset === 0} className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-30" aria-label="Previous"><ChevronLeft size={18} className="text-foreground" /></button>
+            <span style={TYPE.bodySm} className="text-foreground"><span className="font-bold underline underline-offset-4">{offset + 1}</span> of {totalPages}</span>
+            <button onClick={next} disabled={offset >= maxOffset} className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-30" aria-label="Next"><ChevronRight size={18} className="text-foreground" /></button>
           </div>
         </div>
 
-        {/* Mobile: vertical stack */}
         <div className="md:hidden space-y-10">
           {milestones.map((m, i) => (
             <ScrollReveal key={m.year} delay={i * 0.08}>
@@ -154,8 +100,8 @@ const HistoryTimeline = () => {
                   <img src={m.image} alt={`Milestone ${m.year}`} className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div>
-                  <p className="text-2xl font-semibold text-timeline-red">{m.year}</p>
-                  <p className="text-sm text-foreground leading-relaxed mt-1">{m.event}</p>
+                  <p style={{ ...TYPE.h3, color: "hsl(var(--timeline-red))" }}>{m.year}</p>
+                  <p style={TYPE.bodySm} className="text-foreground mt-1">{m.event}</p>
                 </div>
               </div>
             </ScrollReveal>

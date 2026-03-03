@@ -1,30 +1,25 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { motion } from "framer-motion";
+import { TYPE, SPACING } from "@/typography";
 
 const AboutAtGlance = () => {
   return (
-    <section className="py-24 lg:py-32 bg-card relative overflow-hidden">
-
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 relative z-10">
+    <section className="bg-card relative overflow-hidden" style={{ paddingTop: SPACING.sectionPy.desktop, paddingBottom: SPACING.sectionPy.desktop }}>
+      <div className="mx-auto relative z-10" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <ScrollReveal>
-          <p className="text-xs uppercase tracking-[0.25em] text-primary font-bold mb-6">
-            Who We Are
-          </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary leading-[1.1]">
-            Amogen at a glance
-          </h2>
-          <p className="text-base md:text-lg text-muted-foreground mt-8 leading-relaxed max-w-3xl">
+          <p style={{ ...TYPE.label, color: "hsl(var(--primary))", marginBottom: SPACING.labelToH2 }}>Who We Are</p>
+          <h2 style={TYPE.h2} className="text-primary">Amogen at a glance</h2>
+          <p style={{ ...TYPE.body, color: "hsl(var(--muted-foreground))", marginTop: SPACING.headingToSub }} className="max-w-3xl">
             Amogen Pharma India was founded in 2020 and is a generic company specialising in the development and manufacture of complex peptide and protein-based APIs and drug products for global pharmaceutical partners.
           </p>
         </ScrollReveal>
 
-        {/* Stats — horizontal row */}
         <div className="grid md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-0 mt-16">
           <ScrollReveal delay={0.1}>
             <div className="py-8 pr-8">
-              <span className="text-5xl md:text-6xl font-semibold text-primary leading-none">70+</span>
-              <p className="text-sm font-bold text-foreground mt-3">Employees</p>
-              <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+              <span style={{ ...TYPE.display, fontSize: "clamp(48px, 6vw, 64px)", color: "hsl(var(--primary))" }}>70+</span>
+              <p style={{ ...TYPE.bodySm, fontWeight: 600, marginTop: "12px" }} className="text-foreground">Employees</p>
+              <p style={{ ...TYPE.bodySm, color: "hsl(var(--muted-foreground))", marginTop: "4px" }}>
                 as of November 30, 2025, with 84% in research & development and manufacturing related functions.
               </p>
             </div>
@@ -34,8 +29,8 @@ const AboutAtGlance = () => {
 
           <ScrollReveal delay={0.2}>
             <div className="py-8 px-8 border-t md:border-t-0 border-border">
-              <span className="text-5xl md:text-6xl font-semibold text-primary leading-none">15 years</span>
-              <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
+              <span style={{ ...TYPE.display, fontSize: "clamp(48px, 6vw, 64px)", color: "hsl(var(--primary))" }}>15 years</span>
+              <p style={{ ...TYPE.bodySm, color: "hsl(var(--muted-foreground))", marginTop: "12px" }}>
                 of average peptide R&D expertise among key personal with a validated platform that has delivered two drugs to market and a rich pipeline of clinical and pre-clinical programs.
               </p>
             </div>
@@ -45,9 +40,9 @@ const AboutAtGlance = () => {
 
           <ScrollReveal delay={0.3}>
             <div className="py-8 pl-8 border-t md:border-t-0 border-border">
-              <span className="text-5xl md:text-6xl font-semibold text-primary leading-none">980 Kg</span>
-              <p className="text-sm font-bold text-foreground mt-3">Total GLP-1 Volume</p>
-              <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+              <span style={{ ...TYPE.display, fontSize: "clamp(48px, 6vw, 64px)", color: "hsl(var(--primary))" }}>980 Kg</span>
+              <p style={{ ...TYPE.bodySm, fontWeight: 600, marginTop: "12px" }} className="text-foreground">Total GLP-1 Volume</p>
+              <p style={{ ...TYPE.bodySm, color: "hsl(var(--muted-foreground))", marginTop: "4px" }}>
                 To position ourselves as the global No.1 recombinant biomanufacturing hub, we are continuously expanding our capacity while upholding the highest standards of quality.
               </p>
             </div>
