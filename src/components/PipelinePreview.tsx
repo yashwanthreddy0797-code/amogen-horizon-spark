@@ -3,45 +3,62 @@ import { useNavigate } from "react-router-dom";
 const pipelineRows = [
   {
     name: "Semaglutide",
-    indication: "Type 2 Diabetes / Obesity",
+    indication: "T2DM, Obesity",
+    subIndication: "NASH, ASCVD, CKD slow Progression, PCOS (Off-Label)",
     phase: 85,
-    color: "#4ADE80",
-    milestone: "Phase III — 2025",
-    strategy: { label: "Biosimilar", bg: "rgba(74,222,128,0.15)", color: "#4ADE80" },
+    gradient: "linear-gradient(90deg, #F472B6, #D946EF)",
+    color: "#D946EF",
+    milestone: "Clinical Phase -1 (Dec-2025)",
+    strategy: { label: "FDF + Licensing", bg: "rgba(217,70,239,0.15)", color: "#D946EF" },
   },
   {
     name: "Liraglutide",
-    indication: "Type 2 Diabetes / Obesity",
-    phase: 70,
-    color: "#60A5FA",
-    milestone: "Phase II — 2025",
-    strategy: { label: "Biosimilar", bg: "rgba(96,165,250,0.15)", color: "#60A5FA" },
+    indication: "T2DM & Obesity",
+    phase: 65,
+    gradient: "linear-gradient(90deg, #FB923C, #F97316)",
+    color: "#F97316",
+    milestone: "DMF (Dec-2025)",
+    strategy: { label: "API + FDF", bg: "rgba(249,115,22,0.15)", color: "#F97316" },
   },
   {
     name: "Tirzepatide",
-    indication: "Type 2 Diabetes / Obesity",
+    indication: "T2DM & Obesity",
     phase: 45,
-    color: "#F472B6",
-    milestone: "Preclinical — 2026",
-    strategy: { label: "Biosimilar", bg: "rgba(244,114,182,0.15)", color: "#F472B6" },
+    gradient: "linear-gradient(90deg, #22D3EE, #06B6D4)",
+    color: "#06B6D4",
+    milestone: "DMF (Q2-2026)",
+    strategy: { label: "API only", bg: "rgba(6,182,212,0.15)", color: "#06B6D4" },
   },
   {
     name: "Dulaglutide",
-    indication: "Type 2 Diabetes",
-    phase: 60,
-    color: "#FBBF24",
-    milestone: "Phase I — 2025",
-    strategy: { label: "Biosimilar", bg: "rgba(251,191,36,0.15)", color: "#FBBF24" },
+    indication: "T2DM",
+    phase: 55,
+    gradient: "linear-gradient(90deg, #60A5FA, #3B82F6)",
+    color: "#3B82F6",
+    milestone: "DMF (Q1-2026)",
+    strategy: { label: "FDF + Licensing", bg: "rgba(59,130,246,0.15)", color: "#3B82F6" },
   },
   {
     name: "Insulin Degludec",
-    indication: "Diabetes (Basal Insulin)",
-    phase: 35,
-    color: "#A78BFA",
-    milestone: "Preclinical — 2026",
-    strategy: { label: "Biosimilar", bg: "rgba(167,139,250,0.15)", color: "#A78BFA" },
+    indication: "Type 1 & 2 Diabetes",
+    phase: 50,
+    gradient: "linear-gradient(90deg, #A78BFA, #8B5CF6)",
+    color: "#8B5CF6",
+    milestone: "DMF (Jan-2026)",
+    strategy: { label: "API + FDF", bg: "rgba(139,92,246,0.15)", color: "#8B5CF6" },
+  },
+  {
+    name: "iDegLira",
+    indication: "T2DM",
+    phase: 50,
+    gradient: "linear-gradient(90deg, #F472B6, #A78BFA)",
+    color: "#C084FC",
+    milestone: "Clinical Phase -1 (Q2-2026)",
+    strategy: { label: "FDF + Licensing", bg: "rgba(192,132,252,0.15)", color: "#C084FC" },
   },
 ];
+
+const headers = ["Program", "Indication", "Development", "Characterisation", "Pre-Clinical", "Key Milestone", "Strategy"];
 
 const PipelinePreview = () => {
   const navigate = useNavigate();
@@ -92,8 +109,7 @@ const PipelinePreview = () => {
           zIndex: 1,
           display: "flex",
           width: "100%",
-          maxWidth: "1400px",
-          margin: "0 auto",
+          minHeight: "100vh",
           alignItems: "flex-end",
         }}
       >
@@ -102,6 +118,7 @@ const PipelinePreview = () => {
           style={{
             flex: "0 0 42%",
             padding: "0 48px 80px",
+            alignSelf: "flex-end",
           }}
         >
           <p
@@ -167,12 +184,14 @@ const PipelinePreview = () => {
           </button>
         </div>
 
-        {/* RIGHT COLUMN */}
+        {/* RIGHT COLUMN — starts at ~50% and bleeds to right edge */}
         <div
           style={{
-            flex: 1,
-            padding: "48px 0 0",
-            alignSelf: "flex-end",
+            position: "absolute",
+            left: "46%",
+            right: 0,
+            bottom: 0,
+            top: "auto",
           }}
         >
           <div
@@ -182,27 +201,28 @@ const PipelinePreview = () => {
               WebkitBackdropFilter: "blur(20px)",
               border: "1px solid rgba(255,255,255,0.08)",
               borderBottom: "none",
-              borderRadius: "16px 16px 0 0",
+              borderRight: "none",
+              borderRadius: "16px 0 0 0",
               padding: "24px 28px",
-              marginRight: "-1px",
-              width: "calc(100% + 1px)",
+              overflowX: "auto",
             }}
           >
             {/* Table header */}
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "1.4fr 2fr 0.8fr 0.8fr",
+                gridTemplateColumns: "1.2fr 1fr 1.8fr 0.6fr 0.6fr 1.2fr 1fr",
                 gap: "12px",
                 marginBottom: "8px",
+                minWidth: "700px",
               }}
             >
-              {["Program", "Progress", "Milestone", "Strategy"].map((h) => (
+              {headers.map((h) => (
                 <span
                   key={h}
                   style={{
                     fontFamily: "'DM Mono', monospace",
-                    fontSize: "11px",
+                    fontSize: "10px",
                     color: "rgba(255,255,255,0.4)",
                     textTransform: "uppercase",
                     letterSpacing: "0.08em",
@@ -219,14 +239,12 @@ const PipelinePreview = () => {
                 key={row.name}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "1.4fr 2fr 0.8fr 0.8fr",
+                  gridTemplateColumns: "1.2fr 1fr 1.8fr 0.6fr 0.6fr 1.2fr 1fr",
                   gap: "12px",
                   alignItems: "center",
-                  padding: "16px 0",
-                  borderTop:
-                    i === 0
-                      ? "1px solid rgba(255,255,255,0.06)"
-                      : "1px solid rgba(255,255,255,0.06)",
+                  padding: "14px 0",
+                  borderTop: "1px solid rgba(255,255,255,0.06)",
+                  minWidth: "700px",
                 }}
               >
                 {/* Program */}
@@ -234,7 +252,7 @@ const PipelinePreview = () => {
                   <span
                     style={{
                       fontFamily: "'DM Sans', sans-serif",
-                      fontSize: "14px",
+                      fontSize: "13px",
                       fontWeight: 500,
                       color: "#FFFFFF",
                       display: "block",
@@ -242,19 +260,38 @@ const PipelinePreview = () => {
                   >
                     {row.name}
                   </span>
+                </div>
+
+                {/* Indication */}
+                <div>
                   <span
                     style={{
                       fontFamily: "'DM Sans', sans-serif",
                       fontSize: "12px",
-                      color: "rgba(255,255,255,0.5)",
+                      color: "rgba(255,255,255,0.6)",
+                      display: "block",
                     }}
                   >
                     {row.indication}
                   </span>
+                  {row.subIndication && (
+                    <span
+                      style={{
+                        fontFamily: "'DM Sans', sans-serif",
+                        fontSize: "10px",
+                        color: "rgba(255,255,255,0.35)",
+                        display: "block",
+                        marginTop: "2px",
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {row.subIndication}
+                    </span>
+                  )}
                 </div>
 
-                {/* Progress bar */}
-                <div>
+                {/* Development progress bar — spans Development + Characterisation + Pre-Clinical visually */}
+                <div style={{ gridColumn: "3 / 6" }}>
                   <div
                     style={{
                       width: "100%",
@@ -269,19 +306,20 @@ const PipelinePreview = () => {
                         width: `${row.phase}%`,
                         height: "100%",
                         borderRadius: "3px",
-                        background: row.color,
+                        background: row.gradient,
                         transition: "width 0.6s ease",
                       }}
                     />
                   </div>
                 </div>
 
-                {/* Milestone */}
+                {/* Key Milestone */}
                 <span
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "12px",
+                    fontSize: "11px",
                     color: "rgba(255,255,255,0.7)",
+                    whiteSpace: "nowrap",
                   }}
                 >
                   {row.milestone}
@@ -291,7 +329,7 @@ const PipelinePreview = () => {
                 <span
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "11px",
+                    fontSize: "10px",
                     fontWeight: 500,
                     background: row.strategy.bg,
                     color: row.strategy.color,
