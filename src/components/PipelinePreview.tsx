@@ -1,15 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import pipelineBg from "@/assets/pipeline-bg.jpg";
+import pipelineTracker from "@/assets/pipeline-tracker.png";
 
-const pipelineRows = [
-  { name: "Semaglutide Biosimilar", indication: "GLP-1 · T2DM, Obesity", bars: [80, 50, 20, 5], dimmed: false },
-  { name: "Liraglutide Biosimilar", indication: "GLP-1 · T2DM, CVD", bars: [70, 40, 10, 0], dimmed: false },
-  { name: "Insulin Glargine", indication: "Long-acting Insulin Analogue", bars: [90, 60, 30, 10], dimmed: false },
-  { name: "Insulin Aspart", indication: "Rapid-acting Insulin Analogue", bars: [85, 55, 25, 5], dimmed: false },
-  { name: "Undisclosed Immunology", indication: "Details available under NDA", bars: [40, 10, 0, 0], dimmed: true },
-];
 
-const columns = ["TECH DEV", "MFG SCALE-UP", "PRE-CLINICAL", "REGULATORY"];
 
 const PipelinePreview = () => {
   const navigate = useNavigate();
@@ -81,123 +74,21 @@ const PipelinePreview = () => {
             </button>
           </div>
 
-          {/* RIGHT ZONE — vertically centered */}
+          {/* RIGHT ZONE — pipeline image */}
           <div className="lg:w-[60%] flex items-center justify-center lg:justify-end py-8 lg:py-0">
             <div
-              className="w-full lg:max-w-[680px] rounded-2xl"
+              className="w-full lg:max-w-[750px] rounded-2xl overflow-hidden"
               style={{
-                background: "rgba(6, 12, 35, 0.92)",
-                backdropFilter: "blur(20px)",
-                WebkitBackdropFilter: "blur(20px)",
-                border: "1px solid rgba(255, 119, 89, 0.35)",
-                boxShadow:
-                  "0 0 0 1px rgba(255, 119, 89, 0.15), 0 32px 80px rgba(0,0,0,0.7), 0 0 60px rgba(255,119,89,0.08), inset 0 1px 0 rgba(255,119,89,0.4)",
-                padding: "0",
+                background: "rgba(255, 255, 255, 0.97)",
+                boxShadow: "0 32px 80px rgba(0,0,0,0.5), 0 0 60px rgba(0,0,0,0.15)",
+                borderRadius: "16px",
               }}
             >
-              {/* Panel header */}
-              <div
-                className="flex items-center justify-between px-8 py-5"
-                style={{
-                  background: "rgba(255,255,255,0.02)",
-                  borderBottom: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: "16px 16px 0 0",
-                }}
-              >
-                <span className="text-white text-lg font-semibold" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  Pipeline Tracker
-                </span>
-                <span
-                  className="text-[11px] px-3 py-1 rounded-full"
-                  style={{
-                    color: "#FF7759",
-                    border: "1px solid rgba(255, 119, 89, 0.4)",
-                    fontFamily: "monospace",
-                  }}
-                >
-                  5 Programmes
-                </span>
-              </div>
-
-              {/* Table body */}
-              <div className="px-8 pb-6">
-                {/* Column headers */}
-                <div
-                  className="grid grid-cols-[1.4fr_repeat(4,1fr)] gap-3 py-4"
-                  style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
-                >
-                  <span className="text-[11px] uppercase tracking-[0.1em]" style={{ color: "#8A93B2", fontFamily: "monospace" }}>
-                    Candidate
-                  </span>
-                  {columns.map((col) => (
-                    <span key={col} className="text-[10px] md:text-[11px] uppercase tracking-[0.1em] text-center" style={{ color: "#8A93B2", fontFamily: "monospace" }}>
-                      {col}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Rows */}
-                {pipelineRows.map((row, i) => (
-                  <div
-                    key={row.name}
-                    className="grid grid-cols-[1.4fr_repeat(4,1fr)] gap-3 items-center"
-                    style={{
-                      padding: "18px 0",
-                      borderBottom: i < pipelineRows.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
-                      opacity: row.dimmed ? 0.55 : 1,
-                    }}
-                  >
-                    <div>
-                      <span className="text-white text-[14px] font-semibold block leading-tight" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                        {row.name}
-                      </span>
-                      <span className="text-[12px] block mt-0.5" style={{ color: "#8A93B2", fontFamily: "'DM Sans', sans-serif" }}>
-                        {row.indication}
-                      </span>
-                    </div>
-                    {row.bars.map((fill, bi) => (
-                      <div key={bi} className="flex items-center justify-center px-1">
-                        <div className="w-full relative" style={{ height: "3px" }}>
-                          {fill > 0 && (
-                            <div
-                              className="h-full rounded-[2px] relative"
-                              style={{
-                                width: `${fill}%`,
-                                background: "#FF7759",
-                              }}
-                            >
-                              {/* Dot endpoint */}
-                              <div
-                                className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2"
-                                style={{
-                                  width: "6px",
-                                  height: "6px",
-                                  borderRadius: "50%",
-                                  background: "#FF7759",
-                                }}
-                              />
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ))}
-
-                {/* Panel footer */}
-                <div className="flex items-center justify-between mt-4 pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-                  <span className="text-[11px]" style={{ color: "#8A93B2", fontFamily: "monospace" }}>
-                    Last updated: Q1 2026
-                  </span>
-                  <span
-                    className="text-[11px] font-medium cursor-pointer hover:underline"
-                    style={{ color: "#FF7759", fontFamily: "'DM Sans', sans-serif" }}
-                    onClick={() => navigate("/partner-with-us")}
-                  >
-                    Partner for access →
-                  </span>
-                </div>
-              </div>
+              <img
+                src={pipelineTracker}
+                alt="Amogen Pipeline Tracker — Semaglutide, Liraglutide, Tirzepatide, Dulaglutide, Insulin Degludec, iDegLira"
+                className="w-full h-auto block"
+              />
             </div>
           </div>
         </div>
