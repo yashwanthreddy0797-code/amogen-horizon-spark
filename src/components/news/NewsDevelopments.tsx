@@ -49,8 +49,7 @@ const NewsDevelopments = () =>
             Developments
           </p>
           <h2
-          className="text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] italic leading-[1] text-foreground mb-8 font-sans"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 400 }}>
+          className="text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] italic leading-[1] text-foreground mb-8">
           
             What we're doing
           </h2>

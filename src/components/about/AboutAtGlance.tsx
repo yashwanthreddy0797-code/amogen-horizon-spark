@@ -22,7 +22,7 @@ const AboutAtGlance = () => {
         <div className="grid md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-0 mt-16">
           <ScrollReveal delay={0.1}>
             <div className="py-8 pr-8">
-              <span className="text-5xl md:text-6xl font-extrabold text-primary leading-none">70+</span>
+              <span className="text-5xl md:text-6xl font-semibold text-primary leading-none">70+</span>
               <p className="text-sm font-bold text-foreground mt-3">Employees</p>
               <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
                 as of November 30, 2025, with 84% in research & development and manufacturing related functions.
@@ -34,7 +34,7 @@ const AboutAtGlance = () => {
 
           <ScrollReveal delay={0.2}>
             <div className="py-8 px-8 border-t md:border-t-0 border-border">
-              <span className="text-5xl md:text-6xl font-extrabold text-primary leading-none">15 years</span>
+              <span className="text-5xl md:text-6xl font-semibold text-primary leading-none">15 years</span>
               <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
                 of average peptide R&D expertise among key personal with a validated platform that has delivered two drugs to market and a rich pipeline of clinical and pre-clinical programs.
               </p>
@@ -45,7 +45,7 @@ const AboutAtGlance = () => {
 
           <ScrollReveal delay={0.3}>
             <div className="py-8 pl-8 border-t md:border-t-0 border-border">
-              <span className="text-5xl md:text-6xl font-extrabold text-primary leading-none">980 Kg</span>
+              <span className="text-5xl md:text-6xl font-semibold text-primary leading-none">980 Kg</span>
               <p className="text-sm font-bold text-foreground mt-3">Total GLP-1 Volume</p>
               <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
                 To position ourselves as the global No.1 recombinant biomanufacturing hub, we are continuously expanding our capacity while upholding the highest standards of quality.

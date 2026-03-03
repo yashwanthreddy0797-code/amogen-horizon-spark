@@ -10,8 +10,7 @@ const NewsMediaSection = () => (
             Media
           </p>
           <h2
-            className="text-[2.5rem] md:text-[3.2rem] lg:text-[3.8rem] font-light italic leading-[1.1] text-foreground"
-            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+            className="text-[2.5rem] md:text-[3.2rem] lg:text-[3.8rem] italic leading-[1.1] text-foreground"
           >
             Brand & media resources
           </h2>

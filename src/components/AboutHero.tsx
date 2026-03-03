@@ -32,8 +32,8 @@ const AboutHero = () => {
               <div className="bg-card rounded-2xl p-12 shadow-sm h-full">
                 <p className="text-sm uppercase tracking-[0.2em] text-primary font-bold mb-8">{card.label}</p>
                 <p className="text-foreground mb-2">
-                  <span className="text-6xl md:text-7xl font-extrabold">{card.value}</span>
-                  {card.unit && <span className="text-3xl font-bold ml-1">{card.unit}</span>}
+                  <span className="text-6xl md:text-7xl font-semibold">{card.value}</span>
+                  {card.unit && <span className="text-3xl font-semibold ml-1">{card.unit}</span>}
                 </p>
                 <p className="text-lg text-muted-foreground mt-3">{card.description}</p>
               </div>

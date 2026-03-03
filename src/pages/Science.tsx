@@ -132,7 +132,7 @@ const Science = () => {
                 <span className="mx-2">/</span>{t.sciencePage.breadcrumbScience}
               </p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-primary-foreground leading-[1.05] max-w-5xl">{t.sciencePage.heroTitle}</h1>
-              <p className="mt-8 text-lg md:text-xl text-primary-foreground/80 max-w-2xl leading-relaxed font-light">{t.sciencePage.heroDesc}</p>
+              <p className="mt-8 text-lg md:text-xl text-primary-foreground/80 max-w-2xl leading-relaxed">{t.sciencePage.heroDesc}</p>
             </motion.div>
           </div>
         </section>
@@ -268,7 +268,7 @@ const Science = () => {
                     <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
                       <BarChart3 size={24} className="text-primary" />
                     </div>
-                    <p className="text-4xl font-extrabold text-primary mb-2">{metric.value}</p>
+                    <p className="text-4xl font-semibold text-primary mb-2">{metric.value}</p>
                     <h3 className="text-base font-bold text-foreground mb-2">{metric.label}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{metric.desc}</p>
                   </div>
