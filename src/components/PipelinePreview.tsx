@@ -2,68 +2,68 @@ import { useNavigate } from "react-router-dom";
 import { TYPE, SPACING } from "@/typography";
 
 const pipelineRows = [
-  {
-    name: "Semaglutide",
-    indication: "T2DM, Obesity",
-    note: "Other indications in trials: NASH, ASCVD, CKD slow Progression, PCOS (Off-Label)",
-    progress: 95,
-    gradient: "linear-gradient(90deg, #EF4444 0%, #A855F7 100%)",
-    milestone: "Clinical Phase -1",
-    milestoneDate: "Dec-2025",
-    strategy: "FDF + Licensing",
-    accent: "#F97316",
-  },
-  {
-    name: "Liraglutide",
-    indication: "T2DM & Obesity",
-    progress: 75,
-    gradient: "linear-gradient(90deg, #F97316 0%, #EAB308 100%)",
-    milestone: "DMF",
-    milestoneDate: "Dec-2025",
-    strategy: "API + FDF",
-    accent: "#F97316",
-  },
-  {
-    name: "Tirzepatide",
-    indication: "T2DM & Obesity",
-    progress: 55,
-    gradient: "linear-gradient(90deg, #06B6D4 0%, #3B82F6 100%)",
-    milestone: "DMF",
-    milestoneDate: "Q2-2026",
-    strategy: "API only",
-    accent: "#3B82F6",
-  },
-  {
-    name: "Dulaglutide",
-    indication: "T2DM",
-    progress: 45,
-    gradient: "linear-gradient(90deg, #1E3A5F 0%, #3B82F6 100%)",
-    milestone: "DMF",
-    milestoneDate: "Q1-2026",
-    strategy: "FDF + Licensing",
-    accent: "#3B82F6",
-  },
-  {
-    name: "Insulin\nDegludec",
-    indication: "Type 1 & 2 Diabetes",
-    progress: 50,
-    gradient: "linear-gradient(90deg, #4C1D95 0%, #7C3AED 100%)",
-    milestone: "DMF",
-    milestoneDate: "Jan-2026",
-    strategy: "API + FDF",
-    accent: "#EC4899",
-  },
-  {
-    name: "iDegLira",
-    indication: "T2DM",
-    progress: 50,
-    gradient: "linear-gradient(90deg, #1E3A5F 0%, #3B82F6 100%)",
-    milestone: "Clinical Phase -1",
-    milestoneDate: "Q2-2026",
-    strategy: "FDF + Licensing",
-    accent: "#3B82F6",
-  },
-];
+{
+  name: "Semaglutide",
+  indication: "T2DM, Obesity",
+  note: "Other indications in trials: NASH, ASCVD, CKD slow Progression, PCOS (Off-Label)",
+  progress: 95,
+  gradient: "linear-gradient(90deg, #EF4444 0%, #A855F7 100%)",
+  milestone: "Clinical Phase -1",
+  milestoneDate: "Dec-2025",
+  strategy: "FDF + Licensing",
+  accent: "#F97316"
+},
+{
+  name: "Liraglutide",
+  indication: "T2DM & Obesity",
+  progress: 75,
+  gradient: "linear-gradient(90deg, #F97316 0%, #EAB308 100%)",
+  milestone: "DMF",
+  milestoneDate: "Dec-2025",
+  strategy: "API + FDF",
+  accent: "#F97316"
+},
+{
+  name: "Tirzepatide",
+  indication: "T2DM & Obesity",
+  progress: 55,
+  gradient: "linear-gradient(90deg, #06B6D4 0%, #3B82F6 100%)",
+  milestone: "DMF",
+  milestoneDate: "Q2-2026",
+  strategy: "API only",
+  accent: "#3B82F6"
+},
+{
+  name: "Dulaglutide",
+  indication: "T2DM",
+  progress: 45,
+  gradient: "linear-gradient(90deg, #1E3A5F 0%, #3B82F6 100%)",
+  milestone: "DMF",
+  milestoneDate: "Q1-2026",
+  strategy: "FDF + Licensing",
+  accent: "#3B82F6"
+},
+{
+  name: "Insulin\nDegludec",
+  indication: "Type 1 & 2 Diabetes",
+  progress: 50,
+  gradient: "linear-gradient(90deg, #4C1D95 0%, #7C3AED 100%)",
+  milestone: "DMF",
+  milestoneDate: "Jan-2026",
+  strategy: "API + FDF",
+  accent: "#EC4899"
+},
+{
+  name: "iDegLira",
+  indication: "T2DM",
+  progress: 50,
+  gradient: "linear-gradient(90deg, #1E3A5F 0%, #3B82F6 100%)",
+  milestone: "Clinical Phase -1",
+  milestoneDate: "Q2-2026",
+  strategy: "FDF + Licensing",
+  accent: "#3B82F6"
+}];
+
 
 const phaseHeaders = ["Development", "Analytical CMC", "Pre-Clinical"];
 
@@ -93,25 +93,25 @@ const PipelinePreview = () => {
             <div style={{ display: "grid", gridTemplateColumns: "180px 1fr 140px", gap: "16px", alignItems: "end", marginBottom: "8px", paddingBottom: "12px", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
               <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Program</span>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0", position: "relative" }}>
-                {phaseHeaders.map((h, i) => (
-                  <span key={h} style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "10px", textAlign: "center" }}>{h}</span>
-                ))}
+                {phaseHeaders.map((h, i) =>
+                <span key={h} style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "10px", textAlign: "center" }}>{h}</span>
+                )}
               </div>
               <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Key Milestone</span>
             </div>
 
             {/* Data rows */}
-            {pipelineRows.map((row) => (
-              <div key={row.name} style={{ display: "grid", gridTemplateColumns: "180px 1fr 140px", gap: "16px", alignItems: "center", padding: "18px 0", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+            {pipelineRows.map((row) =>
+            <div key={row.name} style={{ display: "grid", gridTemplateColumns: "180px 1fr 140px", gap: "16px", alignItems: "center", padding: "18px 0", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
                 {/* Program + Indication */}
                 <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
                   <div style={{ width: "3px", borderRadius: "2px", background: row.accent, alignSelf: "stretch", minHeight: "32px", flexShrink: 0 }} />
                   <div>
                     <span style={{ ...TYPE.bodySm, fontWeight: 600, color: "#1A1A1A", display: "block", whiteSpace: "pre-line", lineHeight: 1.3 }}>{row.name}</span>
                     <span style={{ fontSize: "12px", color: "rgba(0,0,0,0.45)", fontStyle: "italic", display: "block", marginTop: "2px" }}>{row.indication}</span>
-                    {row.note && (
-                      <span style={{ fontSize: "10px", fontStyle: "italic", color: "rgba(0,0,0,0.35)", display: "block", marginTop: "3px", lineHeight: 1.4 }}>{row.note}</span>
-                    )}
+                    {row.note
+
+                  }
                   </div>
                 </div>
 
@@ -120,18 +120,18 @@ const PipelinePreview = () => {
                   <div style={{ width: "100%", height: "10px", borderRadius: "5px", background: "rgba(0,0,0,0.06)", position: "relative", display: "flex" }}>
                     {/* Three segments with white gaps */}
                     {[0, 1, 2].map((seg) => {
-                      const segStart = seg * 33.33;
-                      const segEnd = (seg + 1) * 33.33;
-                      const fillEnd = Math.min(row.progress, segEnd);
-                      const fillWidth = Math.max(0, fillEnd - segStart);
-                      const segWidth = 33.33;
-                      const fillPercent = (fillWidth / segWidth) * 100;
-                      return (
-                        <div key={seg} style={{ flex: 1, height: "10px", background: "rgba(0,0,0,0.06)", overflow: "hidden", borderRadius: "5px", marginLeft: seg > 0 ? "2px" : "0" }}>
+                    const segStart = seg * 33.33;
+                    const segEnd = (seg + 1) * 33.33;
+                    const fillEnd = Math.min(row.progress, segEnd);
+                    const fillWidth = Math.max(0, fillEnd - segStart);
+                    const segWidth = 33.33;
+                    const fillPercent = fillWidth / segWidth * 100;
+                    return (
+                      <div key={seg} style={{ flex: 1, height: "10px", background: "rgba(0,0,0,0.06)", overflow: "hidden", borderRadius: "5px", marginLeft: seg > 0 ? "2px" : "0" }}>
                           <div style={{ width: `${fillPercent}%`, height: "100%", background: row.gradient, backgroundSize: "300% 100%", backgroundPosition: seg === 0 ? "0% 0%" : seg === 1 ? "50% 0%" : "100% 0%", transition: "width 0.8s ease" }} />
-                        </div>
-                      );
-                    })}
+                        </div>);
+
+                  })}
                   </div>
                 </div>
 
@@ -141,12 +141,12 @@ const PipelinePreview = () => {
                   <span style={{ fontSize: "11px", color: "rgba(0,0,0,0.4)" }}>({row.milestoneDate})</span>
                 </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default PipelinePreview;
