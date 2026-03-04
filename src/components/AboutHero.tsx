@@ -14,7 +14,7 @@ const AboutHero = () => {
   ];
 
   return (
-    <section className="bg-section-cream relative overflow-hidden">
+    <section className="bg-background relative overflow-hidden">
       <div
         className="mx-auto text-center relative z-10"
         style={{
