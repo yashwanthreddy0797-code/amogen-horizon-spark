@@ -32,7 +32,7 @@ const facilities = [
     footnote: "*N-1 Perfusion",
   },
   {
-    title: "Facility 3",
+    title: "Analytics",
     subtitle: "180 kL",
     tag: "Formulation",
     image: facility3Img,
