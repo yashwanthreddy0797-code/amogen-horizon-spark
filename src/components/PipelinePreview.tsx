@@ -127,7 +127,7 @@ const PipelinePreview = () => {
                       const segWidth = 33.33;
                       const fillPercent = (fillWidth / segWidth) * 100;
                       return (
-                        <div key={seg} style={{ flex: 1, height: "10px", background: "rgba(0,0,0,0.06)", overflow: "hidden", borderRadius: seg === 0 ? "5px 0 0 5px" : seg === 2 ? "0 5px 5px 0" : "0", marginLeft: seg > 0 ? "3px" : "0" }}>
+                        <div key={seg} style={{ flex: 1, height: "10px", background: "rgba(0,0,0,0.06)", overflow: "hidden", borderRadius: "5px", marginLeft: seg > 0 ? "2px" : "0" }}>
                           <div style={{ width: `${fillPercent}%`, height: "100%", background: row.gradient, backgroundSize: "300% 100%", backgroundPosition: seg === 0 ? "0% 0%" : seg === 1 ? "50% 0%" : "100% 0%", transition: "width 0.8s ease" }} />
                         </div>
                       );
