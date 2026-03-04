@@ -22,7 +22,7 @@ const facilities = [
   {
     title: "R&D",
     subtitle: "155 kL",
-    tag: "Biologics",
+    tag: "Research & Development",
     image: facility2Img,
     details: [
       { label: "15 kL", type: "Stainless steel", count: "x10", icon: FlaskConical },
