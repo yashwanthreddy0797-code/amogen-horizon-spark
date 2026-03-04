@@ -41,13 +41,19 @@ const facilities = [
   },
   {
     title: "Analytics",
-    subtitle: "180 kL",
+    subtitle: "",
     tag: "Analytical",
     image: facility3Img,
     details: [
-      { label: "15 kL", type: "Stainless steel", count: "x12", icon: FlaskConical },
+      { label: "UHPLC", type: "", count: "", icon: FlaskConical },
+      { label: "HPLC-UV/PDA", type: "", count: "", icon: FlaskConical },
+      { label: "LC–MS; HRMS", type: "", count: "", icon: Microscope },
+      { label: "SEC-HPLC", type: "", count: "", icon: FlaskConical },
+      { label: "qPCR", type: "", count: "", icon: Microscope },
+      { label: "Microplate Reader", type: "", count: "", icon: BarChart3 },
+      { label: "cAMP Bioassay", type: "", count: "", icon: Pill },
+      { label: "CD-Spectrometry", type: "", count: "", icon: Filter },
     ],
-    footnote: "*N-1 Perfusion",
   },
 ];
 
@@ -172,9 +178,9 @@ const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
           })}
         </div>
         <div className="flex items-center justify-between mt-4">
-          {facility.footnote && (
+  {'footnote' in facility && facility.footnote && (
             <p style={{ ...TYPE.bodySm, fontSize: "12px" }} className="text-primary-foreground/60">
-              {facility.footnote}
+              {facility.footnote as string}
             </p>
           )}
           <div className="flex justify-end flex-1">
