@@ -147,6 +147,7 @@ const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
               {facility.subtitle}
             </p>
           )}
+        </div>
         <div className="flex-1 flex flex-col gap-2.5 overflow-y-auto">
           {facility.details.map((detail, i) => {
             const Icon = detail.icon;
