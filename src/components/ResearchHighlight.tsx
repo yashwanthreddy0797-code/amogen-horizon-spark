@@ -140,12 +140,13 @@ const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         style={{ minHeight: 440, height: "100%" }}
       >
-        <div className="mb-6">
+        <div className="mb-4">
           <h3 style={TYPE.h3}>{facility.title}</h3>
-          <p style={TYPE.bodySm} className="text-primary-foreground/70">
-            {facility.subtitle}
-          </p>
-        </div>
+          {facility.subtitle && (
+            <p style={TYPE.bodySm} className="text-primary-foreground/70">
+              {facility.subtitle}
+            </p>
+          )}
         <div className="flex-1 flex flex-col gap-2.5 overflow-y-auto">
           {facility.details.map((detail, i) => {
             const Icon = detail.icon;
