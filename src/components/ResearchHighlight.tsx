@@ -86,6 +86,9 @@ const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
             alt={facility.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
+            width={400}
+            height={280}
+            decoding="async"
           />
           {/* Tag overlay */}
           <div className="absolute top-4 left-4">
