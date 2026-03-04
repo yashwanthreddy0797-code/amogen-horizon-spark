@@ -10,53 +10,49 @@ import { motion } from "framer-motion";
 import { TYPE, SPACING } from "@/typography";
 
 const facilities = [
-  {
-    title: "Facility",
-    subtitle: "75 kL",
-    tag: "API Manufacturing",
-    image: facility1Img,
-    details: [
-      { label: "Microbial Fermentors", type: "", count: "", icon: FlaskConical },
-      { label: "Continuous Centrifuge", type: "", count: "", icon: FlaskConical },
-      { label: "Downstream Purification", type: "", count: "", icon: Filter },
-      { label: "Preparative Chromatography", type: "", count: "", icon: BarChart3 },
-      { label: "Bulk Lyophilisation", type: "", count: "", icon: Snowflake },
-    ],
-  },
-  {
-    title: "R&D",
-    subtitle: "155 kL",
-    tag: "Research & Development",
-    image: facility2Img,
-    details: [
-      { label: "Sequence & Construct Engineering", type: "", count: "", icon: FlaskConical },
-      { label: "Multi-Host Expression Platforms", type: "", count: "", icon: Microscope },
-      { label: "Strain / Clone Development", type: "", count: "", icon: FlaskConical },
-      { label: "Cell Banking & Stability Systems", type: "", count: "", icon: FlaskConical },
-      { label: "Media & Seed Train Optimization", type: "", count: "", icon: Filter },
-      { label: "Scalable Fermentation Development", type: "", count: "", icon: FlaskConical },
-      { label: "Soluble + Inclusion Body Recovery", type: "", count: "", icon: Pill },
-      { label: "Integrated Purification Platform", type: "", count: "", icon: Filter },
-    ],
-  },
-  {
-    title: "Analytics",
-    subtitle: "180 kL",
-    tag: "Analytical",
-    image: facility3Img,
-    details: [
-      { label: "15 kL", type: "Stainless steel", count: "x12", icon: FlaskConical },
-    ],
-    footnote: "*N-1 Perfusion",
-  },
-];
+{
+  title: "Facility",
+  subtitle: "75 kL",
+  tag: "API Manufacturing",
+  image: facility1Img,
+  details: [
+  { label: "Microbial Fermentors", type: "", count: "", icon: FlaskConical },
+  { label: "Continuous Centrifuge", type: "", count: "", icon: FlaskConical },
+  { label: "Downstream Purification", type: "", count: "", icon: Filter },
+  { label: "Preparative Chromatography", type: "", count: "", icon: BarChart3 },
+  { label: "Bulk Lyophilisation", type: "", count: "", icon: Snowflake }]
 
-const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
-  facility: typeof facilities[0];
-  isExpanded: boolean;
-  onToggle: () => void;
-  index: number;
-}) => {
+},
+{
+  title: "R&D",
+  subtitle: "155 kL",
+  tag: "Research & Development",
+  image: facility2Img,
+  details: [
+  { label: "15 kL", type: "Stainless steel", count: "x10", icon: FlaskConical },
+  { label: "1 kL", type: "Single-use", count: "x3", icon: Microscope },
+  { label: "1 kL", type: "Stainless steel", count: "x2", icon: FlaskConical }],
+
+  footnote: "*N-1 Perfusion"
+},
+{
+  title: "Analytics",
+  subtitle: "180 kL",
+  tag: "Analytical",
+  image: facility3Img,
+  details: [
+  { label: "15 kL", type: "Stainless steel", count: "x12", icon: FlaskConical }],
+
+  footnote: "*N-1 Perfusion"
+}];
+
+
+const FacilityCard = ({ facility, isExpanded, onToggle, index
+
+
+
+
+}: {facility: typeof facilities[0];isExpanded: boolean;onToggle: () => void;index: number;}) => {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -69,8 +65,8 @@ const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-    >
+      transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}>
+      
       {/* Main card face */}
       <div className="flex flex-col h-full" style={{ minHeight: 440 }}>
         <div className="overflow-hidden h-[280px] relative">
@@ -78,8 +74,8 @@ const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
             src={facility.image}
             alt={facility.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-          />
+            loading="lazy" />
+          
           {/* Tag overlay */}
           <div className="absolute top-4 left-4">
             <span
@@ -87,9 +83,9 @@ const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
               style={{
                 ...TYPE.label,
                 fontSize: "10px",
-                background: "hsla(227, 100%, 20%, 0.75)",
-              }}
-            >
+                background: "hsla(227, 100%, 20%, 0.75)"
+              }}>
+              
               {facility.tag}
             </span>
           </div>
@@ -98,36 +94,36 @@ const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
         {/* Bottom panel */}
         <div
           className={`flex-1 flex flex-col justify-between p-6 transition-all duration-500 ease-out ${
-            hovered && !isExpanded
-              ? "bg-footer-bg -translate-y-3"
-              : "bg-secondary translate-y-0"
-          }`}
-        >
+          hovered && !isExpanded ?
+          "bg-footer-bg -translate-y-3" :
+          "bg-secondary translate-y-0"}`
+          }>
+          
           <div>
             <h3
               style={TYPE.h3}
               className={`transition-colors duration-300 ${
-                hovered && !isExpanded ? "text-footer-foreground" : "text-foreground"
-              }`}
-            >
+              hovered && !isExpanded ? "text-footer-foreground" : "text-foreground"}`
+              }>
+              
               {facility.title}
             </h3>
             <p
               style={TYPE.bodySm}
               className={`transition-colors duration-300 ${
-                hovered && !isExpanded ? "text-footer-foreground/70" : "text-muted-foreground"
-              }`}
-            >
+              hovered && !isExpanded ? "text-footer-foreground/70" : "text-muted-foreground"}`
+              }>
+              
               {facility.subtitle}
             </p>
           </div>
           <div className="flex justify-end">
             <Plus
               className={`transition-colors duration-300 ${
-                hovered && !isExpanded ? "text-footer-foreground" : "text-footer-bg"
-              }`}
-              size={24}
-            />
+              hovered && !isExpanded ? "text-footer-foreground" : "text-footer-bg"}`
+              }
+              size={24} />
+            
           </div>
         </div>
       </div>
@@ -138,43 +134,43 @@ const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
         initial={{ y: "100%" }}
         animate={{ y: isExpanded ? "0%" : "100%" }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        style={{ minHeight: 440, height: "100%" }}
-      >
+        style={{ minHeight: 440, height: "100%" }}>
+        
         <div className="mb-6">
           <h3 style={TYPE.h3}>{facility.title}</h3>
           <p style={TYPE.bodySm} className="text-primary-foreground/70">
             {facility.subtitle}
           </p>
         </div>
-        <div className="flex-1 flex flex-col gap-4">
-          {facility.details.map((detail, i) => {
-            const Icon = detail.icon;
-            return (
-              <div key={i} className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Icon size={28} strokeWidth={1.5} className="text-primary-foreground/80" />
-                  <div>
-                    <p style={{ ...TYPE.bodySm, fontWeight: 600 }}>{detail.label}</p>
-                    {detail.type && (
-                      <p style={{ ...TYPE.bodySm, fontSize: "12px" }} className="text-primary-foreground/70">
-                        {detail.type}
-                      </p>
-                    )}
-                  </div>
-                </div>
-                {detail.count && (
-                  <span style={{ ...TYPE.h3, fontSize: "24px" }}>{detail.count}</span>
-                )}
-              </div>
-            );
-          })}
-        </div>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         <div className="flex items-center justify-between mt-4">
-          {facility.footnote && (
-            <p style={{ ...TYPE.bodySm, fontSize: "12px" }} className="text-primary-foreground/60">
+          {facility.footnote &&
+          <p style={{ ...TYPE.bodySm, fontSize: "12px" }} className="text-primary-foreground/60">
               {facility.footnote}
             </p>
-          )}
+          }
           <div className="flex justify-end flex-1">
             <div className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center">
               <Minus size={18} />
@@ -182,8 +178,8 @@ const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
           </div>
         </div>
       </motion.div>
-    </motion.div>
-  );
+    </motion.div>);
+
 };
 
 const ResearchHighlight = () => {
@@ -199,8 +195,8 @@ const ResearchHighlight = () => {
       {/* Subtle decorative element */}
       <div
         className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-[0.03] pointer-events-none"
-        style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)", transform: "translate(30%, -40%)" }}
-      />
+        style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)", transform: "translate(30%, -40%)" }} />
+      
 
       <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         {/* Two-column header layout */}
@@ -208,8 +204,8 @@ const ResearchHighlight = () => {
           <ScrollReveal>
             <div>
               <p
-                style={{ ...TYPE.label, color: "hsl(var(--muted-foreground))", marginBottom: SPACING.labelToH2 }}
-              >
+                style={{ ...TYPE.label, color: "hsl(var(--muted-foreground))", marginBottom: SPACING.labelToH2 }}>
+                
                 {t.research.label}
               </p>
               <h2 style={TYPE.h2} className="text-foreground">
@@ -223,8 +219,8 @@ const ResearchHighlight = () => {
             <div className="md:text-right">
               <p
                 style={{ ...TYPE.body, color: "hsl(var(--muted-foreground))" }}
-                className="max-w-md md:ml-auto"
-              >
+                className="max-w-md md:ml-auto">
+                
                 {t.research.description}
               </p>
             </div>
@@ -238,15 +234,15 @@ const ResearchHighlight = () => {
 
         {/* Facility cards */}
         <div className="grid md:grid-cols-3" style={{ gap: SPACING.cardGap }}>
-          {facilities.map((facility, i) => (
-            <FacilityCard
-              key={facility.title}
-              facility={facility}
-              isExpanded={expandedIndex === i}
-              onToggle={() => handleToggle(i)}
-              index={i}
-            />
-          ))}
+          {facilities.map((facility, i) =>
+          <FacilityCard
+            key={facility.title}
+            facility={facility}
+            isExpanded={expandedIndex === i}
+            onToggle={() => handleToggle(i)}
+            index={i} />
+
+          )}
         </div>
 
         {/* CTA row */}
@@ -258,8 +254,8 @@ const ResearchHighlight = () => {
             <a
               href="#"
               className="inline-flex items-center gap-3 group/cta"
-              style={TYPE.button}
-            >
+              style={TYPE.button}>
+              
               <span className="text-foreground group-hover/cta:text-primary transition-colors">
                 {t.research.cta}
               </span>
@@ -270,8 +266,8 @@ const ResearchHighlight = () => {
           </div>
         </ScrollReveal>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default ResearchHighlight;
