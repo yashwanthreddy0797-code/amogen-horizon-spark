@@ -1,7 +1,7 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { TYPE, SPACING } from "@/typography";
-import platformBgPills from "@/assets/platform-bg-pills.png";
+
 
 const AboutHero = () => {
   const { t } = useLanguage();
@@ -120,12 +120,6 @@ const AboutHero = () => {
           ))}
         </div>
       </div>
-      <img
-        src={platformBgPills}
-        alt=""
-        aria-hidden="true"
-        className="absolute right-0 top-1/2 -translate-y-1/2 h-[80%] w-auto max-w-[45%] object-contain object-right pointer-events-none opacity-40"
-      />
     </section>
   );
 };
