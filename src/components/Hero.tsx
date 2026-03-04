@@ -9,11 +9,15 @@ const Hero = () => {
 
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      <div className="absolute inset-0">
-        <img src={heroBgDna} alt="DNA molecular structure" className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
-        <div className="absolute inset-0 bg-white/20" />
-      </div>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
+      <img
+        src={heroBgDna}
+        alt="DNA molecular structure"
+        className="absolute right-0 top-0 h-full w-[65%] object-contain object-right-top pointer-events-none"
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
+      />
       <div className="relative w-full mx-auto py-32" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
