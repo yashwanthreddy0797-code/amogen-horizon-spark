@@ -16,7 +16,7 @@ const facilities = [
     tag: "API Manufacturing",
     image: facility1Img,
     details: [
-      { label: "Microbial Fermenters", type: "", count: "", icon: FlaskConical },
+      { label: "Microbial Fermentors", type: "", count: "", icon: FlaskConical },
       { label: "Continuous Centrifuge", type: "", count: "", icon: FlaskConical },
       { label: "Downstream Purification", type: "", count: "", icon: Filter },
       { label: "Preparative Chromatography", type: "", count: "", icon: BarChart3 },
