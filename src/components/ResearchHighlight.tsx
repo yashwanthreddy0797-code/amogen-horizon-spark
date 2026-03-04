@@ -12,7 +12,7 @@ import { TYPE, SPACING } from "@/typography";
 const facilities = [
   {
     title: "Facility",
-    subtitle: "30 kL",
+    subtitle: "75 kL",
     tag: "API Manufacturing",
     image: facility1Img,
     details: [
