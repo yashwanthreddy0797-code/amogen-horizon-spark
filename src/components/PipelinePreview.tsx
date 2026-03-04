@@ -13,17 +13,18 @@ const PipelinePreview = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="pipeline" style={{ position: "relative", overflow: "hidden", minHeight: "100vh", display: "flex", alignItems: "flex-end", background: "#f0eeeb" }}>
-      <div style={{ position: "absolute", inset: 0, opacity: 0.08, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`, backgroundRepeat: "repeat", backgroundSize: "128px 128px", pointerEvents: "none" as const, zIndex: 0 }} />
+    <section id="pipeline" style={{ position: "relative", overflow: "hidden", minHeight: "100vh", display: "flex", alignItems: "flex-end", background: "linear-gradient(145deg, #1a1a6e 0%, #2d1b8e 20%, #3d2aaa 35%, #4a35c0 50%, #3525a0 65%, #1f1575 80%, #0f0a4a 100%)" }}>
+      <div style={{ position: "absolute", inset: 0, opacity: 0.18, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`, backgroundRepeat: "repeat", backgroundSize: "128px 128px", pointerEvents: "none" as const, zIndex: 0 }} />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 40% 20%, rgba(100,80,255,0.35) 0%, transparent 60%)", pointerEvents: "none" as const, zIndex: 0 }} />
 
       <div style={{ position: "relative", zIndex: 1, display: "flex", width: "100%", maxWidth: "1400px", margin: "0 auto", alignItems: "flex-end" }}>
         <div style={{ flex: "0 0 42%", padding: "0 48px 80px" }}>
-          <p style={{ ...TYPE.label, color: "rgba(0,25,101,0.5)", marginBottom: SPACING.labelToH2 }}>Pipeline</p>
-          <h2 style={{ ...TYPE.h1, color: "#001965", marginBottom: SPACING.headingToSub }}>Our Biosimilar<br />Pipeline.</h2>
-          <p style={{ ...TYPE.body, color: "rgba(0,25,101,0.55)", marginBottom: SPACING.subToCta }} className="max-w-[380px]">
+          <p style={{ ...TYPE.label, color: "rgba(255,255,255,0.5)", marginBottom: SPACING.labelToH2 }}>Pipeline</p>
+          <h2 style={{ ...TYPE.h1, color: "#FFFFFF", marginBottom: SPACING.headingToSub }}>Our Biosimilar<br />Pipeline.</h2>
+          <p style={{ ...TYPE.body, color: "rgba(255,255,255,0.6)", marginBottom: SPACING.subToCta }} className="max-w-[380px]">
             Focused on high-barrier biosimilars where our fermentation and chemical ligation platform delivers a structural cost and quality advantage.
           </p>
-          <button onClick={() => navigate("/products")} style={{ ...TYPE.button, background: "#001965", color: "#FFFFFF", padding: "14px 28px", borderRadius: "100px", border: "none", cursor: "pointer" }}>
+          <button onClick={() => navigate("/products")} style={{ ...TYPE.button, background: "#FFFFFF", color: "#1A1A1A", padding: "14px 28px", borderRadius: "100px", border: "none", cursor: "pointer" }}>
             View Full Pipeline →
           </button>
         </div>
