@@ -66,6 +66,9 @@ const About = () => {
           </div>
         </section>
 
+        {/* Research & Development */}
+        <AboutResearchDevelopment />
+
         {/* At a Glance — CurateQ-inspired layout */}
         <AboutAtGlance />
 
