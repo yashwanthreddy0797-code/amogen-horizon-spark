@@ -1,6 +1,7 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { TYPE, SPACING } from "@/typography";
+import platformBgPills from "@/assets/platform-bg-pills.png";
 
 const AboutHero = () => {
   const { t } = useLanguage();
@@ -13,9 +14,9 @@ const AboutHero = () => {
   ];
 
   return (
-    <section className="bg-section-cream">
+    <section className="bg-section-cream relative overflow-hidden">
       <div
-        className="mx-auto text-center"
+        className="mx-auto text-center relative z-10"
         style={{
           maxWidth: SPACING.maxWidth,
           paddingLeft: SPACING.sectionPx,
@@ -119,6 +120,12 @@ const AboutHero = () => {
           ))}
         </div>
       </div>
+      <img
+        src={platformBgPills}
+        alt=""
+        aria-hidden="true"
+        className="absolute right-0 top-1/2 -translate-y-1/2 h-[80%] w-auto max-w-[45%] object-contain object-right pointer-events-none opacity-40"
+      />
     </section>
   );
 };
