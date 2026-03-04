@@ -3,9 +3,8 @@ import { TYPE, SPACING } from "@/typography";
 
 const pipelineRows = [
 {
-  name: "Semaglutide",
+  name: "Semaglutide\nBiosimilar",
   indication: "T2DM, Obesity",
-  
   progress: 95,
   gradient: "linear-gradient(90deg, #EF4444 0%, #A855F7 100%)",
   milestone: "Clinical Phase -1",
@@ -14,7 +13,7 @@ const pipelineRows = [
   accent: "#F97316"
 },
 {
-  name: "Liraglutide",
+  name: "Liraglutide\nBiosimilar",
   indication: "T2DM & Obesity",
   progress: 75,
   gradient: "linear-gradient(90deg, #F97316 0%, #EAB308 100%)",
@@ -24,27 +23,7 @@ const pipelineRows = [
   accent: "#F97316"
 },
 {
-  name: "Tirzepatide",
-  indication: "T2DM & Obesity",
-  progress: 55,
-  gradient: "linear-gradient(90deg, #06B6D4 0%, #3B82F6 100%)",
-  milestone: "DMF",
-  milestoneDate: "Q2-2026",
-  strategy: "API only",
-  accent: "#3B82F6"
-},
-{
-  name: "Dulaglutide",
-  indication: "T2DM",
-  progress: 45,
-  gradient: "linear-gradient(90deg, #1E3A5F 0%, #3B82F6 100%)",
-  milestone: "DMF",
-  milestoneDate: "Q1-2026",
-  strategy: "FDF + Licensing",
-  accent: "#3B82F6"
-},
-{
-  name: "Insulin\nDegludec",
+  name: "Insulin Degludec\nBiosimilar",
   indication: "Type 1 & 2 Diabetes",
   progress: 50,
   gradient: "linear-gradient(90deg, #4C1D95 0%, #7C3AED 100%)",
@@ -52,16 +31,6 @@ const pipelineRows = [
   milestoneDate: "Jan-2026",
   strategy: "API + FDF",
   accent: "#EC4899"
-},
-{
-  name: "iDegLira",
-  indication: "T2DM",
-  progress: 50,
-  gradient: "linear-gradient(90deg, #1E3A5F 0%, #3B82F6 100%)",
-  milestone: "Clinical Phase -1",
-  milestoneDate: "Q2-2026",
-  strategy: "FDF + Licensing",
-  accent: "#3B82F6"
 }];
 
 
