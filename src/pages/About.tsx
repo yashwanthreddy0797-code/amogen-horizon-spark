@@ -12,7 +12,6 @@ import AboutLeadership from "@/components/about/AboutLeadership";
 import AboutCareers from "@/components/about/AboutCareers";
 
 
-
 const About = () => {
   return (
     <div className="min-h-screen bg-background">
@@ -65,7 +64,6 @@ const About = () => {
             </motion.div>
           </div>
         </section>
-
 
         {/* At a Glance — CurateQ-inspired layout */}
         <AboutAtGlance />
