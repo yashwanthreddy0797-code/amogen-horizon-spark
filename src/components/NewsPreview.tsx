@@ -37,7 +37,7 @@ const NewsPreview = () => {
               <a href="#" className="group flex flex-col h-full rounded-[20px] overflow-hidden relative" style={{ backgroundColor: "#F0EFED" }}>
                 <div className="p-4 pb-0">
                   <div className="rounded-xl overflow-hidden">
-                    <img src={newsItems[i].image} alt={item.headline} className="w-full h-[195px] object-cover group-hover:scale-105 transition-transform duration-500" style={{ borderRadius: "12px" }} loading="lazy" />
+                    <img src={newsItems[i].image} alt={item.headline} className="w-full h-[195px] object-cover group-hover:scale-105 transition-transform duration-500" style={{ borderRadius: "12px" }} loading="lazy" width={400} height={230} decoding="async" />
                   </div>
                 </div>
                 <div className="px-5 pt-6 flex-1">
