@@ -146,15 +146,15 @@ const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
             {facility.subtitle}
           </p>
         </div>
-        <div className="flex-1 flex flex-col gap-4">
+        <div className="flex-1 flex flex-col gap-2.5 overflow-y-auto">
           {facility.details.map((detail, i) => {
             const Icon = detail.icon;
             return (
               <div key={i} className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <Icon size={28} strokeWidth={1.5} className="text-primary-foreground/80" />
+                  <Icon size={22} strokeWidth={1.5} className="text-primary-foreground/80" />
                   <div>
-                    <p style={{ ...TYPE.bodySm, fontWeight: 600 }}>{detail.label}</p>
+                    <p style={{ ...TYPE.bodySm, fontWeight: 600, fontSize: "13px" }}>{detail.label}</p>
                     {detail.type && (
                       <p style={{ ...TYPE.bodySm, fontSize: "12px" }} className="text-primary-foreground/70">
                         {detail.type}
