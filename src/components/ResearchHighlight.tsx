@@ -4,7 +4,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import facility1Img from "@/assets/facility-1.jpg";
 import facility2Img from "@/assets/facility-2.jpg";
 import facility3Img from "@/assets/facility-3.jpg";
-import { ArrowRight, Plus, Minus, FlaskConical, Pill, Microscope } from "lucide-react";
+import { ArrowRight, Plus, Minus, FlaskConical, Pill, Microscope, Filter, BarChart3, Snowflake } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 import { TYPE, SPACING } from "@/typography";
@@ -16,7 +16,10 @@ const facilities = [
     tag: "API Manufacturing",
     image: facility1Img,
     details: [
-      { label: "5 kL", type: "Stainless steel", count: "x6", icon: FlaskConical },
+      { label: "Continuous Centrifuge", type: "", count: "", icon: FlaskConical },
+      { label: "Downstream Purification", type: "", count: "", icon: Filter },
+      { label: "Preparative Chromatography", type: "", count: "", icon: BarChart3 },
+      { label: "Bulk Lyophilisation", type: "", count: "", icon: Snowflake },
     ],
   },
   {
@@ -147,12 +150,16 @@ const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
                   <Icon size={28} strokeWidth={1.5} className="text-primary-foreground/80" />
                   <div>
                     <p style={{ ...TYPE.bodySm, fontWeight: 600 }}>{detail.label}</p>
-                    <p style={{ ...TYPE.bodySm, fontSize: "12px" }} className="text-primary-foreground/70">
-                      {detail.type}
-                    </p>
+                    {detail.type && (
+                      <p style={{ ...TYPE.bodySm, fontSize: "12px" }} className="text-primary-foreground/70">
+                        {detail.type}
+                      </p>
+                    )}
                   </div>
                 </div>
-                <span style={{ ...TYPE.h3, fontSize: "24px" }}>{detail.count}</span>
+                {detail.count && (
+                  <span style={{ ...TYPE.h3, fontSize: "24px" }}>{detail.count}</span>
+                )}
               </div>
             );
           })}
