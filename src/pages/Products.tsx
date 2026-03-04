@@ -24,7 +24,8 @@ const products = [
   referenceProduct: "Ozempic® / Wegovy®",
   therapeuticArea: "T2DM, Obesity",
   note: "Other indications in trials: NASH, ASCVD, CKD slow Progression, PCOS (Off-Label)",
-  activeStages: 4
+  activeStages: 4,
+  gradient: "linear-gradient(90deg, #EF4444 0%, #A855F7 100%)"
 },
 {
   name: "Liraglutide",
@@ -33,7 +34,8 @@ const products = [
   molecule: "Liraglutide",
   referenceProduct: "Victoza® / Saxenda®",
   therapeuticArea: "T2DM & Obesity",
-  activeStages: 2
+  activeStages: 2,
+  gradient: "linear-gradient(90deg, #F97316 0%, #EAB308 100%)"
 },
 {
   name: "Tirzepatide",
@@ -42,7 +44,8 @@ const products = [
   molecule: "Tirzepatide",
   referenceProduct: "Mounjaro® / Zepbound®",
   therapeuticArea: "T2DM & Obesity",
-  activeStages: 1
+  activeStages: 1,
+  gradient: "linear-gradient(90deg, #0EA5E9 0%, #6366F1 100%)"
 },
 {
   name: "Dulaglutide",
@@ -51,7 +54,8 @@ const products = [
   molecule: "Dulaglutide",
   referenceProduct: "Trulicity®",
   therapeuticArea: "T2DM",
-  activeStages: 1
+  activeStages: 1,
+  gradient: "linear-gradient(90deg, #059669 0%, #34D399 100%)"
 },
 {
   name: "Insulin Degludec",
@@ -59,7 +63,8 @@ const products = [
   molecule: "Insulin Degludec",
   referenceProduct: "Tresiba®",
   therapeuticArea: "Type 1 & 2 Diabetes",
-  activeStages: 1
+  activeStages: 1,
+  gradient: "linear-gradient(90deg, #4C1D95 0%, #7C3AED 100%)"
 },
 {
   name: "iDegLira",
@@ -67,7 +72,8 @@ const products = [
   molecule: "Insulin Degludec / Liraglutide",
   referenceProduct: "Xultophy®",
   therapeuticArea: "T2DM",
-  activeStages: 1
+  activeStages: 1,
+  gradient: "linear-gradient(90deg, #0E7490 0%, #3B82F6 100%)"
 }];
 
 
@@ -181,13 +187,13 @@ const Products = () => {
                               return (
                                 <div
                                   key={stage}
-                                  className={`flex-1 h-14 md:h-16 flex items-center justify-center transition-colors rounded-[3px] ${
-                                    isActive
-                                      ? "bg-primary text-primary-foreground"
-                                      : "bg-muted text-muted-foreground"
-                                  }`}
+                                  className={`flex-1 h-14 md:h-16 flex items-center justify-center transition-colors rounded-[3px]`}
+                                  style={isActive
+                                    ? { background: product.gradient, backgroundSize: `${stages.length * 100}% 100%`, backgroundPosition: `${(si / (stages.length - 1)) * 100}% 0%` }
+                                    : undefined
+                                  }
                                 >
-                                  <span className="text-[10px] md:text-xs font-semibold text-center leading-tight px-1">
+                                  <span className={`text-[10px] md:text-xs font-semibold text-center leading-tight px-1 ${isActive ? "text-white" : "text-muted-foreground"}`}>
                                     {stage}
                                   </span>
                                 </div>
