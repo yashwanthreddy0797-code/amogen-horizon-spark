@@ -17,13 +17,14 @@ const capabilities = [
 const ManufacturingGlance = () => {
   return (
     <section className="w-full">
-      <div className="flex flex-col lg:flex-row min-h-[600px]">
+      <div className="flex flex-col lg:flex-row">
         {/* Left — Image */}
-        <div className="lg:w-1/2 relative min-h-[360px] lg:min-h-0">
+        <div className="lg:w-1/2 min-h-[360px]">
           <img
             src={apiPlant}
             alt="AMOGEN API Plant 1 facility render"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
+            style={{ display: "block" }}
             loading="lazy"
           />
         </div>
