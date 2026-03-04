@@ -12,7 +12,7 @@ const Hero = () => {
       <img
         src={heroDna}
         alt=""
-        className="absolute right-0 top-0 h-full w-[65%] object-contain object-right-top pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         loading="eager"
         decoding="async"
         fetchPriority="high"
