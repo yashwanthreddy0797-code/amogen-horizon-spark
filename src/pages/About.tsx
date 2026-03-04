@@ -10,6 +10,7 @@ import AboutWhoWeAre from "@/components/about/AboutWhoWeAre";
 import AboutWhatWeDo from "@/components/about/AboutWhatWeDo";
 import AboutLeadership from "@/components/about/AboutLeadership";
 import AboutCareers from "@/components/about/AboutCareers";
+import AboutResearchDevelopment from "@/components/about/AboutResearchDevelopment";
 
 
 const About = () => {
@@ -64,6 +65,9 @@ const About = () => {
             </motion.div>
           </div>
         </section>
+
+        {/* Research & Development */}
+        <AboutResearchDevelopment />
 
         {/* At a Glance — CurateQ-inspired layout */}
         <AboutAtGlance />
