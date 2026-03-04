@@ -47,7 +47,8 @@ const facilities = [
     details: [
       { label: "UHPLC", type: "", count: "", icon: FlaskConical },
       { label: "HPLC-UV/PDA", type: "", count: "", icon: FlaskConical },
-      { label: "LC–MS; HRMS", type: "", count: "", icon: Microscope },
+      { label: "LC–MS", type: "", count: "", icon: Microscope },
+      { label: "HRMS", type: "", count: "", icon: Microscope },
       { label: "SEC-HPLC", type: "", count: "", icon: FlaskConical },
       { label: "qPCR", type: "", count: "", icon: Microscope },
       { label: "Microplate Reader", type: "", count: "", icon: BarChart3 },
