@@ -34,7 +34,7 @@ const facilities = [
   {
     title: "Analytics",
     subtitle: "180 kL",
-    tag: "Formulation",
+    tag: "Analytical",
     image: facility3Img,
     details: [
       { label: "15 kL", type: "Stainless steel", count: "x12", icon: FlaskConical },
