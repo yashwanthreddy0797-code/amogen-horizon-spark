@@ -41,7 +41,7 @@ const AboutHero = () => {
         <ScrollReveal delay={0.05}>
           <h2
             style={{
-              ...TYPE.display,
+              ...TYPE.h2,
               color: "hsl(var(--foreground))",
               maxWidth: "900px",
               marginLeft: "auto",
