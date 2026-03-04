@@ -20,7 +20,7 @@ const facilities = [
     ],
   },
   {
-    title: "Facility 2",
+    title: "R&D",
     subtitle: "155 kL",
     tag: "Biologics",
     image: facility2Img,
