@@ -4,7 +4,7 @@ import { TYPE, SPACING } from "@/typography";
 
 const ProductsBanner = () => {
   return (
-    <section className="relative overflow-hidden min-h-[340px] md:min-h-[420px] flex items-stretch rounded-2xl mx-4 md:mx-8 mb-12 border border-border">
+    <section className="relative overflow-hidden min-h-[260px] md:min-h-[320px] flex items-stretch rounded-2xl mx-4 md:mx-8 mb-12 border border-border">
       {/* Left: Text panel with diagonal clip */}
       <div
         className="relative z-10 w-full md:w-[55%] bg-background flex items-center rounded-l-2xl"
