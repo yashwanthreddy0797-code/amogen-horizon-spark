@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { TYPE, SPACING } from "@/typography";
 
-const pipelineRows = [
+type PipelineItem = { type: "row"; name: string; indication: string; progress: number; gradient: string; milestone: string; milestoneDate: string; strategy: string; accent: string } | { type: "divider"; label: string };
+
+const pipelineItems: PipelineItem[] = [
 {
+  type: "row",
   name: "Semaglutide\nBiosimilar",
   indication: "T2DM, Obesity",
   progress: 95,
@@ -13,6 +16,7 @@ const pipelineRows = [
   accent: "#F97316"
 },
 {
+  type: "row",
   name: "Liraglutide\nBiosimilar",
   indication: "T2DM & Obesity",
   progress: 75,
@@ -22,7 +26,9 @@ const pipelineRows = [
   strategy: "API + FDF",
   accent: "#F97316"
 },
+{ type: "divider", label: "INSULIN ANALOGS" },
 {
+  type: "row",
   name: "Insulin Degludec\nBiosimilar",
   indication: "Type 1 & 2 Diabetes",
   progress: 50,
@@ -31,6 +37,51 @@ const pipelineRows = [
   milestoneDate: "Jan-2026",
   strategy: "API + FDF",
   accent: "#EC4899"
+},
+{
+  type: "row",
+  name: "Insulin Aspart\nBiosimilar",
+  indication: "Type 1 & 2 Diabetes",
+  progress: 37,
+  gradient: "linear-gradient(90deg, #0E7490 0%, #06B6D4 100%)",
+  milestone: "DMF",
+  milestoneDate: "Q3-2026",
+  strategy: "API + FDF",
+  accent: "#2A918B"
+},
+{
+  type: "row",
+  name: "Insulin Degludec +\nAspart Biosimilar",
+  indication: "Type 1 & 2 Diabetes",
+  progress: 33,
+  gradient: "linear-gradient(90deg, #0E7490 0%, #3B82F6 100%)",
+  milestone: "DMF",
+  milestoneDate: "Q4-2026",
+  strategy: "API + FDF",
+  accent: "#2A918B"
+},
+{ type: "divider", label: "IMMUNOLOGY" },
+{
+  type: "row",
+  name: "Certolizumab\nBiosimilar",
+  indication: "Rheumatoid Arthritis",
+  progress: 17,
+  gradient: "linear-gradient(90deg, #059669 0%, #34D399 100%)",
+  milestone: "DMF",
+  milestoneDate: "2027",
+  strategy: "API + FDF",
+  accent: "#2A918B"
+},
+{
+  type: "row",
+  name: "Anakinra\nBiosimilar",
+  indication: "RA / Auto-inflammatory",
+  progress: 15,
+  gradient: "linear-gradient(90deg, #059669 0%, #34D399 100%)",
+  milestone: "DMF",
+  milestoneDate: "2027",
+  strategy: "API + FDF",
+  accent: "#2A918B"
 }];
 
 
@@ -62,17 +113,26 @@ const PipelinePreview = () => {
             <div style={{ display: "grid", gridTemplateColumns: "180px 1fr 140px", gap: "16px", alignItems: "end", marginBottom: "8px", paddingBottom: "12px", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
               <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Program</span>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0", position: "relative" }}>
-                {phaseHeaders.map((h, i) =>
+                {phaseHeaders.map((h) =>
                 <span key={h} style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "10px", textAlign: "center" }}>{h}</span>
                 )}
               </div>
               <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Key Milestone</span>
             </div>
 
-            {/* Data rows */}
-            {pipelineRows.map((row) =>
-            <div key={row.name} style={{ display: "grid", gridTemplateColumns: "180px 1fr 140px", gap: "16px", alignItems: "center", padding: "18px 0", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-                {/* Program + Indication */}
+            {/* Data rows + dividers */}
+            {pipelineItems.map((item, idx) => {
+              if (item.type === "divider") {
+                return (
+                  <div key={item.label} style={{ display: "flex", alignItems: "center", gap: "12px", padding: "14px 0 6px" }}>
+                    <span style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", color: "#2A918B", whiteSpace: "nowrap" }}>{item.label}</span>
+                    <div style={{ flex: 1, height: "1px", background: "rgba(42,145,139,0.25)" }} />
+                  </div>
+                );
+              }
+              const row = item;
+              return (
+              <div key={row.name} style={{ display: "grid", gridTemplateColumns: "180px 1fr 140px", gap: "16px", alignItems: "center", padding: "14px 0", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
                 <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
                   <div style={{ width: "3px", borderRadius: "2px", background: row.accent, alignSelf: "stretch", minHeight: "32px", flexShrink: 0 }} />
                   <div>
@@ -81,10 +141,8 @@ const PipelinePreview = () => {
                   </div>
                 </div>
 
-                {/* Progress bar with breakpoints */}
                 <div style={{ position: "relative" }}>
                   <div style={{ width: "100%", height: "10px", borderRadius: "5px", background: "rgba(0,0,0,0.06)", position: "relative", display: "flex" }}>
-                    {/* Three segments with white gaps */}
                     {[0, 1, 2].map((seg) => {
                     const segStart = seg * 33.33;
                     const segEnd = (seg + 1) * 33.33;
@@ -96,17 +154,16 @@ const PipelinePreview = () => {
                       <div key={seg} style={{ flex: 1, height: "10px", background: "rgba(0,0,0,0.06)", overflow: "hidden", borderRadius: "5px", marginLeft: seg > 0 ? "2px" : "0" }}>
                           <div style={{ width: `${fillPercent}%`, height: "100%", background: row.gradient, backgroundSize: "300% 100%", backgroundPosition: seg === 0 ? "0% 0%" : seg === 1 ? "50% 0%" : "100% 0%", transition: "width 0.8s ease" }} />
                         </div>);
-
-                  })}
+                    })}
                   </div>
                 </div>
 
-                {/* Key Milestone */}
                 <div>
                   <span style={{ fontSize: "13px", fontWeight: 600, color: "#3B82F6", display: "block", lineHeight: 1.3 }}>{row.milestone} · {row.milestoneDate}</span>
                 </div>
               </div>
-            )}
+              );
+            })}
           </div>
         </div>
       </div>
