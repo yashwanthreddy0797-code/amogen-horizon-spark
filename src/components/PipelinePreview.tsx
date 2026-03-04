@@ -5,7 +5,7 @@ const pipelineRows = [
 {
   name: "Semaglutide",
   indication: "T2DM, Obesity",
-  note: "Other indications in trials: NASH, ASCVD, CKD slow Progression, PCOS (Off-Label)",
+  
   progress: 95,
   gradient: "linear-gradient(90deg, #EF4444 0%, #A855F7 100%)",
   milestone: "Clinical Phase -1",
@@ -109,9 +109,6 @@ const PipelinePreview = () => {
                   <div>
                     <span style={{ ...TYPE.bodySm, fontWeight: 600, color: "#1A1A1A", display: "block", whiteSpace: "pre-line", lineHeight: 1.3 }}>{row.name}</span>
                     <span style={{ fontSize: "12px", color: "rgba(0,0,0,0.45)", fontStyle: "italic", display: "block", marginTop: "2px" }}>{row.indication}</span>
-                    {row.note
-
-                  }
                   </div>
                 </div>
 
