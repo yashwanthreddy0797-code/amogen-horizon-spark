@@ -26,7 +26,7 @@ const Hero = () => {
           <h1 style={{ ...TYPE.display, color: "hsl(var(--foreground))" }} className="max-w-4xl">
             {t.hero.title}
           </h1>
-          <p style={{ ...TYPE.bodyLg, color: "hsl(var(--muted-foreground))", marginTop: SPACING.headingToSub }} className="max-w-2xl">
+          <p style={{ ...TYPE.bodyLg, color: "hsl(var(--foreground))", marginTop: SPACING.headingToSub }} className="max-w-2xl">
             {t.hero.description}
           </p>
         </motion.div>
