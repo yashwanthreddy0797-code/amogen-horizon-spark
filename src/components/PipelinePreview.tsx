@@ -2,12 +2,70 @@ import { useNavigate } from "react-router-dom";
 import { TYPE, SPACING } from "@/typography";
 
 const pipelineRows = [
-  { name: "Semaglutide", indication: "Type 2 Diabetes / Obesity", phase: 85, color: "#4ADE80", milestone: "Phase III — 2025", strategy: { label: "Biosimilar", bg: "rgba(74,222,128,0.15)", color: "#4ADE80" } },
-  { name: "Liraglutide", indication: "Type 2 Diabetes / Obesity", phase: 70, color: "#60A5FA", milestone: "Phase II — 2025", strategy: { label: "Biosimilar", bg: "rgba(96,165,250,0.15)", color: "#60A5FA" } },
-  { name: "Tirzepatide", indication: "Type 2 Diabetes / Obesity", phase: 45, color: "#F472B6", milestone: "Preclinical — 2026", strategy: { label: "Biosimilar", bg: "rgba(244,114,182,0.15)", color: "#F472B6" } },
-  { name: "Dulaglutide", indication: "Type 2 Diabetes", phase: 60, color: "#FBBF24", milestone: "Phase I — 2025", strategy: { label: "Biosimilar", bg: "rgba(251,191,36,0.15)", color: "#FBBF24" } },
-  { name: "Insulin Degludec", indication: "Diabetes (Basal Insulin)", phase: 35, color: "#A78BFA", milestone: "Preclinical — 2026", strategy: { label: "Biosimilar", bg: "rgba(167,139,250,0.15)", color: "#A78BFA" } },
+  {
+    name: "Semaglutide",
+    indication: "T2DM, Obesity",
+    note: "Other indications in trials: NASH, ASCVD, CKD slow Progression, PCOS (Off-Label)",
+    progress: 95,
+    gradient: "linear-gradient(90deg, #EF4444 0%, #A855F7 100%)",
+    milestone: "Clinical Phase -1",
+    milestoneDate: "Dec-2025",
+    strategy: "FDF + Licensing",
+    accent: "#F97316",
+  },
+  {
+    name: "Liraglutide",
+    indication: "T2DM & Obesity",
+    progress: 75,
+    gradient: "linear-gradient(90deg, #F97316 0%, #EAB308 100%)",
+    milestone: "DMF",
+    milestoneDate: "Dec-2025",
+    strategy: "API + FDF",
+    accent: "#F97316",
+  },
+  {
+    name: "Tirzepatide",
+    indication: "T2DM & Obesity",
+    progress: 55,
+    gradient: "linear-gradient(90deg, #06B6D4 0%, #3B82F6 100%)",
+    milestone: "DMF",
+    milestoneDate: "Q2-2026",
+    strategy: "API only",
+    accent: "#3B82F6",
+  },
+  {
+    name: "Dulaglutide",
+    indication: "T2DM",
+    progress: 45,
+    gradient: "linear-gradient(90deg, #1E3A5F 0%, #3B82F6 100%)",
+    milestone: "DMF",
+    milestoneDate: "Q1-2026",
+    strategy: "FDF + Licensing",
+    accent: "#3B82F6",
+  },
+  {
+    name: "Insulin\nDegludec",
+    indication: "Type 1 & 2 Diabetes",
+    progress: 50,
+    gradient: "linear-gradient(90deg, #4C1D95 0%, #7C3AED 100%)",
+    milestone: "DMF",
+    milestoneDate: "Jan-2026",
+    strategy: "API + FDF",
+    accent: "#EC4899",
+  },
+  {
+    name: "iDegLira",
+    indication: "T2DM",
+    progress: 50,
+    gradient: "linear-gradient(90deg, #1E3A5F 0%, #3B82F6 100%)",
+    milestone: "Clinical Phase -1",
+    milestoneDate: "Q2-2026",
+    strategy: "FDF + Licensing",
+    accent: "#3B82F6",
+  },
 ];
+
+const phaseHeaders = ["Development", "Characterisation", "Pre-Clinical"];
 
 const PipelinePreview = () => {
   const navigate = useNavigate();
@@ -18,7 +76,7 @@ const PipelinePreview = () => {
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 40% 20%, rgba(100,80,255,0.35) 0%, transparent 60%)", pointerEvents: "none" as const, zIndex: 0 }} />
 
       <div style={{ position: "relative", zIndex: 1, display: "flex", width: "100%", maxWidth: "1400px", margin: "0 auto", alignItems: "flex-end" }}>
-        <div style={{ flex: "0 0 42%", padding: "0 48px 80px" }}>
+        <div style={{ flex: "0 0 32%", padding: "0 48px 80px" }}>
           <p style={{ ...TYPE.label, color: "rgba(255,255,255,0.5)", marginBottom: SPACING.labelToH2 }}>Pipeline</p>
           <h2 style={{ ...TYPE.h1, color: "#FFFFFF", marginBottom: SPACING.headingToSub }}>Our Biosimilar<br />Pipeline.</h2>
           <p style={{ ...TYPE.body, color: "rgba(255,255,255,0.6)", marginBottom: SPACING.subToCta }} className="max-w-[380px]">
@@ -30,25 +88,52 @@ const PipelinePreview = () => {
         </div>
 
         <div style={{ flex: 1, padding: "48px 0 0", alignSelf: "flex-end" }}>
-          <div style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", borderBottom: "none", borderRadius: "16px 16px 0 0", padding: `${SPACING.cardPadding} ${SPACING.cardPadding}`, marginRight: "-1px", width: "calc(100% + 1px)" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1.4fr 2fr 0.8fr 0.8fr", gap: "12px", marginBottom: "8px" }}>
-              {["Program", "Progress", "Milestone", "Strategy"].map((h) => (
-                <span key={h} style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)" }}>{h}</span>
-              ))}
+          <div style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", borderBottom: "none", borderRadius: "16px 16px 0 0", padding: "28px 32px", marginRight: "-1px", width: "calc(100% + 1px)" }}>
+            {/* Header row */}
+            <div style={{ display: "grid", gridTemplateColumns: "160px 120px 1fr 140px 130px", gap: "16px", alignItems: "end", marginBottom: "8px", paddingBottom: "12px", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+              <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Program</span>
+              <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Indication</span>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0" }}>
+                {phaseHeaders.map((h) => (
+                  <span key={h} style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "10px", textAlign: "center" }}>{h}</span>
+                ))}
+              </div>
+              <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Key Milestone</span>
+              <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Strategy</span>
             </div>
-            {pipelineRows.map((row, i) => (
-              <div key={row.name} style={{ display: "grid", gridTemplateColumns: "1.4fr 2fr 0.8fr 0.8fr", gap: "12px", alignItems: "center", padding: "16px 0", borderTop: "1px solid rgba(0,0,0,0.08)" }}>
-                <div>
-                  <span style={{ ...TYPE.bodySm, fontWeight: 500, color: "#1A1A1A", display: "block" }}>{row.name}</span>
-                  <span style={{ ...TYPE.meta, fontSize: "12px", color: "rgba(0,0,0,0.5)" }}>{row.indication}</span>
-                </div>
-                <div>
-                  <div style={{ width: "100%", height: "6px", borderRadius: "3px", background: "rgba(0,0,0,0.08)", overflow: "hidden" }}>
-                    <div style={{ width: `${row.phase}%`, height: "100%", borderRadius: "3px", background: row.color, transition: "width 0.6s ease" }} />
+
+            {/* Data rows */}
+            {pipelineRows.map((row) => (
+              <div key={row.name} style={{ display: "grid", gridTemplateColumns: "160px 120px 1fr 140px 130px", gap: "16px", alignItems: "center", padding: "18px 0", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+                {/* Program */}
+                <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                  <div style={{ width: "3px", borderRadius: "2px", background: row.accent, alignSelf: "stretch", minHeight: "32px", flexShrink: 0 }} />
+                  <div>
+                    <span style={{ ...TYPE.bodySm, fontWeight: 600, color: "#1A1A1A", display: "block", whiteSpace: "pre-line", lineHeight: 1.3 }}>{row.name}</span>
+                    {row.note && (
+                      <span style={{ fontSize: "10px", fontStyle: "italic", color: "rgba(0,0,0,0.4)", display: "block", marginTop: "4px", lineHeight: 1.4 }}>{row.note}</span>
+                    )}
                   </div>
                 </div>
-                <span style={{ ...TYPE.meta, fontSize: "12px", color: "rgba(0,0,0,0.6)" }}>{row.milestone}</span>
-                <span style={{ ...TYPE.label, fontSize: "11px", fontWeight: 500, background: row.strategy.bg, color: row.strategy.color, padding: "4px 10px", borderRadius: "100px", opacity: 0.9, textAlign: "center", whiteSpace: "nowrap" }}>{row.strategy.label}</span>
+
+                {/* Indication */}
+                <span style={{ ...TYPE.bodySm, fontSize: "13px", color: "rgba(0,0,0,0.55)", fontStyle: "italic" }}>{row.indication}</span>
+
+                {/* Progress bar */}
+                <div style={{ position: "relative" }}>
+                  <div style={{ width: "100%", height: "10px", borderRadius: "5px", background: "rgba(0,0,0,0.06)", overflow: "hidden" }}>
+                    <div style={{ width: `${row.progress}%`, height: "100%", borderRadius: "5px", background: row.gradient, transition: "width 0.8s ease" }} />
+                  </div>
+                </div>
+
+                {/* Key Milestone */}
+                <div>
+                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#3B82F6", display: "block", lineHeight: 1.3 }}>{row.milestone}</span>
+                  <span style={{ fontSize: "11px", color: "rgba(0,0,0,0.4)" }}>({row.milestoneDate})</span>
+                </div>
+
+                {/* Strategy */}
+                <span style={{ fontSize: "12px", fontWeight: 500, color: "#3B82F6", border: "1.5px solid #3B82F6", padding: "5px 14px", borderRadius: "100px", textAlign: "center", whiteSpace: "nowrap" }}>{row.strategy}</span>
               </div>
             ))}
           </div>
