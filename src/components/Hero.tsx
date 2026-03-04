@@ -1,4 +1,4 @@
-import heroDna from "@/assets/hero-dna-illustration.jpg";
+import heroBg from "@/assets/hero-bg-dna-blue.png";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: "#001965" }}>
       <img
-        src={heroDna}
+        src={heroBg}
         alt=""
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         loading="eager"
