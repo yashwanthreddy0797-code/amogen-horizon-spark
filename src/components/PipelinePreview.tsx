@@ -65,7 +65,7 @@ const pipelineRows = [
   },
 ];
 
-const phaseHeaders = ["Development", "Characterisation", "Pre-Clinical"];
+const phaseHeaders = ["Development", "Analytical CMC", "Pre-Clinical"];
 
 const PipelinePreview = () => {
   const navigate = useNavigate();
