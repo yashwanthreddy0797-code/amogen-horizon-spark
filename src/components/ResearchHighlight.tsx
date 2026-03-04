@@ -150,12 +150,16 @@ const FacilityCard = ({ facility, isExpanded, onToggle, index }: {
                   <Icon size={28} strokeWidth={1.5} className="text-primary-foreground/80" />
                   <div>
                     <p style={{ ...TYPE.bodySm, fontWeight: 600 }}>{detail.label}</p>
-                    <p style={{ ...TYPE.bodySm, fontSize: "12px" }} className="text-primary-foreground/70">
-                      {detail.type}
-                    </p>
+                    {detail.type && (
+                      <p style={{ ...TYPE.bodySm, fontSize: "12px" }} className="text-primary-foreground/70">
+                        {detail.type}
+                      </p>
+                    )}
                   </div>
                 </div>
-                <span style={{ ...TYPE.h3, fontSize: "24px" }}>{detail.count}</span>
+                {detail.count && (
+                  <span style={{ ...TYPE.h3, fontSize: "24px" }}>{detail.count}</span>
+                )}
               </div>
             );
           })}
