@@ -40,17 +40,6 @@ const pipelineItems: PipelineItem[] = [
 },
 {
   type: "row",
-  name: "Insulin Aspart\nBiosimilar",
-  indication: "Type 1 & 2 Diabetes",
-  progress: 37,
-  gradient: "linear-gradient(90deg, #0E7490 0%, #06B6D4 100%)",
-  milestone: "DMF",
-  milestoneDate: "Q3-2026",
-  strategy: "API + FDF",
-  accent: "#2A918B"
-},
-{
-  type: "row",
   name: "Insulin Degludec +\nAspart Biosimilar",
   indication: "Type 1 & 2 Diabetes",
   progress: 33,
@@ -72,17 +61,7 @@ const pipelineItems: PipelineItem[] = [
   strategy: "API + FDF",
   accent: "#2A918B"
 },
-{
-  type: "row",
-  name: "Anakinra\nBiosimilar",
-  indication: "RA / Auto-inflammatory",
-  progress: 15,
-  gradient: "linear-gradient(90deg, #059669 0%, #34D399 100%)",
-  milestone: "DMF",
-  milestoneDate: "2027",
-  strategy: "API + FDF",
-  accent: "#2A918B"
-}];
+];
 
 
 const phaseHeaders = ["Development", "Analytical CMC", "Pre-Clinical"];
