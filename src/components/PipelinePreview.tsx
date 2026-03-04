@@ -9,7 +9,7 @@ const pipelineRows = [
   progress: 95,
   gradient: "linear-gradient(90deg, #EF4444 0%, #A855F7 100%)",
   milestone: "Clinical Phase -1",
-  milestoneDate: "Dec-2025",
+  milestoneDate: "2H-2026",
   strategy: "FDF + Licensing",
   accent: "#F97316"
 },
@@ -19,7 +19,7 @@ const pipelineRows = [
   progress: 75,
   gradient: "linear-gradient(90deg, #F97316 0%, #EAB308 100%)",
   milestone: "DMF",
-  milestoneDate: "Dec-2025",
+  milestoneDate: "Q3-2026",
   strategy: "API + FDF",
   accent: "#F97316"
 },
@@ -71,7 +71,7 @@ const PipelinePreview = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="pipeline" style={{ position: "relative", overflow: "hidden", minHeight: "100vh", display: "flex", alignItems: "flex-end", background: "linear-gradient(145deg, #1a1a6e 0%, #2d1b8e 20%, #3d2aaa 35%, #4a35c0 50%, #3525a0 65%, #1f1575 80%, #0f0a4a 100%)" }}>
+    <section id="pipeline" style={{ position: "relative", overflow: "hidden", minHeight: "100vh", display: "flex", alignItems: "flex-end", background: "#001965" }}>
       <div style={{ position: "absolute", inset: 0, opacity: 0.18, backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`, backgroundRepeat: "repeat", backgroundSize: "128px 128px", pointerEvents: "none" as const, zIndex: 0 }} />
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 40% 20%, rgba(100,80,255,0.35) 0%, transparent 60%)", pointerEvents: "none" as const, zIndex: 0 }} />
 
@@ -134,8 +134,7 @@ const PipelinePreview = () => {
 
                 {/* Key Milestone */}
                 <div>
-                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#3B82F6", display: "block", lineHeight: 1.3 }}>{row.milestone}</span>
-                  <span style={{ fontSize: "11px", color: "rgba(0,0,0,0.4)" }}>({row.milestoneDate})</span>
+                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#3B82F6", display: "block", lineHeight: 1.3 }}>{row.milestone} · {row.milestoneDate}</span>
                 </div>
               </div>
             )}
