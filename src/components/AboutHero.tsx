@@ -54,56 +54,86 @@ const AboutHero = () => {
           </div>
         </ScrollReveal>
 
-        {/* Stats Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
+        {/* Stats Cards — Bento Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
           {stats.map((stat, i) => (
             <ScrollReveal key={i} delay={0.1 + i * 0.08}>
               <div
-                className={`relative py-8 md:py-0 ${
-                  i < stats.length - 1 ? "md:border-r md:border-white/10" : ""
-                } ${i < 2 ? "border-b md:border-b-0 border-white/10" : ""}`}
+                className="relative aspect-square rounded-2xl flex flex-col justify-between p-6 md:p-8 overflow-hidden"
                 style={{
-                  paddingLeft: i === 0 ? 0 : undefined,
-                  paddingRight: i === stats.length - 1 ? 0 : undefined,
+                  background: i === 0
+                    ? "linear-gradient(145deg, hsl(213 80% 50%) 0%, hsl(213 80% 35%) 100%)"
+                    : i === 1
+                    ? "hsl(0 0% 96%)"
+                    : i === 2
+                    ? "hsl(220 15% 92%)"
+                    : "linear-gradient(145deg, hsl(220 20% 14%) 0%, hsl(220 20% 8%) 100%)",
                 }}
               >
-                <div className={`${i > 0 ? "md:pl-8 lg:pl-10" : ""} ${i < stats.length - 1 ? "md:pr-8 lg:pr-10" : ""}`}>
-                  <p className="mb-2">
-                    <span
-                      style={{
-                        fontFamily: "'DM Mono', 'Courier New', monospace",
-                        fontSize: "clamp(40px, 5vw, 64px)",
-                        fontWeight: 400,
-                        lineHeight: 1,
-                        letterSpacing: "-0.02em",
-                        color: "#3B97DE",
-                      }}
-                    >
-                      {stat.value}
-                    </span>
-                    {stat.unit && (
-                      <span
-                        style={{
-                          fontFamily: "'DM Mono', 'Courier New', monospace",
-                          fontSize: "clamp(20px, 2.5vw, 32px)",
-                          fontWeight: 400,
-                          color: "#3B97DE",
-                          marginLeft: "2px",
-                        }}
-                      >
-                        {stat.unit}
-                      </span>
-                    )}
-                  </p>
-                  <p
+                {/* Subtle decorative element */}
+                <div
+                  className="absolute opacity-10 rounded-full"
+                  style={{
+                    width: "120%",
+                    height: "120%",
+                    top: "40%",
+                    left: "20%",
+                    background: i === 0 || i === 3
+                      ? "radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)"
+                      : "radial-gradient(circle, hsl(213 80% 50% / 0.1) 0%, transparent 70%)",
+                  }}
+                />
+
+                {/* Label */}
+                <p
+                  style={{
+                    ...TYPE.label,
+                    fontSize: "10px",
+                    color: i === 0
+                      ? "rgba(255,255,255,0.7)"
+                      : i === 3
+                      ? "rgba(255,255,255,0.5)"
+                      : "hsl(220 10% 45%)",
+                  }}
+                >
+                  {stat.description}
+                </p>
+
+                {/* Value */}
+                <div>
+                  <span
                     style={{
-                      ...TYPE.bodySm,
-                      color: "rgba(255,255,255,0.45)",
-                      lineHeight: 1.5,
+                      fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
+                      fontSize: "clamp(36px, 5vw, 56px)",
+                      fontWeight: 700,
+                      lineHeight: 1,
+                      letterSpacing: "-0.03em",
+                      color: i === 0
+                        ? "#fff"
+                        : i === 3
+                        ? "#3B97DE"
+                        : "hsl(220 20% 10%)",
                     }}
                   >
-                    {stat.description}
-                  </p>
+                    {stat.value}
+                  </span>
+                  {stat.unit && (
+                    <span
+                      style={{
+                        fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
+                        fontSize: "clamp(18px, 2.5vw, 28px)",
+                        fontWeight: 600,
+                        color: i === 0
+                          ? "rgba(255,255,255,0.8)"
+                          : i === 3
+                          ? "#3B97DE"
+                          : "hsl(220 10% 45%)",
+                        marginLeft: "2px",
+                      }}
+                    >
+                      {stat.unit}
+                    </span>
+                  )}
                 </div>
               </div>
             </ScrollReveal>
