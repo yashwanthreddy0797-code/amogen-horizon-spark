@@ -500,7 +500,7 @@ const Navbar = ({ variant = "default" }: NavbarProps) => {
             key="split-nav"
             className={`max-w-7xl mx-auto ${navText}`}
             initial={false}
-            animate={{ opacity: scrolled ? 1 : 0, y: scrolled ? 0 : -10, visibility: scrolled ? "visible" as const : "hidden" as const }}
+            animate={{ opacity: 0, y: -10, visibility: "hidden" as const }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], visibility: { delay: scrolled ? 0 : 0.4 } }}
             style={{ pointerEvents: scrolled ? "auto" : "none", position: scrolled ? "relative" : "absolute", left: 0, right: 0 }}
           >
