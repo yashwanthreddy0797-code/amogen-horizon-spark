@@ -25,7 +25,7 @@ const facilities = [
   },
   {
     title: "R&D",
-    subtitle: "155 kL",
+    subtitle: "",
     tag: "Research & Development",
     image: facility2Img,
     details: [
