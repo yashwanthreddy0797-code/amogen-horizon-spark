@@ -90,11 +90,10 @@ const PipelinePreview = () => {
         <div style={{ flex: 1, padding: "48px 0 0", alignSelf: "flex-end" }}>
           <div style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", borderBottom: "none", borderRadius: "16px 16px 0 0", padding: "28px 32px", marginRight: "-1px", width: "calc(100% + 1px)" }}>
             {/* Header row */}
-            <div style={{ display: "grid", gridTemplateColumns: "160px 120px 1fr 140px", gap: "16px", alignItems: "end", marginBottom: "8px", paddingBottom: "12px", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "180px 1fr 140px", gap: "16px", alignItems: "end", marginBottom: "8px", paddingBottom: "12px", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
               <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Program</span>
-              <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Indication</span>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0" }}>
-                {phaseHeaders.map((h) => (
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0", position: "relative" }}>
+                {phaseHeaders.map((h, i) => (
                   <span key={h} style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "10px", textAlign: "center" }}>{h}</span>
                 ))}
               </div>
@@ -103,26 +102,27 @@ const PipelinePreview = () => {
 
             {/* Data rows */}
             {pipelineRows.map((row) => (
-              <div key={row.name} style={{ display: "grid", gridTemplateColumns: "160px 120px 1fr 140px", gap: "16px", alignItems: "center", padding: "18px 0", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-                {/* Program */}
+              <div key={row.name} style={{ display: "grid", gridTemplateColumns: "180px 1fr 140px", gap: "16px", alignItems: "center", padding: "18px 0", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+                {/* Program + Indication */}
                 <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
                   <div style={{ width: "3px", borderRadius: "2px", background: row.accent, alignSelf: "stretch", minHeight: "32px", flexShrink: 0 }} />
                   <div>
                     <span style={{ ...TYPE.bodySm, fontWeight: 600, color: "#1A1A1A", display: "block", whiteSpace: "pre-line", lineHeight: 1.3 }}>{row.name}</span>
+                    <span style={{ fontSize: "12px", color: "rgba(0,0,0,0.45)", fontStyle: "italic", display: "block", marginTop: "2px" }}>{row.indication}</span>
                     {row.note && (
-                      <span style={{ fontSize: "10px", fontStyle: "italic", color: "rgba(0,0,0,0.4)", display: "block", marginTop: "4px", lineHeight: 1.4 }}>{row.note}</span>
+                      <span style={{ fontSize: "10px", fontStyle: "italic", color: "rgba(0,0,0,0.35)", display: "block", marginTop: "3px", lineHeight: 1.4 }}>{row.note}</span>
                     )}
                   </div>
                 </div>
 
-                {/* Indication */}
-                <span style={{ ...TYPE.bodySm, fontSize: "13px", color: "rgba(0,0,0,0.55)", fontStyle: "italic" }}>{row.indication}</span>
-
-                {/* Progress bar */}
+                {/* Progress bar with breakpoints */}
                 <div style={{ position: "relative" }}>
-                  <div style={{ width: "100%", height: "10px", borderRadius: "5px", background: "rgba(0,0,0,0.06)", overflow: "hidden" }}>
+                  <div style={{ width: "100%", height: "10px", borderRadius: "5px", background: "rgba(0,0,0,0.06)", overflow: "hidden", position: "relative" }}>
                     <div style={{ width: `${row.progress}%`, height: "100%", borderRadius: "5px", background: row.gradient, transition: "width 0.8s ease" }} />
                   </div>
+                  {/* Breakpoint lines at 33.33% and 66.66% */}
+                  <div style={{ position: "absolute", top: 0, left: "33.33%", width: "1px", height: "10px", background: "rgba(0,0,0,0.12)" }} />
+                  <div style={{ position: "absolute", top: 0, left: "66.66%", width: "1px", height: "10px", background: "rgba(0,0,0,0.12)" }} />
                 </div>
 
                 {/* Key Milestone */}
@@ -130,7 +130,6 @@ const PipelinePreview = () => {
                   <span style={{ fontSize: "13px", fontWeight: 600, color: "#3B82F6", display: "block", lineHeight: 1.3 }}>{row.milestone}</span>
                   <span style={{ fontSize: "11px", color: "rgba(0,0,0,0.4)" }}>({row.milestoneDate})</span>
                 </div>
-
               </div>
             ))}
           </div>
