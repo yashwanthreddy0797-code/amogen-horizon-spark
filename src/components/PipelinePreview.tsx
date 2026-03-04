@@ -98,9 +98,9 @@ const PipelinePreview = () => {
       <div style={{ position: "relative", zIndex: 1, display: "flex", width: "100%", maxWidth: "1400px", margin: "0 auto", alignItems: "flex-end" }}>
         <div style={{ flex: "0 0 32%", padding: "0 48px 80px" }}>
           <p style={{ ...TYPE.label, color: "rgba(255,255,255,0.5)", marginBottom: SPACING.labelToH2 }}>Pipeline</p>
-          <h2 style={{ ...TYPE.h1, color: "#FFFFFF", marginBottom: SPACING.headingToSub }}>Our Biosimilar<br />Pipeline.</h2>
+          <h2 style={{ ...TYPE.h1, color: "#FFFFFF", marginBottom: SPACING.headingToSub }}>A Pipeline Built on<br />Platform Advantage.</h2>
           <p style={{ ...TYPE.body, color: "rgba(255,255,255,0.6)", marginBottom: SPACING.subToCta }} className="max-w-[380px]">
-            Focused on high-barrier biosimilars where our fermentation and chemical ligation platform delivers a structural cost and quality advantage.
+            High-barrier biosimilars where our fermentation and chemical ligation platform delivers a structural cost and quality advantage — built on the same Saccharomyces cerevisiae expression system as the innovator.
           </p>
           <button onClick={() => navigate("/products")} style={{ ...TYPE.button, background: "#FFFFFF", color: "#1A1A1A", padding: "14px 28px", borderRadius: "100px", border: "none", cursor: "pointer" }}>
             View Full Pipeline →
