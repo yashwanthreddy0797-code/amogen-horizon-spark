@@ -117,12 +117,22 @@ const PipelinePreview = () => {
 
                 {/* Progress bar with breakpoints */}
                 <div style={{ position: "relative" }}>
-                  <div style={{ width: "100%", height: "10px", borderRadius: "5px", background: "rgba(0,0,0,0.06)", overflow: "hidden", position: "relative" }}>
-                    <div style={{ width: `${row.progress}%`, height: "100%", borderRadius: "5px", background: row.gradient, transition: "width 0.8s ease" }} />
+                  <div style={{ width: "100%", height: "10px", borderRadius: "5px", background: "rgba(0,0,0,0.06)", position: "relative", display: "flex" }}>
+                    {/* Three segments with white gaps */}
+                    {[0, 1, 2].map((seg) => {
+                      const segStart = seg * 33.33;
+                      const segEnd = (seg + 1) * 33.33;
+                      const fillEnd = Math.min(row.progress, segEnd);
+                      const fillWidth = Math.max(0, fillEnd - segStart);
+                      const segWidth = 33.33;
+                      const fillPercent = (fillWidth / segWidth) * 100;
+                      return (
+                        <div key={seg} style={{ flex: 1, height: "10px", background: "rgba(0,0,0,0.06)", overflow: "hidden", borderRadius: seg === 0 ? "5px 0 0 5px" : seg === 2 ? "0 5px 5px 0" : "0", marginLeft: seg > 0 ? "3px" : "0" }}>
+                          <div style={{ width: `${fillPercent}%`, height: "100%", background: row.gradient, backgroundSize: "300% 100%", backgroundPosition: seg === 0 ? "0% 0%" : seg === 1 ? "50% 0%" : "100% 0%", transition: "width 0.8s ease" }} />
+                        </div>
+                      );
+                    })}
                   </div>
-                  {/* Breakpoint lines at 33.33% and 66.66% */}
-                  <div style={{ position: "absolute", top: 0, left: "33.33%", width: "1px", height: "10px", background: "rgba(0,0,0,0.12)" }} />
-                  <div style={{ position: "absolute", top: 0, left: "66.66%", width: "1px", height: "10px", background: "rgba(0,0,0,0.12)" }} />
                 </div>
 
                 {/* Key Milestone */}
