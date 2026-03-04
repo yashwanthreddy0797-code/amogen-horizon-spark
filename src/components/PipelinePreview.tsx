@@ -90,7 +90,7 @@ const PipelinePreview = () => {
         <div style={{ flex: 1, padding: "48px 0 0", alignSelf: "flex-end" }}>
           <div style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", borderBottom: "none", borderRadius: "16px 16px 0 0", padding: "28px 32px", marginRight: "-1px", width: "calc(100% + 1px)" }}>
             {/* Header row */}
-            <div style={{ display: "grid", gridTemplateColumns: "160px 120px 1fr 140px 130px", gap: "16px", alignItems: "end", marginBottom: "8px", paddingBottom: "12px", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "160px 120px 1fr 140px", gap: "16px", alignItems: "end", marginBottom: "8px", paddingBottom: "12px", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
               <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Program</span>
               <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Indication</span>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0" }}>
@@ -99,12 +99,11 @@ const PipelinePreview = () => {
                 ))}
               </div>
               <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Key Milestone</span>
-              <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Strategy</span>
             </div>
 
             {/* Data rows */}
             {pipelineRows.map((row) => (
-              <div key={row.name} style={{ display: "grid", gridTemplateColumns: "160px 120px 1fr 140px 130px", gap: "16px", alignItems: "center", padding: "18px 0", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+              <div key={row.name} style={{ display: "grid", gridTemplateColumns: "160px 120px 1fr 140px", gap: "16px", alignItems: "center", padding: "18px 0", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
                 {/* Program */}
                 <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
                   <div style={{ width: "3px", borderRadius: "2px", background: row.accent, alignSelf: "stretch", minHeight: "32px", flexShrink: 0 }} />
@@ -132,8 +131,6 @@ const PipelinePreview = () => {
                   <span style={{ fontSize: "11px", color: "rgba(0,0,0,0.4)" }}>({row.milestoneDate})</span>
                 </div>
 
-                {/* Strategy */}
-                <span style={{ fontSize: "12px", fontWeight: 500, color: "#3B82F6", border: "1.5px solid #3B82F6", padding: "5px 14px", borderRadius: "100px", textAlign: "center", whiteSpace: "nowrap" }}>{row.strategy}</span>
               </div>
             ))}
           </div>
