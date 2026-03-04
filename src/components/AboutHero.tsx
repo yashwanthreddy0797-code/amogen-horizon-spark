@@ -1,5 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { motion } from "framer-motion";
 import { TYPE, SPACING } from "@/typography";
 
 const AboutHero = () => {
@@ -13,79 +14,102 @@ const AboutHero = () => {
   ];
 
   return (
-    <section style={{ backgroundColor: "white", paddingTop: SPACING.sectionPy.desktop, paddingBottom: SPACING.sectionPy.desktop }}>
+    <section className="relative bg-footer-bg overflow-hidden">
+      {/* Subtle gradient overlay for depth */}
+      <div className="absolute inset-0 opacity-30" style={{
+        background: "radial-gradient(ellipse at 20% 50%, hsl(213 80% 35% / 0.4) 0%, transparent 60%), radial-gradient(ellipse at 80% 80%, hsl(227 100% 30% / 0.3) 0%, transparent 50%)"
+      }} />
+
       <div
-        className="mx-auto"
+        className="relative mx-auto"
         style={{
           maxWidth: SPACING.maxWidth,
           paddingLeft: SPACING.sectionPx,
           paddingRight: SPACING.sectionPx,
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "80px",
-          alignItems: "center",
+          paddingTop: "80px",
+          paddingBottom: "80px",
         }}
       >
-        {/* Left: Headline + Body */}
-        <div className="max-md:col-span-2">
-          <ScrollReveal delay={0.1}>
-            <h2 style={{ ...TYPE.h2, color: "#1a1a1a" }}>
+        {/* Tagline */}
+        <ScrollReveal>
+          <div className="max-w-3xl mb-16 md:mb-20">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-px bg-[#3B97DE]" />
+              <p style={{ ...TYPE.label, color: "#3B97DE" }}>
+                Our Platform
+              </p>
+            </div>
+            <h2
+              style={{
+                ...TYPE.h2,
+                color: "hsl(var(--footer-foreground))",
+                lineHeight: 1.15,
+              }}
+            >
               {t.aboutHero.heading}
-              <em className="italic" style={{ color: "rgba(0,0,0,0.6)" }}>{t.aboutHero.headingEm}</em>
+              <em className="italic not-italic" style={{ color: "rgba(255,255,255,0.5)" }}>
+                {t.aboutHero.headingEm}
+              </em>
             </h2>
-          </ScrollReveal>
-        </div>
+          </div>
+        </ScrollReveal>
 
-        {/* Right: 2×2 Stats Grid */}
-        <div
-          className="max-md:col-span-2"
-          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px 64px" }}
-        >
+        {/* Stats Row */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
           {stats.map((stat, i) => (
-            <ScrollReveal key={i} delay={0.15 + i * 0.1}>
-              <div>
-                <p style={{ marginBottom: "8px" }}>
-                  <span
-                    style={{
-                      fontFamily: "'DM Mono', 'Courier New', monospace",
-                      fontSize: "clamp(48px, 6vw, 80px)",
-                      fontWeight: 400,
-                      lineHeight: 1,
-                      letterSpacing: "-0.02em",
-                      color: "#3B97DE",
-                    }}
-                  >
-                    {stat.value}
-                  </span>
-                  {stat.unit && (
+            <ScrollReveal key={i} delay={0.1 + i * 0.08}>
+              <div
+                className={`relative py-8 md:py-0 ${
+                  i < stats.length - 1 ? "md:border-r md:border-white/10" : ""
+                } ${i < 2 ? "border-b md:border-b-0 border-white/10" : ""}`}
+                style={{
+                  paddingLeft: i === 0 ? 0 : undefined,
+                  paddingRight: i === stats.length - 1 ? 0 : undefined,
+                }}
+              >
+                <div className={`${i > 0 ? "md:pl-8 lg:pl-10" : ""} ${i < stats.length - 1 ? "md:pr-8 lg:pr-10" : ""}`}>
+                  <p className="mb-2">
                     <span
                       style={{
                         fontFamily: "'DM Mono', 'Courier New', monospace",
-                        fontSize: "clamp(28px, 3vw, 40px)",
+                        fontSize: "clamp(40px, 5vw, 64px)",
                         fontWeight: 400,
+                        lineHeight: 1,
+                        letterSpacing: "-0.02em",
                         color: "#3B97DE",
-                        marginLeft: "4px",
                       }}
                     >
-                      {stat.unit}
+                      {stat.value}
                     </span>
-                  )}
-                </p>
-                <p style={{ ...TYPE.body, color: "rgba(0,0,0,0.55)" }}>{stat.description}</p>
+                    {stat.unit && (
+                      <span
+                        style={{
+                          fontFamily: "'DM Mono', 'Courier New', monospace",
+                          fontSize: "clamp(20px, 2.5vw, 32px)",
+                          fontWeight: 400,
+                          color: "#3B97DE",
+                          marginLeft: "2px",
+                        }}
+                      >
+                        {stat.unit}
+                      </span>
+                    )}
+                  </p>
+                  <p
+                    style={{
+                      ...TYPE.bodySm,
+                      color: "rgba(255,255,255,0.45)",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {stat.description}
+                  </p>
+                </div>
               </div>
             </ScrollReveal>
           ))}
         </div>
       </div>
-
-      {/* Mobile responsive override */}
-      <style>{`
-        @media (max-width: 768px) {
-          section > div[style] {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 };
