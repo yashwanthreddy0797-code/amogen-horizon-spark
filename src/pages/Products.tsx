@@ -109,88 +109,100 @@ const Products = () => {
           </div>
         </section>
 
-        {/* Product Cards */}
-        {products.map((product, index) => {
-          const isEven = index % 2 === 0;
-          return (
-            <section
-              key={product.name}
-              className={`py-16 lg:py-24 ${isEven ? "bg-[#F0EFED]" : "bg-background"}`}>
-              
-              <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-                <ScrollReveal>
-                    <div className="grid lg:grid-cols-[0.6fr_1.4fr] gap-10 lg:gap-16 items-center">
-                     {/* Left: Product info */}
-                     <div>
-                       <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-primary leading-[0.95] tracking-tight">
-                         {product.name}
-                       </h2>
-                       <p className="text-sm md:text-base font-semibold text-primary/80 mt-1.5 italic">
-                         {product.type}
-                       </p>
+        {/* Product Cards - Stacked Sticky Scroll */}
+        <div className="relative">
+          {products.map((product, index) => {
+            const isEven = index % 2 === 0;
+            const isLast = index === products.length - 1;
+            return (
+              <div
+                key={product.name}
+                className={`${isLast ? "relative" : "sticky"}`}
+                style={{
+                  top: isLast ? undefined : `${80 + index * 8}px`,
+                  zIndex: index + 1,
+                }}
+              >
+                <section
+                  className={`py-16 lg:py-24 ${isEven ? "bg-[#F0EFED]" : "bg-background"} rounded-t-3xl shadow-[0_-8px_30px_-12px_rgba(0,0,0,0.15)] transition-shadow`}
+                  style={{ minHeight: "auto" }}
+                >
+                  <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+                    <ScrollReveal>
+                      <div className="grid lg:grid-cols-[0.6fr_1.4fr] gap-10 lg:gap-16 items-center">
+                        {/* Left: Product info */}
+                        <div>
+                          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-primary leading-[0.95] tracking-tight">
+                            {product.name}
+                          </h2>
+                          <p className="text-sm md:text-base font-semibold text-primary/80 mt-1.5 italic">
+                            {product.type}
+                          </p>
 
-                       <div className="mt-5 space-y-2 border-t border-border/60 pt-4">
-                         <div className="flex items-baseline">
-                           <span className="text-xs font-bold text-foreground w-36 shrink-0">
-                             Molecule
-                           </span>
-                           <span className="text-xs text-muted-foreground border-l border-border/60 pl-3">
-                             {product.molecule}
-                           </span>
-                         </div>
-                         <div className="flex items-baseline">
-                           <span className="text-xs font-bold text-foreground w-36 shrink-0">
-                             Reference Product
-                           </span>
-                           <span className="text-xs text-muted-foreground border-l border-border/60 pl-3">
-                             {product.referenceProduct}
-                           </span>
-                         </div>
-                         <div className="flex items-baseline">
-                           <span className="text-xs font-bold text-foreground w-36 shrink-0">
-                             Therapeutic Area
-                           </span>
-                           <span className="text-xs text-muted-foreground border-l border-border/60 pl-3">
-                             {product.therapeuticArea}
-                           </span>
-                         </div>
-                       </div>
+                          <div className="mt-5 space-y-2 border-t border-border/60 pt-4">
+                            <div className="flex items-baseline">
+                              <span className="text-xs font-bold text-foreground w-36 shrink-0">
+                                Molecule
+                              </span>
+                              <span className="text-xs text-muted-foreground border-l border-border/60 pl-3">
+                                {product.molecule}
+                              </span>
+                            </div>
+                            <div className="flex items-baseline">
+                              <span className="text-xs font-bold text-foreground w-36 shrink-0">
+                                Reference Product
+                              </span>
+                              <span className="text-xs text-muted-foreground border-l border-border/60 pl-3">
+                                {product.referenceProduct}
+                              </span>
+                            </div>
+                            <div className="flex items-baseline">
+                              <span className="text-xs font-bold text-foreground w-36 shrink-0">
+                                Therapeutic Area
+                              </span>
+                              <span className="text-xs text-muted-foreground border-l border-border/60 pl-3">
+                                {product.therapeuticArea}
+                              </span>
+                            </div>
+                          </div>
 
-                       {product.note &&
-                         <p className="text-[11px] text-muted-foreground/60 italic mt-3 leading-relaxed">
-                           {product.note}
-                         </p>
-                       }
-                     </div>
+                          {product.note &&
+                            <p className="text-[11px] text-muted-foreground/60 italic mt-3 leading-relaxed">
+                              {product.note}
+                            </p>
+                          }
+                        </div>
 
-                     {/* Right: Stage progress */}
-                     <div className="flex flex-col justify-center">
-                       <div className="flex gap-[2px]">
-                         {stages.map((stage, si) => {
-                           const isActive = si < product.activeStages;
-                           return (
-                             <div
-                               key={stage}
-                               className={`flex-1 h-14 md:h-16 flex items-center justify-center transition-colors rounded-[3px] ${
-                                 isActive
-                                   ? "bg-primary text-primary-foreground"
-                                   : "bg-muted text-muted-foreground"
-                               }`}
-                             >
-                               <span className="text-[10px] md:text-xs font-semibold text-center leading-tight px-1">
-                                 {stage}
-                               </span>
-                             </div>
-                          );
-                        })}
+                        {/* Right: Stage progress */}
+                        <div className="flex flex-col justify-center">
+                          <div className="flex gap-[2px]">
+                            {stages.map((stage, si) => {
+                              const isActive = si < product.activeStages;
+                              return (
+                                <div
+                                  key={stage}
+                                  className={`flex-1 h-14 md:h-16 flex items-center justify-center transition-colors rounded-[3px] ${
+                                    isActive
+                                      ? "bg-primary text-primary-foreground"
+                                      : "bg-muted text-muted-foreground"
+                                  }`}
+                                >
+                                  <span className="text-[10px] md:text-xs font-semibold text-center leading-tight px-1">
+                                    {stage}
+                                  </span>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </ScrollReveal>
                   </div>
-                </ScrollReveal>
+                </section>
               </div>
-            </section>);
-
-        })}
+            );
+          })}
+        </div>
       </main>
       <Footer />
     </div>);
