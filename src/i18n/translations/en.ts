@@ -70,7 +70,7 @@ export const en = {
 
   // ResearchHighlight
   research: {
-    label: "Innovation & Research",
+    label: "CDMO SERVICES",
     title: "Science that transforms",
     titleEm: "patient lives",
     description: "Our research programs are built on a deep understanding of disease biology, leveraging proprietary platforms in protein engineering, genomics, and translational medicine to bring differentiated therapies to patients faster.",
