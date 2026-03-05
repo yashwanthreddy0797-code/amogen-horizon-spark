@@ -3,13 +3,13 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import newsBlueSilkImg from "@/assets/news-blue-silk.png";
-import manufacturingImg from "@/assets/manufacturing.jpg";
+import newsAmogenBlueImg from "@/assets/news-amogen-blue.png";
 import scienceResearchImg from "@/assets/science-research.jpg";
 import { TYPE, SPACING } from "@/typography";
 
 const newsItems = [
   { image: newsBlueSilkImg },
-  { image: manufacturingImg },
+  { image: newsAmogenBlueImg },
   { image: scienceResearchImg },
 ];
 
@@ -35,10 +35,8 @@ const NewsPreview = () => {
           {items.map((item, i) => (
             <ScrollReveal key={item.headline} delay={i * 0.1}>
               <a href="#" className="group flex flex-col h-full rounded-[20px] overflow-hidden relative" style={{ backgroundColor: "#F0EFED" }}>
-                <div className="p-4 pb-0">
-                  <div className="rounded-xl overflow-hidden">
-                    <img src={newsItems[i].image} alt={item.headline} className="w-full h-[195px] object-cover group-hover:scale-105 transition-transform duration-500" style={{ borderRadius: "12px" }} loading="lazy" width={400} height={230} decoding="async" />
-                  </div>
+                <div className="overflow-hidden rounded-t-[20px]">
+                  <img src={newsItems[i].image} alt={item.headline} className="w-full h-[195px] object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width={400} height={230} decoding="async" />
                 </div>
                 <div className="px-5 pt-6 flex-1">
                   <p style={{ ...TYPE.meta, fontSize: "10px", color: "hsl(var(--muted-foreground))", marginBottom: "10px" }}>
