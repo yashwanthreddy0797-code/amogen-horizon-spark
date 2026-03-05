@@ -15,7 +15,7 @@ const services: ServiceCard[] = [
 
 const CDMOIntegratedServices = () => {
   return (
-    <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section className="py-0 bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <div className="flex items-center gap-4 mb-4">
