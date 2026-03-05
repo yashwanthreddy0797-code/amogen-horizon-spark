@@ -53,22 +53,25 @@ const AboutAtGlance = () => {
           </p>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 mt-16" style={{ gap: SPACING.cardGap }}>
+        <div className="grid md:grid-cols-3 mt-16" style={{ gap: "24px" }}>
           {stats.map((stat, i) => {
             const Icon = stat.icon;
-            const isGradient = stat.bg.startsWith("linear");
+            const isLast = i === stats.length - 1;
             return (
               <ScrollReveal key={stat.label} delay={i * 0.12}>
                 <div
-                  className="rounded-2xl p-8 flex flex-col justify-between min-h-[300px]"
-                  style={{ background: stat.bg }}
+                  className="rounded-3xl p-8 md:p-10 flex flex-col justify-between aspect-square"
+                  style={{
+                    background: stat.bg,
+                    transform: isLast ? "rotate(2deg)" : "none",
+                  }}
                 >
                   {/* Icon */}
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-8"
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center"
                     style={{ background: stat.iconBg }}
                   >
-                    <Icon size={22} style={{ color: stat.textColor }} strokeWidth={1.8} />
+                    <Icon size={24} style={{ color: stat.textColor }} strokeWidth={1.8} />
                   </div>
 
                   {/* Stat */}
@@ -77,7 +80,7 @@ const AboutAtGlance = () => {
                       <span
                         style={{
                           fontFamily: TYPE.display.fontFamily,
-                          fontSize: "clamp(56px, 7vw, 80px)",
+                          fontSize: "clamp(52px, 6vw, 72px)",
                           fontWeight: 700,
                           lineHeight: 1,
                           letterSpacing: "-0.04em",
@@ -89,7 +92,7 @@ const AboutAtGlance = () => {
                       <span
                         style={{
                           fontFamily: TYPE.h2.fontFamily,
-                          fontSize: "clamp(24px, 3vw, 36px)",
+                          fontSize: "clamp(20px, 2.5vw, 32px)",
                           fontWeight: 500,
                           color: stat.textColor,
                           marginLeft: "2px",
@@ -101,10 +104,10 @@ const AboutAtGlance = () => {
                     <p
                       style={{
                         fontFamily: TYPE.h3.fontFamily,
-                        fontSize: "clamp(16px, 2vw, 20px)",
+                        fontSize: "clamp(16px, 1.8vw, 20px)",
                         fontWeight: 600,
                         color: stat.textColor,
-                        marginTop: "4px",
+                        marginTop: "6px",
                       }}
                     >
                       {stat.label}
@@ -113,7 +116,7 @@ const AboutAtGlance = () => {
                       style={{
                         ...TYPE.bodySm,
                         color: stat.descColor,
-                        marginTop: "16px",
+                        marginTop: "20px",
                       }}
                     >
                       {stat.description}
