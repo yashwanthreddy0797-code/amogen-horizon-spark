@@ -1,7 +1,4 @@
-import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
-import { Plus, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import leaderRaju from "@/assets/leader-raju.png";
 import leaderAkhilesh from "@/assets/leader-akhilesh.png";
 import leaderKalyan from "@/assets/leader-kalyan.png";
@@ -12,160 +9,121 @@ interface Leader {
   name: string;
   title: string;
   photo: string;
-  stat: string;
-  statLabel: string;
-  bio?: string;
+  experience: string;
   education?: string;
   almaMater?: string;
   previousCompanies?: string[];
 }
 
 const leaders: Leader[] = [
-{
-  name: "P.V.S.N. Raju",
-  title: "Chairman & MD",
-  stat: "30+",
-  statLabel: "Years of experience",
-  bio: "Seasoned Entrepreneur & Engineering Excellence",
-  photo: leaderRaju
-},
-{
-  name: "P. Akhilesh Raju",
-  title: "Chief Executive Officer",
-  stat: "6+",
-  statLabel: "Years of experience",
-  education: "MBA",
-  almaMater: "Anglia Ruskin",
-  previousCompanies: ["Pardha Group"],
-  photo: leaderAkhilesh
-},
-{
-  name: "Dr. T Devi Kalyan",
-  title: "Chief Operating Officer",
-  stat: "18+",
-  statLabel: "Years of experience",
-  education: "PhD",
-  almaMater: "DRDO",
-  previousCompanies: ["Biological E", "Dr. Reddy's"],
-  photo: leaderKalyan
-},
-{
-  name: "Harmeet Lamba",
-  title: "Advisor",
-  stat: "30+",
-  statLabel: "Years of experience",
-  education: "MBA",
-  almaMater: "Wharton BS",
-  previousCompanies: ["Ranbaxy", "Dr. Reddy's"],
-  photo: leaderHarmeet
-},
-{
-  name: "Dr. Manpreet Singh",
-  title: "Vice President, BD",
-  stat: "16+",
-  statLabel: "Years of experience",
-  education: "PhD",
-  almaMater: "NIPER",
-  previousCompanies: ["Dr. Reddy's", "Aurisco"],
-  photo: leaderManpreet
-}];
-
+  {
+    name: "P.V.S.N. Raju",
+    title: "Chairman & MD",
+    photo: leaderRaju,
+    experience: "30+ Years",
+    education: "Seasoned Entrepreneur & Engineering Excellence",
+  },
+  {
+    name: "P. Akhilesh Raju",
+    title: "Chief Executive Officer",
+    photo: leaderAkhilesh,
+    experience: "6+ Years",
+    education: "MBA",
+    almaMater: "Anglia Ruskin",
+    previousCompanies: ["Pardha Group"],
+  },
+  {
+    name: "Dr. T Devi Kalyan",
+    title: "Chief Operating Officer",
+    photo: leaderKalyan,
+    experience: "18+ Years",
+    education: "PhD",
+    almaMater: "DRDO",
+    previousCompanies: ["Biological E", "Dr. Reddy's"],
+  },
+  {
+    name: "Harmeet Lamba",
+    title: "Advisor",
+    photo: leaderHarmeet,
+    experience: "30+ Years",
+    education: "MBA",
+    almaMater: "Wharton BS",
+    previousCompanies: ["Ranbaxy", "Dr. Reddy's"],
+  },
+  {
+    name: "Dr. Manpreet Singh",
+    title: "Vice President, BD",
+    photo: leaderManpreet,
+    experience: "16+ Years",
+    education: "PhD",
+    almaMater: "NIPER",
+    previousCompanies: ["Dr. Reddy's", "Aurisco"],
+  },
+];
 
 const AboutLeadership = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   return (
-    <section id="leadership" className="py-24 lg:py-32 bg-background">
+    <section id="leadership" className="py-24 lg:py-32 bg-muted/30">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        {/* Top rule */}
-        <div className="border-t-2 border-foreground" />
+        <ScrollReveal>
+          <p className="text-sm font-medium text-primary tracking-wide">Our People</p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mt-4 leading-tight">Leadership</h2>
+        </ScrollReveal>
 
-        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 pt-10">
-          {/* Left – Label */}
-          <ScrollReveal>
-            <h2 className="text-2xl md:text-3xl font-semibold text-foreground">Leadership</h2>
-          </ScrollReveal>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 mt-16">
+          {leaders.map((leader, i) => (
+            <ScrollReveal key={leader.name} delay={i * 0.08}>
+              <div className="flex flex-col h-full">
+                {/* Photo */}
+                <div className="aspect-[3/4] rounded-lg overflow-hidden bg-muted">
+                  <img
+                    src={leader.photo}
+                    alt={leader.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
 
-          {/* Right – Accordion list */}
-          <div>
-            {leaders.map((leader, i) => {
-              const isOpen = openIndex === i;
-              return (
-                <div key={leader.name}>
-                  <button
-                    onClick={() => setOpenIndex(isOpen ? null : i)}
-                    className="w-full flex items-center justify-between py-5 text-left group">
-                    
-                    <span className="text-xl md:text-2xl font-semibold text-foreground">
-                      {leader.name}
-                    </span>
-                    <span className="w-10 h-10 rounded-full border border-foreground/40 flex items-center justify-center flex-shrink-0 ml-4 group-hover:border-foreground transition-colors">
-                      {isOpen ? <X size={16} /> : <Plus size={16} />}
-                    </span>
-                  </button>
+                {/* Name */}
+                <h3 className="text-2xl md:text-3xl font-semibold text-foreground mt-5 leading-tight">
+                  {leader.name}
+                </h3>
 
-                  <AnimatePresence>
-                    {isOpen &&
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                      className="overflow-hidden">
-                      
-                        <div className="pb-6 grid md:grid-cols-[1fr_200px] gap-6 items-start">
-                          <div>
-                            <p className="text-base font-semibold text-primary">{leader.title}</p>
-                            <div className="mt-6">
-                              <p className="text-4xl font-semibold text-foreground">{leader.stat}</p>
-                              <p className="text-sm font-semibold text-foreground mt-1">{leader.statLabel}</p>
-                            </div>
-                            {leader.bio &&
-                          <p className="text-sm font-semibold text-foreground mt-5 leading-relaxed max-w-lg">
-                                {leader.bio}
-                              </p>
-                          }
-                            {leader.education &&
-                          <div className="mt-5">
-                                <p className="text-sm font-semibold text-foreground">{leader.education}</p>
-                                <p className="text-sm font-semibold text-foreground">{leader.almaMater}</p>
-                              </div>
-                          }
-                            {leader.previousCompanies && leader.previousCompanies.length > 0 &&
-                          <div className="flex flex-wrap gap-2 mt-5">
-                                {leader.previousCompanies.map((company) =>
-                            <span
-                              key={company}
-                              className="text-xs font-medium text-primary border border-primary/40 rounded px-3 py-1">
-                              
-                                    {company}
-                                  </span>
-                            )}
-                              </div>
-                          }
-                          </div>
-                          <div className="rounded-lg overflow-hidden">
-                            <img
-                            src={leader.photo}
-                            alt={leader.name}
-                            className="w-full h-[240px] object-cover" />
-                          
-                          </div>
-                        </div>
-                      </motion.div>
-                    }
-                  </AnimatePresence>
+                {/* Divider */}
+                <div className="border-t-2 border-foreground mt-4 pt-3" />
 
-                  {/* Divider */}
-                  <div className="border-b border-foreground/20" />
-                </div>);
+                {/* Title */}
+                <p className="text-sm text-muted-foreground">{leader.title}</p>
 
-            })}
-          </div>
+                {/* Experience */}
+                <p className="text-xs text-muted-foreground mt-2">{leader.experience} experience</p>
+
+                {/* Education / Alma Mater */}
+                {(leader.education || leader.almaMater) && (
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {[leader.education, leader.almaMater].filter(Boolean).join(" · ")}
+                  </p>
+                )}
+
+                {/* Previous Companies */}
+                {leader.previousCompanies && leader.previousCompanies.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mt-3">
+                    {leader.previousCompanies.map((company) => (
+                      <span
+                        key={company}
+                        className="text-[11px] font-medium text-primary border border-primary/30 rounded px-2 py-0.5"
+                      >
+                        {company}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default AboutLeadership;
