@@ -10,7 +10,7 @@ import CDMOIntegratedServices from "@/components/cdmo/CDMOIntegratedServices";
 import CDMOSolutions from "@/components/cdmo/CDMOSolutions";
 import CDMORfpProcess from "@/components/cdmo/CDMORfpProcess";
 import CDMORelatedContent from "@/components/cdmo/CDMORelatedContent";
-import ManufacturingGlance from "@/components/ManufacturingGlance";
+import CDMOManufacturingGlance from "@/components/cdmo/CDMOManufacturingGlance";
 
 const CDMO = () => {
   return (
@@ -19,7 +19,7 @@ const CDMO = () => {
       <main>
         <CDMOHero />
         <CDMOServicesOverview />
-        <ManufacturingGlance />
+        <CDMOManufacturingGlance />
         <CDMOTimeline />
         <CDMOCapabilities />
         <CDMOMicrobialExpertise />
