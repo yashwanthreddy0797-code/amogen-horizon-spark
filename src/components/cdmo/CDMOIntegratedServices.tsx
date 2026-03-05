@@ -1,18 +1,23 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, FlaskConical, Microscope, TestTubes, Scan } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
+import fermentationImg from "@/assets/service-fermentation.jpg";
+import purificationImg from "@/assets/service-purification.jpg";
+import fillFinishImg from "@/assets/service-fill-finish.jpg";
+import processDevImg from "@/assets/service-process-dev.jpg";
+
 interface ServiceCard {
-  icon: typeof FlaskConical;
+  image: string;
   title: string;
 }
 
 const services: ServiceCard[] = [
-  { icon: FlaskConical, title: "Fermentation & Upstream" },
-  { icon: Microscope, title: "Downstream Purification" },
-  { icon: TestTubes, title: "Formulation & Fill-Finish" },
-  { icon: Scan, title: "Process Development" },
+  { image: fermentationImg, title: "Fermentation & Upstream" },
+  { image: purificationImg, title: "Downstream Purification" },
+  { image: fillFinishImg, title: "Formulation & Fill-Finish" },
+  { image: processDevImg, title: "Process Development" },
 ];
 
 const CDMOIntegratedServices = () => {
@@ -89,7 +94,6 @@ const CDMOIntegratedServices = () => {
   );
 };
 
-/** Reveals each card left-to-right with staggered delay */
 const CardReveal = ({
   children,
   inView,
@@ -120,11 +124,15 @@ const CardReveal = ({
 );
 
 const ServiceCardComponent = ({ card }: { card: ServiceCard }) => {
-  const Icon = card.icon;
   return (
     <div className="w-[160px] md:w-[180px] bg-card rounded-2xl p-5 shadow-sm border border-border/50 hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
-      <div className="w-full aspect-square rounded-xl bg-muted/50 flex items-center justify-center mb-3">
-        <Icon size={36} className="text-muted-foreground" strokeWidth={1.2} />
+      <div className="w-full aspect-square rounded-xl overflow-hidden mb-3">
+        <img
+          src={card.image}
+          alt={card.title}
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
       </div>
       <h3 className="text-sm font-semibold text-foreground leading-snug mb-3">{card.title}</h3>
       <button className="inline-flex items-center gap-1.5 bg-foreground text-background rounded-full px-4 py-2 text-xs font-medium hover:opacity-90 transition-opacity">
