@@ -24,10 +24,10 @@ const AboutHero = () => {
           paddingBottom: "96px",
         }}
       >
-        {/* Two-column layout */}
-        <div className="grid md:grid-cols-[1fr_1fr] gap-16 items-end">
-          {/* Left: Label + Headline */}
-          <div>
+        {/* Two-column layout: content left, stats right */}
+        <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-16">
+          {/* Left: Label + Headline + Description */}
+          <div className="flex flex-col justify-center">
             <ScrollReveal>
               <p
                 style={{
@@ -46,18 +46,16 @@ const AboutHero = () => {
                   ...TYPE.h1,
                   color: "hsl(var(--primary))",
                   lineHeight: 1.05,
+                  marginBottom: "28px",
                 }}
               >
                 {t.aboutHero.heading}
-                <em className="italic" style={{ color: "hsl(var(--primary))", fontStyle: "italic" }}>
+                <em className="italic" style={{ color: "hsl(var(--primary))" }}>
                   {t.aboutHero.headingEm}
                 </em>
               </h2>
             </ScrollReveal>
-          </div>
 
-          {/* Right: Description */}
-          <div>
             <ScrollReveal delay={0.1}>
               <p
                 style={{
@@ -70,55 +68,58 @@ const AboutHero = () => {
               </p>
             </ScrollReveal>
           </div>
-        </div>
 
-        {/* Divider */}
-        <div style={{ height: "1px", background: "hsl(var(--border))", marginTop: "64px", marginBottom: "48px" }} />
-
-        {/* Stats Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-          {stats.map((stat, i) => (
-            <ScrollReveal key={i} delay={0.15 + i * 0.06}>
-              <div className="relative">
-                <div className="flex items-baseline gap-1">
-                  <span
-                    style={{
-                      fontFamily: TYPE.display.fontFamily,
-                      fontSize: "clamp(40px, 5vw, 56px)",
-                      fontWeight: 700,
-                      letterSpacing: "-0.03em",
-                      color: "hsl(var(--primary))",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {stat.value}
-                  </span>
-                  {stat.unit && (
-                    <span
-                      style={{
-                        fontFamily: TYPE.h3.fontFamily,
-                        fontSize: "clamp(16px, 2vw, 22px)",
-                        fontWeight: 500,
-                        color: "hsl(var(--primary))",
-                      }}
-                    >
-                      {stat.unit}
-                    </span>
-                  )}
-                </div>
-                <p
+          {/* Right: Stats stacked vertically */}
+          <div className="flex flex-col gap-0">
+            {stats.map((stat, i) => (
+              <ScrollReveal key={i} delay={0.12 + i * 0.06}>
+                <div
                   style={{
-                    ...TYPE.bodySm,
-                    color: "hsl(var(--muted-foreground))",
-                    marginTop: "10px",
-                    lineHeight: 1.5,
+                    borderTop: i === 0 ? "1px solid hsl(var(--border))" : "none",
+                    borderBottom: "1px solid hsl(var(--border))",
+                    padding: "24px 0",
                   }}
                 >
-                  {stat.description}
-                </p>
-              </div>
-            </ScrollReveal>
-          ))}
+                  <div className="flex items-baseline gap-1">
+                    <span
+                      style={{
+                        fontFamily: TYPE.display.fontFamily,
+                        fontSize: "clamp(36px, 4vw, 48px)",
+                        fontWeight: 700,
+                        letterSpacing: "-0.03em",
+                        color: "hsl(var(--primary))",
+                        lineHeight: 1,
+                      }}
+                    >
+                      {stat.value}
+                    </span>
+                    {stat.unit && (
+                      <span
+                        style={{
+                          fontFamily: TYPE.h3.fontFamily,
+                          fontSize: "clamp(14px, 1.5vw, 18px)",
+                          fontWeight: 500,
+                          color: "hsl(var(--primary))",
+                        }}
+                      >
+                        {stat.unit}
+                      </span>
+                    )}
+                  </div>
+                  <p
+                    style={{
+                      ...TYPE.bodySm,
+                      color: "hsl(var(--muted-foreground))",
+                      marginTop: "6px",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {stat.description}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
