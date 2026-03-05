@@ -28,10 +28,7 @@ const CDMOIntegratedServices = () => {
     <section className="bg-background relative overflow-hidden pb-8">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
-          
-
-
-
+          <div />
 
 
 
