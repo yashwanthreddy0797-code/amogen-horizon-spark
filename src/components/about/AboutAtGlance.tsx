@@ -1,6 +1,45 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import { motion } from "framer-motion";
+import { Factory, FlaskConical, Beaker } from "lucide-react";
 import { TYPE, SPACING } from "@/typography";
+
+const stats = [
+  {
+    icon: Factory,
+    value: "70",
+    unit: "+",
+    label: "Employees",
+    description: "84% in research & development and manufacturing functions",
+    bg: "hsl(230, 40%, 94%)",
+    iconBg: "hsl(230, 40%, 88%)",
+    textColor: "hsl(var(--primary))",
+    descColor: "hsl(var(--muted-foreground))",
+    dark: false,
+  },
+  {
+    icon: FlaskConical,
+    value: "15",
+    unit: " yrs",
+    label: "Avg. R&D Expertise",
+    description: "Among key personnel with a validated peptide platform",
+    bg: "hsl(230, 35%, 88%)",
+    iconBg: "hsl(230, 35%, 82%)",
+    textColor: "hsl(var(--primary))",
+    descColor: "hsl(var(--muted-foreground))",
+    dark: false,
+  },
+  {
+    icon: Beaker,
+    value: "980",
+    unit: " Kg",
+    label: "Total GLP-1 Volume",
+    description: "Continuously expanding capacity with highest quality standards",
+    bg: "linear-gradient(135deg, hsl(232, 60%, 42%), hsl(260, 60%, 55%))",
+    iconBg: "hsla(0, 0%, 100%, 0.15)",
+    textColor: "#FFFFFF",
+    descColor: "hsla(0, 0%, 100%, 0.7)",
+    dark: true,
+  },
+];
 
 const AboutAtGlance = () => {
   return (
@@ -14,39 +53,76 @@ const AboutAtGlance = () => {
           </p>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-0 mt-16">
-          <ScrollReveal delay={0.1}>
-            <div className="py-8 pr-8">
-              <span style={{ ...TYPE.display, fontSize: "clamp(48px, 6vw, 64px)", color: "hsl(var(--primary))" }}>70+</span>
-              <p style={{ ...TYPE.bodySm, fontWeight: 600, marginTop: "12px" }} className="text-foreground">Employees</p>
-              <p style={{ ...TYPE.bodySm, color: "hsl(var(--muted-foreground))", marginTop: "4px" }}>
-                as of November 30, 2025, with 84% in research & development and manufacturing related functions.
-              </p>
-            </div>
-          </ScrollReveal>
+        <div className="grid md:grid-cols-3 mt-16" style={{ gap: SPACING.cardGap }}>
+          {stats.map((stat, i) => {
+            const Icon = stat.icon;
+            const isGradient = stat.bg.startsWith("linear");
+            return (
+              <ScrollReveal key={stat.label} delay={i * 0.12}>
+                <div
+                  className="rounded-2xl p-8 flex flex-col justify-between min-h-[300px]"
+                  style={{ background: stat.bg }}
+                >
+                  {/* Icon */}
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-8"
+                    style={{ background: stat.iconBg }}
+                  >
+                    <Icon size={22} style={{ color: stat.textColor }} strokeWidth={1.8} />
+                  </div>
 
-          <div className="hidden md:block w-px bg-border self-stretch" />
-
-          <ScrollReveal delay={0.2}>
-            <div className="py-8 px-8 border-t md:border-t-0 border-border">
-              <span style={{ ...TYPE.display, fontSize: "clamp(48px, 6vw, 64px)", color: "hsl(var(--primary))" }}>15 years</span>
-              <p style={{ ...TYPE.bodySm, color: "hsl(var(--muted-foreground))", marginTop: "12px" }}>
-                of average peptide R&D expertise among key personal with a validated platform that has delivered two drugs to market and a rich pipeline of clinical and pre-clinical programs.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="hidden md:block w-px bg-border self-stretch" />
-
-          <ScrollReveal delay={0.3}>
-            <div className="py-8 pl-8 border-t md:border-t-0 border-border">
-              <span style={{ ...TYPE.display, fontSize: "clamp(48px, 6vw, 64px)", color: "hsl(var(--primary))" }}>980 Kg</span>
-              <p style={{ ...TYPE.bodySm, fontWeight: 600, marginTop: "12px" }} className="text-foreground">Total GLP-1 Volume</p>
-              <p style={{ ...TYPE.bodySm, color: "hsl(var(--muted-foreground))", marginTop: "4px" }}>
-                To position ourselves as the global No.1 recombinant biomanufacturing hub, we are continuously expanding our capacity while upholding the highest standards of quality.
-              </p>
-            </div>
-          </ScrollReveal>
+                  {/* Stat */}
+                  <div className="mt-auto">
+                    <div className="flex items-baseline">
+                      <span
+                        style={{
+                          fontFamily: TYPE.display.fontFamily,
+                          fontSize: "clamp(56px, 7vw, 80px)",
+                          fontWeight: 700,
+                          lineHeight: 1,
+                          letterSpacing: "-0.04em",
+                          color: stat.textColor,
+                        }}
+                      >
+                        {stat.value}
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: TYPE.h2.fontFamily,
+                          fontSize: "clamp(24px, 3vw, 36px)",
+                          fontWeight: 500,
+                          color: stat.textColor,
+                          marginLeft: "2px",
+                        }}
+                      >
+                        {stat.unit}
+                      </span>
+                    </div>
+                    <p
+                      style={{
+                        fontFamily: TYPE.h3.fontFamily,
+                        fontSize: "clamp(16px, 2vw, 20px)",
+                        fontWeight: 600,
+                        color: stat.textColor,
+                        marginTop: "4px",
+                      }}
+                    >
+                      {stat.label}
+                    </p>
+                    <p
+                      style={{
+                        ...TYPE.bodySm,
+                        color: stat.descColor,
+                        marginTop: "16px",
+                      }}
+                    >
+                      {stat.description}
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            );
+          })}
         </div>
       </div>
     </section>
