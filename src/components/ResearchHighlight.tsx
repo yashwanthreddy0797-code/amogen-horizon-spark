@@ -10,7 +10,7 @@ import { TYPE, SPACING } from "@/typography";
 const cards = [
   {
     title: "Manufacturing Capacity",
-    tag: "API Manufacturing",
+    tag: "API MANUFACTURING",
     image: facility1Img,
     details: [
       "Microbial Fermentors",
@@ -19,11 +19,14 @@ const cards = [
       "Preparative Chromatography",
       "Bulk Lyophilisation",
     ],
-    bg: "hsl(var(--secondary))",
+    // Light sand/beige — matches reference card 1
+    bg: "hsl(36, 18%, 82%)",
+    headerBg: "hsl(36, 18%, 76%)",
+    dark: false,
   },
   {
     title: "R&D Capabilities",
-    tag: "Research & Development",
+    tag: "RESEARCH & DEVELOPMENT",
     image: facility2Img,
     details: [
       "Sequence & Construct Engineering",
@@ -35,11 +38,14 @@ const cards = [
       "Soluble + Inclusion Body Recovery",
       "Integrated Purification Platform",
     ],
+    // True blue — matches reference card 2
     bg: "hsl(227, 100%, 20%)",
+    headerBg: "hsl(227, 100%, 15%)",
+    dark: true,
   },
   {
     title: "Analytical Capabilities",
-    tag: "Analytical",
+    tag: "ANALYTICAL",
     image: facility3Img,
     details: [
       "UHPLC",
@@ -52,9 +58,14 @@ const cards = [
       "cAMP Bioassay",
       "CD-Spectrometry",
     ],
-    bg: "hsl(var(--secondary))",
+    // Very light grey/cream — matches reference card 3
+    bg: "hsl(40, 20%, 95%)",
+    headerBg: "hsl(40, 20%, 90%)",
+    dark: false,
   },
 ];
+
+const CARD_HEADER_HEIGHT = 48;
 
 const ResearchHighlight = () => {
   const { t } = useLanguage();
@@ -101,86 +112,102 @@ const ResearchHighlight = () => {
       </div>
 
       {/* Stacked sticky scroll cards */}
-      <div className="relative">
+      <div className="relative" style={{ marginLeft: "24px", marginRight: "24px" }}>
         {cards.map((card, index) => {
-          const isDark = index === 1; // Middle card is dark
+          const stickyTop = 72 + index * CARD_HEADER_HEIGHT;
+          const isLast = index === cards.length - 1;
 
           return (
             <div
               key={card.title}
-              className="sticky"
               style={{
-                top: `${80 + index * 8}px`,
-                zIndex: index + 1,
+                // Each wrapper provides scroll height so the next card slides over
+                height: isLast ? "auto" : "620px",
               }}
             >
-              <section
-                className="rounded-t-3xl shadow-[0_-8px_30px_-12px_rgba(0,0,0,0.15)] transition-shadow"
+              <div
+                className="sticky"
                 style={{
-                  background: card.bg,
-                  minHeight: "480px",
+                  top: `${stickyTop}px`,
+                  zIndex: index + 1,
                 }}
               >
-                <div
-                  className="mx-auto grid md:grid-cols-2 gap-0"
-                  style={{ maxWidth: "1200px" }}
+                <section
+                  className="rounded-t-3xl"
+                  style={{
+                    background: card.bg,
+                    minHeight: "520px",
+                    boxShadow: "0 -4px 40px -12px rgba(0,0,0,0.12)",
+                  }}
                 >
-                  {/* Left: Text content */}
-                  <div className="flex flex-col justify-center p-10 md:p-16">
+                  {/* Persistent header strip — always visible when stacked */}
+                  <div
+                    className="flex items-center rounded-t-3xl px-8 md:px-12"
+                    style={{
+                      height: `${CARD_HEADER_HEIGHT}px`,
+                      background: card.headerBg,
+                    }}
+                  >
                     <span
-                      className="inline-block px-3 py-1.5 rounded-full mb-6 w-fit"
                       style={{
                         ...TYPE.label,
-                        fontSize: "10px",
-                        background: isDark ? "hsla(0, 0%, 100%, 0.12)" : "hsla(227, 100%, 20%, 0.08)",
-                        color: isDark ? "hsla(0, 0%, 100%, 0.8)" : "hsl(var(--foreground))",
+                        fontSize: "11px",
+                        color: card.dark ? "hsla(0, 0%, 100%, 0.7)" : "hsla(227, 100%, 20%, 0.6)",
                       }}
                     >
                       {card.tag}
                     </span>
+                  </div>
 
-                    <h3
-                      style={{ ...TYPE.h2, fontSize: "clamp(26px, 3.5vw, 40px)" }}
-                      className={isDark ? "text-white" : "text-foreground"}
-                    >
-                      {card.title}
-                    </h3>
+                  {/* Card body: text + image */}
+                  <div
+                    className="mx-auto grid md:grid-cols-[1fr_0.8fr] gap-0 items-center"
+                    style={{ maxWidth: "1200px" }}
+                  >
+                    {/* Left: Text content */}
+                    <div className="flex flex-col justify-center p-8 md:px-12 md:py-12">
+                      <h3
+                        style={{ ...TYPE.h2, fontSize: "clamp(28px, 3.5vw, 44px)" }}
+                        className={card.dark ? "text-white" : "text-foreground"}
+                      >
+                        {card.title}
+                      </h3>
 
-                    <div className="mt-8 flex flex-col gap-3">
-                      {card.details.map((detail, i) => (
-                        <div
-                          key={i}
-                          className="flex items-center gap-3"
-                        >
-                          <div
-                            className="w-1.5 h-1.5 rounded-full shrink-0"
-                            style={{
-                              background: isDark ? "hsla(0, 0%, 100%, 0.5)" : "hsl(var(--primary))",
-                            }}
-                          />
-                          <p
-                            style={{ ...TYPE.bodySm, fontSize: "14px" }}
-                            className={isDark ? "text-white/80" : "text-muted-foreground"}
-                          >
-                            {detail}
-                          </p>
-                        </div>
-                      ))}
+                      <div className="mt-8 flex flex-col gap-3">
+                        {card.details.map((detail, i) => (
+                          <div key={i} className="flex items-center gap-3">
+                            <div
+                              className="w-1.5 h-1.5 rounded-full shrink-0"
+                              style={{
+                                background: card.dark ? "hsla(0, 0%, 100%, 0.5)" : "hsl(var(--primary))",
+                              }}
+                            />
+                            <p
+                              style={{ ...TYPE.bodySm, fontSize: "14px" }}
+                              className={card.dark ? "text-white/80" : "text-muted-foreground"}
+                            >
+                              {detail}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Right: Image — contained with padding */}
+                    <div className="relative p-4 md:p-8 flex items-center justify-center">
+                      <div className="relative overflow-hidden rounded-2xl w-full" style={{ maxHeight: "340px", aspectRatio: "4/3" }}>
+                        <img
+                          src={card.image}
+                          alt={card.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
                     </div>
                   </div>
-
-                  {/* Right: Image */}
-                  <div className="relative overflow-hidden rounded-tr-3xl min-h-[300px] md:min-h-[480px]">
-                    <img
-                      src={card.image}
-                      alt={card.title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                </div>
-              </section>
+                </section>
+              </div>
             </div>
           );
         })}
