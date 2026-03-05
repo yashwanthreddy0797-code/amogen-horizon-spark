@@ -60,11 +60,11 @@ const ResearchHighlight = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="bg-background relative overflow-hidden" style={{ paddingTop: "96px", paddingBottom: "0px" }}>
+    <section className="bg-background relative" style={{ paddingTop: "96px", paddingBottom: "0px" }}>
       {/* Subtle decorative element */}
       <div
         className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-[0.03] pointer-events-none"
-        style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)", transform: "translate(30%, -40%)" }}
+        style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)", transform: "translate(0, -40%)" }}
       />
 
       <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
@@ -103,15 +103,14 @@ const ResearchHighlight = () => {
       {/* Stacked sticky scroll cards */}
       <div className="relative">
         {cards.map((card, index) => {
-          const isLast = index === cards.length - 1;
           const isDark = index === 1; // Middle card is dark
 
           return (
             <div
               key={card.title}
-              className={isLast ? "relative" : "sticky"}
+              className="sticky"
               style={{
-                top: isLast ? undefined : `${80 + index * 8}px`,
+                top: `${80 + index * 8}px`,
                 zIndex: index + 1,
               }}
             >
