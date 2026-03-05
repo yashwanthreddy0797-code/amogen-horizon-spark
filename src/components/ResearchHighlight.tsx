@@ -24,7 +24,7 @@ const facilities = [
     ],
   },
   {
-    title: "Peptide Expression Platform",
+    title: "R&D Capabilities",
     subtitle: "",
     tag: "Research & Development",
     image: facility2Img,
