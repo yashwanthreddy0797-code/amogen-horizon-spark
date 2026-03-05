@@ -1,5 +1,7 @@
-import ScrollReveal from "@/components/ScrollReveal";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { ArrowRight, FlaskConical, Microscope, TestTubes, Scan } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 interface ServiceCard {
   icon: typeof FlaskConical;
@@ -14,8 +16,11 @@ const services: ServiceCard[] = [
 ];
 
 const CDMOIntegratedServices = () => {
+  const cardsRef = useRef(null);
+  const cardsInView = useInView(cardsRef, { once: true, margin: "-60px" });
+
   return (
-    <section className="py-0 bg-background relative overflow-hidden">
+    <section className="bg-background relative overflow-hidden pb-8">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <div className="flex items-center gap-4 mb-4">
@@ -28,17 +33,17 @@ const CDMOIntegratedServices = () => {
           </div>
         </ScrollReveal>
 
-        <div className="relative min-h-[650px] mt-8">
-          {/* SVG dotted arc passing through all 4 cards */}
+        <div ref={cardsRef} className="relative mt-8" style={{ height: "clamp(480px, 50vw, 580px)" }}>
+          {/* SVG dotted arc */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none z-0"
-            viewBox="0 0 1000 650"
+            viewBox="0 0 1000 580"
             preserveAspectRatio="xMidYMid meet"
             fill="none"
             aria-hidden="true"
           >
             <path
-              d="M 100 120 Q 250 480, 500 500 Q 750 480, 900 120"
+              d="M 80 100 Q 250 440, 500 460 Q 750 440, 920 100"
               stroke="hsl(var(--muted-foreground))"
               strokeWidth="1.2"
               strokeDasharray="5 5"
@@ -48,7 +53,7 @@ const CDMOIntegratedServices = () => {
           </svg>
 
           {/* Center heading */}
-          <div className="absolute top-[8%] left-1/2 -translate-x-1/2 text-center z-10">
+          <div className="absolute top-[6%] left-1/2 -translate-x-1/2 text-center z-10">
             <ScrollReveal>
               <div className="w-10 h-10 rounded-full border border-muted-foreground/40 flex items-center justify-center mx-auto mb-4">
                 <span className="text-sm text-muted-foreground">05</span>
@@ -60,45 +65,73 @@ const CDMOIntegratedServices = () => {
           </div>
 
           {/* Card 0 — top-left */}
-          <div className="absolute top-0 left-0 md:left-[3%] z-10">
-            <ServiceCardComponent card={services[0]} delay={0.1} />
-          </div>
+          <CardReveal inView={cardsInView} index={0} className="absolute top-0 left-0 md:left-[3%] z-10">
+            <ServiceCardComponent card={services[0]} />
+          </CardReveal>
 
           {/* Card 1 — mid-left */}
-          <div className="absolute top-[42%] left-[16%] md:left-[20%] z-10">
-            <ServiceCardComponent card={services[1]} delay={0.3} />
-          </div>
+          <CardReveal inView={cardsInView} index={1} className="absolute top-[42%] left-[16%] md:left-[20%] z-10">
+            <ServiceCardComponent card={services[1]} />
+          </CardReveal>
 
           {/* Card 2 — mid-right */}
-          <div className="absolute top-[42%] right-[16%] md:right-[20%] z-10">
-            <ServiceCardComponent card={services[2]} delay={0.5} />
-          </div>
+          <CardReveal inView={cardsInView} index={2} className="absolute top-[42%] right-[16%] md:right-[20%] z-10">
+            <ServiceCardComponent card={services[2]} />
+          </CardReveal>
 
           {/* Card 3 — top-right */}
-          <div className="absolute top-0 right-0 md:right-[3%] z-10">
-            <ServiceCardComponent card={services[3]} delay={0.7} />
-          </div>
+          <CardReveal inView={cardsInView} index={3} className="absolute top-0 right-0 md:right-[3%] z-10">
+            <ServiceCardComponent card={services[3]} />
+          </CardReveal>
         </div>
       </div>
     </section>
   );
 };
 
-const ServiceCardComponent = ({ card, delay }: { card: ServiceCard; delay: number }) => {
+/** Reveals each card left-to-right with staggered delay */
+const CardReveal = ({
+  children,
+  inView,
+  index,
+  className,
+}: {
+  children: React.ReactNode;
+  inView: boolean;
+  index: number;
+  className?: string;
+}) => (
+  <motion.div
+    className={className}
+    initial={{ opacity: 0, y: 50, scale: 0.92 }}
+    animate={
+      inView
+        ? { opacity: 1, y: 0, scale: 1 }
+        : { opacity: 0, y: 50, scale: 0.92 }
+    }
+    transition={{
+      duration: 0.7,
+      delay: index * 0.25,
+      ease: [0.25, 0.1, 0.25, 1],
+    }}
+  >
+    {children}
+  </motion.div>
+);
+
+const ServiceCardComponent = ({ card }: { card: ServiceCard }) => {
   const Icon = card.icon;
   return (
-    <ScrollReveal delay={delay}>
-      <div className="w-[160px] md:w-[180px] bg-card rounded-2xl p-5 shadow-sm border border-border/50 hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
-        <div className="w-full aspect-square rounded-xl bg-muted/50 flex items-center justify-center mb-3">
-          <Icon size={36} className="text-muted-foreground" strokeWidth={1.2} />
-        </div>
-        <h3 className="text-sm font-semibold text-foreground leading-snug mb-3">{card.title}</h3>
-        <button className="inline-flex items-center gap-1.5 bg-foreground text-background rounded-full px-4 py-2 text-xs font-medium hover:opacity-90 transition-opacity">
-          <ArrowRight size={14} />
-          View
-        </button>
+    <div className="w-[160px] md:w-[180px] bg-card rounded-2xl p-5 shadow-sm border border-border/50 hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
+      <div className="w-full aspect-square rounded-xl bg-muted/50 flex items-center justify-center mb-3">
+        <Icon size={36} className="text-muted-foreground" strokeWidth={1.2} />
       </div>
-    </ScrollReveal>
+      <h3 className="text-sm font-semibold text-foreground leading-snug mb-3">{card.title}</h3>
+      <button className="inline-flex items-center gap-1.5 bg-foreground text-background rounded-full px-4 py-2 text-xs font-medium hover:opacity-90 transition-opacity">
+        <ArrowRight size={14} />
+        View
+      </button>
+    </div>
   );
 };
 
