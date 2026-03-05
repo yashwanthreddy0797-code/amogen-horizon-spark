@@ -1,4 +1,6 @@
+import { useRef } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import leaderRaju from "@/assets/leader-raju.png";
 import leaderAkhilesh from "@/assets/leader-akhilesh.png";
 import leaderKalyan from "@/assets/leader-kalyan.png";
@@ -62,18 +64,50 @@ const leaders: Leader[] = [
 ];
 
 const AboutLeadership = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const amount = 320;
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section id="leadership" className="py-24 lg:py-32 bg-muted/30">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
-          <p className="text-sm font-medium text-primary tracking-wide">Our People</p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mt-4 leading-tight">Leadership</h2>
+          <div className="flex items-end justify-between">
+            <div>
+              <p className="text-sm font-medium text-primary tracking-wide">Our People</p>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mt-4 leading-tight">Leadership</h2>
+            </div>
+            <div className="flex gap-3">
+              <button
+                onClick={() => scroll("left")}
+                className="w-12 h-12 rounded-full border-2 border-foreground/20 flex items-center justify-center hover:bg-foreground hover:text-background transition-colors"
+                aria-label="Scroll left"
+              >
+                <ArrowLeft size={20} />
+              </button>
+              <button
+                onClick={() => scroll("right")}
+                className="w-12 h-12 rounded-full border-2 border-foreground/20 flex items-center justify-center hover:bg-foreground hover:text-background transition-colors"
+                aria-label="Scroll right"
+              >
+                <ArrowRight size={20} />
+              </button>
+            </div>
+          </div>
         </ScrollReveal>
 
         <div className="mt-16 overflow-hidden">
           <div
+            ref={scrollRef}
             className="flex gap-12 overflow-x-auto px-6 md:px-12 lg:px-16 pb-6 scrollbar-hide"
-            style={{ scrollSnapType: "x mandatory" }}
+            style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
           >
             {leaders.map((leader, i) => (
               <ScrollReveal key={leader.name} delay={i * 0.08}>
