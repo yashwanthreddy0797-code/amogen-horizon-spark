@@ -2,8 +2,8 @@ import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 import facility1Img from "@/assets/facility-1.jpg";
-import facility2Img from "@/assets/facility-2.jpg";
-import facility3Img from "@/assets/facility-3.jpg";
+import facility2Img from "@/assets/biologics-infographic.png";
+import facility3Img from "@/assets/bioinformatics-banner.jpg";
 import { ArrowRight, Plus, Minus, FlaskConical, Pill, Microscope, Filter, BarChart3, Snowflake } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
