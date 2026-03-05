@@ -70,7 +70,7 @@ const AboutLeadership = () => {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mt-4 leading-tight">Leadership</h2>
         </ScrollReveal>
 
-        <div className="mt-16 -mx-6 md:-mx-12 lg:-mx-16">
+        <div className="mt-16 overflow-hidden">
           <div
             className="flex gap-12 overflow-x-auto px-6 md:px-12 lg:px-16 pb-6 scrollbar-hide"
             style={{ scrollSnapType: "x mandatory" }}
