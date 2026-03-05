@@ -71,15 +71,14 @@ const About = () => {
         {/* Vision & Mission */}
         <AboutVisionMission />
 
+        {/* Leadership */}
+        <AboutLeadership />
+
         {/* Culture — Way */}
         <AboutCultureWay />
 
-
         {/* What We Do */}
         <AboutWhatWeDo />
-
-        {/* Leadership */}
-        <AboutLeadership />
 
 
         {/* Careers CTA */}
