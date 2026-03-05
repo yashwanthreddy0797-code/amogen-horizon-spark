@@ -72,14 +72,14 @@ const AboutLeadership = () => {
 
         <div className="mt-16 -mx-6 md:-mx-12 lg:-mx-16">
           <div
-            className="flex gap-8 overflow-x-auto px-6 md:px-12 lg:px-16 pb-6 scrollbar-hide"
+            className="flex gap-12 overflow-x-auto px-6 md:px-12 lg:px-16 pb-6 scrollbar-hide"
             style={{ scrollSnapType: "x mandatory" }}
           >
             {leaders.map((leader, i) => (
               <ScrollReveal key={leader.name} delay={i * 0.08}>
                 <div
                   className="flex flex-col shrink-0"
-                  style={{ width: "min(320px, 75vw)", scrollSnapAlign: "start" }}
+                  style={{ width: "min(270px, 65vw)", scrollSnapAlign: "start" }}
                 >
                   {/* Photo */}
                   <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-muted">
