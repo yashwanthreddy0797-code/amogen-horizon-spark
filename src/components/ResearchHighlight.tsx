@@ -19,10 +19,10 @@ const cards = [
       "Preparative Chromatography",
       "Bulk Lyophilisation",
     ],
-    // Light sand/beige — matches reference card 1
-    bg: "hsl(36, 18%, 82%)",
-    headerBg: "hsl(36, 18%, 76%)",
-    dark: false,
+    // Deep indigo blue — card 1
+    bg: "hsl(232, 60%, 30%)",
+    headerBg: "hsl(232, 60%, 25%)",
+    dark: true,
   },
   {
     title: "R&D Capabilities",
@@ -38,10 +38,10 @@ const cards = [
       "Soluble + Inclusion Body Recovery",
       "Integrated Purification Platform",
     ],
-    // True blue — matches reference card 2
-    bg: "hsl(227, 100%, 20%)",
-    headerBg: "hsl(227, 100%, 15%)",
-    dark: true,
+    // Lavender purple — card 2
+    bg: "hsl(255, 60%, 78%)",
+    headerBg: "hsl(255, 60%, 72%)",
+    dark: false,
   },
   {
     title: "Analytical Capabilities",
@@ -58,9 +58,9 @@ const cards = [
       "cAMP Bioassay",
       "CD-Spectrometry",
     ],
-    // Very light grey/cream — matches reference card 3
-    bg: "hsl(40, 20%, 95%)",
-    headerBg: "hsl(40, 20%, 90%)",
+    // Very light periwinkle — card 3
+    bg: "hsl(235, 45%, 92%)",
+    headerBg: "hsl(235, 45%, 88%)",
     dark: false,
   },
 ];
