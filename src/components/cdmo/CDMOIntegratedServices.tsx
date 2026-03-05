@@ -1,51 +1,26 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import { ArrowRight } from "lucide-react";
-import { FlaskConical, Microscope, Beaker, TestTubes, Scan } from "lucide-react";
+import { ArrowRight, FlaskConical, Microscope, Beaker, TestTubes, Scan } from "lucide-react";
 
 interface ServiceCard {
   icon: typeof FlaskConical;
   title: string;
-  gridArea: string;
-  alignSelf?: string;
-  justifySelf?: string;
 }
 
 const services: ServiceCard[] = [
-  {
-    icon: FlaskConical,
-    title: "Fermentation & Upstream",
-    gridArea: "1 / 1 / 2 / 2",
-    alignSelf: "start",
-    justifySelf: "start",
-  },
-  {
-    icon: Microscope,
-    title: "Downstream Purification",
-    gridArea: "2 / 2 / 3 / 3",
-    alignSelf: "center",
-    justifySelf: "center",
-  },
-  {
-    icon: Beaker,
-    title: "Analytical & QC",
-    gridArea: "2 / 3 / 3 / 4",
-    alignSelf: "center",
-    justifySelf: "center",
-  },
-  {
-    icon: TestTubes,
-    title: "Formulation & Fill-Finish",
-    gridArea: "1 / 4 / 2 / 5",
-    alignSelf: "start",
-    justifySelf: "end",
-  },
-  {
-    icon: Scan,
-    title: "Process Development",
-    gridArea: "3 / 1 / 4 / 2",
-    alignSelf: "end",
-    justifySelf: "start",
-  },
+  { icon: FlaskConical, title: "Fermentation & Upstream" },
+  { icon: Microscope, title: "Downstream Purification" },
+  { icon: Beaker, title: "Analytical & QC" },
+  { icon: TestTubes, title: "Formulation & Fill-Finish" },
+  { icon: Scan, title: "Process Development" },
+];
+
+/* Card positions on an arc — top-left, mid-left, center-bottom, mid-right, top-right */
+const cardPositions = [
+  { top: "0%", left: "0%", mdLeft: "2%" },
+  { top: "38%", left: "12%", mdLeft: "16%" },
+  { top: "58%", left: "50%", mdLeft: "50%", translate: true },
+  { top: "38%", right: "12%", mdRight: "16%" },
+  { top: "0%", right: "0%", mdRight: "2%" },
 ];
 
 const CDMOIntegratedServices = () => {
@@ -65,29 +40,27 @@ const CDMOIntegratedServices = () => {
         </ScrollReveal>
 
         {/* Main layout */}
-        <div className="relative min-h-[700px] mt-8">
-          {/* SVG dotted connector lines */}
+        <div className="relative min-h-[750px] mt-8">
+          {/* SVG dotted connector lines forming a semi-circle arc */}
           <svg
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox="0 0 1000 700"
+            className="absolute inset-0 w-full h-full pointer-events-none z-0"
+            viewBox="0 0 1000 750"
             preserveAspectRatio="xMidYMid meet"
             fill="none"
             aria-hidden="true"
           >
-            {/* Line from card 1 (top-left) down to card 2 (mid-left) */}
-            <line x1="150" y1="220" x2="350" y2="380" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="6 6" opacity="0.3" />
-            {/* Line from card 2 to card 3 */}
-            <line x1="430" y1="440" x2="600" y2="380" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="6 6" opacity="0.3" />
-            {/* Line from card 3 to card 4 (top-right) */}
-            <line x1="680" y1="340" x2="850" y2="180" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="6 6" opacity="0.3" />
-            {/* Line from card 2 down to card 5 */}
-            <line x1="350" y1="480" x2="180" y2="580" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="6 6" opacity="0.3" />
-            {/* Line from card 3 down */}
-            <line x1="620" y1="480" x2="620" y2="650" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="6 6" opacity="0.3" />
+            {/* Arc from card 0 (top-left) → card 1 (mid-left) */}
+            <line x1="140" y1="200" x2="240" y2="380" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" strokeDasharray="5 5" opacity="0.25" />
+            {/* Arc from card 1 (mid-left) → card 2 (center-bottom) */}
+            <line x1="310" y1="440" x2="470" y2="540" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" strokeDasharray="5 5" opacity="0.25" />
+            {/* Arc from card 2 (center-bottom) → card 3 (mid-right) */}
+            <line x1="530" y1="540" x2="700" y2="440" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" strokeDasharray="5 5" opacity="0.25" />
+            {/* Arc from card 3 (mid-right) → card 4 (top-right) */}
+            <line x1="770" y1="380" x2="870" y2="200" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" strokeDasharray="5 5" opacity="0.25" />
           </svg>
 
           {/* Center heading */}
-          <div className="absolute top-[10%] left-1/2 -translate-x-1/2 text-center z-10">
+          <div className="absolute top-[12%] left-1/2 -translate-x-1/2 text-center z-10">
             <ScrollReveal>
               <div className="w-10 h-10 rounded-full border border-muted-foreground/40 flex items-center justify-center mx-auto mb-4">
                 <span className="text-sm text-muted-foreground">05</span>
@@ -98,30 +71,30 @@ const CDMOIntegratedServices = () => {
             </ScrollReveal>
           </div>
 
-          {/* Card positions — scattered layout */}
-          {/* Top-left */}
-          <div className="absolute top-0 left-0 md:left-[2%]">
+          {/* Cards on arc — each with increasing delay for staggered reveal */}
+          {/* Card 0 — top-left */}
+          <div className="absolute top-0 left-0 md:left-[2%] z-10">
             <ServiceCardComponent card={services[0]} delay={0.1} />
           </div>
 
-          {/* Top-right */}
-          <div className="absolute top-0 right-0 md:right-[2%]">
-            <ServiceCardComponent card={services[3]} delay={0.2} />
+          {/* Card 1 — mid-left */}
+          <div className="absolute top-[38%] left-[12%] md:left-[16%] z-10">
+            <ServiceCardComponent card={services[1]} delay={0.25} />
           </div>
 
-          {/* Mid-left */}
-          <div className="absolute top-[45%] left-[18%] md:left-[22%]">
-            <ServiceCardComponent card={services[1]} delay={0.3} />
+          {/* Card 2 — center-bottom (lowest point of arc) */}
+          <div className="absolute top-[58%] left-1/2 -translate-x-1/2 z-10">
+            <ServiceCardComponent card={services[2]} delay={0.4} />
           </div>
 
-          {/* Mid-right */}
-          <div className="absolute top-[40%] right-[18%] md:right-[22%]">
-            <ServiceCardComponent card={services[2]} delay={0.35} />
+          {/* Card 3 — mid-right */}
+          <div className="absolute top-[38%] right-[12%] md:right-[16%] z-10">
+            <ServiceCardComponent card={services[3]} delay={0.55} />
           </div>
 
-          {/* Bottom-left */}
-          <div className="absolute bottom-0 left-[4%] md:left-[8%]">
-            <ServiceCardComponent card={services[4]} delay={0.4} />
+          {/* Card 4 — top-right */}
+          <div className="absolute top-0 right-0 md:right-[2%] z-10">
+            <ServiceCardComponent card={services[4]} delay={0.7} />
           </div>
         </div>
       </div>
@@ -133,7 +106,7 @@ const ServiceCardComponent = ({ card, delay }: { card: ServiceCard; delay: numbe
   const Icon = card.icon;
   return (
     <ScrollReveal delay={delay}>
-      <div className="w-[200px] md:w-[220px] bg-card rounded-2xl p-6 shadow-sm border border-border/50 hover:shadow-md transition-shadow">
+      <div className="w-[200px] md:w-[220px] bg-card rounded-2xl p-6 shadow-sm border border-border/50 hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
         <div className="w-full aspect-square rounded-xl bg-muted/50 flex items-center justify-center mb-4">
           <Icon size={48} className="text-muted-foreground" strokeWidth={1.2} />
         </div>
