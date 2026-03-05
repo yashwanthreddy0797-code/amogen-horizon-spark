@@ -75,7 +75,7 @@ const PipelinePreview = () => {
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 40% 20%, rgba(100,80,255,0.35) 0%, transparent 60%)", pointerEvents: "none" as const, zIndex: 0 }} />
 
       <div style={{ position: "relative", zIndex: 1, display: "flex", width: "100%", maxWidth: "1400px", margin: "0 auto", alignItems: "flex-end" }}>
-        <div style={{ flex: "0 0 32%", padding: "0 48px 80px" }}>
+        <div style={{ flex: "0 0 32%", padding: "0 48px 80px", paddingTop: "60px" }}>
           <p style={{ ...TYPE.label, color: "rgba(255,255,255,0.5)", marginBottom: SPACING.labelToH2 }}>Pipeline</p>
           <h2 style={{ ...TYPE.h1, color: "#FFFFFF", marginBottom: SPACING.headingToSub }}>A Pipeline Built on<br />Platform Advantage.</h2>
           <p style={{ ...TYPE.body, color: "rgba(255,255,255,0.6)", marginBottom: SPACING.subToCta }} className="max-w-[380px]">
