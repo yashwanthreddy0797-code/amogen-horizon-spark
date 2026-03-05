@@ -2,13 +2,13 @@ import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import researchLabImg from "@/assets/research-lab.jpg";
+import newsBlueSilkImg from "@/assets/news-blue-silk.png";
 import manufacturingImg from "@/assets/manufacturing.jpg";
 import scienceResearchImg from "@/assets/science-research.jpg";
 import { TYPE, SPACING } from "@/typography";
 
 const newsItems = [
-  { image: researchLabImg },
+  { image: newsBlueSilkImg },
   { image: manufacturingImg },
   { image: scienceResearchImg },
 ];
