@@ -79,23 +79,11 @@ const CDMOManufacturingGlance = () => {
         </ScrollReveal>
 
         {/* Capabilities — 2×4 card grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style={{ gap: "16px" }}>
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4" style={{ gap: "32px 48px" }}>
           {capabilities.map((cap, i) => (
             <ScrollReveal key={cap.label} delay={0.12 + i * 0.06}>
-              <div
-                className="flex items-start gap-4 rounded-xl p-5"
-                style={{ backgroundColor: "white" }}
-              >
-                <div
-                  className="flex items-center justify-center flex-shrink-0 rounded-lg"
-                  style={{
-                    width: "44px",
-                    height: "44px",
-                    backgroundColor: "hsl(232, 60%, 94%)",
-                  }}
-                >
-                  <cap.icon size={22} strokeWidth={1.5} style={{ color: "#001965" }} />
-                </div>
+              <div className="flex flex-col items-center text-center gap-3">
+                <cap.icon size={30} strokeWidth={1.3} style={{ color: "#001965" }} />
                 <div>
                   <p
                     style={{
@@ -111,7 +99,7 @@ const CDMOManufacturingGlance = () => {
                   <p
                     style={{
                       fontFamily: TYPE.bodySm.fontFamily,
-                      fontSize: "12.5px",
+                      fontSize: "12px",
                       fontWeight: 400,
                       lineHeight: 1.4,
                       color: "hsl(var(--muted-foreground))",
