@@ -11,7 +11,7 @@ import { TYPE, SPACING } from "@/typography";
 
 const facilities = [
   {
-    title: "Facility",
+    title: "Manufacturing Capacity",
     subtitle: "75 kL",
     tag: "API Manufacturing",
     image: facility1Img,
@@ -24,7 +24,7 @@ const facilities = [
     ],
   },
   {
-    title: "R&D",
+    title: "Peptide Expression Platform",
     subtitle: "",
     tag: "Research & Development",
     image: facility2Img,
@@ -40,7 +40,7 @@ const facilities = [
     ],
   },
   {
-    title: "Analytics",
+    title: "Analytical Capabilities",
     subtitle: "",
     tag: "Analytical",
     image: facility3Img,
@@ -263,20 +263,14 @@ const ResearchHighlight = () => {
 
         {/* CTA row */}
         <ScrollReveal delay={0.25}>
-          <div className="flex items-center justify-between mt-12 pt-8 border-t border-border">
-            <p style={{ ...TYPE.bodySm, color: "hsl(var(--muted-foreground))" }} className="hidden md:block">
-              World-class infrastructure across 3 facilities
-            </p>
+          <div className="flex items-center justify-center mt-12 pt-8 border-t border-border">
             <a
-              href="#"
-              className="inline-flex items-center gap-3 group/cta"
-              style={TYPE.button}
+              href="/cdmo"
+              className="inline-flex items-center gap-2 group/cta transition-colors"
+              style={{ ...TYPE.button, color: "#2A918B" }}
             >
-              <span className="text-foreground group-hover/cta:text-primary transition-colors">
-                {t.research.cta}
-              </span>
-              <span className="w-10 h-10 rounded-full bg-footer-bg text-footer-foreground flex items-center justify-center group-hover/cta:bg-primary transition-colors">
-                <ArrowRight size={16} />
+              <span className="group-hover/cta:underline">
+                {t.research.cta} →
               </span>
             </a>
           </div>
