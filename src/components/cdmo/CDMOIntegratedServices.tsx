@@ -14,11 +14,11 @@ interface ServiceCard {
 }
 
 const services: ServiceCard[] = [
-  { image: fermentationImg, title: "Fermentation & Upstream" },
-  { image: purificationImg, title: "Downstream Purification" },
-  { image: fillFinishImg, title: "Formulation & Fill-Finish" },
-  { image: processDevImg, title: "Process Development" },
-];
+{ image: fermentationImg, title: "Fermentation & Upstream" },
+{ image: purificationImg, title: "Downstream Purification" },
+{ image: fillFinishImg, title: "Formulation & Fill-Finish" },
+{ image: processDevImg, title: "Process Development" }];
+
 
 const CDMOIntegratedServices = () => {
   const cardsRef = useRef(null);
@@ -28,14 +28,14 @@ const CDMOIntegratedServices = () => {
     <section className="bg-background relative overflow-hidden pb-8">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <ScrollReveal>
-          <div className="flex items-center gap-4 mb-4">
-            <div className="flex gap-1">
-              <span className="block w-8 h-[3px] bg-foreground rounded-full" />
-              <span className="block w-8 h-[3px] bg-foreground rounded-full" />
-              <span className="block w-4 h-[3px] bg-foreground rounded-full" />
-            </div>
-            <span className="text-sm font-medium text-muted-foreground tracking-wide">Services</span>
-          </div>
+          
+
+
+
+
+
+
+          
         </ScrollReveal>
 
         <div ref={cardsRef} className="relative mt-8" style={{ height: "clamp(480px, 50vw, 580px)" }}>
@@ -45,16 +45,16 @@ const CDMOIntegratedServices = () => {
             viewBox="0 0 1000 580"
             preserveAspectRatio="xMidYMid meet"
             fill="none"
-            aria-hidden="true"
-          >
+            aria-hidden="true">
+            
             <path
               d="M 80 100 Q 250 440, 500 460 Q 750 440, 920 100"
               stroke="hsl(var(--muted-foreground))"
               strokeWidth="1.2"
               strokeDasharray="5 5"
               opacity="0.25"
-              fill="none"
-            />
+              fill="none" />
+            
           </svg>
 
           {/* Center heading */}
@@ -90,40 +90,40 @@ const CDMOIntegratedServices = () => {
           </CardReveal>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 const CardReveal = ({
   children,
   inView,
   index,
-  className,
-}: {
-  children: React.ReactNode;
-  inView: boolean;
-  index: number;
-  className?: string;
-}) => (
-  <motion.div
-    className={className}
-    initial={{ opacity: 0, y: 50, scale: 0.92 }}
-    animate={
-      inView
-        ? { opacity: 1, y: 0, scale: 1 }
-        : { opacity: 0, y: 50, scale: 0.92 }
-    }
-    transition={{
-      duration: 0.7,
-      delay: index * 0.25,
-      ease: [0.25, 0.1, 0.25, 1],
-    }}
-  >
-    {children}
-  </motion.div>
-);
+  className
 
-const ServiceCardComponent = ({ card }: { card: ServiceCard }) => {
+
+
+
+
+}: {children: React.ReactNode;inView: boolean;index: number;className?: string;}) =>
+<motion.div
+  className={className}
+  initial={{ opacity: 0, y: 50, scale: 0.92 }}
+  animate={
+  inView ?
+  { opacity: 1, y: 0, scale: 1 } :
+  { opacity: 0, y: 50, scale: 0.92 }
+  }
+  transition={{
+    duration: 0.7,
+    delay: index * 0.25,
+    ease: [0.25, 0.1, 0.25, 1]
+  }}>
+  
+    {children}
+  </motion.div>;
+
+
+const ServiceCardComponent = ({ card }: {card: ServiceCard;}) => {
   return (
     <div className="w-[160px] md:w-[180px] bg-card rounded-2xl p-5 shadow-sm border border-border/50 hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
       <div className="w-full aspect-square rounded-xl overflow-hidden mb-3">
@@ -131,16 +131,16 @@ const ServiceCardComponent = ({ card }: { card: ServiceCard }) => {
           src={card.image}
           alt={card.title}
           className="w-full h-full object-cover"
-          loading="lazy"
-        />
+          loading="lazy" />
+        
       </div>
       <h3 className="text-sm font-semibold text-foreground leading-snug mb-3">{card.title}</h3>
       <button className="inline-flex items-center gap-1.5 bg-foreground text-background rounded-full px-4 py-2 text-xs font-medium hover:opacity-90 transition-opacity">
         <ArrowRight size={14} />
         View
       </button>
-    </div>
-  );
+    </div>);
+
 };
 
 export default CDMOIntegratedServices;
