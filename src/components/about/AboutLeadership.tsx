@@ -75,7 +75,7 @@ const AboutLeadership = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="leadership" className="py-24 lg:py-32 border-white" style={{ backgroundColor: "#e8e4df" }}>
+    <section id="leadership" className="py-24 lg:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Top rule */}
         <div className="border-t-2 border-foreground" />
