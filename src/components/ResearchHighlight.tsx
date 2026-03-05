@@ -114,100 +114,92 @@ const ResearchHighlight = () => {
       {/* Stacked sticky scroll cards */}
       <div className="relative" style={{ marginLeft: "24px", marginRight: "24px" }}>
         {cards.map((card, index) => {
-          const stickyTop = 72 + index * CARD_HEADER_HEIGHT;
           const isLast = index === cards.length - 1;
 
           return (
             <div
               key={card.title}
+              className={isLast ? "relative" : "sticky"}
               style={{
-                // Each wrapper provides scroll height so the next card slides over
-                height: isLast ? "auto" : "620px",
+                top: isLast ? undefined : `${72 + index * CARD_HEADER_HEIGHT}px`,
+                zIndex: index + 1,
+                marginBottom: isLast ? 0 : `${CARD_HEADER_HEIGHT}px`,
               }}
             >
-              <div
-                className="sticky"
+              <section
+                className="rounded-t-3xl"
                 style={{
-                  top: `${stickyTop}px`,
-                  zIndex: index + 1,
+                  background: card.bg,
+                  boxShadow: "0 -4px 40px -12px rgba(0,0,0,0.15)",
                 }}
               >
-                <section
-                  className="rounded-t-3xl"
+                {/* Persistent header strip — always visible when stacked */}
+                <div
+                  className="flex items-center rounded-t-3xl px-8 md:px-12"
                   style={{
-                    background: card.bg,
-                    minHeight: "520px",
-                    boxShadow: "0 -4px 40px -12px rgba(0,0,0,0.12)",
+                    height: `${CARD_HEADER_HEIGHT}px`,
+                    background: card.headerBg,
                   }}
                 >
-                  {/* Persistent header strip — always visible when stacked */}
-                  <div
-                    className="flex items-center rounded-t-3xl px-8 md:px-12"
+                  <span
                     style={{
-                      height: `${CARD_HEADER_HEIGHT}px`,
-                      background: card.headerBg,
+                      ...TYPE.label,
+                      fontSize: "11px",
+                      color: card.dark ? "hsla(0, 0%, 100%, 0.7)" : "hsla(227, 100%, 20%, 0.6)",
                     }}
                   >
-                    <span
-                      style={{
-                        ...TYPE.label,
-                        fontSize: "11px",
-                        color: card.dark ? "hsla(0, 0%, 100%, 0.7)" : "hsla(227, 100%, 20%, 0.6)",
-                      }}
+                    {card.tag}
+                  </span>
+                </div>
+
+                {/* Card body: text + image */}
+                <div
+                  className="mx-auto grid md:grid-cols-[1fr_0.8fr] gap-0 items-start"
+                  style={{ maxWidth: "1200px", padding: "16px 0 48px" }}
+                >
+                  {/* Left: Text content */}
+                  <div className="flex flex-col justify-center p-8 md:px-12 md:py-8">
+                    <h3
+                      style={{ ...TYPE.h2, fontSize: "clamp(28px, 3.5vw, 44px)" }}
+                      className={card.dark ? "text-white" : "text-foreground"}
                     >
-                      {card.tag}
-                    </span>
-                  </div>
+                      {card.title}
+                    </h3>
 
-                  {/* Card body: text + image */}
-                  <div
-                    className="mx-auto grid md:grid-cols-[1fr_0.8fr] gap-0 items-center"
-                    style={{ maxWidth: "1200px" }}
-                  >
-                    {/* Left: Text content */}
-                    <div className="flex flex-col justify-center p-8 md:px-12 md:py-12">
-                      <h3
-                        style={{ ...TYPE.h2, fontSize: "clamp(28px, 3.5vw, 44px)" }}
-                        className={card.dark ? "text-white" : "text-foreground"}
-                      >
-                        {card.title}
-                      </h3>
-
-                      <div className="mt-8 flex flex-col gap-3">
-                        {card.details.map((detail, i) => (
-                          <div key={i} className="flex items-center gap-3">
-                            <div
-                              className="w-1.5 h-1.5 rounded-full shrink-0"
-                              style={{
-                                background: card.dark ? "hsla(0, 0%, 100%, 0.5)" : "hsl(var(--primary))",
-                              }}
-                            />
-                            <p
-                              style={{ ...TYPE.bodySm, fontSize: "14px" }}
-                              className={card.dark ? "text-white/80" : "text-muted-foreground"}
-                            >
-                              {detail}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Right: Image — contained with padding */}
-                    <div className="relative p-4 md:p-8 flex items-center justify-center">
-                      <div className="relative overflow-hidden rounded-2xl w-full" style={{ maxHeight: "340px", aspectRatio: "4/3" }}>
-                        <img
-                          src={card.image}
-                          alt={card.title}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
+                    <div className="mt-6 flex flex-col gap-2.5">
+                      {card.details.map((detail, i) => (
+                        <div key={i} className="flex items-center gap-3">
+                          <div
+                            className="w-1.5 h-1.5 rounded-full shrink-0"
+                            style={{
+                              background: card.dark ? "hsla(0, 0%, 100%, 0.5)" : "hsl(var(--primary))",
+                            }}
+                          />
+                          <p
+                            style={{ ...TYPE.bodySm, fontSize: "14px" }}
+                            className={card.dark ? "text-white/80" : "text-muted-foreground"}
+                          >
+                            {detail}
+                          </p>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                </section>
-              </div>
+
+                  {/* Right: Image */}
+                  <div className="relative p-4 md:p-8 flex items-center justify-center">
+                    <div className="relative overflow-hidden rounded-2xl w-full" style={{ maxHeight: "320px", aspectRatio: "4/3" }}>
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </section>
             </div>
           );
         })}
