@@ -86,8 +86,8 @@ const PipelinePreview = () => {
           </button>
         </div>
 
-        <div style={{ flex: 1, padding: "48px 0 0", alignSelf: "flex-end" }}>
-          <div style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", borderBottom: "none", borderRadius: "16px 16px 0 0", padding: "28px 32px", marginRight: "-1px", width: "calc(100% + 1px)" }}>
+        <div style={{ flex: 1, padding: "clamp(24px, 4vw, 56px)", paddingBottom: 0, alignSelf: "flex-end" }}>
+          <div style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", borderBottom: "none", borderRadius: "16px 16px 0 0", padding: "28px 32px", boxShadow: "0 -4px 24px -8px rgba(0,0,0,0.12)" }}>
             {/* Header row */}
             <div style={{ display: "grid", gridTemplateColumns: "180px 1fr 140px", gap: "16px", alignItems: "end", marginBottom: "8px", paddingBottom: "12px", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
               <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Program</span>
