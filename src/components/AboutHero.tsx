@@ -2,7 +2,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { TYPE, SPACING } from "@/typography";
 
-
 const AboutHero = () => {
   const { t } = useLanguage();
 
@@ -14,80 +13,81 @@ const AboutHero = () => {
   ];
 
   return (
-    <section className="bg-background relative overflow-hidden">
+    <section className="relative overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, #f0eeeb 100%)" }}>
       <div
-        className="mx-auto text-center relative z-10"
+        className="mx-auto relative z-10"
         style={{
           maxWidth: SPACING.maxWidth,
           paddingLeft: SPACING.sectionPx,
           paddingRight: SPACING.sectionPx,
-          paddingTop: "96px",
+          paddingTop: "120px",
           paddingBottom: "96px",
         }}
       >
-        {/* Label */}
-        <ScrollReveal>
-          <p
-            style={{
-              ...TYPE.meta,
-              color: "hsl(var(--muted-foreground))",
-              marginBottom: "32px",
-            }}
-          >
-            Our Platform
-          </p>
-        </ScrollReveal>
+        {/* Two-column layout */}
+        <div className="grid md:grid-cols-[1fr_1fr] gap-16 items-end">
+          {/* Left: Label + Headline */}
+          <div>
+            <ScrollReveal>
+              <p
+                style={{
+                  ...TYPE.label,
+                  color: "hsl(var(--primary))",
+                  marginBottom: SPACING.labelToH2,
+                }}
+              >
+                Our Platform
+              </p>
+            </ScrollReveal>
 
-        {/* Headline */}
-        <ScrollReveal delay={0.05}>
-          <h2
-            style={{
-              ...TYPE.h2,
-              color: "hsl(var(--foreground))",
-              maxWidth: "900px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "32px",
-            }}
-          >
-            {t.aboutHero.heading}
-            <em className="italic" style={{ color: "hsl(var(--foreground))" }}>
-              {t.aboutHero.headingEm}
-            </em>
-          </h2>
-        </ScrollReveal>
+            <ScrollReveal delay={0.05}>
+              <h2
+                style={{
+                  ...TYPE.h1,
+                  color: "hsl(var(--primary))",
+                  lineHeight: 1.05,
+                }}
+              >
+                {t.aboutHero.heading}
+                <em className="italic" style={{ color: "hsl(var(--primary))", fontStyle: "italic" }}>
+                  {t.aboutHero.headingEm}
+                </em>
+              </h2>
+            </ScrollReveal>
+          </div>
 
-        {/* Description */}
-        <ScrollReveal delay={0.1}>
-          <p
-            style={{
-              ...TYPE.bodyLg,
-              color: "hsl(var(--muted-foreground))",
-              maxWidth: "720px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "64px",
-            }}
-          >
-            We manufacture with precision. Because the right molecule, made wrong, helps no one.
-          </p>
-        </ScrollReveal>
+          {/* Right: Description */}
+          <div>
+            <ScrollReveal delay={0.1}>
+              <p
+                style={{
+                  ...TYPE.bodyLg,
+                  color: "hsl(var(--muted-foreground))",
+                  maxWidth: "480px",
+                }}
+              >
+                We manufacture with precision. Because the right molecule, made wrong, helps no one.
+              </p>
+            </ScrollReveal>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div style={{ height: "1px", background: "hsl(var(--border))", marginTop: "64px", marginBottom: "48px" }} />
 
         {/* Stats Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           {stats.map((stat, i) => (
             <ScrollReveal key={i} delay={0.15 + i * 0.06}>
-              <div
-                className="text-left md:px-8 first:md:pl-0 last:md:pr-0"
-                style={{ borderTop: "2px solid hsl(var(--border))" }}
-              >
-                <div className="pt-6">
+              <div className="relative">
+                <div className="flex items-baseline gap-1">
                   <span
                     style={{
-                      ...TYPE.h1,
+                      fontFamily: TYPE.display.fontFamily,
+                      fontSize: "clamp(40px, 5vw, 56px)",
                       fontWeight: 700,
                       letterSpacing: "-0.03em",
-                      color: "hsl(var(--foreground))",
+                      color: "hsl(var(--primary))",
                       lineHeight: 1,
                     }}
                   >
@@ -96,10 +96,10 @@ const AboutHero = () => {
                   {stat.unit && (
                     <span
                       style={{
-                        ...TYPE.h3,
-                        fontWeight: 600,
-                        color: "hsl(var(--foreground))",
-                        marginLeft: "2px",
+                        fontFamily: TYPE.h3.fontFamily,
+                        fontSize: "clamp(16px, 2vw, 22px)",
+                        fontWeight: 500,
+                        color: "hsl(var(--primary))",
                       }}
                     >
                       {stat.unit}
@@ -108,9 +108,10 @@ const AboutHero = () => {
                 </div>
                 <p
                   style={{
-                    ...TYPE.body,
+                    ...TYPE.bodySm,
                     color: "hsl(var(--muted-foreground))",
-                    marginTop: "8px",
+                    marginTop: "10px",
+                    lineHeight: 1.5,
                   }}
                 >
                   {stat.description}
