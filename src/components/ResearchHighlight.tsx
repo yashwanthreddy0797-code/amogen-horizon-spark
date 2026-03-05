@@ -1,227 +1,78 @@
-import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 import facility1Img from "@/assets/facility-1.jpg";
 import facility2Img from "@/assets/biologics-infographic.png";
 import facility3Img from "@/assets/bioinformatics-banner.jpg";
-import { ArrowRight, Plus, Minus, FlaskConical, Pill, Microscope, Filter, BarChart3, Snowflake } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { motion } from "framer-motion";
 import { TYPE, SPACING } from "@/typography";
 
-const facilities = [
-{
-  title: "Manufacturing Capacity",
-  subtitle: "",
-  tag: "API Manufacturing",
-  image: facility1Img,
-  details: [
-  { label: "Microbial Fermentors", type: "", count: "", icon: FlaskConical },
-  { label: "Continuous Centrifuge", type: "", count: "", icon: FlaskConical },
-  { label: "Downstream Purification", type: "", count: "", icon: Filter },
-  { label: "Preparative Chromatography", type: "", count: "", icon: BarChart3 },
-  { label: "Bulk Lyophilisation", type: "", count: "", icon: Snowflake }]
-
-},
-{
-  title: "R&D Capabilities",
-  subtitle: "",
-  tag: "Research & Development",
-  image: facility2Img,
-  details: [
-  { label: "Sequence & Construct Engineering", type: "", count: "", icon: FlaskConical },
-  { label: "Multi-Host Expression Platforms", type: "", count: "", icon: Microscope },
-  { label: "Strain / Clone Development", type: "", count: "", icon: FlaskConical },
-  { label: "Cell Banking & Stability Systems", type: "", count: "", icon: FlaskConical },
-  { label: "Media & Seed Train Optimization", type: "", count: "", icon: Filter },
-  { label: "Scalable Fermentation Development", type: "", count: "", icon: FlaskConical },
-  { label: "Soluble + Inclusion Body Recovery", type: "", count: "", icon: Pill },
-  { label: "Integrated Purification Platform", type: "", count: "", icon: Filter }]
-
-},
-{
-  title: "Analytical Capabilities",
-  subtitle: "",
-  tag: "Analytical",
-  image: facility3Img,
-  details: [
-  { label: "UHPLC", type: "", count: "", icon: FlaskConical },
-  { label: "HPLC-UV/PDA", type: "", count: "", icon: FlaskConical },
-  { label: "LC–MS", type: "", count: "", icon: Microscope },
-  { label: "HRMS", type: "", count: "", icon: Microscope },
-  { label: "SEC-HPLC", type: "", count: "", icon: FlaskConical },
-  { label: "qPCR", type: "", count: "", icon: Microscope },
-  { label: "Microplate Reader", type: "", count: "", icon: BarChart3 },
-  { label: "cAMP Bioassay", type: "", count: "", icon: Pill },
-  { label: "CD-Spectrometry", type: "", count: "", icon: Filter }]
-
-}];
-
-
-const FacilityCard = ({ facility, isExpanded, onToggle, index
-
-
-
-
-}: {facility: typeof facilities[0];isExpanded: boolean;onToggle: () => void;index: number;}) => {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <motion.div
-      className="rounded-2xl overflow-hidden cursor-pointer relative flex flex-col group"
-      style={{ minHeight: 440 }}
-      onClick={onToggle}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}>
-      
-      {/* Main card face */}
-      <div className="flex flex-col h-full" style={{ minHeight: 440 }}>
-        <div className="overflow-hidden h-[280px] relative">
-          <img
-            src={facility.image}
-            alt={facility.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-            width={400}
-            height={280}
-            decoding="async" />
-          
-          {/* Tag overlay */}
-          <div className="absolute top-4 left-4">
-            <span
-              className="px-3 py-1.5 rounded-full text-footer-foreground backdrop-blur-md"
-              style={{
-                ...TYPE.label,
-                fontSize: "10px",
-                background: "hsla(227, 100%, 20%, 0.75)"
-              }}>
-              
-              {facility.tag}
-            </span>
-          </div>
-        </div>
-
-        {/* Bottom panel */}
-        <div
-          className={`flex-1 flex flex-col justify-between p-6 transition-all duration-500 ease-out ${
-          hovered && !isExpanded ?
-          "bg-footer-bg -translate-y-3" :
-          "bg-secondary translate-y-0"}`
-          }>
-          
-          <div>
-            <h3
-              style={TYPE.h3}
-              className={`transition-colors duration-300 ${
-              hovered && !isExpanded ? "text-footer-foreground" : "text-foreground"}`
-              }>
-              
-              {facility.title}
-            </h3>
-            <p
-              style={TYPE.bodySm}
-              className={`transition-colors duration-300 ${
-              hovered && !isExpanded ? "text-footer-foreground/70" : "text-muted-foreground"}`
-              }>
-              
-              {facility.subtitle}
-            </p>
-          </div>
-          <div className="flex justify-end">
-            <Plus
-              className={`transition-colors duration-300 ${
-              hovered && !isExpanded ? "text-footer-foreground" : "text-footer-bg"}`
-              }
-              size={24} />
-            
-          </div>
-        </div>
-      </div>
-
-      {/* Expanded detail overlay — slides up */}
-      <motion.div
-        className="absolute inset-x-0 bottom-0 bg-footer-bg text-footer-foreground rounded-2xl p-6 flex flex-col"
-        initial={{ y: "100%" }}
-        animate={{ y: isExpanded ? "0%" : "100%" }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        style={{ minHeight: 440, height: "100%" }}>
-        
-        <div className="mb-4">
-          <h3 style={TYPE.h3}>{facility.title}</h3>
-          {facility.subtitle &&
-          <p style={TYPE.bodySm} className="text-primary-foreground/70">
-              {facility.subtitle}
-            </p>
-          }
-        </div>
-        <div className="flex-1 flex flex-col gap-2.5 overflow-y-auto">
-          {facility.details.map((detail, i) => {
-            const Icon = detail.icon;
-            return (
-              <div key={i} className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Icon size={22} strokeWidth={1.5} className="text-primary-foreground/80" />
-                  <div>
-                    <p style={{ ...TYPE.bodySm, fontWeight: 600, fontSize: "13px" }}>{detail.label}</p>
-                    {detail.type &&
-                    <p style={{ ...TYPE.bodySm, fontSize: "12px" }} className="text-primary-foreground/70">
-                        {detail.type}
-                      </p>
-                    }
-                  </div>
-                </div>
-                {detail.count &&
-                <span style={{ ...TYPE.h3, fontSize: "24px" }}>{detail.count}</span>
-                }
-              </div>);
-
-          })}
-        </div>
-        <div className="flex items-center justify-between mt-4">
-  {'footnote' in facility && facility.footnote &&
-          <p style={{ ...TYPE.bodySm, fontSize: "12px" }} className="text-primary-foreground/60">
-              {facility.footnote as string}
-            </p>
-          }
-          <div className="flex justify-end flex-1">
-            <div className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center">
-              <Minus size={18} />
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>);
-
-};
+const cards = [
+  {
+    title: "Manufacturing Capacity",
+    tag: "API Manufacturing",
+    image: facility1Img,
+    details: [
+      "Microbial Fermentors",
+      "Continuous Centrifuge",
+      "Downstream Purification",
+      "Preparative Chromatography",
+      "Bulk Lyophilisation",
+    ],
+    bg: "hsl(var(--secondary))",
+  },
+  {
+    title: "R&D Capabilities",
+    tag: "Research & Development",
+    image: facility2Img,
+    details: [
+      "Sequence & Construct Engineering",
+      "Multi-Host Expression Platforms",
+      "Strain / Clone Development",
+      "Cell Banking & Stability Systems",
+      "Media & Seed Train Optimization",
+      "Scalable Fermentation Development",
+      "Soluble + Inclusion Body Recovery",
+      "Integrated Purification Platform",
+    ],
+    bg: "hsl(227, 100%, 20%)",
+  },
+  {
+    title: "Analytical Capabilities",
+    tag: "Analytical",
+    image: facility3Img,
+    details: [
+      "UHPLC",
+      "HPLC-UV/PDA",
+      "LC–MS",
+      "HRMS",
+      "SEC-HPLC",
+      "qPCR",
+      "Microplate Reader",
+      "cAMP Bioassay",
+      "CD-Spectrometry",
+    ],
+    bg: "hsl(var(--secondary))",
+  },
+];
 
 const ResearchHighlight = () => {
   const { t } = useLanguage();
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-
-  const handleToggle = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
 
   return (
-    <section className="bg-background relative overflow-hidden" style={{ paddingTop: "96px", paddingBottom: "64px" }}>
+    <section className="bg-background relative overflow-hidden" style={{ paddingTop: "96px", paddingBottom: "0px" }}>
       {/* Subtle decorative element */}
       <div
         className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-[0.03] pointer-events-none"
-        style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)", transform: "translate(30%, -40%)" }} />
-      
+        style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)", transform: "translate(30%, -40%)" }}
+      />
 
       <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         {/* Two-column header layout */}
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-end mb-16">
           <ScrollReveal>
             <div>
-              <p
-                style={{ ...TYPE.label, color: "hsl(var(--muted-foreground))", marginBottom: SPACING.labelToH2 }}>
-                
+              <p style={{ ...TYPE.label, color: "hsl(var(--muted-foreground))", marginBottom: SPACING.labelToH2 }}>
                 {t.research.label}
               </p>
               <h2 style={TYPE.h2} className="text-foreground">
@@ -235,8 +86,8 @@ const ResearchHighlight = () => {
             <div className="md:text-right">
               <p
                 style={{ ...TYPE.body, color: "hsl(var(--muted-foreground))" }}
-                className="max-w-md md:ml-auto">
-                
+                className="max-w-md md:ml-auto"
+              >
                 {t.research.description}
               </p>
             </div>
@@ -247,43 +98,117 @@ const ResearchHighlight = () => {
         <ScrollReveal delay={0.12}>
           <div className="w-full h-px bg-border mb-10" />
         </ScrollReveal>
-
-        {/* Facility cards */}
-        <div className="grid md:grid-cols-3" style={{ gap: SPACING.cardGap }}>
-          {facilities.map((facility, i) =>
-          <FacilityCard
-            key={facility.title}
-            facility={facility}
-            isExpanded={expandedIndex === i}
-            onToggle={() => handleToggle(i)}
-            index={i} />
-
-          )}
-        </div>
-
-        {/* CTA row */}
-        <ScrollReveal delay={0.25}>
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-        </ScrollReveal>
       </div>
-    </section>);
 
+      {/* Stacked sticky scroll cards */}
+      <div className="relative">
+        {cards.map((card, index) => {
+          const isLast = index === cards.length - 1;
+          const isDark = index === 1; // Middle card is dark
+
+          return (
+            <div
+              key={card.title}
+              className={isLast ? "relative" : "sticky"}
+              style={{
+                top: isLast ? undefined : `${80 + index * 8}px`,
+                zIndex: index + 1,
+              }}
+            >
+              <section
+                className="rounded-t-3xl shadow-[0_-8px_30px_-12px_rgba(0,0,0,0.15)] transition-shadow"
+                style={{
+                  background: card.bg,
+                  minHeight: "480px",
+                }}
+              >
+                <div
+                  className="mx-auto grid md:grid-cols-2 gap-0"
+                  style={{ maxWidth: "1200px" }}
+                >
+                  {/* Left: Text content */}
+                  <div className="flex flex-col justify-center p-10 md:p-16">
+                    <span
+                      className="inline-block px-3 py-1.5 rounded-full mb-6 w-fit"
+                      style={{
+                        ...TYPE.label,
+                        fontSize: "10px",
+                        background: isDark ? "hsla(0, 0%, 100%, 0.12)" : "hsla(227, 100%, 20%, 0.08)",
+                        color: isDark ? "hsla(0, 0%, 100%, 0.8)" : "hsl(var(--foreground))",
+                      }}
+                    >
+                      {card.tag}
+                    </span>
+
+                    <h3
+                      style={{ ...TYPE.h2, fontSize: "clamp(26px, 3.5vw, 40px)" }}
+                      className={isDark ? "text-white" : "text-foreground"}
+                    >
+                      {card.title}
+                    </h3>
+
+                    <div className="mt-8 flex flex-col gap-3">
+                      {card.details.map((detail, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center gap-3"
+                        >
+                          <div
+                            className="w-1.5 h-1.5 rounded-full shrink-0"
+                            style={{
+                              background: isDark ? "hsla(0, 0%, 100%, 0.5)" : "hsl(var(--primary))",
+                            }}
+                          />
+                          <p
+                            style={{ ...TYPE.bodySm, fontSize: "14px" }}
+                            className={isDark ? "text-white/80" : "text-muted-foreground"}
+                          >
+                            {detail}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right: Image */}
+                  <div className="relative overflow-hidden rounded-tr-3xl min-h-[300px] md:min-h-[480px]">
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </section>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* CTA row */}
+      <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
+        <div className="flex items-center justify-between py-12">
+          <p style={{ ...TYPE.bodySm, color: "hsl(var(--muted-foreground))" }} className="hidden md:block">
+            World-class infrastructure across 3 facilities
+          </p>
+          <a
+            href="/cdmo"
+            className="inline-flex items-center gap-3 group/cta"
+            style={TYPE.button}
+          >
+            <span className="text-foreground group-hover/cta:text-primary transition-colors">
+              {t.research.cta}
+            </span>
+            <span className="w-10 h-10 rounded-full bg-footer-bg text-footer-foreground flex items-center justify-center group-hover/cta:bg-primary transition-colors">
+              <ArrowRight size={16} />
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default ResearchHighlight;
