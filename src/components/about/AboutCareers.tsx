@@ -1,6 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight } from "lucide-react";
-import aboutTeam from "@/assets/about-team.jpg";
+import careersBannerBlue from "@/assets/careers-banner-blue.jpg";
 import { TYPE, SPACING } from "@/typography";
 
 const AboutCareers = () => {
@@ -39,7 +39,7 @@ const AboutCareers = () => {
         {/* Right: Image */}
         <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[55%]">
           <img
-            src={aboutTeam}
+            src={careersBannerBlue}
             alt="AMOGEN team collaborating"
             className="w-full h-full object-cover"
             loading="lazy"
@@ -50,7 +50,7 @@ const AboutCareers = () => {
         {/* Mobile fallback bg */}
         <div className="md:hidden absolute inset-0 -z-10">
           <img
-            src={aboutTeam}
+            src={careersBannerBlue}
             alt=""
             className="w-full h-full object-cover opacity-20"
             loading="lazy"
