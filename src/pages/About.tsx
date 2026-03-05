@@ -68,9 +68,6 @@ const About = () => {
         {/* At a Glance — CurateQ-inspired layout */}
         <AboutAtGlance />
 
-        {/* Who We Are */}
-        <AboutWhoWeAre />
-
         {/* Vision & Mission */}
         <AboutVisionMission />
 
