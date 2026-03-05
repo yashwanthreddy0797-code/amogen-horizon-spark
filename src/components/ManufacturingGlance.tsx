@@ -18,15 +18,17 @@ const ManufacturingGlance = () => {
   return (
     <section className="w-full">
       <div className="flex flex-col lg:flex-row">
-        {/* Left — Image */}
-        <div className="lg:w-1/2 min-h-[400px] lg:min-h-0">
-          <img
-            src={apiPlant}
-            alt="AMOGEN API Plant 1 facility render"
-            className="w-full h-full object-cover object-center"
-            style={{ display: "block" }}
-            loading="lazy"
-          />
+        {/* Left — Image Card */}
+        <div className="lg:w-1/2 flex items-center justify-center" style={{ padding: "clamp(24px, 4vw, 56px)", backgroundColor: "#F7F6F5" }}>
+          <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg" style={{ minHeight: "360px" }}>
+            <img
+              src={apiPlant}
+              alt="AMOGEN API Plant 1 facility render"
+              className="w-full h-full object-cover object-center"
+              style={{ display: "block" }}
+              loading="lazy"
+            />
+          </div>
         </div>
 
         {/* Right — Content */}
