@@ -20,7 +20,7 @@ const AboutCareers = () => {
             </p>
             <div className="w-16 h-px bg-border mb-6" />
             <h2 style={{ ...TYPE.h2, color: "hsl(var(--foreground))", marginBottom: SPACING.headingToSub }}>
-
+              Our Product Portfolio
             </h2>
             <p style={{ ...TYPE.body, color: "hsl(var(--muted-foreground))", marginBottom: SPACING.subToCta }} className="max-w-lg">Explore our peptide APIs including Liraglutide and other therapeutic compounds produced through precision microbial fermentation.
 
