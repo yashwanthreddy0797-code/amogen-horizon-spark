@@ -5,16 +5,16 @@ import { TYPE, SPACING } from "@/typography";
 
 const AboutCareers = () => {
   return (
-    <ScrollReveal>
-      <section className="relative overflow-hidden min-h-[260px] md:min-h-[320px] flex items-stretch rounded-2xl mx-4 md:mx-8 mb-12 border border-border">
-        {/* Left: Text panel with diagonal clip */}
-        <div
-          className="relative z-10 w-full md:w-[55%] bg-background flex items-center rounded-l-2xl"
-          style={{
-            clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 100%)",
-          }}
-        >
-          <div className="w-full py-12 md:py-16 pr-16 md:pr-24" style={{ paddingLeft: SPACING.sectionPx, maxWidth: "700px" }}>
+    <section className="relative overflow-hidden min-h-[260px] md:min-h-[320px] flex items-stretch rounded-2xl mx-4 md:mx-8 mb-12 border border-border">
+      {/* Left: Text panel with diagonal clip */}
+      <div
+        className="relative z-10 w-full md:w-[55%] bg-background flex items-center rounded-l-2xl"
+        style={{
+          clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 100%)",
+        }}
+      >
+        <div className="w-full py-12 md:py-16 pr-16 md:pr-24" style={{ paddingLeft: SPACING.sectionPx, maxWidth: "700px" }}>
+          <ScrollReveal>
             <p style={{ ...TYPE.label, color: "hsl(var(--muted-foreground))", marginBottom: "8px" }}>
               CAREERS
             </p>
@@ -33,32 +33,34 @@ const AboutCareers = () => {
               <span>Explore Careers</span>
               <ArrowRight size={14} />
             </a>
-          </div>
+          </ScrollReveal>
         </div>
+      </div>
 
-        {/* Right: Image */}
-        <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[55%]">
-          <img
-            src={careersBannerBlue}
-            alt="AMOGEN team collaborating"
-            className="w-full h-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
+      {/* Right: Image */}
+      <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[55%]">
+        <img
+          src={careersBannerBlue}
+          alt="AMOGEN team collaborating"
+          className="w-full h-full object-cover"
+          loading="lazy"
+          width={1024}
+          height={576}
+          decoding="async"
+        />
+      </div>
 
-        {/* Mobile fallback bg */}
-        <div className="md:hidden absolute inset-0 -z-10">
-          <img
-            src={careersBannerBlue}
-            alt=""
-            className="w-full h-full object-cover opacity-20"
-            loading="lazy"
-            aria-hidden="true"
-          />
-        </div>
-      </section>
-    </ScrollReveal>
+      {/* Mobile fallback bg */}
+      <div className="md:hidden absolute inset-0 -z-10">
+        <img
+          src={careersBannerBlue}
+          alt=""
+          className="w-full h-full object-cover opacity-20"
+          loading="lazy"
+          aria-hidden="true"
+        />
+      </div>
+    </section>
   );
 };
 
