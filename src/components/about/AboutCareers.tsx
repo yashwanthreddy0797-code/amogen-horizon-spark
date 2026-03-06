@@ -30,7 +30,7 @@ const AboutCareers = () => {
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
               style={TYPE.button}>
               
-              <span>Explore Careers</span>
+              <span>Explore Products</span>
               <ArrowRight size={14} />
             </a>
           </ScrollReveal>
