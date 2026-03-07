@@ -68,13 +68,6 @@ const AboutAtGlance = () => {
                     clipPath: "polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 60px 100%, 0 calc(100% - 60px))",
                   }}
                 >
-                  {/* Icon */}
-                  <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center"
-                    style={{ background: stat.iconBg }}
-                  >
-                    <Icon size={24} style={{ color: stat.textColor }} strokeWidth={1.8} />
-                  </div>
 
                   {/* Stat */}
                   <div className="mt-auto">
