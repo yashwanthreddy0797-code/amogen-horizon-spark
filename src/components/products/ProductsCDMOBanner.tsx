@@ -40,7 +40,7 @@ const ProductsCDMOBanner = () => {
       {/* Right: Image */}
       <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[55%]">
         <img
-          src={careersBannerBlue}
+          src={cdmoBannerBlue}
           alt="AMOGEN manufacturing facility"
           className="w-full h-full object-cover"
           loading="lazy"
