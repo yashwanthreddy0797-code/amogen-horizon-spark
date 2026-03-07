@@ -1,6 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight } from "lucide-react";
-import careersBannerBlue from "@/assets/careers-banner-blue.jpg";
+import cdmoBannerBlue from "@/assets/cdmo-banner-blue.jpg";
 import { TYPE, SPACING } from "@/typography";
 
 const ProductsCDMOBanner = () => {
@@ -40,7 +40,7 @@ const ProductsCDMOBanner = () => {
       {/* Right: Image */}
       <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[55%]">
         <img
-          src={careersBannerBlue}
+          src={cdmoBannerBlue}
           alt="AMOGEN manufacturing facility"
           className="w-full h-full object-cover"
           loading="lazy"
@@ -53,7 +53,7 @@ const ProductsCDMOBanner = () => {
       {/* Mobile fallback bg */}
       <div className="md:hidden absolute inset-0 -z-10">
         <img
-          src={careersBannerBlue}
+          src={cdmoBannerBlue}
           alt=""
           className="w-full h-full object-cover opacity-20"
           loading="lazy"
