@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import ProductsCDMOBanner from "@/components/products/ProductsCDMOBanner";
 import semaglutideImg from "@/assets/semaglutide.png";
 import liraglutideImg from "@/assets/liraglutide.png";
 import tirzepatideImg from "@/assets/tirzepatide.png";
