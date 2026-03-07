@@ -32,7 +32,6 @@ const leaders: Leader[] = [
     experience: "6+ Years",
     education: "MBA",
     almaMater: "Anglia Ruskin",
-    previousCompanies: ["Pardha Group"],
   },
   {
     name: "Dr. T Devi Kalyan",
