@@ -210,6 +210,8 @@ const Products = () => {
             );
           })}
         </div>
+        <div className="py-16" />
+        <ProductsCDMOBanner />
       </main>
       <Footer />
     </div>);
