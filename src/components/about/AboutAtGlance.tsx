@@ -39,7 +39,7 @@ const AboutAtGlance = () => {
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.label} delay={i * 0.12}>
               <div
-                className="relative p-6 md:p-8 flex flex-col items-center justify-center text-center overflow-hidden"
+                className="relative p-6 md:p-8 flex flex-col items-center justify-center overflow-hidden"
                 style={{
                   aspectRatio: "1 / 0.95",
                   borderRadius: "24px",
