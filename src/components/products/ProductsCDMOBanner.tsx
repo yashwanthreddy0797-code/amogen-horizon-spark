@@ -53,7 +53,7 @@ const ProductsCDMOBanner = () => {
       {/* Mobile fallback bg */}
       <div className="md:hidden absolute inset-0 -z-10">
         <img
-          src={careersBannerBlue}
+          src={cdmoBannerBlue}
           alt=""
           className="w-full h-full object-cover opacity-20"
           loading="lazy"
