@@ -3,43 +3,43 @@ import { Factory, FlaskConical, Beaker } from "lucide-react";
 import { TYPE, SPACING } from "@/typography";
 
 const stats = [
-{
-  icon: Factory,
-  value: "70",
-  unit: "+",
-  label: "Employees",
-  description: "84% in research & development and manufacturing functions",
-  bg: "hsl(230, 40%, 94%)",
-  iconBg: "hsl(230, 40%, 88%)",
-  textColor: "hsl(var(--primary))",
-  descColor: "hsl(var(--muted-foreground))",
-  dark: false
-},
-{
-  icon: FlaskConical,
-  value: "15",
-  unit: " yrs",
-  label: "Avg. R&D Expertise",
-  description: "Among key personnel with a validated peptide platform",
-  bg: "hsl(230, 35%, 88%)",
-  iconBg: "hsl(230, 35%, 82%)",
-  textColor: "hsl(var(--primary))",
-  descColor: "hsl(var(--muted-foreground))",
-  dark: false
-},
-{
-  icon: Beaker,
-  value: "980",
-  unit: " Kg",
-  label: "Total GLP-1 Volume",
-  description: "Continuously expanding capacity with highest quality standards",
-  bg: "linear-gradient(135deg, hsl(232, 60%, 42%), hsl(260, 60%, 55%))",
-  iconBg: "hsla(0, 0%, 100%, 0.15)",
-  textColor: "#FFFFFF",
-  descColor: "hsla(0, 0%, 100%, 0.7)",
-  dark: true
-}];
-
+  {
+    icon: Factory,
+    value: "70",
+    unit: "+",
+    label: "Employees",
+    description: "84% in research & development and manufacturing functions",
+    bg: "hsl(230, 40%, 94%)",
+    iconBg: "hsl(230, 40%, 88%)",
+    textColor: "hsl(var(--primary))",
+    descColor: "hsl(var(--muted-foreground))",
+    dark: false,
+  },
+  {
+    icon: FlaskConical,
+    value: "15",
+    unit: " yrs",
+    label: "Avg. R&D Expertise",
+    description: "Among key personnel with a validated peptide platform",
+    bg: "hsl(230, 35%, 88%)",
+    iconBg: "hsl(230, 35%, 82%)",
+    textColor: "hsl(var(--primary))",
+    descColor: "hsl(var(--muted-foreground))",
+    dark: false,
+  },
+  {
+    icon: Beaker,
+    value: "980",
+    unit: " Kg",
+    label: "Total GLP-1 Volume",
+    description: "Continuously expanding capacity with highest quality standards",
+    bg: "linear-gradient(135deg, hsl(232, 60%, 42%), hsl(260, 60%, 55%))",
+    iconBg: "hsla(0, 0%, 100%, 0.15)",
+    textColor: "#FFFFFF",
+    descColor: "hsla(0, 0%, 100%, 0.7)",
+    dark: true,
+  },
+];
 
 const AboutAtGlance = () => {
   return (
@@ -63,18 +63,18 @@ const AboutAtGlance = () => {
                   className="p-8 md:p-10 flex flex-col justify-between aspect-square"
                   style={{
                     background: stat.bg,
-                    transform: isLast ? "rotate(3deg)" : "none",
+                    transform: "none",
                     borderRadius: "24px",
-                    clipPath: "polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 60px 100%, 0 calc(100% - 60px))"
-                  }}>
-                  
+                    clipPath: "polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 60px 100%, 0 calc(100% - 60px))",
+                  }}
+                >
                   {/* Icon */}
-                  
-
-
-
-
-                  
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center"
+                    style={{ background: stat.iconBg }}
+                  >
+                    <Icon size={24} style={{ color: stat.textColor }} strokeWidth={1.8} />
+                  </div>
 
                   {/* Stat */}
                   <div className="mt-auto">
@@ -86,9 +86,9 @@ const AboutAtGlance = () => {
                           fontWeight: 700,
                           lineHeight: 1,
                           letterSpacing: "-0.04em",
-                          color: stat.textColor
-                        }}>
-                        
+                          color: stat.textColor,
+                        }}
+                      >
                         {stat.value}
                       </span>
                       <span
@@ -97,9 +97,9 @@ const AboutAtGlance = () => {
                           fontSize: "clamp(20px, 2.5vw, 32px)",
                           fontWeight: 500,
                           color: stat.textColor,
-                          marginLeft: "2px"
-                        }}>
-                        
+                          marginLeft: "2px",
+                        }}
+                      >
                         {stat.unit}
                       </span>
                     </div>
@@ -109,29 +109,29 @@ const AboutAtGlance = () => {
                         fontSize: "clamp(16px, 1.8vw, 20px)",
                         fontWeight: 600,
                         color: stat.textColor,
-                        marginTop: "6px"
-                      }}>
-                      
+                        marginTop: "6px",
+                      }}
+                    >
                       {stat.label}
                     </p>
                     <p
                       style={{
                         ...TYPE.bodySm,
                         color: stat.descColor,
-                        marginTop: "20px"
-                      }}>
-                      
+                        marginTop: "20px",
+                      }}
+                    >
                       {stat.description}
                     </p>
                   </div>
                 </div>
-              </ScrollReveal>);
-
+              </ScrollReveal>
+            );
           })}
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default AboutAtGlance;
