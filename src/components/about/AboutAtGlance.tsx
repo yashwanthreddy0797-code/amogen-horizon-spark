@@ -35,7 +35,7 @@ const AboutAtGlance = () => {
           </p>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 mt-16" style={{ gap: "24px" }}>
+        <div className="grid md:grid-cols-3 mt-16 max-w-4xl" style={{ gap: "20px" }}>
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.label} delay={i * 0.12}>
               <div
