@@ -105,7 +105,7 @@ const AboutLeadership = () => {
         <div className="mt-16 overflow-hidden">
           <div
             ref={scrollRef}
-            className="flex gap-12 overflow-x-auto px-6 md:px-12 lg:px-16 pb-6 scrollbar-hide"
+            className="flex gap-12 overflow-x-auto pb-6 scrollbar-hide"
             style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
           >
             {leaders.map((leader, i) => (
