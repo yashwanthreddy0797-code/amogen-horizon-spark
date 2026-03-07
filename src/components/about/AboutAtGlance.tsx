@@ -60,10 +60,12 @@ const AboutAtGlance = () => {
             return (
               <ScrollReveal key={stat.label} delay={i * 0.12}>
                 <div
-                  className="rounded-3xl p-8 md:p-10 flex flex-col justify-between aspect-square"
+                  className="p-8 md:p-10 flex flex-col justify-between aspect-square"
                   style={{
                     background: stat.bg,
                     transform: isLast ? "rotate(2deg)" : "none",
+                    borderRadius: "24px",
+                    clipPath: "polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%)",
                   }}
                 >
                   {/* Icon */}
