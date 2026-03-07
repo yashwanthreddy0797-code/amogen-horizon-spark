@@ -63,7 +63,7 @@ const AboutAtGlance = () => {
                   className="p-8 md:p-10 flex flex-col justify-between aspect-square"
                   style={{
                     background: stat.bg,
-                    transform: isLast ? "rotate(3deg)" : "none",
+                    transform: "none",
                     borderRadius: "24px",
                     clipPath: "polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 60px 100%, 0 calc(100% - 60px))",
                   }}
