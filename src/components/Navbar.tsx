@@ -21,7 +21,7 @@ interface NavbarProps {
   hideScrolledPills?: boolean;
 }
 
-const Navbar = ({ variant = "default" }: NavbarProps) => {
+const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps) => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
