@@ -4,7 +4,7 @@ import { TYPE, SPACING } from "@/typography";
 
 const AboutVisionMission = () => {
   return (
-    <section className="relative overflow-hidden bg-background" style={{ paddingTop: SPACING.sectionPy.desktop, paddingBottom: SPACING.sectionPy.desktop }}>
+    <section className="relative overflow-hidden bg-card" style={{ paddingTop: SPACING.sectionPy.desktop, paddingBottom: SPACING.sectionPy.desktop }}>
       <div className="mx-auto relative z-10" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <div className="max-w-xl space-y-16">
           <div>
