@@ -1,6 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight } from "lucide-react";
-import careersBannerBlue from "@/assets/careers-banner-blue.jpg";
+import cdmoBannerBlue from "@/assets/cdmo-banner-blue.jpg";
 import { TYPE, SPACING } from "@/typography";
 
 const ProductsCDMOBanner = () => {
