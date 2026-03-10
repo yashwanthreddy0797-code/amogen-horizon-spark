@@ -11,6 +11,7 @@ import CDMOSolutions from "@/components/cdmo/CDMOSolutions";
 import CDMORfpProcess from "@/components/cdmo/CDMORfpProcess";
 import CDMORelatedContent from "@/components/cdmo/CDMORelatedContent";
 import CDMOManufacturingGlance from "@/components/cdmo/CDMOManufacturingGlance";
+import ProductsBanner from "@/components/ProductsBanner";
 
 const CDMO = () => {
   return (
@@ -28,6 +29,8 @@ const CDMO = () => {
         <CDMOSolutions />
         <CDMORfpProcess />
         <CDMORelatedContent />
+        <div className="py-16" />
+        <ProductsBanner />
       </main>
       <Footer />
     </div>
