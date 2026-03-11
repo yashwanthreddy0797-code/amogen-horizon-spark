@@ -17,7 +17,7 @@ const languages = [
 ];
 
 interface NavbarProps {
-  variant?: "default" | "cdmo" | "about" | "products" | "news";
+  variant?: "default" | "cdmo" | "about" | "products" | "news" | "partner";
   hideScrolledPills?: boolean;
 }
 
@@ -36,24 +36,26 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
   const isAbout = variant === "about";
   const isProducts = variant === "products";
   const isNews = variant === "news";
+  const isPartner = variant === "partner";
   const isBlueText = isCdmo || isAbout || isProducts || isNews;
-  const pillColor = isNews ? "bg-[#D4D8DC]" : isProducts ? "bg-[#D5CDE8]" : isAbout ? "bg-[#b1d5f2]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
-  const pillColorExpanded = isNews ? "bg-[#D4D8DC]" : isProducts ? "bg-[#D5CDE8]" : isAbout ? "bg-[#b1d5f2]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
-  // CDMO/About variant: true blue text on transparent bg; default: white text on dark bg
-  const navBg = isBlueText ? "bg-transparent" : "bg-nav-dark";
-  const navBgHover = isBlueText ? "bg-[#001965] shadow-2xl" : "bg-nav-dark shadow-2xl";
-  const navText = isBlueText ? "text-[#001965]" : "text-nav-dark-foreground";
-  const navTextMuted = isBlueText ? "text-[#001965]/70" : "text-nav-dark-foreground/80";
-  const navTextFull = isBlueText ? "text-[#001965]" : "text-nav-dark-foreground";
-  const navHoverBg = isBlueText ? "hover:bg-[#001965]/10" : "hover:bg-nav-dark-foreground/10";
-  const navActiveBg = isBlueText ? "bg-[#001965]/15" : "bg-nav-dark-foreground/15";
+  const isWhiteText = isPartner;
+  const pillColor = isPartner ? "bg-white" : isNews ? "bg-[#D4D8DC]" : isProducts ? "bg-[#D5CDE8]" : isAbout ? "bg-[#b1d5f2]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
+  const pillColorExpanded = isPartner ? "bg-white" : isNews ? "bg-[#D4D8DC]" : isProducts ? "bg-[#D5CDE8]" : isAbout ? "bg-[#b1d5f2]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
+  // CDMO/About variant: true blue text on transparent bg; Partner: white text; default: white text on dark bg
+  const navBg = (isBlueText || isPartner) ? "bg-transparent" : "bg-nav-dark";
+  const navBgHover = (isBlueText || isPartner) ? "bg-[#001965] shadow-2xl" : "bg-nav-dark shadow-2xl";
+  const navText = isPartner ? "text-white" : isBlueText ? "text-[#001965]" : "text-nav-dark-foreground";
+  const navTextMuted = isPartner ? "text-white/70" : isBlueText ? "text-[#001965]/70" : "text-nav-dark-foreground/80";
+  const navTextFull = isPartner ? "text-white" : isBlueText ? "text-[#001965]" : "text-nav-dark-foreground";
+  const navHoverBg = isPartner ? "hover:bg-white/10" : isBlueText ? "hover:bg-[#001965]/10" : "hover:bg-nav-dark-foreground/10";
+  const navActiveBg = isPartner ? "bg-white/15" : isBlueText ? "bg-[#001965]/15" : "bg-nav-dark-foreground/15";
   const navPillBg = pillColor;
-  const navBorderColor = isBlueText ? "border-[#001965]/15" : "border-nav-dark-foreground/15";
+  const navBorderColor = (isBlueText || isPartner) ? "border-[#001965]/15" : "border-nav-dark-foreground/15";
 
   // Expanded scrolled bar: flips to True Blue bg + light text
-  const expandedTextColor = isNews ? "text-[#D4D8DC]" : isProducts ? "text-[#D5CDE8]" : isAbout ? "text-[#b1d5f2]" : isCdmo ? "text-[#ccc5bd]" : navText;
-  const navPillBgExpanded = isBlueText ? "bg-[#001965]" : "bg-nav-dark";
-  const navTextExpanded = isBlueText ? "text-white" : navText;
+  const expandedTextColor = isPartner ? "text-white" : isNews ? "text-[#D4D8DC]" : isProducts ? "text-[#D5CDE8]" : isAbout ? "text-[#b1d5f2]" : isCdmo ? "text-[#ccc5bd]" : navText;
+  const navPillBgExpanded = (isBlueText || isPartner) ? "bg-[#001965]" : "bg-nav-dark";
+  const navTextExpanded = (isBlueText || isPartner) ? "text-white" : navText;
   const navTextFullExpanded = isBlueText ? "text-white" : navTextFull;
   const navTextMutedExpanded = isBlueText ? "text-white/70" : navTextMuted;
   const navHoverBgExpanded = isBlueText ? "hover:bg-white/10" : navHoverBg;
@@ -501,7 +503,7 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
           {/* ===== SCROLLED (split into two separate pills like Lilly) ===== */}
           <motion.div
             key="split-nav"
-            className={`max-w-7xl mx-auto ${navText}`}
+            className={`max-w-7xl mx-auto ${isPartner ? "text-[#001965]" : navText}`}
             initial={false}
             animate={{ opacity: hideScrolledPills ? 0 : (scrolled ? 1 : 0), y: hideScrolledPills ? -10 : (scrolled ? 0 : -10), visibility: (hideScrolledPills || !scrolled) ? "hidden" as const : "visible" as const }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], visibility: { delay: scrolled ? 0 : 0.4 } }}

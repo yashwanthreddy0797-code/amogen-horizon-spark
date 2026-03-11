@@ -61,7 +61,7 @@ const PartnerWithUs = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar variant="about" />
+      <Navbar variant="partner" />
 
       {/* Hero + Form Section */}
       <section
