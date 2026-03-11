@@ -6,7 +6,7 @@ import ProductsCDMOBanner from "@/components/products/ProductsCDMOBanner";
 import liraglutideImg from "@/assets/liraglutide.png";
 import tirzepatideImg from "@/assets/tirzepatide.png";
 import dulaglutideImg from "@/assets/dulaglutide.png";
-import productsVials from "@/assets/products-vials.jpg";
+import { TYPE, SPACING } from "@/typography";
 
 const stages = [
 "Technical Development",
