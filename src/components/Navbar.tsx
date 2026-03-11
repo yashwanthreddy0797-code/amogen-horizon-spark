@@ -503,7 +503,7 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
           {/* ===== SCROLLED (split into two separate pills like Lilly) ===== */}
           <motion.div
             key="split-nav"
-            className={`max-w-7xl mx-auto ${navText}`}
+            className={`max-w-7xl mx-auto ${isPartner ? "text-[#001965]" : navText}`}
             initial={false}
             animate={{ opacity: hideScrolledPills ? 0 : (scrolled ? 1 : 0), y: hideScrolledPills ? -10 : (scrolled ? 0 : -10), visibility: (hideScrolledPills || !scrolled) ? "hidden" as const : "visible" as const }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], visibility: { delay: scrolled ? 0 : 0.4 } }}
