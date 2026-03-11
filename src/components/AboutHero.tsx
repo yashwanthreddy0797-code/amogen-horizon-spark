@@ -70,7 +70,7 @@ const AboutHero = () => {
           </div>
 
           {/* Right: Stats stacked vertically */}
-          <div className="flex flex-col gap-0 items-center">
+          <div className="flex flex-col gap-0">
             {stats.map((stat, i) => (
               <ScrollReveal key={i} delay={0.12 + i * 0.06}>
                 <div
@@ -78,6 +78,7 @@ const AboutHero = () => {
                     borderTop: i === 0 ? "1px solid hsl(var(--border))" : "none",
                     borderBottom: "1px solid hsl(var(--border))",
                     padding: "24px 0",
+                    paddingLeft: "20%",
                   }}
                 >
                   <div className="flex items-baseline gap-1">
