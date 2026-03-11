@@ -17,7 +17,7 @@ const languages = [
 ];
 
 interface NavbarProps {
-  variant?: "default" | "cdmo" | "about" | "products";
+  variant?: "default" | "cdmo" | "about" | "products" | "news";
   hideScrolledPills?: boolean;
 }
 
@@ -35,9 +35,10 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
   const isCdmo = variant === "cdmo";
   const isAbout = variant === "about";
   const isProducts = variant === "products";
-  const isBlueText = isCdmo || isAbout || isProducts;
-  const pillColor = isProducts ? "bg-[#D5CDE8]" : isAbout ? "bg-[#b1d5f2]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
-  const pillColorExpanded = isProducts ? "bg-[#D5CDE8]" : isAbout ? "bg-[#b1d5f2]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
+  const isNews = variant === "news";
+  const isBlueText = isCdmo || isAbout || isProducts || isNews;
+  const pillColor = isNews ? "bg-[#D4D8DC]" : isProducts ? "bg-[#D5CDE8]" : isAbout ? "bg-[#b1d5f2]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
+  const pillColorExpanded = isNews ? "bg-[#D4D8DC]" : isProducts ? "bg-[#D5CDE8]" : isAbout ? "bg-[#b1d5f2]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
   // CDMO/About variant: true blue text on transparent bg; default: white text on dark bg
   const navBg = isBlueText ? "bg-transparent" : "bg-nav-dark";
   const navBgHover = isBlueText ? "bg-[#001965] shadow-2xl" : "bg-nav-dark shadow-2xl";
@@ -50,7 +51,7 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
   const navBorderColor = isBlueText ? "border-[#001965]/15" : "border-nav-dark-foreground/15";
 
   // Expanded scrolled bar: flips to True Blue bg + light text
-  const expandedTextColor = isProducts ? "text-[#D5CDE8]" : isAbout ? "text-[#b1d5f2]" : isCdmo ? "text-[#ccc5bd]" : navText;
+  const expandedTextColor = isNews ? "text-[#D4D8DC]" : isProducts ? "text-[#D5CDE8]" : isAbout ? "text-[#b1d5f2]" : isCdmo ? "text-[#ccc5bd]" : navText;
   const navPillBgExpanded = isBlueText ? "bg-[#001965]" : "bg-nav-dark";
   const navTextExpanded = isBlueText ? "text-white" : navText;
   const navTextFullExpanded = isBlueText ? "text-white" : navTextFull;
