@@ -1,5 +1,5 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import apiFdfImg from "@/assets/api-fdf-pills.png";
+import apiFdfImg from "@/assets/api-fdf-banner-main.png";
 import { TYPE, SPACING } from "@/typography";
 
 const ProductsBanner = () => {
