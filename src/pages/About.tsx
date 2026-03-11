@@ -45,9 +45,7 @@ const About = () => {
 
 
               </h1>
-              <p className="mt-8 text-lg md:text-xl max-w-2xl leading-relaxed" style={{ color: "#001965", opacity: 0.75 }}>Turning complex biosimilar science into medicines & partnerships that reach markets that need them the most 
-
-              </p>
+              <p className="mt-8 text-lg md:text-xl max-w-2xl leading-relaxed" style={{ color: "#001965", opacity: 0.75 }}>Founded in 2020. Built on Fermentation and chemical{"\n"}ligation technology. Developing a biosimilar pipeline{"\n"}and manufacturing platform for the markets that{"\n"}need them most.</p>
               <div className="flex flex-wrap gap-4 mt-10">
                 <a href="#who-we-are"
                 className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white">
