@@ -70,7 +70,7 @@ const AboutHero = () => {
           </div>
 
           {/* Right: Stats stacked vertically */}
-          <div className="flex flex-col gap-0">
+          <div className="flex flex-col gap-0 items-center">
             {stats.map((stat, i) => (
               <ScrollReveal key={i} delay={0.12 + i * 0.06}>
                 <div
