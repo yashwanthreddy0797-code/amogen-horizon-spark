@@ -191,7 +191,7 @@ const ServiceDetailOverlay = ({
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto px-8 md:px-12 lg:px-16 py-10 md:py-16">
+      <div className="flex-1 overflow-y-auto px-8 md:px-12 lg:px-16 py-10 md:py-16 scrollbar-hide" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Left — Image */}
           <motion.div
