@@ -85,14 +85,12 @@ const Products = () => {
       <main>
         {/* Hero */}
         <section className="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden" style={{ backgroundColor: "#D5CDE8" }}>
-
-          <div className="absolute inset-0 bg-footer-bg/70" />
           <div className="relative z-10 text-center px-6">
             <ScrollReveal>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-footer-foreground leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
                 Our Pipeline
               </h1>
-              <p className="text-base md:text-lg text-footer-foreground/80 mt-4 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-base md:text-lg text-muted-foreground mt-4 max-w-2xl mx-auto leading-relaxed">
                 We challenge ourselves to rethink the way medicines are developed,
                 and are investing now to bring more value to patients in the future.
               </p>
