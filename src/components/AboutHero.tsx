@@ -50,9 +50,9 @@ const AboutHero = () => {
                 }}
               >
                 {t.aboutHero.heading}
-                <em className="italic" style={{ color: "hsl(var(--primary))" }}>
+                <span style={{ color: "hsl(var(--primary))" }}>
                   {t.aboutHero.headingEm}
-                </em>
+                </span>
               </h2>
             </ScrollReveal>
 
