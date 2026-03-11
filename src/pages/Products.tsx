@@ -99,6 +99,14 @@ const Products = () => {
                 We challenge ourselves to rethink the way medicines are developed,
                 and are investing now to bring more value to patients in the future.
               </p>
+              <div className="flex flex-wrap gap-4" style={{ marginTop: SPACING.subToCta }}>
+                <a href="#pipeline" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-md border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white" style={TYPE.button}>
+                  Explore Pipeline <ArrowRight size={14} />
+                </a>
+                <a href="/partner-with-us" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-md border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white" style={TYPE.button}>
+                  Partner With Us <ArrowRight size={14} />
+                </a>
+              </div>
             </motion.div>
           </div>
         </section>
