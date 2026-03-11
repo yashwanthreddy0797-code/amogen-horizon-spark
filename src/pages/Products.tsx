@@ -80,21 +80,25 @@ const products = [
 
 const Products = () => {
   return (
-    <div className="min-h-screen bg-background" id="products-page">
+    <div className="min-h-screen bg-background">
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden" style={{ backgroundColor: "#D5CDE8" }}>
-          <div className="relative z-10 text-center px-6">
-            <ScrollReveal>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
+        <section className="relative min-h-[70vh] flex items-end overflow-hidden" style={{ backgroundColor: "#D5CDE8" }}>
+          <div className="relative z-10 w-full mx-auto pb-20 pt-40" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
+              <p style={{ ...TYPE.label, color: "#001965", opacity: 0.6, marginBottom: SPACING.labelToH2 }}>
+                <a href="/" className="hover:opacity-100 underline underline-offset-4" style={{ color: "#001965" }}>Home</a>
+                <span className="mx-2">/</span>Products
+              </p>
+              <h1 style={{ ...TYPE.h1, color: "#001965" }} className="max-w-5xl">
                 Our Pipeline
               </h1>
-              <p className="text-base md:text-lg text-muted-foreground mt-4 max-w-2xl mx-auto leading-relaxed">
+              <p style={{ ...TYPE.bodyLg, color: "#001965", opacity: 0.75, marginTop: SPACING.headingToSub }} className="max-w-2xl">
                 We challenge ourselves to rethink the way medicines are developed,
                 and are investing now to bring more value to patients in the future.
               </p>
-            </ScrollReveal>
+            </motion.div>
           </div>
         </section>
 
