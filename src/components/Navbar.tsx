@@ -17,7 +17,7 @@ const languages = [
 ];
 
 interface NavbarProps {
-  variant?: "default" | "cdmo" | "about" | "products" | "news";
+  variant?: "default" | "cdmo" | "about" | "products" | "news" | "partner";
   hideScrolledPills?: boolean;
 }
 
