@@ -83,7 +83,7 @@ const products = [
 const Products = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <Navbar variant="products" />
       <main>
         {/* Hero */}
         <section className="relative min-h-[70vh] flex items-end overflow-hidden" style={{ backgroundColor: "#D5CDE8" }}>
