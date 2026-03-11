@@ -70,35 +70,48 @@ const AboutHero = () => {
           </div>
 
           {/* Right: Stats stacked vertically */}
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-0">
             {stats.map((stat, i) => (
               <ScrollReveal key={i} delay={0.12 + i * 0.06}>
                 <div
-                  className="flex items-center justify-between"
                   style={{
                     borderTop: i === 0 ? "1px solid hsl(var(--border))" : "none",
                     borderBottom: "1px solid hsl(var(--border))",
-                    padding: "20px 0",
+                    padding: "24px 0",
                   }}
                 >
-                  <span
-                    style={{
-                      fontFamily: TYPE.display.fontFamily,
-                      fontSize: "clamp(32px, 3.5vw, 44px)",
-                      fontWeight: 700,
-                      letterSpacing: "-0.03em",
-                      color: "hsl(var(--primary))",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {stat.value}{stat.unit}
-                  </span>
+                  <div className="flex items-baseline gap-1">
+                    <span
+                      style={{
+                        fontFamily: TYPE.display.fontFamily,
+                        fontSize: "clamp(36px, 4vw, 48px)",
+                        fontWeight: 700,
+                        letterSpacing: "-0.03em",
+                        color: "hsl(var(--primary))",
+                        lineHeight: 1,
+                      }}
+                    >
+                      {stat.value}
+                    </span>
+                    {stat.unit && (
+                      <span
+                        style={{
+                          fontFamily: TYPE.h3.fontFamily,
+                          fontSize: "clamp(14px, 1.5vw, 18px)",
+                          fontWeight: 500,
+                          color: "hsl(var(--primary))",
+                        }}
+                      >
+                        {stat.unit}
+                      </span>
+                    )}
+                  </div>
                   <p
                     style={{
                       ...TYPE.bodySm,
                       color: "hsl(var(--muted-foreground))",
-                      textAlign: "right",
-                      lineHeight: 1.4,
+                      marginTop: "6px",
+                      lineHeight: 1.5,
                     }}
                   >
                     {stat.description}
