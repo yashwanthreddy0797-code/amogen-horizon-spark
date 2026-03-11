@@ -2,15 +2,15 @@ import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import newsBlueSilkImg from "@/assets/news-blue-silk.png";
-import newsAmogenBlueImg from "@/assets/news-amogen-blue.png";
-import scienceResearchImg from "@/assets/science-research.jpg";
+import newsCard1 from "@/assets/news-card-1.png";
+import newsCard2 from "@/assets/news-card-2.png";
+import newsCard3 from "@/assets/news-card-3.png";
 import { TYPE, SPACING } from "@/typography";
 
 const newsItems = [
-  { image: newsBlueSilkImg },
-  { image: newsAmogenBlueImg },
-  { image: scienceResearchImg },
+  { image: newsCard1 },
+  { image: newsCard2 },
+  { image: newsCard3 },
 ];
 
 const NewsPreview = () => {
@@ -36,7 +36,7 @@ const NewsPreview = () => {
             <ScrollReveal key={item.headline} delay={i * 0.1}>
               <a href="#" className="group flex flex-col h-full rounded-[20px] overflow-hidden relative" style={{ backgroundColor: "#F0EFED" }}>
                 <div className="overflow-hidden rounded-t-[20px]">
-                  <img src={newsItems[i].image} alt={item.headline} className="w-full h-[195px] object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width={400} height={230} decoding="async" />
+                  <img src={newsItems[i].image} alt={item.headline} className="w-full h-[195px] object-cover object-center group-hover:scale-105 transition-transform duration-500" loading="lazy" width={400} height={195} decoding="async" />
                 </div>
                 <div className="px-5 pt-6 flex-1">
                   <p style={{ ...TYPE.meta, fontSize: "10px", color: "hsl(var(--muted-foreground))", marginBottom: "10px" }}>
