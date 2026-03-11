@@ -298,9 +298,15 @@ const PartnerWithUs = () => {
                   </div>
 
                   <div className="p-6 md:p-8">
-                    <h3 className="text-lg font-bold text-foreground mb-3">
+                    <h3 className="text-lg font-bold text-foreground mb-1">
                       {office.city}
                     </h3>
+                    {office.label && (
+                      <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">
+                        {office.label}
+                      </p>
+                    )}
+                    {!office.label && <div className="mb-2" />}
                     <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                       {office.address}
                     </p>
