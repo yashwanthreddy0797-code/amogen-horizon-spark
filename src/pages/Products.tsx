@@ -85,11 +85,7 @@ const Products = () => {
       <main>
         {/* Hero */}
         <section className="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden" style={{ backgroundColor: "#D5CDE8" }}>
-          <img
-            src={productsVials}
-            alt="Pharmaceutical products"
-            className="absolute inset-0 w-full h-full object-cover" />
-          
+
           <div className="absolute inset-0 bg-footer-bg/70" />
           <div className="relative z-10 text-center px-6">
             <ScrollReveal>
