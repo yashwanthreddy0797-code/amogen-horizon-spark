@@ -30,7 +30,7 @@ const CDMO = () => {
         <CDMORfpProcess />
         <CDMORelatedContent />
         <div className="py-16" />
-        <ProductsBanner />
+        <CDMOProductsBanner />
       </main>
       <Footer />
     </div>
