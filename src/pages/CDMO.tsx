@@ -11,7 +11,7 @@ import CDMOSolutions from "@/components/cdmo/CDMOSolutions";
 import CDMORfpProcess from "@/components/cdmo/CDMORfpProcess";
 import CDMORelatedContent from "@/components/cdmo/CDMORelatedContent";
 import CDMOManufacturingGlance from "@/components/cdmo/CDMOManufacturingGlance";
-import ProductsBanner from "@/components/ProductsBanner";
+import CDMOProductsBanner from "@/components/cdmo/CDMOProductsBanner";
 
 const CDMO = () => {
   return (
