@@ -14,7 +14,7 @@ import NewsExploreMore from "@/components/news/NewsExploreMore";
 const News = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <Navbar variant="news" />
       <main>
         <NewsHero />
         <NewsDevelopments />

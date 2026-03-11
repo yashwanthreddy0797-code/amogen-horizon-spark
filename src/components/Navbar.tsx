@@ -51,7 +51,7 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
   const navBorderColor = isBlueText ? "border-[#001965]/15" : "border-nav-dark-foreground/15";
 
   // Expanded scrolled bar: flips to True Blue bg + light text
-  const expandedTextColor = isProducts ? "text-[#D5CDE8]" : isAbout ? "text-[#b1d5f2]" : isCdmo ? "text-[#ccc5bd]" : navText;
+  const expandedTextColor = isNews ? "text-[#D4D8DC]" : isProducts ? "text-[#D5CDE8]" : isAbout ? "text-[#b1d5f2]" : isCdmo ? "text-[#ccc5bd]" : navText;
   const navPillBgExpanded = isBlueText ? "bg-[#001965]" : "bg-nav-dark";
   const navTextExpanded = isBlueText ? "text-white" : navText;
   const navTextFullExpanded = isBlueText ? "text-white" : navTextFull;
