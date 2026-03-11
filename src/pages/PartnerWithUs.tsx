@@ -19,9 +19,10 @@ const enquiryTypes = [
 const offices = [
   {
     city: "Hyderabad, India",
-    address: "AMOGEN Biosciences Pvt. Ltd., Genome Valley, Shamirpet, Hyderabad, Telangana 500078, India",
-    phone: "+91 40 2345 6789",
-    mapQuery: "Genome+Valley+Hyderabad+India",
+    address: "AMOGEN Biosciences Pvt. Ltd., 10th Floor, Pardha Picasa, Durgam Cheruvu Rd, D Block, Kavuri Hills, Madhapur, Hyderabad, Telangana 500081, India",
+    phone: "+91 90002 28231",
+    mapQuery: "Amogen+Pharma+Kavuri+Hills+Madhapur+Hyderabad",
+    mapLink: "https://www.google.com/maps/place/Amogen+Pharma/@17.4400574,78.3897259,825m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bcb91b7b904b703:0x6f28f2b17ef9c42a!8m2!3d17.4400574!4d78.3897259!16s%2Fg%2F11rv0b129l",
   },
   {
     city: "Boston, Massachusetts USA",
