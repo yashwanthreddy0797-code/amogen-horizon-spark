@@ -35,7 +35,8 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
   const isCdmo = variant === "cdmo";
   const isAbout = variant === "about";
   const isProducts = variant === "products";
-  const isBlueText = isCdmo || isAbout || isProducts;
+  const isNews = variant === "news";
+  const isBlueText = isCdmo || isAbout || isProducts || isNews;
   const pillColor = isProducts ? "bg-[#D5CDE8]" : isAbout ? "bg-[#b1d5f2]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
   const pillColorExpanded = isProducts ? "bg-[#D5CDE8]" : isAbout ? "bg-[#b1d5f2]" : isCdmo ? "bg-[#ccc5bd]" : "bg-nav-dark";
   // CDMO/About variant: true blue text on transparent bg; default: white text on dark bg
