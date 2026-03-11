@@ -50,7 +50,7 @@ const About = () => {
                 <a href="#who-we-are"
                 className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white">
 
-                  Learn More <ArrowRight size={14} />
+                  Explore Our Pipeline <ArrowRight size={14} />
                 </a>
                 <a
                   href="#careers"
