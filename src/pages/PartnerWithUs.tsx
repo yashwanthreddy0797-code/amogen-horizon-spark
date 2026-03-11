@@ -309,7 +309,7 @@ const PartnerWithUs = () => {
                         {office.phone}
                       </a>
                       <a
-                        href={`https://maps.google.com/?q=${office.mapQuery}`}
+                        href={office.mapLink || `https://maps.google.com/?q=${office.mapQuery}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
