@@ -247,36 +247,8 @@ const Science = () => {
         {/* TECHNOLOGY ACCORDION */}
         <ScienceTechnologyAccordion />
 
-        {/* COMPARABILITY DATA */}
-        <section id="comparability-data" className="py-20 lg:py-28 bg-white">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-            <ScrollReveal>
-              <div className="max-w-3xl mb-16">
-                <p className="text-xs uppercase tracking-[0.2em] text-primary font-bold mb-4">Analytical Excellence</p>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-                  Comparability <em className="italic">data</em>
-                </h2>
-                <p className="text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
-                  Comprehensive head-to-head analytical, functional, and clinical comparability studies demonstrating biosimilarity to reference products across all critical quality attributes.
-                </p>
-              </div>
-            </ScrollReveal>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {comparabilityMetrics.map((metric, i) =>
-              <ScrollReveal key={metric.label} delay={i * 0.1}>
-                  <div className="bg-card rounded-2xl p-8 shadow-sm h-full text-center">
-                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
-                      <BarChart3 size={24} className="text-primary" />
-                    </div>
-                    <p className="text-4xl font-semibold text-primary mb-2">{metric.value}</p>
-                    <h3 className="text-base font-bold text-foreground mb-2">{metric.label}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{metric.desc}</p>
-                  </div>
-                </ScrollReveal>
-              )}
-            </div>
-          </div>
-        </section>
+
+
 
         {/* RESEARCH CAPABILITIES */}
         
