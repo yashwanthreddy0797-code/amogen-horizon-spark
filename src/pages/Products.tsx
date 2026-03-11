@@ -84,7 +84,7 @@ const Products = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden">
+        <section className="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden" style={{ backgroundColor: "#D5CDE8" }}>
           <img
             src={productsVials}
             alt="Pharmaceutical products"
