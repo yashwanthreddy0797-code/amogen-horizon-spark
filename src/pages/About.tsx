@@ -41,24 +41,24 @@ const About = () => {
                 <a href="/" className="hover:opacity-100 underline underline-offset-4" style={{ color: "#001965" }}>Home</a>
                 <span className="mx-2">/</span>About
               </p>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[1.05] max-w-5xl" style={{ color: "#001965" }}>
-                We are a peptide manufacturing company.
+              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[1.05] max-w-5xl" style={{ color: "#001965" }}>We are a peptide & biologic biosimilar company.
+
+
               </h1>
               <p className="mt-8 text-lg md:text-xl max-w-2xl leading-relaxed" style={{ color: "#001965", opacity: 0.75 }}>Turning complex biosimilar science into medicines & partnerships that reach markets that need them the most 
 
               </p>
               <div className="flex flex-wrap gap-4 mt-10">
-                <a
-                  href="#who-we-are"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white">
+                <a href="#who-we-are"
+                className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white">
 
                   Learn More <ArrowRight size={14} />
                 </a>
                 <a
                   href="#careers"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white">
+                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full border-2 border-[#001965] text-[#001965] transition-all duration-300 hover:bg-[#001965] hover:text-white">Learn More
 
-                  Careers <ArrowRight size={14} />
+                  <ArrowRight size={14} />
                 </a>
               </div>
             </motion.div>
