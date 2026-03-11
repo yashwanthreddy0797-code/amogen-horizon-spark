@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import { motion } from "framer-motion";
 import ProductsCDMOBanner from "@/components/products/ProductsCDMOBanner";
+import semaglutideImg from "@/assets/semaglutide.png";
 import liraglutideImg from "@/assets/liraglutide.png";
 import tirzepatideImg from "@/assets/tirzepatide.png";
 import dulaglutideImg from "@/assets/dulaglutide.png";
