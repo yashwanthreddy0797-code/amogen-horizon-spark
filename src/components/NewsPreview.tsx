@@ -2,15 +2,15 @@ import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import newsBlueSilkImg from "@/assets/news-blue-silk.png";
-import newsAmogenBlueImg from "@/assets/news-amogen-blue.png";
-import scienceResearchImg from "@/assets/science-research.jpg";
+import newsCard1 from "@/assets/news-card-1.png";
+import newsCard2 from "@/assets/news-card-2.png";
+import newsCard3 from "@/assets/news-card-3.png";
 import { TYPE, SPACING } from "@/typography";
 
 const newsItems = [
-  { image: newsBlueSilkImg },
-  { image: newsAmogenBlueImg },
-  { image: scienceResearchImg },
+  { image: newsCard1 },
+  { image: newsCard2 },
+  { image: newsCard3 },
 ];
 
 const NewsPreview = () => {
