@@ -35,7 +35,7 @@ const NewsPreview = () => {
           {items.map((item, i) => (
             <ScrollReveal key={item.headline} delay={i * 0.1}>
               <a href="#" className="group flex flex-col h-full rounded-[20px] overflow-hidden relative" style={{ backgroundColor: "#F0EFED" }}>
-                <div className="overflow-hidden rounded-t-[20px]">
+                <div className="mx-3 mt-3 overflow-hidden rounded-[14px] border border-border/40">
                   <img src={newsItems[i].image} alt={item.headline} className="w-full h-[195px] object-cover object-center group-hover:scale-105 transition-transform duration-500" loading="lazy" width={400} height={195} decoding="async" />
                 </div>
                 <div className="px-5 pt-6 flex-1">
