@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["'DM Sans'", "'Helvetica Neue'", "sans-serif"],
+        sans: ["'Outfit'", "'Helvetica Neue'", "sans-serif"],
         mono: ["'DM Mono'", "monospace"],
       },
       colors: {
