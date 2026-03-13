@@ -23,10 +23,10 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <h1 style={{ ...TYPE.display, color: "hsl(var(--foreground))" }} className="max-w-4xl">
+          <h1 style={{ ...TYPE.display, color: "#FFFFFF" }} className="max-w-4xl">
             {t.hero.title}
           </h1>
-          <p style={{ ...TYPE.bodyLg, color: "hsl(var(--foreground))", marginTop: SPACING.headingToSub }} className="max-w-2xl">
+          <p style={{ ...TYPE.bodyLg, color: "#FFFFFF", opacity: 0.85, marginTop: SPACING.headingToSub }} className="max-w-2xl">
             {t.hero.description}
           </p>
         </motion.div>
