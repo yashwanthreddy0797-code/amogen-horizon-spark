@@ -131,7 +131,7 @@ const Science = () => {
                 <a href="/" className="hover:text-primary-foreground underline underline-offset-4">{t.sciencePage.breadcrumbHome}</a>
                 <span className="mx-2">/</span>{t.sciencePage.breadcrumbScience}
               </p>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-primary-foreground leading-[1.05] max-w-5xl">{t.sciencePage.heroTitle}</h1>
+              <h1 className="max-w-5xl text-primary-foreground" style={{ fontFamily: "'Outfit', 'Helvetica Neue', sans-serif", fontSize: "clamp(40px, 6vw, 72px)", fontWeight: 300, lineHeight: 1.05, letterSpacing: "-0.03em" }}>{t.sciencePage.heroTitle}</h1>
               <p className="mt-8 text-lg md:text-xl text-primary-foreground/80 max-w-2xl leading-relaxed">{t.sciencePage.heroDesc}</p>
             </motion.div>
           </div>
