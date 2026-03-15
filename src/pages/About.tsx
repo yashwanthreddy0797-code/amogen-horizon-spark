@@ -41,7 +41,7 @@ const About = () => {
                 <a href="/" className="hover:opacity-100 underline underline-offset-4" style={{ color: "#001965" }}>Home</a>
                 <span className="mx-2">/</span>About
               </p>
-              <h1 className="text-5xl md:text-6xl xl:text-8xl font-extrabold leading-[1.05] max-w-5xl lg:text-6xl font-sans text-primary" style={{ color: "#001965" }}>We are a peptide & biologic biosimilar company.
+              <h1 className="max-w-5xl" style={{ ...({ fontFamily: "'Outfit', 'Helvetica Neue', sans-serif", fontSize: "clamp(40px, 6vw, 72px)", fontWeight: 300, lineHeight: 1.05, letterSpacing: "-0.03em" }), color: "#001965" }}>We are a peptide & biologic biosimilar company.
 
 
               </h1>
