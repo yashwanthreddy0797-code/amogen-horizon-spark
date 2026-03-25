@@ -95,7 +95,9 @@ const Hero = () => {
               fontSize: "clamp(28px, 4vw, 48px)",
               color: "#FFFFFF",
               fontFamily: "'Outfit', sans-serif",
-              fontWeight: 300,
+              fontWeight: 400,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.05,
             }}
           >
             {t.hero.title}
