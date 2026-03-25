@@ -169,7 +169,7 @@ const ResearchHighlight = () => {
           return (
             <div
               key={card.title}
-              className={isLast ? "relative" : "sticky"}
+              className="sticky"
               style={{
                 top: isLast ? undefined : `${72 + index * CARD_HEADER_HEIGHT}px`,
                 zIndex: index + 1,
