@@ -187,7 +187,7 @@ const Hero = () => {
                 {/* CTA Button */}
                 <a
                   href={slide.href}
-                  className="inline-flex items-center self-start transition-all"
+                  className="inline-flex items-center self-start transition-all hero-cta-mint"
                   style={{
                     marginTop: "24px",
                     background: "#3ECFBF",
