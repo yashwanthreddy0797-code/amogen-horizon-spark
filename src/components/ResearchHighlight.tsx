@@ -19,9 +19,9 @@ const cards = [
       "Preparative Chromatography",
       "Bulk Lyophilisation",
     ],
-    // Deep indigo blue — card 1
-    bg: "hsl(232, 60%, 30%)",
-    headerBg: "hsl(232, 60%, 25%)",
+    // Deep navy — card 1
+    bg: "hsl(227, 100%, 20%)",
+    headerBg: "hsl(227, 100%, 16%)",
     dark: true,
   },
   {
@@ -38,9 +38,9 @@ const cards = [
       "Soluble + Inclusion Body Recovery",
       "Integrated Purification Platform",
     ],
-    // Lavender purple — card 2
-    bg: "hsl(255, 60%, 78%)",
-    headerBg: "hsl(255, 60%, 72%)",
+    // Sand warm — card 2
+    bg: "hsl(30, 15%, 80%)",
+    headerBg: "hsl(30, 15%, 75%)",
     dark: false,
   },
   {
@@ -58,9 +58,9 @@ const cards = [
       "cAMP Bioassay",
       "CD-Spectrometry",
     ],
-    // Very light periwinkle — card 3
-    bg: "hsl(235, 45%, 92%)",
-    headerBg: "hsl(235, 45%, 88%)",
+    // Light blue mist — card 3
+    bg: "hsl(207, 55%, 88%)",
+    headerBg: "hsl(207, 55%, 83%)",
     dark: false,
   },
 ];
