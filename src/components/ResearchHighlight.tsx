@@ -212,7 +212,7 @@ const ResearchHighlight = () => {
                         fontSize: "clamp(28px, 3.5vw, 44px)",
                         letterSpacing: "0.02em",
                       }}
-                      className="text-white"
+                      style={{ color: card.textColor }}
                     >
                       {card.title}
                     </h3>
