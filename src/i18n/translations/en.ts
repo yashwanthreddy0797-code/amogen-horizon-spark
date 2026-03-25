@@ -39,7 +39,7 @@ export const en = {
 
   // Hero
   hero: {
-    title: "Scale breaks peptide quality, Our Platform doesn't .",
+    title: "Scale breaks peptide quality, Our Platform doesn't.",
     words: [],
     description: "Amogen's fermentation and chemical ligation platform manufactures complex GLP-1 agonists, insulin analogues, and immunology biosimilars — with consistent purity at commercial scale.",
     cta: "",
