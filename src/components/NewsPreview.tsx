@@ -2,9 +2,9 @@ import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import newsCard1 from "@/assets/news-card-1.png";
-import newsCard2 from "@/assets/news-card-2.png";
-import newsCard3 from "@/assets/news-card-3.png";
+import newsCard1 from "@/assets/news-gradient-1.jpg";
+import newsCard2 from "@/assets/news-gradient-2.jpg";
+import newsCard3 from "@/assets/news-gradient-3.jpg";
 import { TYPE, SPACING } from "@/typography";
 
 const newsItems = [
