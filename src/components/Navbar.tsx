@@ -44,11 +44,12 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
   // CDMO/About variant: true blue text on transparent bg; Partner: white text; default: white text on dark bg
   const navBg = (isBlueText || isPartner) ? "bg-transparent" : "bg-nav-dark";
   const navBgHover = (isBlueText || isPartner) ? "bg-[#001965] shadow-2xl" : "bg-nav-dark shadow-2xl";
-  const navText = isPartner ? "text-white" : isBlueText ? "text-[#001965]" : "text-nav-dark-foreground";
-  const navTextMuted = isPartner ? "text-white/70" : isBlueText ? "text-[#001965]/70" : "text-nav-dark-foreground/80";
-  const navTextFull = isPartner ? "text-white" : isBlueText ? "text-[#001965]" : "text-nav-dark-foreground";
-  const navHoverBg = isPartner ? "hover:bg-white/10" : isBlueText ? "hover:bg-[#001965]/10" : "hover:bg-nav-dark-foreground/10";
-  const navActiveBg = isPartner ? "bg-white/15" : isBlueText ? "bg-[#001965]/15" : "bg-nav-dark-foreground/15";
+  const isWhiteNavText = isPartner || isAbout;
+  const navText = isWhiteNavText ? "text-white" : isBlueText ? "text-[#001965]" : "text-nav-dark-foreground";
+  const navTextMuted = isWhiteNavText ? "text-white/70" : isBlueText ? "text-[#001965]/70" : "text-nav-dark-foreground/80";
+  const navTextFull = isWhiteNavText ? "text-white" : isBlueText ? "text-[#001965]" : "text-nav-dark-foreground";
+  const navHoverBg = isWhiteNavText ? "hover:bg-white/10" : isBlueText ? "hover:bg-[#001965]/10" : "hover:bg-nav-dark-foreground/10";
+  const navActiveBg = isWhiteNavText ? "bg-white/15" : isBlueText ? "bg-[#001965]/15" : "bg-nav-dark-foreground/15";
   const navPillBg = pillColor;
   const navBorderColor = (isBlueText || isPartner) ? "border-[#001965]/15" : "border-nav-dark-foreground/15";
 
