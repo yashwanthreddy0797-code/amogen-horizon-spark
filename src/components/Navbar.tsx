@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Search, Globe, ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage, Language } from "@/i18n/LanguageContext";
+import amogenLogo from "@/assets/AmogenLogoWhite.png";
 import aboutHero from "@/assets/about-hero.jpg";
 import productsVials from "@/assets/products-vials.jpg";
 import manufacturing from "@/assets/manufacturing.jpg";
