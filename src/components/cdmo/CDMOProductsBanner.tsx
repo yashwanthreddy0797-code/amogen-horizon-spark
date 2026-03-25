@@ -19,7 +19,7 @@ const CDMOProductsBanner = () => {
             </p>
             <div className="w-16 h-px bg-border mb-6" />
             <h2 style={{ ...TYPE.h2, color: "hsl(var(--foreground))", marginBottom: SPACING.headingToSub }}>
-              Explore our API's
+              TEXT TO INSERT
             </h2>
             <p style={{ ...TYPE.body, color: "hsl(var(--muted-foreground))", marginBottom: SPACING.subToCta }} className="max-w-lg">
               Check out a list of active pharmaceutical ingredients (APIs) and Finished Dosage Forms (FDFs) we offer

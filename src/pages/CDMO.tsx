@@ -25,7 +25,7 @@ const CDMO = () => {
         <CDMOTimeline />
         <CDMOCapabilities />
         <CDMOMicrobialExpertise />
-        <CDMOIntegratedServices />
+        
         <MicrobialScience />
         <CDMOPeptideCards />
         <CDMOSolutions />
