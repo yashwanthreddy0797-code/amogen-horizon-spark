@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Search, Globe, ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage, Language } from "@/i18n/LanguageContext";
+import amogenLogo from "@/assets/AmogenLogoWhite.png";
 import aboutHero from "@/assets/about-hero.jpg";
 import productsVials from "@/assets/products-vials.jpg";
 import manufacturing from "@/assets/manufacturing.jpg";
@@ -410,9 +411,7 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
                 return (
               <div className="relative flex items-center justify-between px-6 md:px-8 py-2">
                 <a href="/" className="shrink-0 z-10">
-                  <span className={`text-base md:text-lg font-bold tracking-tight ${_text}`}>
-                    AMOGEN
-                  </span>
+                  <img src={amogenLogo} alt="AMOGEN Pharma" className="h-7 md:h-8 w-auto" />
                 </a>
 
                 <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
@@ -528,9 +527,7 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
                   >
                     <div className="flex items-center gap-2 px-4 md:px-5 py-2.5">
                       <a href="/" className="shrink-0">
-                         <span className={`text-base font-bold tracking-tight ${isPartner ? "text-[#001965]" : navTextFull}`}>
-                          AMOGEN
-                        </span>
+                        <img src={amogenLogo} alt="AMOGEN Pharma" className="h-6 w-auto" />
                       </a>
                       <div
                         className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
@@ -602,9 +599,7 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
                     {/* Top bar with logo, nav items, and close button */}
                     <div className="relative flex items-center justify-between px-6 md:px-8 py-2">
                       <a href="/" className="shrink-0 z-10">
-                        <span className={`text-base md:text-lg font-bold tracking-tight ${navTextFullExpanded}`}>
-                          AMOGEN
-                        </span>
+                        <img src={amogenLogo} alt="AMOGEN Pharma" className="h-7 md:h-8 w-auto" />
                       </a>
 
                       <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
