@@ -1,6 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { TYPE, SPACING } from "@/typography";
-import cardBgImg from "@/assets/card-bg-blue.png";
+import cardBgImg from "@/assets/card-bg-blue.jpg";
 
 const stats = [
 {
