@@ -38,9 +38,9 @@ const cards = [
       "Soluble + Inclusion Body Recovery",
       "Integrated Purification Platform",
     ],
-    // Lavender purple — card 2
-    bg: "hsl(255, 60%, 78%)",
-    headerBg: "hsl(255, 60%, 72%)",
+    // Sand warm — card 2
+    bg: "hsl(30, 15%, 80%)",
+    headerBg: "hsl(30, 15%, 75%)",
     dark: false,
   },
   {
