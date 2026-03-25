@@ -176,7 +176,7 @@ const Hero = () => {
                   }}
                   className="max-w-xl"
                 >
-                  Precision biosimilars. Commercial scale.
+                  {slide.title}
                 </h2>
 
                 {/* Sub-copy */}
