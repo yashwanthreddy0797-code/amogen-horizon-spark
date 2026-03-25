@@ -161,7 +161,7 @@ const Hero = () => {
                     borderRadius: "4px",
                   }}
                 >
-                  ABOUT AMOGEN
+                  {slide.category}
                 </span>
 
                 {/* Headline */}
