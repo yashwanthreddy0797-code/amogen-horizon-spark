@@ -8,11 +8,12 @@ const Hero = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: "#001965" }}>
+    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: "#e8e8ec" }}>
       <img
         src={heroBg}
         alt=""
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        className="absolute pointer-events-none"
+        style={{ right: "-10%", top: "-20%", width: "75%", height: "140%", objectFit: "cover", transform: "rotate(-90deg)" }}
         loading="eager"
         decoding="async"
         fetchPriority="high"
