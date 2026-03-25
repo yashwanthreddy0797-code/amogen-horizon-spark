@@ -27,32 +27,6 @@ const CDMOManufacturingGlance = () => {
           paddingBottom: SPACING.sectionPy.desktop,
         }}
       >
-        {/* Header — centered */}
-        <ScrollReveal>
-          <div className="text-center mb-6">
-            <p
-              style={{
-                ...TYPE.label,
-                color: "#2A918B",
-                marginBottom: SPACING.labelToH2,
-              }}
-            >
-              Manufacturing Capabilities
-            </p>
-            <p
-              style={{
-                ...TYPE.body,
-                color: "hsl(var(--muted-foreground))",
-                marginTop: "16px",
-                maxWidth: "640px",
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}
-            >
-              World-class infrastructure designed for peptide and protein manufacturing at every scale.
-            </p>
-          </div>
-        </ScrollReveal>
 
         {/* Image banner — wide with rounded corners */}
         <ScrollReveal delay={0.1}>
