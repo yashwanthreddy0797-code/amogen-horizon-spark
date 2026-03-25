@@ -410,7 +410,7 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
                 const _activeBg = isBlueText && isActive ? navActiveBgExpanded : navActiveBg;
                 return (
               <div className="relative flex items-center justify-between px-6 md:px-8 py-2">
-                <a href="/" className="shrink-0 z-10">
+                <a href="/" className={`shrink-0 z-10 ${isAbout && !scrolled ? 'opacity-0 pointer-events-none' : ''}`}>
                   <img src={amogenLogo} alt="AMOGEN Pharma" className="h-7 md:h-8 w-auto" />
                 </a>
 

@@ -87,7 +87,7 @@ const Hero = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="hidden md:flex items-start"
         >
-          <img src={amogenLogo} alt="AMOGEN Pharma" className="w-auto" style={{ height: "clamp(40px, 5vw, 64px)" }} />
+          <img src={amogenLogo} alt="AMOGEN Pharma" className="w-auto" style={{ height: "clamp(56px, 7vw, 96px)" }} />
         </motion.div>
 
         {/* Right column — headline, right-aligned */}
