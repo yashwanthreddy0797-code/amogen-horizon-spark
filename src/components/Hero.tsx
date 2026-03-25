@@ -17,9 +17,11 @@ const Hero = () => {
         decoding="async"
         fetchPriority="high"
       />
-      {/* Corner opacity fades */}
+      {/* Full blur overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "radial-gradient(ellipse at top left, hsla(0,0%,92%,0.7) 0%, transparent 50%), radial-gradient(ellipse at top right, hsla(0,0%,92%,0.7) 0%, transparent 50%), radial-gradient(ellipse at bottom left, hsla(0,0%,92%,0.65) 0%, transparent 50%), radial-gradient(ellipse at bottom right, hsla(0,0%,92%,0.65) 0%, transparent 50%)"
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        background: "hsla(220, 60%, 95%, 0.35)"
       }} />
       <div className="relative w-full mx-auto py-32" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <motion.div
