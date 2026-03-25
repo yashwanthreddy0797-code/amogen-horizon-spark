@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { TYPE, SPACING } from "@/typography";
+import amogenLogo from "@/assets/AmogenLogoWhite.png";
 import facilityImg from "@/assets/facility-1.jpg";
 import manufacturingImg from "@/assets/manufacturing.jpg";
 import researchImg from "@/assets/research-lab.jpg";
