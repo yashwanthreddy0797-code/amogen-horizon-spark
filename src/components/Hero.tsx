@@ -122,7 +122,7 @@ const Hero = () => {
           paddingRight: SPACING.sectionPx,
         }}
       >
-        <div className="relative w-full overflow-hidden rounded-2xl" style={{ minHeight: 380 }}>
+        <div className="relative w-full overflow-hidden rounded-2xl" style={{ minHeight: 460 }}>
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={current}
@@ -133,7 +133,7 @@ const Hero = () => {
               exit="exit"
               transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               className="relative w-full rounded-2xl overflow-hidden"
-              style={{ minHeight: 380 }}
+              style={{ minHeight: 460 }}
             >
               {/* Slide image */}
               <img
@@ -145,7 +145,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-black/40" />
 
               {/* Slide content */}
-              <div className="relative z-10 flex flex-col justify-end h-full p-8 md:p-12" style={{ minHeight: 380 }}>
+              <div className="relative z-10 flex flex-col justify-end h-full p-8 md:p-14" style={{ minHeight: 460 }}>
                 {/* Badge */}
                 <span
                   className="inline-block self-start"
@@ -161,7 +161,7 @@ const Hero = () => {
                     borderRadius: "4px",
                   }}
                 >
-                  ABOUT AMOGEN
+                  {slide.category}
                 </span>
 
                 {/* Headline */}
@@ -176,7 +176,7 @@ const Hero = () => {
                   }}
                   className="max-w-xl"
                 >
-                  Precision biosimilars. Commercial scale.
+                  {slide.title}
                 </h2>
 
                 {/* Sub-copy */}
@@ -191,7 +191,7 @@ const Hero = () => {
                     maxWidth: "460px",
                   }}
                 >
-                  Amogen manufactures GLP-1 agonists, insulin analogues and immunology biosimilars — with consistent purity at commercial scale.
+                  {slide.description}
                 </p>
 
                 {/* CTA Button */}
@@ -212,7 +212,7 @@ const Hero = () => {
                     padding: "14px 32px",
                   }}
                 >
-                  EXPLORE PIPELINE
+                  {slide.cta}
                 </a>
               </div>
             </motion.div>
