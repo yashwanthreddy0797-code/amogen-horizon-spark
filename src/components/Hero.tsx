@@ -133,7 +133,7 @@ const Hero = () => {
               exit="exit"
               transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               className="relative w-full rounded-2xl overflow-hidden"
-              style={{ minHeight: 380 }}
+              style={{ minHeight: 460 }}
             >
               {/* Slide image */}
               <img
