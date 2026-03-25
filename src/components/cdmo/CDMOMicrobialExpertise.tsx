@@ -107,18 +107,12 @@ const CDMOMicrobialExpertise = () => {
                       <p className="text-sm md:text-base text-white/80 leading-relaxed">
                         Advancements in microbial manufacturing of biopharmaceuticals
                       </p>
-                      <button className="mt-3 inline-flex items-center gap-1 text-sm font-semibold px-5 py-2 rounded-md transition-colors bg-primary-foreground text-accent">
-                        Read more &gt;
-                      </button>
                     </div>
 
                     <div>
                       <p className="text-sm md:text-base text-white/80 leading-relaxed">
                         Setting the standard with plasmid DNA production
                       </p>
-                      <button className="mt-3 inline-flex items-center gap-1 text-sm font-semibold px-5 py-2 rounded-md transition-colors bg-primary-foreground text-accent">
-                        Read more &gt;
-                      </button>
                     </div>
                   </div>
                 </div>
