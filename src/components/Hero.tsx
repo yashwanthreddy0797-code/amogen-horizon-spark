@@ -92,6 +92,7 @@ const Hero = () => {
           <h1
             style={{
               ...TYPE.display,
+              fontSize: "clamp(28px, 4vw, 48px)",
               color: "#FFFFFF",
               fontFamily: "'Outfit', sans-serif",
               fontWeight: 300,
