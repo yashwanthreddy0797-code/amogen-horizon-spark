@@ -19,12 +19,12 @@ const cards = [
       "Preparative Chromatography",
       "Bulk Lyophilisation",
     ],
-    bg: "rgba(0, 25, 101, 0.7)",
+    bg: "rgba(228, 228, 232, 0.75)",
     blur: 20,
-    headerBg: "rgba(0, 25, 101, 0.85)",
-    accentColor: "#FFFFFF",
-    textColor: "white",
-    dark: true,
+    headerBg: "rgba(228, 228, 232, 0.75)",
+    accentColor: "#0B1E33",
+    textColor: "#0B1E33",
+    dark: false,
   },
   {
     title: "R&D Capabilities",
@@ -40,9 +40,9 @@ const cards = [
       "Soluble + Inclusion Body Recovery",
       "Integrated Purification Platform",
     ],
-    bg: "rgba(229, 231, 235, 0.4)",
-    blur: 30,
-    headerBg: "rgba(229, 231, 235, 0.55)",
+    bg: "rgba(211, 214, 218, 0.7)",
+    blur: 25,
+    headerBg: "rgba(211, 214, 218, 0.7)",
     accentColor: "#0B1E33",
     textColor: "#0B1E33",
     dark: false,
@@ -62,12 +62,12 @@ const cards = [
       "cAMP Bioassay",
       "CD-Spectrometry",
     ],
-    bg: "rgba(0, 163, 173, 0.6)",
+    bg: "rgba(195, 200, 205, 0.65)",
     blur: 25,
-    headerBg: "rgba(0, 163, 173, 0.75)",
-    accentColor: "#FFFFFF",
-    textColor: "white",
-    dark: true,
+    headerBg: "rgba(195, 200, 205, 0.65)",
+    accentColor: "#0B1E33",
+    textColor: "#0B1E33",
+    dark: false,
   },
 ];
 
@@ -169,9 +169,9 @@ const ResearchHighlight = () => {
           return (
             <div
               key={card.title}
-              className={isLast ? "relative" : "sticky"}
+              className="sticky"
               style={{
-                top: isLast ? undefined : `${72 + index * CARD_HEADER_HEIGHT}px`,
+                top: `${72 + index * CARD_HEADER_HEIGHT}px`,
                 zIndex: index + 1,
                 marginBottom: isLast ? 0 : 0,
               }}
