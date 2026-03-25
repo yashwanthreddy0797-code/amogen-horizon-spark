@@ -17,18 +17,25 @@ const Hero = () => {
         decoding="async"
         fetchPriority="high"
       />
+      {/* Corner opacity fades */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "radial-gradient(ellipse at top left, hsla(0,0%,92%,0.7) 0%, transparent 50%), radial-gradient(ellipse at top right, hsla(0,0%,92%,0.7) 0%, transparent 50%), radial-gradient(ellipse at bottom left, hsla(0,0%,92%,0.65) 0%, transparent 50%), radial-gradient(ellipse at bottom right, hsla(0,0%,92%,0.65) 0%, transparent 50%)"
+      }} />
       <div className="relative w-full mx-auto py-32" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <h1 style={{ ...TYPE.display, color: "#001965", fontFamily: "'Outfit', sans-serif", fontWeight: 300 }} className="max-w-4xl">
-            {t.hero.title}
-          </h1>
-          <p style={{ ...TYPE.bodyLg, color: "#001965", opacity: 0.8, marginTop: SPACING.headingToSub, fontFamily: "'Outfit', sans-serif", fontWeight: 300 }} className="max-w-2xl">
-            {t.hero.description}
-          </p>
+          {/* Blue backdrop behind text */}
+          <div className="inline-block rounded-xl px-6 py-4" style={{ background: "hsla(222, 100%, 20%, 0.12)", backdropFilter: "blur(12px)" }}>
+            <h1 style={{ ...TYPE.display, color: "#001965", fontFamily: "'Outfit', sans-serif", fontWeight: 300 }} className="max-w-4xl">
+              {t.hero.title}
+            </h1>
+            <p style={{ ...TYPE.bodyLg, color: "#001965", opacity: 0.8, marginTop: SPACING.headingToSub, fontFamily: "'Outfit', sans-serif", fontWeight: 300 }} className="max-w-2xl">
+              {t.hero.description}
+            </p>
+          </div>
         </motion.div>
       </div>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="absolute bottom-8 left-6 md:left-12 lg:left-16">
