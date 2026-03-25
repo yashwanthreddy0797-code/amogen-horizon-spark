@@ -145,7 +145,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-black/40" />
 
               {/* Slide content */}
-              <div className="relative z-10 flex flex-col justify-end h-full p-8 md:p-12" style={{ minHeight: 380 }}>
+              <div className="relative z-10 flex flex-col justify-end h-full p-8 md:p-14" style={{ minHeight: 460 }}>
                 {/* Badge */}
                 <span
                   className="inline-block self-start"
