@@ -191,7 +191,7 @@ const Hero = () => {
                     maxWidth: "460px",
                   }}
                 >
-                  Amogen manufactures GLP-1 agonists, insulin analogues and immunology biosimilars — with consistent purity at commercial scale.
+                  {slide.description}
                 </p>
 
                 {/* CTA Button */}
