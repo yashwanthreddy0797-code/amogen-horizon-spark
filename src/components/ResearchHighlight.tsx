@@ -73,8 +73,6 @@ const cards = [
 
 const CARD_HEADER_HEIGHT = 48;
 
-/* Topographic SVG pattern for card 3 */
-const topoPattern = `url("data:image/svg+xml,%3Csvg width='600' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'%3E%3Cellipse cx='300' cy='300' rx='280' ry='200'/%3E%3Cellipse cx='300' cy='300' rx='240' ry='170'/%3E%3Cellipse cx='300' cy='300' rx='200' ry='140'/%3E%3Cellipse cx='300' cy='300' rx='160' ry='110'/%3E%3Cellipse cx='300' cy='300' rx='120' ry='80'/%3E%3Cellipse cx='300' cy='300' rx='80' ry='50'/%3E%3Cellipse cx='300' cy='300' rx='40' ry='25'/%3E%3Cellipse cx='150' cy='450' rx='180' ry='120'/%3E%3Cellipse cx='150' cy='450' rx='140' ry='90'/%3E%3Cellipse cx='150' cy='450' rx='100' ry='60'/%3E%3Cellipse cx='450' cy='150' rx='160' ry='110'/%3E%3Cellipse cx='450' cy='150' rx='120' ry='80'/%3E%3Cellipse cx='450' cy='150' rx='80' ry='50'/%3E%3C/g%3E%3C/svg%3E")`;
 
 const ResearchHighlight = () => {
   const { t } = useLanguage();
