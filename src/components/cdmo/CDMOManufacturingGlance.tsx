@@ -28,10 +28,10 @@ const CDMOManufacturingGlance = () => {
         }}
       >
 
-        {/* Image banner — wide with rounded corners */}
+        {/* Image banner with overlay text */}
         <ScrollReveal delay={0.1}>
           <div
-            className="w-full overflow-hidden rounded-2xl shadow-lg mb-14"
+            className="w-full overflow-hidden rounded-2xl shadow-lg mb-14 relative"
             style={{ maxHeight: "380px" }}
           >
             <img
@@ -41,6 +41,22 @@ const CDMOManufacturingGlance = () => {
               style={{ display: "block", minHeight: "280px" }}
               loading="lazy"
             />
+            {/* Gradient overlay for text legibility */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
+            <h2
+              className="absolute top-0 left-0 w-full"
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: 300,
+                fontSize: "clamp(28px, 4vw, 48px)",
+                lineHeight: 1.1,
+                letterSpacing: "-0.03em",
+                color: "#ffffff",
+                padding: "32px 40px",
+              }}
+            >
+              Bringing your biologics to life.
+            </h2>
           </div>
         </ScrollReveal>
 
