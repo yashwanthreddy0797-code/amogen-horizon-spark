@@ -19,12 +19,12 @@ const cards = [
       "Preparative Chromatography",
       "Bulk Lyophilisation",
     ],
-    // Midnight Navy with Gold accents
-    bg: "#0A192F",
-    headerBg: "rgba(8, 20, 38, 0.95)",
-    accentColor: "#D4AF37",
+    bg: "rgba(11, 30, 51, 0.7)",
+    blur: 20,
+    headerBg: "rgba(11, 30, 51, 0.85)",
+    accentColor: "#00A3AD",
+    textColor: "white",
     dark: true,
-    cardStyle: "midnight" as const,
   },
   {
     title: "R&D Capabilities",
@@ -40,12 +40,12 @@ const cards = [
       "Soluble + Inclusion Body Recovery",
       "Integrated Purification Platform",
     ],
-    // Glassmorphism with Charcoal base
-    bg: "rgba(54, 69, 79, 0.75)",
-    headerBg: "rgba(54, 69, 79, 0.85)",
-    accentColor: "rgba(255, 255, 255, 0.6)",
-    dark: true,
-    cardStyle: "glass" as const,
+    bg: "rgba(229, 231, 235, 0.4)",
+    blur: 30,
+    headerBg: "rgba(229, 231, 235, 0.55)",
+    accentColor: "#0B1E33",
+    textColor: "#0B1E33",
+    dark: false,
   },
   {
     title: "Analytical Capabilities",
@@ -62,19 +62,17 @@ const cards = [
       "cAMP Bioassay",
       "CD-Spectrometry",
     ],
-    // Deep Emerald with topographic texture
-    bg: "#043927",
-    headerBg: "rgba(3, 46, 31, 0.95)",
-    accentColor: "#6BCB77",
+    bg: "rgba(0, 163, 173, 0.6)",
+    blur: 25,
+    headerBg: "rgba(0, 163, 173, 0.75)",
+    accentColor: "#FFFFFF",
+    textColor: "white",
     dark: true,
-    cardStyle: "emerald" as const,
   },
 ];
 
 const CARD_HEADER_HEIGHT = 48;
 
-/* Topographic SVG pattern for card 3 */
-const topoPattern = `url("data:image/svg+xml,%3Csvg width='600' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'%3E%3Cellipse cx='300' cy='300' rx='280' ry='200'/%3E%3Cellipse cx='300' cy='300' rx='240' ry='170'/%3E%3Cellipse cx='300' cy='300' rx='200' ry='140'/%3E%3Cellipse cx='300' cy='300' rx='160' ry='110'/%3E%3Cellipse cx='300' cy='300' rx='120' ry='80'/%3E%3Cellipse cx='300' cy='300' rx='80' ry='50'/%3E%3Cellipse cx='300' cy='300' rx='40' ry='25'/%3E%3Cellipse cx='150' cy='450' rx='180' ry='120'/%3E%3Cellipse cx='150' cy='450' rx='140' ry='90'/%3E%3Cellipse cx='150' cy='450' rx='100' ry='60'/%3E%3Cellipse cx='450' cy='150' rx='160' ry='110'/%3E%3Cellipse cx='450' cy='150' rx='120' ry='80'/%3E%3Cellipse cx='450' cy='150' rx='80' ry='50'/%3E%3C/g%3E%3C/svg%3E")`;
 
 const ResearchHighlight = () => {
   const { t } = useLanguage();
@@ -155,37 +153,20 @@ const ResearchHighlight = () => {
         {cards.map((card, index) => {
           const isLast = index === cards.length - 1;
 
-          const cardBgStyle: React.CSSProperties = card.cardStyle === "glass"
-            ? {
-                background: card.bg,
-                backdropFilter: "blur(25px)",
-                WebkitBackdropFilter: "blur(25px)",
-                border: "1px solid rgba(255, 255, 255, 0.08)",
-                boxShadow: "0 -4px 40px -12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)",
-              }
-            : card.cardStyle === "emerald"
-            ? {
-                background: card.bg,
-                backgroundImage: topoPattern,
-                backgroundSize: "600px 600px",
-                boxShadow: "0 -4px 40px -12px rgba(0,0,0,0.25)",
-              }
-            : {
-                background: card.bg,
-                boxShadow: "0 -4px 40px -12px rgba(0,0,0,0.3)",
-              };
+          const cardBgStyle: React.CSSProperties = {
+            background: card.bg,
+            backdropFilter: `blur(${card.blur}px)`,
+            WebkitBackdropFilter: `blur(${card.blur}px)`,
+            border: "1px solid rgba(255, 255, 255, 0.15)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
+          };
 
-          const headerStyle: React.CSSProperties = card.cardStyle === "glass"
-            ? {
-                height: `${CARD_HEADER_HEIGHT}px`,
-                background: card.headerBg,
-                backdropFilter: "blur(25px)",
-                borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
-              }
-            : {
-                height: `${CARD_HEADER_HEIGHT}px`,
-                background: card.headerBg,
-              };
+          const headerStyle: React.CSSProperties = {
+            height: `${CARD_HEADER_HEIGHT}px`,
+            background: card.headerBg,
+            backdropFilter: `blur(${card.blur}px)`,
+            borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+          };
 
           return (
             <div
@@ -211,11 +192,7 @@ const ResearchHighlight = () => {
                       ...TYPE.label,
                       fontSize: "11px",
                       letterSpacing: "0.25em",
-                      color: card.cardStyle === "midnight"
-                        ? "#D4AF37"
-                        : card.cardStyle === "emerald"
-                        ? "rgba(107, 203, 119, 0.7)"
-                        : "rgba(255, 255, 255, 0.5)",
+                      color: card.accentColor,
                     }}
                   >
                     {card.tag}
@@ -234,8 +211,8 @@ const ResearchHighlight = () => {
                         ...TYPE.h2,
                         fontSize: "clamp(28px, 3.5vw, 44px)",
                         letterSpacing: "0.02em",
+                        color: card.textColor,
                       }}
-                      className="text-white"
                     >
                       {card.title}
                     </h3>
@@ -250,8 +227,7 @@ const ResearchHighlight = () => {
                             }}
                           />
                           <p
-                            style={{ ...TYPE.bodySm, fontSize: "14px" }}
-                            className="text-white/75"
+                            style={{ ...TYPE.bodySm, fontSize: "14px", color: card.dark ? "rgba(255,255,255,0.75)" : "rgba(11,30,51,0.7)" }}
                           >
                             {detail}
                           </p>
