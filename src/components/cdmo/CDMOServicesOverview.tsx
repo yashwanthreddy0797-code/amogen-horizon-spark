@@ -18,7 +18,7 @@ const CDMOServicesOverview = () => {
       <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <ScrollReveal>
           <div className="max-w-4xl mb-6">
-            <h2 style={{ ...TYPE.h2, color: "#001965" }}>Bringing your biologics to life.</h2>
+            <h2 style={{ ...TYPE.h2, color: "#001965" }}>{"\n"}</h2>
             <p style={{ ...TYPE.body, color: "hsl(var(--muted-foreground))", marginTop: SPACING.headingToSub }}>
               At AMOGEN, we specialize in <strong className="text-foreground">manufacturing peptide-based therapeutics</strong> as well as <strong className="text-foreground">recombinant proteins</strong>. In collaboration with our partners, we manufacture innovative therapies for some of the world's most challenging diseases.
             </p>
