@@ -527,9 +527,7 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
                   >
                     <div className="flex items-center gap-2 px-4 md:px-5 py-2.5">
                       <a href="/" className="shrink-0">
-                         <span className={`text-base font-bold tracking-tight ${isPartner ? "text-[#001965]" : navTextFull}`}>
-                          AMOGEN
-                        </span>
+                        <img src={amogenLogo} alt="AMOGEN Pharma" className="h-6 w-auto" />
                       </a>
                       <div
                         className={`flex items-center justify-center w-9 h-9 rounded-full ${navHoverBg} transition-colors`}
