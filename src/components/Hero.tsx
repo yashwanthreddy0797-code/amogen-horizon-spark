@@ -79,46 +79,22 @@ const Hero = () => {
           paddingRight: SPACING.sectionPx,
         }}
       >
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-          {/* Left — brand tagline */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="md:max-w-[280px] shrink-0"
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.35 }}
+        >
+          <h1
+            style={{
+              ...TYPE.display,
+              color: "#FFFFFF",
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 300,
+            }}
           >
-            <p
-              style={{
-                ...TYPE.bodyLg,
-                color: "#FFFFFF",
-                opacity: 0.7,
-                fontFamily: "'Outfit', sans-serif",
-                fontWeight: 300,
-              }}
-            >
-              Precision biosimilars. <br />Commercial scale.
-            </p>
-          </motion.div>
-
-          {/* Right — main headline */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.35 }}
-            className="md:max-w-[700px] md:text-right"
-          >
-            <h1
-              style={{
-                ...TYPE.display,
-                color: "#FFFFFF",
-                fontFamily: "'Outfit', sans-serif",
-                fontWeight: 300,
-              }}
-            >
-              {t.hero.title}
-            </h1>
-          </motion.div>
-        </div>
+            {t.hero.title}
+          </h1>
+        </motion.div>
       </div>
 
       {/* Carousel section */}
@@ -154,54 +130,73 @@ const Hero = () => {
 
               {/* Slide content */}
               <div className="relative z-10 flex flex-col justify-end h-full p-8 md:p-12" style={{ minHeight: 380 }}>
-                {/* Category badge */}
+                {/* Badge */}
                 <span
-                  className="inline-block px-3 py-1 rounded-sm text-[#001965] mb-4 self-start"
+                  className="inline-block self-start"
                   style={{
-                    ...TYPE.label,
-                    backgroundColor: "#F5C518",
-                    fontSize: "11px",
-                    letterSpacing: "0.1em",
+                    backgroundColor: "#FFBD01",
+                    color: "#0B1F3A",
+                    fontSize: "10px",
+                    fontFamily: "'Outfit', sans-serif",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.15em",
+                    padding: "5px 12px",
+                    borderRadius: "4px",
                   }}
                 >
-                  {slide.category}
+                  ABOUT AMOGEN
                 </span>
 
+                {/* Headline */}
                 <h2
                   style={{
-                    ...TYPE.h1,
-                    color: "#FFFFFF",
+                    fontSize: "clamp(28px, 3vw, 40px)",
                     fontFamily: "'Outfit', sans-serif",
                     fontWeight: 300,
+                    color: "#FFFFFF",
+                    lineHeight: 1.1,
+                    marginTop: "16px",
                   }}
-                  className="max-w-xl mb-4"
+                  className="max-w-xl"
                 >
-                  {slide.title}
+                  Precision biosimilars. Commercial scale.
                 </h2>
 
+                {/* Sub-copy */}
                 <p
                   style={{
-                    ...TYPE.body,
-                    color: "#FFFFFF",
-                    opacity: 0.85,
+                    fontSize: "15px",
                     fontFamily: "'Outfit', sans-serif",
+                    fontWeight: 300,
+                    color: "rgba(255,255,255,0.75)",
+                    lineHeight: 1.6,
+                    marginTop: "12px",
+                    maxWidth: "460px",
                   }}
-                  className="max-w-lg mb-8"
                 >
-                  {slide.description}
+                  Amogen manufactures GLP-1 agonists, insulin analogues and immunology biosimilars — with consistent purity at commercial scale.
                 </p>
 
                 {/* CTA Button */}
                 <a
                   href={slide.href}
-                  className="inline-flex items-center gap-2 self-start px-7 py-3.5 rounded-full text-[#001965] font-medium transition-all hover:brightness-110"
+                  className="inline-flex items-center self-start transition-all hover:bg-white/10"
                   style={{
-                    backgroundColor: "#0B736D",
-                    ...TYPE.button,
+                    marginTop: "24px",
+                    background: "transparent",
+                    border: "2px solid #FFFFFF",
                     color: "#FFFFFF",
+                    fontSize: "12px",
+                    fontFamily: "'Outfit', sans-serif",
+                    fontWeight: 500,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.12em",
+                    borderRadius: "999px",
+                    padding: "12px 28px",
                   }}
                 >
-                  {slide.cta}
+                  EXPLORE PIPELINE
                 </a>
               </div>
             </motion.div>
