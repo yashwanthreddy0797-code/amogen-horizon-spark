@@ -17,11 +17,11 @@ const Hero = () => {
         decoding="async"
         fetchPriority="high"
       />
-      {/* Full blur overlay */}
+      {/* Full blue frosted overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
-        background: "hsla(220, 60%, 95%, 0.35)"
+        background: "hsla(222, 100%, 20%, 0.12)"
       }} />
       <div className="relative w-full mx-auto py-32" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <motion.div
