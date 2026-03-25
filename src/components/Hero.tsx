@@ -1,4 +1,4 @@
-import heroBg from "@/assets/hero-bg-blue.png";
+import heroBg from "@/assets/hero-bg-blue.jpg";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";

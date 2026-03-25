@@ -1,6 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { TYPE, SPACING } from "@/typography";
-import cardBgImg from "@/assets/card-bg-blue.png";
+import cardBgImg from "@/assets/card-bg-blue.jpg";
 
 const stats = [
 {
@@ -51,6 +51,10 @@ const AboutAtGlance = () => {
                 src={cardBgImg}
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                loading="eager"
+                decoding="async"
+                width={400}
+                height={380}
                 aria-hidden="true" />
               
                 {/* Overlay for readability */}
