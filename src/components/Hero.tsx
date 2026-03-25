@@ -70,19 +70,24 @@ const Hero = () => {
       className="relative overflow-hidden"
       style={{ backgroundColor: "#0B736D" }}
     >
-      {/* Top hero area — logo left, heading right */}
+      {/* Top hero area — two-column grid, headline on the right */}
       <div
-        className="relative w-full mx-auto pt-36 pb-16 md:pt-44 md:pb-20"
+        className="relative w-full mx-auto pt-36 pb-16 md:pt-44 md:pb-20 grid grid-cols-1 md:grid-cols-[2fr_3fr] items-center"
         style={{
           maxWidth: SPACING.maxWidth,
           paddingLeft: SPACING.sectionPx,
           paddingRight: SPACING.sectionPx,
         }}
       >
+        {/* Left column — empty teal space */}
+        <div className="hidden md:block" />
+
+        {/* Right column — headline, right-aligned */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.35 }}
+          className="md:text-right"
         >
           <h1
             style={{
