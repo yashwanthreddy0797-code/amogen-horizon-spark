@@ -122,7 +122,7 @@ const Hero = () => {
           paddingRight: SPACING.sectionPx,
         }}
       >
-        <div className="relative w-full overflow-hidden rounded-2xl" style={{ minHeight: 380 }}>
+        <div className="relative w-full overflow-hidden rounded-2xl" style={{ minHeight: 460 }}>
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={current}
