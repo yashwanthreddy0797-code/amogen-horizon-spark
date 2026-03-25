@@ -30,7 +30,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         >
           {/* Blue backdrop behind text */}
-          <div className="inline-block rounded-xl px-6 py-4" style={{ background: "hsla(222, 100%, 20%, 0.12)", backdropFilter: "blur(12px)" }}>
+          <div>
             <h1 style={{ ...TYPE.display, color: "#001965", fontFamily: "'Outfit', sans-serif", fontWeight: 300 }} className="max-w-4xl">
               {t.hero.title}
             </h1>
