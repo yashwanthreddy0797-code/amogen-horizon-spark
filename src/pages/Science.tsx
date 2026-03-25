@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import HistoryTimeline from "@/components/HistoryTimeline";
-import MicrobialScience from "@/components/science/MicrobialScience";
+
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -312,8 +312,6 @@ const Science = () => {
 
         
 
-        {/* MICROBIAL SCIENCE SECTIONS */}
-        <MicrobialScience />
 
         {/* PUBLICATIONS */}
         <section id="publications" className="py-20 lg:py-28 bg-white">

@@ -12,6 +12,7 @@ import CDMORfpProcess from "@/components/cdmo/CDMORfpProcess";
 import CDMORelatedContent from "@/components/cdmo/CDMORelatedContent";
 import CDMOManufacturingGlance from "@/components/cdmo/CDMOManufacturingGlance";
 import CDMOProductsBanner from "@/components/cdmo/CDMOProductsBanner";
+import MicrobialScience from "@/components/science/MicrobialScience";
 
 const CDMO = () => {
   return (
@@ -25,6 +26,7 @@ const CDMO = () => {
         <CDMOCapabilities />
         <CDMOMicrobialExpertise />
         <CDMOIntegratedServices />
+        <MicrobialScience />
         <CDMOPeptideCards />
         <CDMOSolutions />
         <CDMORfpProcess />
