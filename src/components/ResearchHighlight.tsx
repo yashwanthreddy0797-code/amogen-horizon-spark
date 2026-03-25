@@ -58,9 +58,9 @@ const cards = [
       "cAMP Bioassay",
       "CD-Spectrometry",
     ],
-    // Very light periwinkle — card 3
-    bg: "hsl(235, 45%, 92%)",
-    headerBg: "hsl(235, 45%, 88%)",
+    // Light blue mist — card 3
+    bg: "hsl(207, 55%, 88%)",
+    headerBg: "hsl(207, 55%, 83%)",
     dark: false,
   },
 ];
