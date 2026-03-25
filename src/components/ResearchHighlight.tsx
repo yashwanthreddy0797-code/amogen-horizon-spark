@@ -153,37 +153,20 @@ const ResearchHighlight = () => {
         {cards.map((card, index) => {
           const isLast = index === cards.length - 1;
 
-          const cardBgStyle: React.CSSProperties = card.cardStyle === "glass"
-            ? {
-                background: card.bg,
-                backdropFilter: "blur(25px)",
-                WebkitBackdropFilter: "blur(25px)",
-                border: "1px solid rgba(255, 255, 255, 0.08)",
-                boxShadow: "0 -4px 40px -12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)",
-              }
-            : card.cardStyle === "emerald"
-            ? {
-                background: card.bg,
-                backgroundImage: topoPattern,
-                backgroundSize: "600px 600px",
-                boxShadow: "0 -4px 40px -12px rgba(0,0,0,0.25)",
-              }
-            : {
-                background: card.bg,
-                boxShadow: "0 -4px 40px -12px rgba(0,0,0,0.3)",
-              };
+          const cardBgStyle: React.CSSProperties = {
+            background: card.bg,
+            backdropFilter: `blur(${card.blur}px)`,
+            WebkitBackdropFilter: `blur(${card.blur}px)`,
+            border: "1px solid rgba(255, 255, 255, 0.15)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
+          };
 
-          const headerStyle: React.CSSProperties = card.cardStyle === "glass"
-            ? {
-                height: `${CARD_HEADER_HEIGHT}px`,
-                background: card.headerBg,
-                backdropFilter: "blur(25px)",
-                borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
-              }
-            : {
-                height: `${CARD_HEADER_HEIGHT}px`,
-                background: card.headerBg,
-              };
+          const headerStyle: React.CSSProperties = {
+            height: `${CARD_HEADER_HEIGHT}px`,
+            background: card.headerBg,
+            backdropFilter: `blur(${card.blur}px)`,
+            borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+          };
 
           return (
             <div
