@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { TYPE, SPACING } from "@/typography";
+import amogenLogo from "@/assets/AmogenLogoWhite.png";
 import facilityImg from "@/assets/facility-1.jpg";
 import manufacturingImg from "@/assets/manufacturing.jpg";
 import researchImg from "@/assets/research-lab.jpg";
@@ -79,8 +80,15 @@ const Hero = () => {
           paddingRight: SPACING.sectionPx,
         }}
       >
-        {/* Left column — empty teal space */}
-        <div className="hidden md:block" />
+        {/* Left column — logo */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="hidden md:flex items-start"
+        >
+          <img src={amogenLogo} alt="AMOGEN Pharma" className="w-auto" style={{ height: "clamp(40px, 5vw, 64px)" }} />
+        </motion.div>
 
         {/* Right column — headline, right-aligned */}
         <motion.div
