@@ -35,8 +35,9 @@ const NewsPreview = () => {
           {items.map((item, i) => (
             <ScrollReveal key={item.headline} delay={i * 0.1}>
               <a href="#" className="group flex flex-col h-full rounded-[20px] overflow-hidden relative" style={{ backgroundColor: "#F0EFED" }}>
-                <div className="mx-3 mt-3 overflow-hidden rounded-[14px] border border-border/40">
+                <div className="mx-3 mt-3 overflow-hidden rounded-[14px] border border-border/40 relative">
                   <img src={newsItems[i].image} alt={item.headline} className="w-full h-[195px] object-cover object-center group-hover:scale-105 transition-transform duration-500" loading="lazy" width={400} height={195} decoding="async" />
+                  <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white font-sans tracking-[0.25em] text-sm font-light opacity-80 select-none pointer-events-none" style={{ fontFamily: "'Outfit', sans-serif", textShadow: "0 1px 8px rgba(0,0,0,0.2)" }}>AMOGEN</span>
                 </div>
                 <div className="px-5 pt-6 flex-1">
                   <p style={{ ...TYPE.meta, fontSize: "10px", color: "hsl(var(--muted-foreground))", marginBottom: "10px" }}>
