@@ -192,11 +192,7 @@ const ResearchHighlight = () => {
                       ...TYPE.label,
                       fontSize: "11px",
                       letterSpacing: "0.25em",
-                      color: card.cardStyle === "midnight"
-                        ? "#D4AF37"
-                        : card.cardStyle === "emerald"
-                        ? "rgba(107, 203, 119, 0.7)"
-                        : "rgba(255, 255, 255, 0.5)",
+                      color: card.accentColor,
                     }}
                   >
                     {card.tag}
