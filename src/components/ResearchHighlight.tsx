@@ -171,14 +171,19 @@ const ResearchHighlight = () => {
               key={card.title}
               className="sticky"
               style={{
-                top: `${72 + index * (CARD_HEADER_HEIGHT - 1)}px`,
-                zIndex: cards.length - index,
-                marginBottom: 0,
+                top: `${72 + index * CARD_HEADER_HEIGHT}px`,
+                zIndex: index + 1,
+                marginBottom: isLast ? 0 : 0,
               }}
             >
               <section
-                className="rounded-t-3xl luxury-card"
-                style={cardBgStyle}
+                className={`luxury-card ${index === 0 ? 'rounded-t-3xl' : ''}`}
+                style={{
+                  ...cardBgStyle,
+                  borderTopLeftRadius: index === 0 ? undefined : '24px',
+                  borderTopRightRadius: index === 0 ? undefined : '24px',
+                  marginTop: index > 0 ? `${index * CARD_HEADER_HEIGHT}px` : 0,
+                }}
               >
                 {/* Persistent header strip */}
                 <div
