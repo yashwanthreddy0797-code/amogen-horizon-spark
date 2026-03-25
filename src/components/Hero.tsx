@@ -212,7 +212,7 @@ const Hero = () => {
                     padding: "14px 32px",
                   }}
                 >
-                  EXPLORE PIPELINE
+                  {slide.cta}
                 </a>
               </div>
             </motion.div>
