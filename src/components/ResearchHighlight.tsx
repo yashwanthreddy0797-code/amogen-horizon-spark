@@ -227,8 +227,7 @@ const ResearchHighlight = () => {
                             }}
                           />
                           <p
-                            style={{ ...TYPE.bodySm, fontSize: "14px" }}
-                            className="text-white/75"
+                            style={{ ...TYPE.bodySm, fontSize: "14px", color: card.dark ? "rgba(255,255,255,0.75)" : "rgba(11,30,51,0.7)" }}
                           >
                             {detail}
                           </p>
