@@ -19,10 +19,12 @@ const cards = [
       "Preparative Chromatography",
       "Bulk Lyophilisation",
     ],
-    // Deep navy — card 1
-    bg: "hsl(227, 100%, 20%)",
-    headerBg: "hsl(227, 100%, 16%)",
+    // Midnight Navy with Gold accents
+    bg: "#0A192F",
+    headerBg: "rgba(8, 20, 38, 0.95)",
+    accentColor: "#D4AF37",
     dark: true,
+    cardStyle: "midnight" as const,
   },
   {
     title: "R&D Capabilities",
@@ -38,10 +40,12 @@ const cards = [
       "Soluble + Inclusion Body Recovery",
       "Integrated Purification Platform",
     ],
-    // Sand warm — card 2
-    bg: "hsl(30, 15%, 80%)",
-    headerBg: "hsl(30, 15%, 75%)",
-    dark: false,
+    // Glassmorphism with Charcoal base
+    bg: "rgba(54, 69, 79, 0.75)",
+    headerBg: "rgba(54, 69, 79, 0.85)",
+    accentColor: "rgba(255, 255, 255, 0.6)",
+    dark: true,
+    cardStyle: "glass" as const,
   },
   {
     title: "Analytical Capabilities",
@@ -58,14 +62,19 @@ const cards = [
       "cAMP Bioassay",
       "CD-Spectrometry",
     ],
-    // Light blue mist — card 3
-    bg: "hsl(207, 55%, 88%)",
-    headerBg: "hsl(207, 55%, 83%)",
-    dark: false,
+    // Deep Emerald with topographic texture
+    bg: "#043927",
+    headerBg: "rgba(3, 46, 31, 0.95)",
+    accentColor: "#6BCB77",
+    dark: true,
+    cardStyle: "emerald" as const,
   },
 ];
 
 const CARD_HEADER_HEIGHT = 48;
+
+/* Topographic SVG pattern for card 3 */
+const topoPattern = `url("data:image/svg+xml,%3Csvg width='600' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'%3E%3Cellipse cx='300' cy='300' rx='280' ry='200'/%3E%3Cellipse cx='300' cy='300' rx='240' ry='170'/%3E%3Cellipse cx='300' cy='300' rx='200' ry='140'/%3E%3Cellipse cx='300' cy='300' rx='160' ry='110'/%3E%3Cellipse cx='300' cy='300' rx='120' ry='80'/%3E%3Cellipse cx='300' cy='300' rx='80' ry='50'/%3E%3Cellipse cx='300' cy='300' rx='40' ry='25'/%3E%3Cellipse cx='150' cy='450' rx='180' ry='120'/%3E%3Cellipse cx='150' cy='450' rx='140' ry='90'/%3E%3Cellipse cx='150' cy='450' rx='100' ry='60'/%3E%3Cellipse cx='450' cy='150' rx='160' ry='110'/%3E%3Cellipse cx='450' cy='150' rx='120' ry='80'/%3E%3Cellipse cx='450' cy='150' rx='80' ry='50'/%3E%3C/g%3E%3C/svg%3E")`;
 
 const ResearchHighlight = () => {
   const { t } = useLanguage();
@@ -111,10 +120,72 @@ const ResearchHighlight = () => {
         </ScrollReveal>
       </div>
 
+      {/* Shimmer hover CSS */}
+      <style>{`
+        .luxury-card {
+          position: relative;
+          overflow: hidden;
+        }
+        .luxury-card::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 50%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.04),
+            rgba(255, 255, 255, 0.08),
+            rgba(255, 255, 255, 0.04),
+            transparent
+          );
+          transition: left 0.8s ease;
+          pointer-events: none;
+          z-index: 2;
+        }
+        .luxury-card:hover::after {
+          left: 100%;
+        }
+      `}</style>
+
       {/* Stacked sticky scroll cards */}
       <div className="relative" style={{ marginLeft: "24px", marginRight: "24px" }}>
         {cards.map((card, index) => {
           const isLast = index === cards.length - 1;
+
+          const cardBgStyle: React.CSSProperties = card.cardStyle === "glass"
+            ? {
+                background: card.bg,
+                backdropFilter: "blur(25px)",
+                WebkitBackdropFilter: "blur(25px)",
+                border: "1px solid rgba(255, 255, 255, 0.08)",
+                boxShadow: "0 -4px 40px -12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)",
+              }
+            : card.cardStyle === "emerald"
+            ? {
+                background: card.bg,
+                backgroundImage: topoPattern,
+                backgroundSize: "600px 600px",
+                boxShadow: "0 -4px 40px -12px rgba(0,0,0,0.25)",
+              }
+            : {
+                background: card.bg,
+                boxShadow: "0 -4px 40px -12px rgba(0,0,0,0.3)",
+              };
+
+          const headerStyle: React.CSSProperties = card.cardStyle === "glass"
+            ? {
+                height: `${CARD_HEADER_HEIGHT}px`,
+                background: card.headerBg,
+                backdropFilter: "blur(25px)",
+                borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
+              }
+            : {
+                height: `${CARD_HEADER_HEIGHT}px`,
+                background: card.headerBg,
+              };
 
           return (
             <div
@@ -127,25 +198,24 @@ const ResearchHighlight = () => {
               }}
             >
               <section
-                className="rounded-t-3xl"
-                style={{
-                  background: card.bg,
-                  boxShadow: "0 -4px 40px -12px rgba(0,0,0,0.15)",
-                }}
+                className="rounded-t-3xl luxury-card"
+                style={cardBgStyle}
               >
-                {/* Persistent header strip — always visible when stacked */}
+                {/* Persistent header strip */}
                 <div
                   className="flex items-center rounded-t-3xl px-8 md:px-12"
-                  style={{
-                    height: `${CARD_HEADER_HEIGHT}px`,
-                    background: card.headerBg,
-                  }}
+                  style={headerStyle}
                 >
                   <span
                     style={{
                       ...TYPE.label,
                       fontSize: "11px",
-                      color: card.dark ? "hsla(0, 0%, 100%, 0.7)" : "hsla(227, 100%, 20%, 0.6)",
+                      letterSpacing: "0.25em",
+                      color: card.cardStyle === "midnight"
+                        ? "#D4AF37"
+                        : card.cardStyle === "emerald"
+                        ? "rgba(107, 203, 119, 0.7)"
+                        : "rgba(255, 255, 255, 0.5)",
                     }}
                   >
                     {card.tag}
@@ -160,8 +230,12 @@ const ResearchHighlight = () => {
                   {/* Left: Text content */}
                   <div className="flex flex-col justify-center p-8 md:px-12 md:py-8">
                     <h3
-                      style={{ ...TYPE.h2, fontSize: "clamp(28px, 3.5vw, 44px)" }}
-                      className={card.dark ? "text-white" : "text-foreground"}
+                      style={{
+                        ...TYPE.h2,
+                        fontSize: "clamp(28px, 3.5vw, 44px)",
+                        letterSpacing: "0.02em",
+                      }}
+                      className="text-white"
                     >
                       {card.title}
                     </h3>
@@ -172,12 +246,12 @@ const ResearchHighlight = () => {
                           <div
                             className="w-1.5 h-1.5 rounded-full shrink-0"
                             style={{
-                              background: card.dark ? "hsla(0, 0%, 100%, 0.5)" : "hsl(var(--primary))",
+                              background: card.accentColor,
                             }}
                           />
                           <p
                             style={{ ...TYPE.bodySm, fontSize: "14px" }}
-                            className={card.dark ? "text-white/80" : "text-muted-foreground"}
+                            className="text-white/75"
                           >
                             {detail}
                           </p>
