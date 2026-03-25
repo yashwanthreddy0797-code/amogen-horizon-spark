@@ -79,46 +79,22 @@ const Hero = () => {
           paddingRight: SPACING.sectionPx,
         }}
       >
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-          {/* Left — brand tagline */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="md:max-w-[280px] shrink-0"
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.35 }}
+        >
+          <h1
+            style={{
+              ...TYPE.display,
+              color: "#FFFFFF",
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 300,
+            }}
           >
-            <p
-              style={{
-                ...TYPE.bodyLg,
-                color: "#FFFFFF",
-                opacity: 0.7,
-                fontFamily: "'Outfit', sans-serif",
-                fontWeight: 300,
-              }}
-            >
-              Precision biosimilars. <br />Commercial scale.
-            </p>
-          </motion.div>
-
-          {/* Right — main headline */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.35 }}
-            className="md:max-w-[700px] md:text-right"
-          >
-            <h1
-              style={{
-                ...TYPE.display,
-                color: "#FFFFFF",
-                fontFamily: "'Outfit', sans-serif",
-                fontWeight: 300,
-              }}
-            >
-              {t.hero.title}
-            </h1>
-          </motion.div>
-        </div>
+            {t.hero.title}
+          </h1>
+        </motion.div>
       </div>
 
       {/* Carousel section */}
