@@ -73,7 +73,7 @@ const Hero = () => {
     >
       {/* Top hero area — two-column grid, headline on the right */}
       <div
-        className="relative w-full mx-auto pt-36 pb-16 md:pt-44 md:pb-20 grid grid-cols-1 md:grid-cols-[2fr_3fr] items-center"
+        className="relative w-full mx-auto pt-24 pb-16 md:pt-32 md:pb-20 grid grid-cols-1 md:grid-cols-[2fr_3fr] items-center"
         style={{
           maxWidth: SPACING.maxWidth,
           paddingLeft: SPACING.sectionPx,
@@ -85,9 +85,9 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="hidden md:flex items-start"
+          className="hidden md:flex items-start pl-8"
         >
-          <img src={amogenLogo} alt="AMOGEN Pharma" className="w-auto" style={{ height: "clamp(56px, 7vw, 96px)" }} />
+          <img src={amogenLogo} alt="AMOGEN Pharma" className="w-auto" style={{ height: "clamp(64px, 8vw, 112px)" }} />
         </motion.div>
 
         {/* Right column — headline, right-aligned */}
