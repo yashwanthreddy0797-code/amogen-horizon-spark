@@ -411,9 +411,7 @@ const Navbar = ({ variant = "default", hideScrolledPills = false }: NavbarProps)
                 return (
               <div className="relative flex items-center justify-between px-6 md:px-8 py-2">
                 <a href="/" className="shrink-0 z-10">
-                  <span className={`text-base md:text-lg font-bold tracking-tight ${_text}`}>
-                    AMOGEN
-                  </span>
+                  <img src={amogenLogo} alt="AMOGEN Pharma" className="h-7 md:h-8 w-auto" />
                 </a>
 
                 <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
