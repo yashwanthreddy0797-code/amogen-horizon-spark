@@ -173,7 +173,7 @@ const ResearchHighlight = () => {
               style={{
                 top: isLast ? undefined : `${72 + index * CARD_HEADER_HEIGHT}px`,
                 zIndex: index + 1,
-                marginBottom: isLast ? 0 : `${CARD_HEADER_HEIGHT}px`,
+                marginBottom: isLast ? 0 : 0,
               }}
             >
               <section
