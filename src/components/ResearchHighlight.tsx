@@ -163,9 +163,7 @@ const ResearchHighlight = () => {
 
           const headerStyle: React.CSSProperties = {
             height: `${CARD_HEADER_HEIGHT}px`,
-            background: card.headerBg,
-            backdropFilter: `blur(${card.blur}px)`,
-            borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
           };
 
           return (
@@ -175,7 +173,7 @@ const ResearchHighlight = () => {
               style={{
                 top: isLast ? undefined : `${72 + index * CARD_HEADER_HEIGHT}px`,
                 zIndex: index + 1,
-                marginBottom: isLast ? 0 : `${CARD_HEADER_HEIGHT}px`,
+                marginBottom: isLast ? 0 : 0,
               }}
             >
               <section
