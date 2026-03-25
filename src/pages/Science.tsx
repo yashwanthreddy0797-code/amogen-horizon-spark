@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import HistoryTimeline from "@/components/HistoryTimeline";
-import MicrobialScience from "@/components/science/MicrobialScience";
+
 import { motion } from "framer-motion";
 import {
   ArrowRight,
