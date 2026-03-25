@@ -148,3 +148,7 @@ html {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+.hero-cta-mint:hover {
+  background-color: #2DB8A8 !important;
+}

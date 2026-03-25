@@ -92,6 +92,7 @@ const Hero = () => {
           <h1
             style={{
               ...TYPE.display,
+              fontSize: "clamp(28px, 4vw, 48px)",
               color: "#FFFFFF",
               fontFamily: "'Outfit', sans-serif",
               fontWeight: 300,
@@ -186,19 +187,19 @@ const Hero = () => {
                 {/* CTA Button */}
                 <a
                   href={slide.href}
-                  className="inline-flex items-center self-start transition-all hover:bg-white/10"
+                  className="inline-flex items-center self-start transition-all hero-cta-mint"
                   style={{
                     marginTop: "24px",
-                    background: "transparent",
-                    border: "2px solid #FFFFFF",
-                    color: "#FFFFFF",
+                    background: "#3ECFBF",
+                    border: "none",
+                    color: "#000000",
                     fontSize: "12px",
                     fontFamily: "'Outfit', sans-serif",
-                    fontWeight: 500,
+                    fontWeight: 600,
                     textTransform: "uppercase",
                     letterSpacing: "0.12em",
                     borderRadius: "999px",
-                    padding: "12px 28px",
+                    padding: "14px 32px",
                   }}
                 >
                   EXPLORE PIPELINE
