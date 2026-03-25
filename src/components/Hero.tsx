@@ -95,15 +95,12 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.35 }}
-          className="md:text-right"
+          className="text-left"
         >
           <h1
+            className="text-5xl md:text-7xl font-sans font-normal text-left text-white"
             style={{
               ...TYPE.display,
-              fontSize: "clamp(28px, 4vw, 48px)",
-              color: "#FFFFFF",
-              fontFamily: "'Outfit', sans-serif",
-              fontWeight: 400,
               letterSpacing: "-0.02em",
               lineHeight: 1.05,
             }}
