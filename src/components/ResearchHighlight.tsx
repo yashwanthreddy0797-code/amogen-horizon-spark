@@ -24,7 +24,7 @@ const cards = [
     headerBg: "rgba(228, 228, 232, 0.75)",
     accentColor: "#0B1E33",
     textColor: "#0B1E33",
-    dark: true,
+    dark: false,
   },
   {
     title: "R&D Capabilities",
