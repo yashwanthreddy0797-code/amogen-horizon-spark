@@ -39,14 +39,6 @@ const CDMOManufacturingGlance = () => {
             >
               Manufacturing Capabilities
             </p>
-            <h2
-              style={{
-                ...TYPE.h2,
-                color: "#001965",
-              }}
-            >
-              At a Glance
-            </h2>
             <p
               style={{
                 ...TYPE.body,
