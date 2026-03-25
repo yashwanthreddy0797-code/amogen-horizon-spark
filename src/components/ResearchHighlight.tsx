@@ -19,9 +19,9 @@ const cards = [
       "Preparative Chromatography",
       "Bulk Lyophilisation",
     ],
-    // Deep indigo blue — card 1
-    bg: "hsl(232, 60%, 30%)",
-    headerBg: "hsl(232, 60%, 25%)",
+    // Deep navy — card 1
+    bg: "hsl(227, 100%, 20%)",
+    headerBg: "hsl(227, 100%, 16%)",
     dark: true,
   },
   {
