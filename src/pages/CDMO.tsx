@@ -20,8 +20,8 @@ const CDMO = () => {
       <Navbar variant="cdmo" />
       <main>
         <CDMOHero />
-        <CDMOServicesOverview />
         <CDMOManufacturingGlance />
+        <CDMOServicesOverview />
         <CDMOTimeline />
         <CDMOCapabilities />
         <CDMOMicrobialExpertise />
