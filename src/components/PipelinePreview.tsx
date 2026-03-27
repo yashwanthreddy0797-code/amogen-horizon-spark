@@ -33,7 +33,7 @@ const pipelineItems: PipelineItem[] = [
   indication: "Type 1 & 2 Diabetes",
   progress: 50,
   gradient: "linear-gradient(90deg, #4C1D95 0%, #7C3AED 100%)",
-  milestone: "DMF",
+  milestone: "Preclinical Study",
   milestoneDate: "August 2026",
   strategy: "API + FDF",
   accent: "#4C1D95"
