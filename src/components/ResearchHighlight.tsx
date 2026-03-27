@@ -383,7 +383,8 @@ const ResearchHighlight = () => {
               >
                 Visit Careers
                 <span className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[#001965]/30 group-hover/careers:bg-[#001965]/10 transition-colors">
-                  <ArrowRight size={12} />
+                   <ArrowRight size={12} />
+                </span>
               </a>
             </div>
           </div>
