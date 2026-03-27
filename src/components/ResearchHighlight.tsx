@@ -3,6 +3,15 @@ import ScrollReveal from "@/components/ScrollReveal";
 import facility1Img from "@/assets/fermentors.png";
 import facility2Img from "@/assets/biologics-types.png";
 import facility3Img from "@/assets/bioinformatics-banner.jpg";
+import flaskCultureImg from "@/assets/flask-culture.png";
+import waveBioreactorImg from "@/assets/wave-bioreactor.png";
+import seedBioreactorImg from "@/assets/seed-bioreactor.png";
+import seedBioreactor200lImg from "@/assets/seed-bioreactor-200l.png";
+import productionBioreactorImg from "@/assets/production-bioreactor.png";
+import centrifugeImg from "@/assets/centrifuge.png";
+import downstreamPurificationImg from "@/assets/downstream-purification.png";
+import prepChromatographyImg from "@/assets/prep-chromatography.png";
+import bulkLyophilisationImg from "@/assets/bulk-lyophilisation.png";
 import uhplcImg from "@/assets/uhplc.png";
 import hplcUvImg from "@/assets/hplc-uv.png";
 import lcMsImg from "@/assets/lc-ms.png";
@@ -21,13 +30,18 @@ const cards = [
     title: "Manufacturing Capacity",
     tag: "API MANUFACTURING",
     image: facility1Img,
-    details: [
-      "Microbial Fermentors",
-      "Continuous Centrifuge",
-      "Downstream Purification",
-      "Preparative Chromatography",
-      "Bulk Lyophilisation",
+    instruments: [
+      { name: "Flask Culture", image: flaskCultureImg },
+      { name: "Wave Bioreactor (20L)", image: waveBioreactorImg },
+      { name: "Seed Bioreactor (40–50L)", image: seedBioreactorImg },
+      { name: "Seed Bioreactor (200L)", image: seedBioreactor200lImg },
+      { name: "Production Bioreactor (1000L)", image: productionBioreactorImg },
+      { name: "Continuous Centrifuge", image: centrifugeImg },
+      { name: "Downstream Purification", image: downstreamPurificationImg },
+      { name: "Preparative Chromatography", image: prepChromatographyImg },
+      { name: "Bulk Lyophilisation", image: bulkLyophilisationImg },
     ],
+    details: [],
     bg: "rgba(204, 197, 189, 0.55)",
     blur: 20,
     headerBg: "rgba(204, 197, 189, 0.55)",
