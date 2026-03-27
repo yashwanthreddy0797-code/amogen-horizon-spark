@@ -245,17 +245,44 @@ const ResearchHighlight = () => {
                     </div>
                   </div>
 
-                  {/* Right: Image */}
+                  {/* Right: Image or Instrument Cards */}
                   <div className="relative p-4 md:p-8 flex items-center justify-center">
-                    <div className="relative overflow-hidden rounded-2xl w-full" style={{ maxHeight: "320px", aspectRatio: "4/3" }}>
-                      <img
-                        src={card.image}
-                        alt={card.title}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
+                    {card.instruments ? (
+                      <div className="grid grid-cols-2 gap-3 w-full">
+                        {card.instruments.map((inst) => (
+                          <div
+                            key={inst.name}
+                            className="rounded-xl p-3 flex flex-col items-center gap-2"
+                            style={{
+                              background: "rgba(255, 255, 255, 0.7)",
+                              backdropFilter: "blur(10px)",
+                              border: "1px solid rgba(255, 255, 255, 0.5)",
+                            }}
+                          >
+                            <img
+                              src={inst.image}
+                              alt={inst.name}
+                              className="w-16 h-16 object-contain"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                            <p style={{ ...TYPE.bodySm, fontSize: "12px", fontWeight: 600, color: "#0B1E33", textAlign: "center" }}>
+                              {inst.name}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="relative overflow-hidden rounded-2xl w-full" style={{ maxHeight: "320px", aspectRatio: "4/3" }}>
+                        <img
+                          src={card.image}
+                          alt={card.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               </section>
