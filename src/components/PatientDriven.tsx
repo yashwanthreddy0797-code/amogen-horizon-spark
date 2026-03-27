@@ -13,7 +13,6 @@ const cards = [
     bg: "#D4D8DC",
     textColor: "#0B1E33",
     image: cardHealthcare,
-    slideDirection: "right" as const,
   },
   {
     title: "Patients",
@@ -21,7 +20,6 @@ const cards = [
     bg: "#001965",
     textColor: "#FFFFFF",
     image: cardPatients,
-    slideDirection: "left" as const,
   },
   {
     title: "Partnerships",
@@ -29,7 +27,6 @@ const cards = [
     bg: "#0B736D",
     textColor: "#FFFFFF",
     image: cardPartnerships,
-    slideDirection: "left" as const,
   },
 ];
 
@@ -79,112 +76,132 @@ const PatientDriven = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3" style={{ gap: 0 }}>
-          {cards.map((card, i) => (
-            <ScrollReveal key={card.title} delay={i * 0.1}>
-              <div
-                className="relative flex flex-col justify-between overflow-hidden cursor-pointer"
-                style={{
-                  backgroundColor: card.bg,
-                  color: card.textColor,
-                  minHeight: 480,
-                  padding: "36px",
-                  borderRadius: "20px",
-                }}
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                {/* Background image that slides in on hover */}
+        <div
+          style={{
+            display: "flex",
+            gap: 0,
+            height: 520,
+          }}
+        >
+          {cards.map((card, i) => {
+            const isHovered = hoveredIndex === i;
+            const someHovered = hoveredIndex !== null;
+
+            return (
+              <ScrollReveal key={card.title} delay={i * 0.1} className="h-full">
                 <div
+                  className="relative overflow-hidden cursor-pointer h-full"
                   style={{
-                    position: "absolute",
-                    inset: 0,
-                    transform:
-                      hoveredIndex === i
-                        ? "translateX(0)"
-                        : card.slideDirection === "right"
-                        ? "translateX(-100%)"
-                        : "translateX(100%)",
-                    transition: "transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)",
-                    zIndex: 0,
+                    backgroundColor: card.bg,
+                    color: card.textColor,
+                    borderRadius: "20px",
+                    width: isHovered
+                      ? "calc(60vw - 80px)"
+                      : someHovered
+                      ? "calc(20vw - 10px)"
+                      : "calc(33.333vw - 40px)",
+                    maxWidth: isHovered ? "780px" : someHovered ? "280px" : "440px",
+                    minWidth: someHovered && !isHovered ? "200px" : undefined,
+                    transition: "width 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), max-width 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)",
                   }}
+                  onMouseEnter={() => setHoveredIndex(i)}
+                  onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    loading="lazy"
-                    width={800}
-                    height={1000}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                  {/* Dark gradient overlay for text readability */}
+                  {/* Background image - visible on hover */}
                   <div
                     style={{
                       position: "absolute",
                       inset: 0,
-                      background:
-                        "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%)",
-                    }}
-                  />
-                </div>
-
-                {/* Content */}
-                <div style={{ position: "relative", zIndex: 1 }}>
-                  <h3
-                    style={{
-                      ...TYPE.h3,
-                      fontSize: "clamp(24px, 3vw, 32px)",
-                      fontWeight: 500,
-                      color: hoveredIndex === i ? "#FFFFFF" : card.textColor,
-                      transition: "color 0.4s ease",
+                      opacity: isHovered ? 1 : 0,
+                      transition: "opacity 0.5s ease",
+                      zIndex: 0,
                     }}
                   >
-                    {card.title}
-                  </h3>
-                </div>
-                <div
-                  className="flex items-end justify-between"
-                  style={{ position: "relative", zIndex: 1 }}
-                >
-                  <p
-                    style={{
-                      ...TYPE.body,
-                      color: hoveredIndex === i ? "#FFFFFF" : card.textColor,
-                      opacity: 0.85,
-                      maxWidth: "260px",
-                      transition: "color 0.4s ease",
-                    }}
-                  >
-                    {card.description}
-                  </p>
-                  <button
-                    className="flex items-center justify-center rounded-full border shrink-0"
-                    style={{
-                      width: 40,
-                      height: 40,
-                      borderColor:
-                        hoveredIndex === i || card.textColor === "#FFFFFF"
-                          ? "rgba(255,255,255,0.4)"
-                          : "rgba(0,0,0,0.25)",
-                      transition: "border-color 0.4s ease",
-                    }}
-                  >
-                    <ArrowRight
-                      size={16}
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      loading="lazy"
+                      width={800}
+                      height={1000}
                       style={{
-                        color: hoveredIndex === i ? "#FFFFFF" : card.textColor,
-                        transition: "color 0.4s ease",
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
                       }}
                     />
-                  </button>
+                    <div
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        background:
+                          "linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.02) 100%)",
+                      }}
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div
+                    className="flex flex-col justify-between h-full"
+                    style={{
+                      position: "relative",
+                      zIndex: 1,
+                      padding: "36px",
+                    }}
+                  >
+                    <div>
+                      <h3
+                        style={{
+                          ...TYPE.h3,
+                          fontSize: "clamp(24px, 3vw, 32px)",
+                          fontWeight: 500,
+                          color: isHovered ? "#FFFFFF" : card.textColor,
+                          transition: "color 0.4s ease",
+                        }}
+                      >
+                        {card.title}
+                      </h3>
+                    </div>
+                    <div className="flex items-end justify-between">
+                      <p
+                        style={{
+                          ...TYPE.body,
+                          color: isHovered ? "#FFFFFF" : card.textColor,
+                          opacity: 0.85,
+                          maxWidth: "260px",
+                          transition: "color 0.4s ease",
+                        }}
+                      >
+                        {card.description}
+                      </p>
+                      <button
+                        className="flex items-center justify-center rounded-full border shrink-0"
+                        style={{
+                          width: 40,
+                          height: 40,
+                          borderColor:
+                            isHovered || card.textColor === "#FFFFFF"
+                              ? "rgba(255,255,255,0.4)"
+                              : "rgba(0,0,0,0.25)",
+                          backgroundColor: isHovered
+                            ? "rgba(100, 220, 200, 0.7)"
+                            : "transparent",
+                          transition: "all 0.4s ease",
+                        }}
+                      >
+                        <ArrowRight
+                          size={16}
+                          style={{
+                            color: isHovered ? "#FFFFFF" : card.textColor,
+                            transition: "color 0.4s ease",
+                          }}
+                        />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
+              </ScrollReveal>
+            );
+          })}
         </div>
       </div>
     </section>
