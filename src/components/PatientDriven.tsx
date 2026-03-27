@@ -8,7 +8,7 @@ import cardPartnerships from "@/assets/card-partnerships.jpg";
 
 const cards = [
   {
-    title: "Healthcare professionals",
+    title: "Healthcare\nprofessionals",
     description: "Using science to make a difference in patients' lives",
     bg: "#D4D8DC",
     textColor: "#0B1E33",
@@ -151,9 +151,7 @@ const PatientDriven = () => {
                           fontWeight: 500,
                           color: isHovered ? "#FFFFFF" : card.textColor,
                           transition: "color 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-                          wordBreak: "break-word",
-                          overflowWrap: "break-word",
-                          hyphens: "auto",
+                          whiteSpace: "pre-line",
                         }}
                       >
                         {card.title}
