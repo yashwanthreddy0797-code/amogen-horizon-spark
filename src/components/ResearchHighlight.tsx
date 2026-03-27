@@ -65,6 +65,11 @@ const cards = [
       { name: "HPLC-UV/PDA", image: hplcUvImg },
       { name: "LC–MS", image: lcMsImg },
       { name: "HRMS", image: hrmsImg },
+      { name: "SEC-HPLC", image: secHplcImg },
+      { name: "qPCR", image: qpcrImg },
+      { name: "Microplate Reader", image: microplateImg },
+      { name: "cAMP Bioassay", image: campImg },
+      { name: "CD-Spectrometry", image: cdSpecImg },
     ],
     details: [
       "SEC-HPLC",
