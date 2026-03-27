@@ -69,7 +69,7 @@ const Hero = () => {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ backgroundColor: "#0B736D" }}
+      style={{ backgroundColor: "#001965" }}
     >
       {/* Top hero area — two-column grid, headline on the right */}
       <div
