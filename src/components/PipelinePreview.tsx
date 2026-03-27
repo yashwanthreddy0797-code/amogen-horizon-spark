@@ -142,7 +142,7 @@ const PipelinePreview = () => {
                 </div>
 
                 <div>
-                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#3B82F6", display: "block", lineHeight: 1.3, whiteSpace: "pre-line" }}>{row.milestone}{"\n"}{row.milestoneDate}</span>
+                  <span style={{ fontSize: "13px", fontWeight: 600, color: row.accent, display: "block", lineHeight: 1.3, whiteSpace: "pre-line" }}>{row.milestone}{"\n"}{row.milestoneDate}</span>
                 </div>
               </div>
               );
