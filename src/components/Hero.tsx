@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { TYPE, SPACING } from "@/typography";
 import { useLanguage } from "@/i18n/LanguageContext";
-import amogenLogo from "@/assets/AmogenLogoWhite.png";
 import facilityImg from "@/assets/facility-1.jpg";
 import manufacturingImg from "@/assets/manufacturing.jpg";
 import researchImg from "@/assets/research-lab.jpg";
@@ -25,30 +24,6 @@ const Hero = () => {
           paddingBottom: "60px",
         }}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="flex items-center gap-5 mb-8"
-        >
-          <img
-            src={amogenLogo}
-            alt="AMOGEN"
-            className="w-auto"
-            style={{ height: "clamp(48px, 6vw, 72px)" }}
-          />
-          <span
-            style={{
-              ...TYPE.label,
-              color: "rgba(255,255,255,0.5)",
-              fontSize: "13px",
-              letterSpacing: "0.18em",
-            }}
-          >
-            AMOGEN PHARMA
-          </span>
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
