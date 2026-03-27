@@ -227,16 +227,16 @@ const ResearchHighlight = () => {
                 {/* Card body: text + image */}
                 <div
                   className="mx-auto gap-0"
-                  style={{ maxWidth: "1200px", padding: card.instruments ? "4px 0 16px" : "16px 0 48px" }}
+                  style={{ maxWidth: "1200px", padding: card.instruments ? "0px 0 16px" : "16px 0 48px" }}
                 >
                   {card.instruments ? (
                     <>
                       {/* Heading */}
-                      <div className="px-8 md:px-12 pt-3 pb-4">
+                      <div className="px-8 md:px-12 pt-1 pb-3">
                         <h3
                           style={{
                             ...TYPE.h2,
-                            fontSize: "clamp(28px, 3.5vw, 44px)",
+                            fontSize: "clamp(26px, 3vw, 40px)",
                             letterSpacing: "0.02em",
                             color: card.textColor,
                           }}
@@ -244,12 +244,12 @@ const ResearchHighlight = () => {
                           {card.title}
                         </h3>
                       </div>
-                      {/* Two-column instrument grid */}
-                      <div className="grid grid-cols-2 gap-x-5 gap-y-3 px-8 md:px-12" style={{ maxWidth: "680px" }}>
+                      {/* Two-column instrument grid — full width */}
+                      <div className="grid grid-cols-2 gap-x-5 gap-y-2.5 px-8 md:px-12">
                         {card.instruments.map((inst) => (
                           <div
                             key={inst.name}
-                            className="rounded-xl px-4 py-3.5 flex items-center gap-4"
+                            className="rounded-xl px-4 py-3 flex items-center gap-4"
                             style={{
                               background: "rgba(255, 255, 255, 0.7)",
                               backdropFilter: "blur(10px)",
