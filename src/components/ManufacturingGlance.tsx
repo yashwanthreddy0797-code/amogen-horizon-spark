@@ -36,11 +36,10 @@ const ManufacturingGlance = () => {
 
       {/* Content overlay — right aligned */}
       <div
-        className="relative z-10 mx-auto flex items-center justify-end"
+        className="relative z-10 flex items-center justify-end"
         style={{
-          maxWidth: SPACING.maxWidth,
-          paddingLeft: SPACING.sectionPx,
-          paddingRight: SPACING.sectionPx,
+          paddingLeft: "48px",
+          paddingRight: "clamp(32px, 5vw, 80px)",
           paddingTop: SPACING.sectionPy.desktop,
           paddingBottom: SPACING.sectionPy.desktop,
           minHeight: "520px",
