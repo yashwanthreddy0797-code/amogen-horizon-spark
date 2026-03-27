@@ -177,7 +177,7 @@ const ResearchHighlight = () => {
       `}</style>
 
       {/* Stacked sticky scroll cards */}
-      <div className="relative" style={{ marginLeft: "24px", marginRight: "24px" }}>
+      <div className="relative mx-4 sm:mx-6">
         {cards.map((card, index) => {
           const stickyTop = 72 + index * CARD_HEADER_HEIGHT;
           const CARD_HEIGHT = 500;

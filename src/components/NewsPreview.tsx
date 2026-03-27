@@ -57,10 +57,10 @@ const NewsPreview = () => {
           ))}
         </div>
 
-        <div className="flex items-center justify-center gap-6 mt-12">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-12">
           {/* Progress line */}
           <div className="flex items-center gap-3">
-            <div className="relative w-48 h-[2px] bg-border/40 rounded-full overflow-hidden">
+            <div className="relative w-32 sm:w-48 h-[2px] bg-border/40 rounded-full overflow-hidden">
               <div
                 className="absolute top-0 left-0 h-full rounded-full transition-all duration-500"
                 style={{

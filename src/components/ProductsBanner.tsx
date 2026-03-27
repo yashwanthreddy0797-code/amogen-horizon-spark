@@ -10,10 +10,10 @@ const ProductsBanner = () => {
         className="relative z-10 w-full md:w-[55%] flex items-center rounded-l-2xl"
         style={{
           background: "#FFFFFF",
-          clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 100%)",
         }}
       >
-        <div className="w-full py-12 md:py-16 pr-16 md:pr-24" style={{ paddingLeft: SPACING.sectionPx, maxWidth: "700px" }}>
+        <style>{`@media (min-width: 768px) { .products-banner-clip { clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%); } }`}</style>
+        <div className="products-banner-clip w-full py-10 md:py-16 pr-6 md:pr-24 px-4 sm:px-6" style={{ maxWidth: "700px" }}>
           <ScrollReveal>
             <p style={{ ...TYPE.label, color: "hsl(var(--muted-foreground))", marginBottom: "8px" }}>
               API AND FDF
