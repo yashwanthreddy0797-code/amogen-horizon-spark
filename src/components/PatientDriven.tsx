@@ -102,7 +102,7 @@ const PatientDriven = () => {
                       : "calc(33.333vw - 40px)",
                     maxWidth: isHovered ? "780px" : someHovered ? "280px" : "440px",
                     minWidth: someHovered && !isHovered ? "200px" : undefined,
-                    transition: "width 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), max-width 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)",
+                    transition: "width 0.85s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.85s cubic-bezier(0.16, 1, 0.3, 1)",
                   }}
                   onMouseEnter={() => setHoveredIndex(i)}
                   onMouseLeave={() => setHoveredIndex(null)}
