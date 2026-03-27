@@ -157,7 +157,7 @@ const ResearchHighlight = () => {
       {/* Stacked sticky scroll cards */}
       <div className="relative" style={{ marginLeft: "24px", marginRight: "24px" }}>
         {cards.map((card, index) => {
-          const isLast = index === cards.length - 1;
+          const stickyTop = 72 + index * CARD_HEADER_HEIGHT;
 
           const cardBgStyle: React.CSSProperties = {
             background: card.bg,
@@ -165,6 +165,8 @@ const ResearchHighlight = () => {
             WebkitBackdropFilter: `blur(${card.blur}px)`,
             border: "none",
             boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
+            height: `calc(100vh - ${stickyTop}px)`,
+            maxHeight: "600px",
             minHeight: "480px",
           };
 
@@ -178,9 +180,9 @@ const ResearchHighlight = () => {
               key={card.title}
               className="sticky"
               style={{
-                top: `${72 + index * CARD_HEADER_HEIGHT}px`,
+                top: `${stickyTop}px`,
                 zIndex: index + 1,
-                paddingTop: index > 0 ? "8px" : 0,
+                marginBottom: index < cards.length - 1 ? `${CARD_HEADER_HEIGHT}px` : "0px",
               }}
             >
               <section
