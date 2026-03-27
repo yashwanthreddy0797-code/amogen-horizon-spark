@@ -13,7 +13,7 @@ const pipelineItems: PipelineItem[] = [
   milestone: "Clinical Phase -1",
   milestoneDate: "H2 2026",
   strategy: "FDF + Licensing",
-  accent: "#F97316"
+  accent: "#EF4444"
 },
 {
   type: "row",
