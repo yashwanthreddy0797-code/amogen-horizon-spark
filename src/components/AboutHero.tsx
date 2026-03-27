@@ -321,7 +321,7 @@ const AboutHero = () => {
                       marginBottom: "12px",
                     }}
                   >
-                    {t.aboutHero.card4Desc}
+                    {t.aboutHero.card2Desc}
                   </p>
                   <a
                     href="/about"
