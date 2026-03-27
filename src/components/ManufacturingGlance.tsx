@@ -30,7 +30,7 @@ const ManufacturingGlance = () => {
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(270deg, #F7F6F5 0%, #F7F6F5 25%, rgba(247,246,245,0.95) 35%, rgba(247,246,245,0.6) 45%, rgba(247,246,245,0.15) 58%, transparent 68%)",
+          background: "linear-gradient(270deg, #F7F6F5 0%, #F7F6F5 20%, rgba(247,246,245,0.92) 30%, rgba(247,246,245,0.5) 40%, rgba(247,246,245,0.1) 50%, transparent 58%)",
         }}
       />
 
