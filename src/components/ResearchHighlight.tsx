@@ -1,4 +1,5 @@
 import ScrollReveal from "@/components/ScrollReveal";
+import AnalyticalCapabilitiesCard from "@/components/AnalyticalCapabilitiesCard";
 
 import facility1Img from "@/assets/fermentors.png";
 import facility2Img from "@/assets/biologics-types.png";
