@@ -3,7 +3,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { TYPE, SPACING } from "@/typography";
 import platformMfgImg from "@/assets/api-plant1-render.png";
-import platformSciImg from "@/assets/platform-science.jpg";
+import platformSciImg from "@/assets/api-fdf-banner-main.png";
 
 const BLUE = "#001965";
 const BLUE_70 = "rgba(0,25,101,0.7)";
