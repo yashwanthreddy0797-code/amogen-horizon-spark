@@ -195,7 +195,7 @@ const AboutHero = () => {
                     lineHeight: 1.5,
                   }}
                 >
-                  Advancing a robust pipeline targeting diabetes, obesity, and immunology.
+                  Scientific and manufacturing expertise driving biosimilar innovation.
                 </p>
               </div>
             </div>
