@@ -329,6 +329,68 @@ const ResearchHighlight = () => {
         })}
       </div>
 
+      {/* Careers CTA Banner */}
+      <ScrollReveal delay={0.1}>
+        <div
+          className="mx-6 mt-0 rounded-b-3xl overflow-hidden"
+          style={{
+            background: "#5B2D8E",
+            padding: "clamp(40px, 5vw, 64px) clamp(32px, 4vw, 64px)",
+          }}
+        >
+          <div className="grid md:grid-cols-[2fr_1fr] gap-8 items-end" style={{ maxWidth: "1200px", margin: "0 auto" }}>
+            <div className="flex items-start gap-4">
+              <div
+                className="w-5 h-5 rounded-full flex-shrink-0 mt-3"
+                style={{ background: "#FFFFFF" }}
+              />
+              <h3
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "clamp(28px, 4vw, 48px)",
+                  fontWeight: 300,
+                  color: "#FFFFFF",
+                  lineHeight: 1.15,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Science with us — we're looking for extra[not]ordinary® minds.
+              </h3>
+            </div>
+            <div className="flex flex-col gap-4">
+              <p
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "14px",
+                  fontWeight: 400,
+                  color: "rgba(255,255,255,0.8)",
+                  lineHeight: 1.6,
+                }}
+              >
+                Are you looking for a new challenge? Do you want to make a real difference in the world? We might just be the right match.
+              </p>
+              <a
+                href="/partner"
+                className="inline-flex items-center gap-2 group/careers"
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  color: "#FFFFFF",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "4px",
+                }}
+              >
+                Visit Careers
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-white/50 group-hover/careers:bg-white/20 transition-colors">
+                  <ArrowRight size={12} />
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </ScrollReveal>
+
       {/* CTA row */}
       <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <div className="flex items-center justify-between py-6">
