@@ -62,12 +62,12 @@ const cards = [
       "cAMP Bioassay",
       "CD-Spectrometry",
     ],
-    bg: "rgba(195, 200, 205, 0.65)",
+    bg: "rgba(11, 30, 51, 0.9)",
     blur: 25,
-    headerBg: "rgba(195, 200, 205, 0.65)",
-    accentColor: "#0B1E33",
-    textColor: "#0B1E33",
-    dark: false,
+    headerBg: "rgba(11, 30, 51, 0.9)",
+    accentColor: "#ffffff",
+    textColor: "#ffffff",
+    dark: true,
   },
 ];
 
