@@ -11,7 +11,7 @@ const pipelineItems: PipelineItem[] = [
   progress: 95,
   gradient: "linear-gradient(90deg, #EF4444 0%, #A855F7 100%)",
   milestone: "Clinical Phase -1",
-  milestoneDate: "2H-2026",
+  milestoneDate: "H2 2026",
   strategy: "FDF + Licensing",
   accent: "#F97316"
 },
@@ -22,7 +22,7 @@ const pipelineItems: PipelineItem[] = [
   progress: 75,
   gradient: "linear-gradient(90deg, #F97316 0%, #EAB308 100%)",
   milestone: "DMF",
-  milestoneDate: "Q3-2026",
+  milestoneDate: "Q3 2026",
   strategy: "API + FDF",
   accent: "#F97316"
 },
@@ -34,7 +34,7 @@ const pipelineItems: PipelineItem[] = [
   progress: 50,
   gradient: "linear-gradient(90deg, #4C1D95 0%, #7C3AED 100%)",
   milestone: "DMF",
-  milestoneDate: "Jan-2026",
+  milestoneDate: "August 2026",
   strategy: "API + FDF",
   accent: "#EC4899"
 },
@@ -45,7 +45,7 @@ const pipelineItems: PipelineItem[] = [
   progress: 33,
   gradient: "linear-gradient(90deg, #0E7490 0%, #3B82F6 100%)",
   milestone: "DMF",
-  milestoneDate: "Q4-2026",
+  milestoneDate: "Q4 2026",
   strategy: "API + FDF",
   accent: "#2A918B"
 },
@@ -138,7 +138,7 @@ const PipelinePreview = () => {
                 </div>
 
                 <div>
-                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#3B82F6", display: "block", lineHeight: 1.3 }}>{row.milestone} · {row.milestoneDate}</span>
+                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#3B82F6", display: "block", lineHeight: 1.3, whiteSpace: "pre-line" }}>{row.milestone}{"\n"}{row.milestoneDate}</span>
                 </div>
               </div>
               );
