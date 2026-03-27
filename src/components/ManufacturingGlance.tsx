@@ -1,207 +1,129 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { Link } from "react-router-dom";
-import { ArrowRight, Beaker, Filter, BarChart3, Snowflake, FlaskConical, Fingerprint, ThermometerSun, Microscope } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import apiPlant from "@/assets/api-plant1-render.png";
 import { TYPE, SPACING } from "@/typography";
 
 const capabilities = [
-  { icon: Beaker, label: "Fermentation", detail: "5×15KL + 2×1KL" },
-  { icon: Filter, label: "Downstream Purification" },
-  { icon: BarChart3, label: "Preparative Chromatography" },
-  { icon: Snowflake, label: "Bulk Lyophilisation" },
-  { icon: FlaskConical, label: "Analytical Characterisation" },
-  { icon: Fingerprint, label: "Peptide Mapping" },
-  { icon: ThermometerSun, label: "ICH Stability Testing" },
-  { icon: Microscope, label: "Cell-based Bioassay" },
-];
-
-const facilities = [
-  { name: "API Plant 1", capacity: "77 KL" },
-  { name: "API Plant 2", capacity: "45 KL" },
-  { name: "Formulation Facility", capacity: "30 KL" },
+  { label: "Fermentation", detail: "5×15KL + 2×1KL" },
+  { label: "Downstream Purification" },
+  { label: "Preparative Chromatography" },
+  { label: "Bulk Lyophilisation" },
+  { label: "Analytical Characterisation" },
+  { label: "Peptide Mapping" },
+  { label: "ICH Stability Testing" },
+  { label: "Cell-based Bioassay" },
 ];
 
 const ManufacturingGlance = () => {
   return (
-    <section
-      className="w-full"
-      style={{
-        background: "linear-gradient(180deg, #F7F6F5 0%, #EFEEE9 100%)",
-        paddingTop: SPACING.sectionPy.desktop,
-        paddingBottom: SPACING.sectionPy.desktop,
-      }}
-    >
+    <section className="w-full relative overflow-hidden" style={{ minHeight: "520px" }}>
+      {/* Full-width background image */}
+      <img
+        src={apiPlant}
+        alt="AMOGEN API Plant 1 facility render"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        loading="lazy"
+      />
+
+      {/* Left fade gradient overlay */}
       <div
-        className="mx-auto"
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(90deg, #F7F6F5 0%, #F7F6F5 30%, rgba(247,246,245,0.95) 40%, rgba(247,246,245,0.7) 55%, rgba(247,246,245,0.2) 70%, transparent 85%)",
+        }}
+      />
+
+      {/* Content overlay */}
+      <div
+        className="relative z-10 mx-auto flex items-center"
         style={{
           maxWidth: SPACING.maxWidth,
           paddingLeft: SPACING.sectionPx,
           paddingRight: SPACING.sectionPx,
+          paddingTop: SPACING.sectionPy.desktop,
+          paddingBottom: SPACING.sectionPy.desktop,
+          minHeight: "520px",
         }}
       >
-        {/* Top Row — Hero Stat + Facility Image */}
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 mb-20">
-          {/* Left — Big stat & facility breakdown */}
-          <div className="lg:w-1/2">
-            <ScrollReveal>
-              <p
-                style={{
-                  ...TYPE.label,
-                  color: "#2A918B",
-                  marginBottom: "16px",
-                }}
-              >
-                Manufacturing Capabilities
-              </p>
-            </ScrollReveal>
+        <div style={{ maxWidth: "480px" }}>
+          <ScrollReveal>
+            <p
+              style={{
+                ...TYPE.label,
+                color: "#2A918B",
+                marginBottom: "16px",
+              }}
+            >
+              Manufacturing Capabilities
+            </p>
+          </ScrollReveal>
 
-            <ScrollReveal delay={0.05}>
-              <p
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "clamp(14px, 1.5vw, 16px)",
-                  fontWeight: 400,
-                  color: "#001965",
-                  marginBottom: "8px",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                Total capacity
-              </p>
-              <h2
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "clamp(64px, 10vw, 120px)",
-                  fontWeight: 300,
-                  lineHeight: 1,
-                  letterSpacing: "-0.04em",
-                  color: "#001965",
-                  marginBottom: "40px",
-                }}
-              >
-                152 <span style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 300 }}>kL</span>
-              </h2>
-            </ScrollReveal>
+          <ScrollReveal delay={0.05}>
+            <h2
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: "clamp(28px, 4vw, 44px)",
+                fontWeight: 300,
+                lineHeight: 1.1,
+                letterSpacing: "-0.03em",
+                color: "#001965",
+                marginBottom: "40px",
+              }}
+            >
+              At a Glance
+            </h2>
+          </ScrollReveal>
 
-            <ScrollReveal delay={0.1}>
-              <div className="flex items-end gap-4 flex-wrap">
-                {facilities.map((f, i) => (
-                  <div key={f.name} className="flex items-end gap-4">
-                    {i > 0 && (
-                      <span
-                        style={{
-                          fontFamily: "'Outfit', sans-serif",
-                          fontSize: "clamp(28px, 4vw, 40px)",
-                          fontWeight: 200,
-                          color: "#001965",
-                          opacity: 0.3,
-                          lineHeight: 1,
-                        }}
-                      >
-                        +
-                      </span>
-                    )}
-                    <div>
-                      <p
-                        style={{
-                          fontFamily: "'Outfit', sans-serif",
-                          fontSize: "13px",
-                          fontWeight: 400,
-                          color: "hsl(var(--muted-foreground))",
-                          marginBottom: "4px",
-                        }}
-                      >
-                        {f.name}
-                      </p>
-                      <p
-                        style={{
-                          fontFamily: "'Outfit', sans-serif",
-                          fontSize: "clamp(28px, 4vw, 44px)",
-                          fontWeight: 300,
-                          lineHeight: 1,
-                          letterSpacing: "-0.03em",
-                          color: "#001965",
-                        }}
-                      >
-                        {f.capacity}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
-          </div>
-
-          {/* Right — Facility Image */}
-          <div className="lg:w-1/2">
-            <ScrollReveal delay={0.15}>
-              <div className="rounded-2xl overflow-hidden shadow-lg">
-                <img
-                  src={apiPlant}
-                  alt="AMOGEN API Plant 1 facility render"
-                  className="w-full h-auto object-cover object-center"
-                  style={{ display: "block", minHeight: "280px", maxHeight: "400px" }}
-                  loading="lazy"
-                />
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div style={{ height: "1px", background: "linear-gradient(90deg, transparent, #001965 20%, #001965 80%, transparent)", opacity: 0.08, marginBottom: "56px" }} />
-
-        {/* Bottom — Capability Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "40px 32px", marginBottom: "56px" }}>
-          {capabilities.map((cap, i) => (
-            <ScrollReveal key={cap.label} delay={0.12 + i * 0.04}>
-              <div className="flex flex-col items-center text-center gap-3">
-                <div
-                  className="flex items-center justify-center rounded-xl"
-                  style={{
-                    width: "56px",
-                    height: "56px",
-                    backgroundColor: "rgba(0, 25, 101, 0.06)",
-                  }}
-                >
-                  <cap.icon size={26} strokeWidth={1.3} style={{ color: "#001965" }} />
-                </div>
-                <div>
-                  <p
+          {/* Capabilities list */}
+          <div className="flex flex-col" style={{ gap: "16px", marginBottom: "48px" }}>
+            {capabilities.map((cap, i) => (
+              <ScrollReveal key={cap.label} delay={0.08 + i * 0.03}>
+                <div className="flex items-baseline gap-3">
+                  <span
                     style={{
-                      ...TYPE.bodySm,
-                      fontWeight: 600,
-                      color: "#001965",
-                      lineHeight: 1.3,
+                      width: "6px",
+                      height: "6px",
+                      borderRadius: "50%",
+                      backgroundColor: "#001965",
+                      flexShrink: 0,
+                      marginTop: "6px",
+                      alignSelf: "flex-start",
                     }}
-                  >
-                    {cap.label}
-                  </p>
-                  {cap.detail && (
-                    <p
+                  />
+                  <div>
+                    <span
                       style={{
-                        ...TYPE.bodySm,
-                        fontSize: "12px",
-                        fontWeight: 400,
-                        color: "hsl(var(--muted-foreground))",
-                        marginTop: "2px",
+                        ...TYPE.body,
+                        fontWeight: 500,
+                        color: "#001965",
                       }}
                     >
-                      {cap.detail}
-                    </p>
-                  )}
+                      {cap.label}
+                    </span>
+                    {cap.detail && (
+                      <span
+                        style={{
+                          ...TYPE.bodySm,
+                          fontWeight: 400,
+                          color: "hsl(var(--muted-foreground))",
+                          marginLeft: "8px",
+                        }}
+                      >
+                        {cap.detail}
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
+              </ScrollReveal>
+            ))}
+          </div>
 
-        {/* CTA */}
-        <ScrollReveal delay={0.5}>
-          <div className="flex justify-center">
+          {/* CTA */}
+          <ScrollReveal delay={0.4}>
             <Link
               to="/cdmo"
-              className="inline-flex items-center gap-3 transition-all hover:opacity-80 hover:scale-[1.02]"
+              className="inline-flex items-center gap-3 transition-all hover:opacity-80"
               style={{
                 backgroundColor: "#001965",
                 color: "#ffffff",
@@ -223,8 +145,8 @@ const ManufacturingGlance = () => {
               </span>
               Explore Our Manufacturing Platform
             </Link>
-          </div>
-        </ScrollReveal>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   );
