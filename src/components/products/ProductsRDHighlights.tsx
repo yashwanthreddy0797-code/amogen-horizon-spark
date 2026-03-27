@@ -2,18 +2,16 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import rdBg from "@/assets/rd-highlights-bg.jpg";
-import facilityImg from "@/assets/rd-facility.jpg";
-import patientImg from "@/assets/patient-portrait.jpg";
 
 const stats = [
-  { label: "PROGRAMS", value: "90", suffix: "+", description: "compounds, devices or indications in development individually or under collaboration or license agreement" },
-  { type: "image" as const, src: facilityImg },
-  { label: "PATIENT IMPACT", value: "75", suffix: "+", description: "conditions treated across six therapeutic areas" },
-  { type: "image" as const, src: patientImg },
-  { label: "PIONEERING PROGRESS", value: "~50", suffix: "", description: "new molecular entities in development" },
-  { label: "CUTTING-EDGE FACILITIES", value: "9", suffix: "", description: "R&D centers and 14,000+ scientists and staff globally" },
-  { label: "GLOBAL REACH", value: "375", suffix: "+", description: "clinical trials in 50+ countries" },
-  { label: "INVESTMENT", value: "$10.8", suffix: "b", description: "R&D investment in 2024" },
+  { label: "BIOSIMILAR PROGRAMS", value: "10", suffix: "+", description: "Active GLP-1, insulin and immunology biosimilar programs" },
+  { type: "color" as const, bg: "#0B736D" },
+  { label: "PATIENT POPULATION", value: "570M", suffix: "+", description: "Global diabetes patients across target markets" },
+  { type: "color" as const, bg: "#0B736D" },
+  { label: "FERMENTATION CAPACITY", value: "980 Kg", suffix: "", description: "Annual GLP-1 class API production capacity" },
+  { label: "PRODUCTION FERMENTERS", value: "5 × 15KL", suffix: "", description: "Plus 2 × 1KL seed fermenters — Plant 1, Hyderabad" },
+  { label: "PARTNERSHIP MARKETS", value: "8", suffix: "+", description: "Target geographies including India, GCC, ASEAN, EU and North America" },
+  { label: "PIPELINE MARKET SIZE", value: "$80B", suffix: "+", description: "Cumulative addressable market across all 7 programs" },
 ];
 
 const focusAreas = [
