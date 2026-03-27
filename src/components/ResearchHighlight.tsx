@@ -163,8 +163,8 @@ const ResearchHighlight = () => {
             background: card.bg,
             backdropFilter: `blur(${card.blur}px)`,
             WebkitBackdropFilter: `blur(${card.blur}px)`,
-            border: "1px solid rgba(255, 255, 255, 0.15)",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
+            border: "none",
+            boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
           };
 
           const headerStyle: React.CSSProperties = {
@@ -183,11 +183,9 @@ const ResearchHighlight = () => {
               }}
             >
               <section
-                className={`luxury-card ${index === 0 ? 'rounded-t-3xl' : ''}`}
+                className="luxury-card rounded-3xl"
                 style={{
                   ...cardBgStyle,
-                  borderTopLeftRadius: index === 0 ? undefined : '24px',
-                  borderTopRightRadius: index === 0 ? undefined : '24px',
                   marginTop: index > 0 ? `${index * CARD_HEADER_HEIGHT}px` : 0,
                 }}
               >
