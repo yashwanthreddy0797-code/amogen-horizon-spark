@@ -1,32 +1,14 @@
 
 
-## Plan: Add Equipment Images to R&D Capabilities Card
+## Plan: Update CDMO Services Section Text
 
-### What We're Building
-Convert the second sticky card ("R&D Capabilities") from its current text-bullet + side-image layout to the same two-column instrument grid used by the API Manufacturing and Analytical Capabilities cards.
+### What Changes
+Update two strings in `src/i18n/translations/en.ts` (lines 74-76):
 
-### Items (8 total)
-1. Sequence & Construct Engineering
-2. Multi-Host Expression Platforms
-3. Strain / Clone Development
-4. Cell Banking & Stability Systems
-5. Media & Seed Train Optimization
-6. Scalable Fermentation Development
-7. Soluble + Inclusion Body Recovery
-8. Integrated Purification Platform
+1. **title** (line 74): `"The platform that manufactures our pipeline"` → `"One facility."`
+2. **titleEm** (line 75): `"is available to you."` → `"multi-microbial platform."`
+3. **description** (line 76): `"The same fermentation and chemical ligation platform Amogen uses to build its own biosimilar pipeline is available to licensing and CDMO partners — from development batch through commercial supply."` → `"Built for any microbial expression system. Available to pharma partners globally."`
 
-### Technical Steps
-
-1. **Generate 8 images** via AI image generation — clean, professional icons on white/transparent backgrounds matching the style of the other two cards' instrument images.
-
-2. **Save to `src/assets/`** (e.g., `sequence-engineering.png`, `multi-host-expression.png`, `strain-clone-dev.png`, `cell-banking.png`, `media-seed-train.png`, `scalable-fermentation.png`, `inclusion-body-recovery.png`, `integrated-purification.png`).
-
-3. **Update `src/components/ResearchHighlight.tsx`**:
-   - Add 8 new image imports.
-   - Change the second card's data: add an `instruments` array with the 8 items and clear `details` to `[]`.
-   - The existing rendering logic already handles the `instruments` branch with the two-column centered grid — no template changes needed.
-
-### Files Modified
-- `src/components/ResearchHighlight.tsx` — add imports + convert card data
-- `src/assets/` — 8 new image files
+### File Modified
+- `src/i18n/translations/en.ts` — lines 74-76
 
