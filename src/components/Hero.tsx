@@ -6,13 +6,18 @@ const Hero = () => {
   const { t } = useLanguage();
 
   return (
-    <>
-      {/* True Blue top half */}
-      <section
-        className="relative overflow-hidden"
-        style={{ backgroundColor: "#001965", paddingBottom: "clamp(160px, 20vw, 260px)" }}
+    <div className="relative">
+      {/* Background split: top half blue, bottom half white */}
+      <div className="absolute inset-0">
+        <div className="h-1/2" style={{ backgroundColor: "#001965" }} />
+        <div className="h-1/2" style={{ backgroundColor: "#FFFFFF" }} />
+      </div>
+
+      {/* True Blue section with text */}
+      <div
+        className="relative"
+        style={{ backgroundColor: "#001965" }}
       >
-        {/* Text content */}
         <div
           className="relative w-full mx-auto"
           style={{
@@ -38,10 +43,15 @@ const Hero = () => {
             {t.hero.title}
           </motion.h1>
         </div>
-      </section>
+      </div>
 
-      {/* Gradient panel that straddles blue/white */}
-      <div className="relative" style={{ backgroundColor: "#FFFFFF" }}>
+      {/* Gradient panel centered across the blue/white split */}
+      <div className="relative" style={{ backgroundColor: "transparent" }}>
+        {/* Background split behind the panel */}
+        <div className="absolute inset-0">
+          <div className="h-1/2" style={{ backgroundColor: "#001965" }} />
+          <div className="h-1/2" style={{ backgroundColor: "#FFFFFF" }} />
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -51,7 +61,7 @@ const Hero = () => {
             maxWidth: "1000px",
             paddingLeft: SPACING.sectionPx,
             paddingRight: SPACING.sectionPx,
-            marginTop: "clamp(-160px, -20vw, -260px)",
+            paddingTop: "20px",
             paddingBottom: "clamp(60px, 8vw, 100px)",
           }}
         >
@@ -64,7 +74,7 @@ const Hero = () => {
           />
         </motion.div>
       </div>
-    </>
+    </div>
   );
 };
 
