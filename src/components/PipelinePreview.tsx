@@ -10,7 +10,7 @@ const pipelineItems: PipelineItem[] = [
   indication: "T2DM, Obesity",
   progress: 95,
   gradient: "linear-gradient(90deg, #EF4444 0%, #A855F7 100%)",
-  milestone: "Clinical Phase -1",
+  milestone: "Clinical Phase 1",
   milestoneDate: "H2 2026",
   strategy: "FDF + Licensing",
   accent: "#EF4444"
@@ -33,7 +33,7 @@ const pipelineItems: PipelineItem[] = [
   indication: "Type 1 & 2 Diabetes",
   progress: 50,
   gradient: "linear-gradient(90deg, #4C1D95 0%, #7C3AED 100%)",
-  milestone: "DMF",
+  milestone: "Preclinical Study",
   milestoneDate: "August 2026",
   strategy: "API + FDF",
   accent: "#4C1D95"
@@ -56,8 +56,8 @@ const pipelineItems: PipelineItem[] = [
   indication: "Rheumatoid Arthritis",
   progress: 17,
   gradient: "linear-gradient(90deg, #059669 0%, #34D399 100%)",
-  milestone: "DMF",
-  milestoneDate: "2027",
+  milestone: "CMC Data",
+  milestoneDate: "July 2026",
   strategy: "API + FDF",
   accent: "#2A918B"
 },
@@ -142,7 +142,7 @@ const PipelinePreview = () => {
                 </div>
 
                 <div>
-                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#1A1A1A", display: "block", lineHeight: 1.3, whiteSpace: "pre-line" }}>{row.milestone}{"\n"}{row.milestoneDate}</span>
+                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#1A1A1A", display: "block", lineHeight: 1.3, whiteSpace: "pre-line" }}>{row.milestone} {row.milestoneDate}</span>
                 </div>
               </div>
               );
