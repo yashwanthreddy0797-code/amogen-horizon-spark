@@ -35,6 +35,15 @@ const AboutHero = () => {
       >
         {/* Section heading */}
         <ScrollReveal>
+          <p
+            style={{
+              ...TYPE.label,
+              color: BLUE_50,
+              marginBottom: SPACING.labelToH2,
+            }}
+          >
+            At a glance
+          </p>
           <h2
             style={{
               fontFamily: "'Outfit', sans-serif",
