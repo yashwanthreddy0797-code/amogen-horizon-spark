@@ -29,7 +29,7 @@ const AboutHero = () => {
           maxWidth: SPACING.maxWidth,
           paddingLeft: SPACING.sectionPx,
           paddingRight: SPACING.sectionPx,
-          paddingTop: "96px",
+          paddingTop: "48px",
           paddingBottom: "96px",
         }}
       >
