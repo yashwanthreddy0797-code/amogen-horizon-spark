@@ -2,16 +2,18 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import rdBg from "@/assets/rd-highlights-bg.jpg";
+import facilityImg from "@/assets/rd-facility.jpg";
+import patientImg from "@/assets/patient-portrait.jpg";
 
 const stats = [
-  { label: "BIOSIMILAR PROGRAMS", value: "10", suffix: "+", description: "Active GLP-1, insulin and immunology biosimilar programs" },
-  { type: "color" as const, bg: "#0B736D" },
-  { label: "PATIENT POPULATION", value: "570M", suffix: "+", description: "Global diabetes patients across target markets" },
-  { type: "color" as const, bg: "#0B736D" },
-  { label: "FERMENTATION CAPACITY", value: "980 Kg", suffix: "", description: "Annual GLP-1 class API production capacity" },
-  { label: "PRODUCTION FERMENTERS", value: "5 × 15KL", suffix: "", description: "Plus 2 × 1KL seed fermenters — Plant 1, Hyderabad" },
-  { label: "PARTNERSHIP MARKETS", value: "8", suffix: "+", description: "Target geographies including India, GCC, ASEAN, EU and North America" },
-  { label: "PIPELINE MARKET SIZE", value: "$80B", suffix: "+", description: "Cumulative addressable market across all 7 programs" },
+  { label: "PROGRAMS", value: "90", suffix: "+", description: "compounds, devices or indications in development individually or under collaboration or license agreement" },
+  { type: "image" as const, src: facilityImg },
+  { label: "PATIENT IMPACT", value: "75", suffix: "+", description: "conditions treated across six therapeutic areas" },
+  { type: "image" as const, src: patientImg },
+  { label: "PIONEERING PROGRESS", value: "~50", suffix: "", description: "new molecular entities in development" },
+  { label: "CUTTING-EDGE FACILITIES", value: "9", suffix: "", description: "R&D centers and 14,000+ scientists and staff globally" },
+  { label: "GLOBAL REACH", value: "375", suffix: "+", description: "clinical trials in 50+ countries" },
+  { label: "INVESTMENT", value: "$10.8", suffix: "b", description: "R&D investment in 2024" },
 ];
 
 const focusAreas = [
@@ -66,31 +68,33 @@ const ProductsRDHighlights = () => {
             {/* Top row: 4 items */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
               {stats.slice(0, 4).map((item, i) => {
-                if ("type" in item && item.type === "color") {
+                if ("type" in item && item.type === "image") {
                   return (
-                    <div
-                      key={i}
-                      className="rounded-xl"
-                      style={{ backgroundColor: (item as any).bg, height: "240px" }}
-                    />
+                    <div key={i} className="rounded-xl overflow-hidden aspect-square lg:aspect-auto lg:h-full">
+                      <img
+                        src={item.src}
+                        alt=""
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
                   );
                 }
                 const stat = item as { label: string; value: string; suffix: string; description: string };
-                const isLongValue = stat.value.length > 3;
                 return (
                   <div
                     key={i}
-                    className="bg-white/90 backdrop-blur-sm rounded-xl p-6 lg:p-8 flex flex-col justify-between overflow-hidden"
-                    style={{ height: "240px" }}
+                    className="bg-white/90 backdrop-blur-sm rounded-xl p-6 lg:p-8 flex flex-col justify-between"
+                    style={{ minHeight: "240px" }}
                   >
                     <p className="text-xs font-bold tracking-[0.1em] uppercase text-foreground">
                       {stat.label}
                     </p>
                     <div className="my-4">
-                      <span className={`${isLongValue ? 'text-3xl lg:text-4xl' : 'text-5xl lg:text-6xl'} font-light text-[#001965]`}>
+                      <span className="text-5xl lg:text-6xl font-light text-[#001965]">
                         {stat.value}
                       </span>
-                      <span className={`${isLongValue ? 'text-xl lg:text-2xl' : 'text-2xl lg:text-3xl'} font-light text-[#001965]`}>
+                      <span className="text-2xl lg:text-3xl font-light text-[#001965]">
                         {stat.suffix}
                       </span>
                     </div>
@@ -106,21 +110,20 @@ const ProductsRDHighlights = () => {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               {stats.slice(4).map((item, i) => {
                 const stat = item as { label: string; value: string; suffix: string; description: string };
-                const isLongValue = stat.value.length > 3;
                 return (
                   <div
                     key={i}
-                    className="bg-white/90 backdrop-blur-sm rounded-xl p-6 lg:p-8 flex flex-col justify-between overflow-hidden"
-                    style={{ height: "200px" }}
+                    className="bg-white/90 backdrop-blur-sm rounded-xl p-6 lg:p-8 flex flex-col justify-between"
+                    style={{ minHeight: "200px" }}
                   >
                     <p className="text-xs font-bold tracking-[0.1em] uppercase text-foreground">
                       {stat.label}
                     </p>
                     <div className="my-4">
-                      <span className={`${isLongValue ? 'text-3xl lg:text-4xl' : 'text-5xl lg:text-6xl'} font-light text-[#001965]`}>
+                      <span className="text-5xl lg:text-6xl font-light text-[#001965]">
                         {stat.value}
                       </span>
-                      <span className={`${isLongValue ? 'text-xl lg:text-2xl' : 'text-2xl lg:text-3xl'} font-light text-[#001965]`}>
+                      <span className="text-2xl lg:text-3xl font-light text-[#001965]">
                         {stat.suffix}
                       </span>
                     </div>
