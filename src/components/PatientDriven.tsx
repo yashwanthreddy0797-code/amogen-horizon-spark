@@ -155,7 +155,7 @@ const PatientDriven = () => {
                           fontSize: "clamp(24px, 3vw, 32px)",
                           fontWeight: 500,
                           color: isHovered ? "#FFFFFF" : card.textColor,
-                          transition: "color 0.4s ease",
+                          transition: "color 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                         }}
                       >
                         {card.title}
