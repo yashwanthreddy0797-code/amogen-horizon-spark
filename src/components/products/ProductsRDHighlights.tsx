@@ -6,9 +6,9 @@ import facilityImg from "@/assets/rd-facility.jpg";
 import patientImg from "@/assets/patient-portrait.jpg";
 
 const stats = [
-  { label: "BIOSIMILAR PROGRAMS", value: "10", suffix: "+", description: "compounds, devices or indications in development individually or under collaboration or license agreement" },
+  { label: "BIOSIMILAR PROGRAMS", value: "10", suffix: "", description: "compounds, devices or indications in development individually or under collaboration or license agreement" },
   { type: "image" as const, src: facilityImg },
-  { label: "PATIENT IMPACT", value: "570M", suffix: "+", description: "conditions treated across six therapeutic areas" },
+  { label: "PATIENT IMPACT", value: "570M", suffix: "", description: "conditions treated across six therapeutic areas" },
   { type: "image" as const, src: patientImg },
   { label: "PIPELINE MARKET SIZE ", value: "$80B ", suffix: "", description: "new molecular entities in development" },
   { label: "CUTTING-EDGE FACILITIES", value: "9", suffix: "", description: "R&D centers and 14,000+ scientists and staff globally" },
