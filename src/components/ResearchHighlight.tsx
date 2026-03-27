@@ -1,5 +1,4 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import AnalyticalCapabilitiesCard from "@/components/AnalyticalCapabilitiesCard";
 
 import facility1Img from "@/assets/fermentors.png";
 import facility2Img from "@/assets/biologics-types.png";
@@ -198,24 +197,22 @@ const ResearchHighlight = () => {
                 className="luxury-card rounded-3xl"
                 style={cardBgStyle}
               >
-                {/* Persistent header strip — hidden for analytical card */}
-                {!card.instruments && (
-                  <div
-                    className="flex items-center rounded-t-3xl px-8 md:px-12"
-                    style={headerStyle}
+                {/* Persistent header strip */}
+                <div
+                  className="flex items-center rounded-t-3xl px-8 md:px-12"
+                  style={headerStyle}
+                >
+                  <span
+                    style={{
+                      ...TYPE.label,
+                      fontSize: "11px",
+                      letterSpacing: "0.25em",
+                      color: card.accentColor,
+                    }}
                   >
-                    <span
-                      style={{
-                        ...TYPE.label,
-                        fontSize: "11px",
-                        letterSpacing: "0.25em",
-                        color: card.accentColor,
-                      }}
-                    >
-                      {card.tag}
-                    </span>
-                  </div>
-                )}
+                    {card.tag}
+                  </span>
+                </div>
 
                 {/* Card body: text + image */}
                 <div
@@ -223,12 +220,46 @@ const ResearchHighlight = () => {
                   style={{ maxWidth: "1200px", padding: card.instruments ? "4px 0 16px" : "16px 0 48px" }}
                 >
                   {card.instruments ? (
-                    <AnalyticalCapabilitiesCard
-                      title={card.title}
-                      instruments={card.instruments}
-                      textColor={card.textColor}
-                      accentColor={card.accentColor}
-                    />
+                    <>
+                      {/* Heading */}
+                      <div className="px-8 md:px-12 pt-3 pb-4">
+                        <h3
+                          style={{
+                            ...TYPE.h2,
+                            fontSize: "clamp(28px, 3.5vw, 44px)",
+                            letterSpacing: "0.02em",
+                            color: card.textColor,
+                          }}
+                        >
+                          {card.title}
+                        </h3>
+                      </div>
+                      {/* Two-column instrument grid */}
+                      <div className="grid grid-cols-2 gap-x-6 gap-y-2 px-8 md:px-12">
+                        {card.instruments.map((inst) => (
+                          <div
+                            key={inst.name}
+                            className="rounded-xl px-4 py-2.5 flex items-center gap-3"
+                            style={{
+                              background: "rgba(255, 255, 255, 0.7)",
+                              backdropFilter: "blur(10px)",
+                              border: "1px solid rgba(255, 255, 255, 0.5)",
+                            }}
+                          >
+                            <img
+                              src={inst.image}
+                              alt={inst.name}
+                              className="w-11 h-11 object-contain flex-shrink-0"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                            <p style={{ ...TYPE.bodySm, fontSize: "13px", fontWeight: 600, color: "#0B1E33" }}>
+                              {inst.name}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </>
                   ) : (
                     <div className="grid md:grid-cols-[1fr_0.8fr] gap-0 items-start">
                       {/* Left: Text content */}
