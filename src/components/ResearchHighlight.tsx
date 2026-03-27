@@ -106,7 +106,7 @@ const ResearchHighlight = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="bg-background relative" style={{ paddingTop: "96px", paddingBottom: "0px" }}>
+    <section className="relative" style={{ paddingTop: "96px", paddingBottom: "0px", background: "#FFFFFF" }}>
       {/* Subtle decorative element */}
       <div
         className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-[0.03] pointer-events-none"
