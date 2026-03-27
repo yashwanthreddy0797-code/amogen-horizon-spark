@@ -70,8 +70,8 @@ const ProductsRDHighlights = () => {
                   return (
                     <div
                       key={i}
-                      className="rounded-xl aspect-square lg:aspect-auto lg:h-full"
-                      style={{ backgroundColor: (item as any).bg, minHeight: "240px" }}
+                      className="rounded-xl"
+                      style={{ backgroundColor: (item as any).bg, height: "240px" }}
                     />
                   );
                 }
