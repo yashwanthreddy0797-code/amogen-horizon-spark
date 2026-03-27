@@ -1,8 +1,15 @@
 import ScrollReveal from "@/components/ScrollReveal";
 
 import facility1Img from "@/assets/fermentors.png";
-import facility2Img from "@/assets/biologics-types.png";
 import facility3Img from "@/assets/bioinformatics-banner.jpg";
+import sequenceEngImg from "@/assets/sequence-engineering.png";
+import multiHostImg from "@/assets/multi-host-expression.png";
+import strainCloneImg from "@/assets/strain-clone-dev.png";
+import cellBankingImg from "@/assets/cell-banking.png";
+import mediaSeedTrainImg from "@/assets/media-seed-train.png";
+import scalableFermentationImg from "@/assets/scalable-fermentation.png";
+import inclusionBodyImg from "@/assets/inclusion-body-recovery.png";
+import integratedPurificationImg from "@/assets/integrated-purification.png";
 import preSeedBioreactorImg from "@/assets/pre-seed-bioreactor.png";
 import seedBioreactor1000lImg from "@/assets/seed-bioreactor-1000l.png";
 import productionBioreactor10000lImg from "@/assets/production-bioreactor-10000l.png";
@@ -48,17 +55,18 @@ const cards = [
   {
     title: "R&D Capabilities",
     tag: "RESEARCH & DEVELOPMENT",
-    image: facility2Img,
-    details: [
-      "Sequence & Construct Engineering",
-      "Multi-Host Expression Platforms",
-      "Strain / Clone Development",
-      "Cell Banking & Stability Systems",
-      "Media & Seed Train Optimization",
-      "Scalable Fermentation Development",
-      "Soluble + Inclusion Body Recovery",
-      "Integrated Purification Platform",
+    image: facility3Img,
+    instruments: [
+      { name: "Sequence & Construct Engineering", image: sequenceEngImg },
+      { name: "Multi-Host Expression Platforms", image: multiHostImg },
+      { name: "Strain / Clone Development", image: strainCloneImg },
+      { name: "Cell Banking & Stability Systems", image: cellBankingImg },
+      { name: "Media & Seed Train Optimization", image: mediaSeedTrainImg },
+      { name: "Scalable Fermentation Development", image: scalableFermentationImg },
+      { name: "Soluble + Inclusion Body Recovery", image: inclusionBodyImg },
+      { name: "Integrated Purification Platform", image: integratedPurificationImg },
     ],
+    details: [],
     bg: "rgba(204, 197, 189, 0.55)",
     blur: 25,
     headerBg: "rgba(204, 197, 189, 0.55)",
