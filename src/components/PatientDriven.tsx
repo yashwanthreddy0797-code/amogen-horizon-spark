@@ -185,7 +185,7 @@ const PatientDriven = () => {
                           backgroundColor: isHovered
                             ? "rgba(100, 220, 200, 0.7)"
                             : "transparent",
-                          transition: "all 0.4s ease",
+                          transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                         }}
                       >
                         <ArrowRight
