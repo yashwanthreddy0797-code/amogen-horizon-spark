@@ -1,18 +1,18 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Beaker, Filter, BarChart3, Snowflake, FlaskConical, Fingerprint, ThermometerSun, Microscope } from "lucide-react";
 import apiPlant from "@/assets/api-plant1-render.png";
 import { TYPE, SPACING } from "@/typography";
 
 const capabilities = [
-  { label: "Fermentation", detail: "5×15KL + 2×1KL" },
-  { label: "Downstream Purification" },
-  { label: "Preparative Chromatography" },
-  { label: "Bulk Lyophilisation" },
-  { label: "Analytical Characterisation" },
-  { label: "Peptide Mapping" },
-  { label: "ICH Stability Testing" },
-  { label: "Cell-based Bioassay" },
+  { icon: Beaker, label: "Fermentation", detail: "5×15KL + 2×1KL" },
+  { icon: Filter, label: "Downstream Purification" },
+  { icon: BarChart3, label: "Preparative Chromatography" },
+  { icon: Snowflake, label: "Bulk Lyophilisation" },
+  { icon: FlaskConical, label: "Analytical Characterisation" },
+  { icon: Fingerprint, label: "Peptide Mapping" },
+  { icon: ThermometerSun, label: "ICH Stability Testing" },
+  { icon: Microscope, label: "Cell-based Bioassay" },
 ];
 
 const ManufacturingGlance = () => {
@@ -26,17 +26,17 @@ const ManufacturingGlance = () => {
         loading="lazy"
       />
 
-      {/* Left fade gradient overlay */}
+      {/* Right fade gradient overlay */}
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(90deg, #F7F6F5 0%, #F7F6F5 30%, rgba(247,246,245,0.95) 40%, rgba(247,246,245,0.7) 55%, rgba(247,246,245,0.2) 70%, transparent 85%)",
+          background: "linear-gradient(270deg, #F7F6F5 0%, #F7F6F5 30%, rgba(247,246,245,0.95) 40%, rgba(247,246,245,0.7) 55%, rgba(247,246,245,0.2) 70%, transparent 85%)",
         }}
       />
 
-      {/* Content overlay */}
+      {/* Content overlay — right aligned */}
       <div
-        className="relative z-10 mx-auto flex items-center"
+        className="relative z-10 mx-auto flex items-center justify-end"
         style={{
           maxWidth: SPACING.maxWidth,
           paddingLeft: SPACING.sectionPx,
@@ -75,23 +75,13 @@ const ManufacturingGlance = () => {
             </h2>
           </ScrollReveal>
 
-          {/* Capabilities list */}
-          <div className="flex flex-col" style={{ gap: "16px", marginBottom: "48px" }}>
+          {/* Capabilities list with icons */}
+          <div className="flex flex-col" style={{ gap: "14px", marginBottom: "48px" }}>
             {capabilities.map((cap, i) => (
               <ScrollReveal key={cap.label} delay={0.08 + i * 0.03}>
-                <div className="flex items-baseline gap-3">
-                  <span
-                    style={{
-                      width: "6px",
-                      height: "6px",
-                      borderRadius: "50%",
-                      backgroundColor: "#001965",
-                      flexShrink: 0,
-                      marginTop: "6px",
-                      alignSelf: "flex-start",
-                    }}
-                  />
-                  <div>
+                <div className="flex items-center gap-3">
+                  <cap.icon size={20} strokeWidth={1.4} style={{ color: "#001965", flexShrink: 0 }} />
+                  <div className="flex items-baseline gap-2">
                     <span
                       style={{
                         ...TYPE.body,
@@ -105,9 +95,9 @@ const ManufacturingGlance = () => {
                       <span
                         style={{
                           ...TYPE.bodySm,
+                          fontSize: "13px",
                           fontWeight: 400,
                           color: "hsl(var(--muted-foreground))",
-                          marginLeft: "8px",
                         }}
                       >
                         {cap.detail}
