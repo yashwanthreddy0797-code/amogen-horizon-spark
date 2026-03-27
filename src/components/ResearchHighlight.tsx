@@ -217,10 +217,10 @@ const ResearchHighlight = () => {
                 {/* Card body: text + image */}
                 <div
                   className="mx-auto grid md:grid-cols-[1fr_0.8fr] gap-0 items-start"
-                  style={{ maxWidth: "1200px", padding: "16px 0 48px" }}
+                  style={{ maxWidth: "1200px", padding: card.instruments ? "4px 0 16px" : "16px 0 48px" }}
                 >
                   {/* Left: Text content */}
-                  <div className="flex flex-col justify-center p-8 md:px-12 md:py-8">
+                  <div className="flex flex-col justify-start p-8 md:px-12" style={{ paddingTop: card.instruments ? "12px" : "32px" }}>
                     <h3
                       style={{
                         ...TYPE.h2,
@@ -252,13 +252,13 @@ const ResearchHighlight = () => {
                   </div>
 
                   {/* Right: Image or Instrument Cards */}
-                  <div className="relative p-4 md:p-8 flex items-center justify-center">
+                  <div className="relative p-4 md:p-6 flex items-start justify-center" style={{ maxHeight: card.instruments ? "420px" : "auto", overflowY: card.instruments ? "auto" : "visible" }}>
                     {card.instruments ? (
-                      <div className="flex flex-col gap-2.5 w-full">
+                      <div className="flex flex-col gap-2 w-full">
                         {card.instruments.map((inst) => (
                           <div
                             key={inst.name}
-                            className="rounded-xl px-4 py-3 flex items-center gap-4"
+                            className="rounded-xl px-4 py-2 flex items-center gap-4"
                             style={{
                               background: "rgba(255, 255, 255, 0.7)",
                               backdropFilter: "blur(10px)",
@@ -268,11 +268,11 @@ const ResearchHighlight = () => {
                             <img
                               src={inst.image}
                               alt={inst.name}
-                              className="w-16 h-16 object-contain flex-shrink-0"
+                              className="w-12 h-12 object-contain flex-shrink-0"
                               loading="lazy"
                               decoding="async"
                             />
-                            <p style={{ ...TYPE.bodySm, fontSize: "14px", fontWeight: 600, color: "#0B1E33" }}>
+                            <p style={{ ...TYPE.bodySm, fontSize: "13px", fontWeight: 600, color: "#0B1E33" }}>
                               {inst.name}
                             </p>
                           </div>
