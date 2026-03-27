@@ -216,49 +216,30 @@ const ResearchHighlight = () => {
 
                 {/* Card body: text + image */}
                 <div
-                  className="mx-auto grid md:grid-cols-[1fr_0.8fr] gap-0 items-start"
+                  className="mx-auto gap-0"
                   style={{ maxWidth: "1200px", padding: card.instruments ? "4px 0 16px" : "16px 0 48px" }}
                 >
-                  {/* Left: Text content */}
-                  <div className="flex flex-col justify-start p-8 md:px-12" style={{ paddingTop: card.instruments ? "12px" : "32px" }}>
-                    <h3
-                      style={{
-                        ...TYPE.h2,
-                        fontSize: "clamp(28px, 3.5vw, 44px)",
-                        letterSpacing: "0.02em",
-                        color: card.textColor,
-                      }}
-                    >
-                      {card.title}
-                    </h3>
-
-                    <div className="mt-6 flex flex-col gap-2.5">
-                      {card.details.map((detail, i) => (
-                        <div key={i} className="flex items-center gap-3">
-                          <div
-                            className="w-1.5 h-1.5 rounded-full shrink-0"
-                            style={{
-                              background: card.accentColor,
-                            }}
-                          />
-                          <p
-                            style={{ ...TYPE.bodySm, fontSize: "14px", color: card.dark ? "rgba(255,255,255,0.75)" : "rgba(11,30,51,0.7)" }}
-                          >
-                            {detail}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Right: Image or Instrument Cards */}
-                  <div className="relative p-4 md:p-6 flex items-start justify-center" style={{ maxHeight: card.instruments ? "420px" : "auto", overflowY: card.instruments ? "auto" : "visible" }}>
-                    {card.instruments ? (
-                      <div className="flex flex-col gap-2 w-full">
+                  {card.instruments ? (
+                    <>
+                      {/* Heading */}
+                      <div className="px-8 md:px-12 pt-3 pb-4">
+                        <h3
+                          style={{
+                            ...TYPE.h2,
+                            fontSize: "clamp(28px, 3.5vw, 44px)",
+                            letterSpacing: "0.02em",
+                            color: card.textColor,
+                          }}
+                        >
+                          {card.title}
+                        </h3>
+                      </div>
+                      {/* Two-column instrument grid */}
+                      <div className="grid grid-cols-2 gap-x-6 gap-y-2 px-8 md:px-12">
                         {card.instruments.map((inst) => (
                           <div
                             key={inst.name}
-                            className="rounded-xl px-4 py-2 flex items-center gap-4"
+                            className="rounded-xl px-4 py-2.5 flex items-center gap-3"
                             style={{
                               background: "rgba(255, 255, 255, 0.7)",
                               backdropFilter: "blur(10px)",
@@ -268,7 +249,7 @@ const ResearchHighlight = () => {
                             <img
                               src={inst.image}
                               alt={inst.name}
-                              className="w-12 h-12 object-contain flex-shrink-0"
+                              className="w-11 h-11 object-contain flex-shrink-0"
                               loading="lazy"
                               decoding="async"
                             />
@@ -278,7 +259,39 @@ const ResearchHighlight = () => {
                           </div>
                         ))}
                       </div>
-                    ) : (
+                    </>
+                  ) : (
+                    <div className="grid md:grid-cols-[1fr_0.8fr] gap-0 items-start">
+                      {/* Left: Text content */}
+                      <div className="flex flex-col justify-start p-8 md:px-12" style={{ paddingTop: "32px" }}>
+                        <h3
+                          style={{
+                            ...TYPE.h2,
+                            fontSize: "clamp(28px, 3.5vw, 44px)",
+                            letterSpacing: "0.02em",
+                            color: card.textColor,
+                          }}
+                        >
+                          {card.title}
+                        </h3>
+
+                        <div className="mt-6 flex flex-col gap-2.5">
+                          {card.details.map((detail, i) => (
+                            <div key={i} className="flex items-center gap-3">
+                              <div
+                                className="w-1.5 h-1.5 rounded-full shrink-0"
+                                style={{ background: card.accentColor }}
+                              />
+                              <p style={{ ...TYPE.bodySm, fontSize: "14px", color: card.dark ? "rgba(255,255,255,0.75)" : "rgba(11,30,51,0.7)" }}>
+                                {detail}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Right: Image */}
+                      <div className="relative p-4 md:p-6 flex items-start justify-center">
                       <div className="relative overflow-hidden rounded-2xl w-full" style={{ maxHeight: "320px", aspectRatio: "4/3" }}>
                         <img
                           src={card.image}
