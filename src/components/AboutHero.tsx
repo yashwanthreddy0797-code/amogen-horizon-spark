@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { TYPE, SPACING } from "@/typography";
-import platformMfgImg from "@/assets/platform-manufacturing.jpg";
+import platformMfgImg from "@/assets/api-plant1-render.png";
 import platformSciImg from "@/assets/platform-science.jpg";
 
 const BLUE = "#001965";
