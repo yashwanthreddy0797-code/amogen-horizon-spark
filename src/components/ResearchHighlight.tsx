@@ -250,11 +250,11 @@ const ResearchHighlight = () => {
                   {/* Right: Image or Instrument Cards */}
                   <div className="relative p-4 md:p-8 flex items-center justify-center">
                     {card.instruments ? (
-                      <div className="grid grid-cols-2 gap-3 w-full">
+                      <div className="flex flex-col gap-2.5 w-full">
                         {card.instruments.map((inst) => (
                           <div
                             key={inst.name}
-                            className="rounded-xl p-3 flex flex-col items-center gap-2"
+                            className="rounded-xl px-4 py-3 flex items-center gap-4"
                             style={{
                               background: "rgba(255, 255, 255, 0.7)",
                               backdropFilter: "blur(10px)",
@@ -264,11 +264,11 @@ const ResearchHighlight = () => {
                             <img
                               src={inst.image}
                               alt={inst.name}
-                              className="w-24 h-24 object-contain"
+                              className="w-16 h-16 object-contain flex-shrink-0"
                               loading="lazy"
                               decoding="async"
                             />
-                            <p style={{ ...TYPE.bodySm, fontSize: "12px", fontWeight: 600, color: "#0B1E33", textAlign: "center" }}>
+                            <p style={{ ...TYPE.bodySm, fontSize: "14px", fontWeight: 600, color: "#0B1E33" }}>
                               {inst.name}
                             </p>
                           </div>
