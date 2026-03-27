@@ -55,11 +55,13 @@ const cards = [
     title: "Analytical Capabilities",
     tag: "ANALYTICAL",
     image: facility3Img,
+    instruments: [
+      { name: "UHPLC", image: uhplcImg },
+      { name: "HPLC-UV/PDA", image: hplcUvImg },
+      { name: "LC–MS", image: lcMsImg },
+      { name: "HRMS", image: hrmsImg },
+    ],
     details: [
-      "UHPLC",
-      "HPLC-UV/PDA",
-      "LC–MS",
-      "HRMS",
       "SEC-HPLC",
       "qPCR",
       "Microplate Reader",
