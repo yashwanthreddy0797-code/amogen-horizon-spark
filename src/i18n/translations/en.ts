@@ -71,9 +71,9 @@ export const en = {
   // ResearchHighlight
   research: {
     label: "CDMO SERVICES",
-    title: "The platform that manufactures our pipeline",
-    titleEm: "is available to you.",
-    description: "The same fermentation and chemical ligation platform Amogen uses to build its own biosimilar pipeline is available to licensing and CDMO partners — from development batch through commercial supply.",
+    title: "One facility.",
+    titleEm: "multi-microbial platform.",
+    description: "Built for any microbial expression system. Available to pharma partners globally.",
     overlayText: "With over two decades of experience in drug development, our multidisciplinary teams work across discovery, preclinical, and clinical stages to ensure scientific rigor at every step.",
     cta: "\n",
   },
