@@ -264,7 +264,7 @@ const ResearchHighlight = () => {
                             <img
                               src={inst.image}
                               alt={inst.name}
-                              className="w-16 h-16 object-contain"
+                              className="w-24 h-24 object-contain"
                               loading="lazy"
                               decoding="async"
                             />
