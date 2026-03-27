@@ -102,7 +102,7 @@ const PatientDriven = () => {
                       : "calc(33.333vw - 40px)",
                     maxWidth: isHovered ? "780px" : someHovered ? "280px" : "440px",
                     minWidth: someHovered && !isHovered ? "200px" : undefined,
-                    transition: "width 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), max-width 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)",
+                    transition: "width 0.85s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.85s cubic-bezier(0.16, 1, 0.3, 1)",
                   }}
                   onMouseEnter={() => setHoveredIndex(i)}
                   onMouseLeave={() => setHoveredIndex(null)}
@@ -113,7 +113,7 @@ const PatientDriven = () => {
                       position: "absolute",
                       inset: 0,
                       opacity: isHovered ? 1 : 0,
-                      transition: "opacity 0.5s ease",
+                      transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                       zIndex: 0,
                     }}
                   >
@@ -155,7 +155,7 @@ const PatientDriven = () => {
                           fontSize: "clamp(24px, 3vw, 32px)",
                           fontWeight: 500,
                           color: isHovered ? "#FFFFFF" : card.textColor,
-                          transition: "color 0.4s ease",
+                          transition: "color 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                         }}
                       >
                         {card.title}
@@ -168,7 +168,7 @@ const PatientDriven = () => {
                           color: isHovered ? "#FFFFFF" : card.textColor,
                           opacity: 0.85,
                           maxWidth: "260px",
-                          transition: "color 0.4s ease",
+                          transition: "color 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                         }}
                       >
                         {card.description}
@@ -185,14 +185,14 @@ const PatientDriven = () => {
                           backgroundColor: isHovered
                             ? "rgba(100, 220, 200, 0.7)"
                             : "transparent",
-                          transition: "all 0.4s ease",
+                          transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                         }}
                       >
                         <ArrowRight
                           size={16}
                           style={{
                             color: isHovered ? "#FFFFFF" : card.textColor,
-                            transition: "color 0.4s ease",
+                            transition: "color 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                           }}
                         />
                       </button>
