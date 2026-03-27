@@ -109,7 +109,7 @@ const ResearchHighlight = () => {
     <section className="relative" style={{ paddingTop: "96px", paddingBottom: "0px", background: "#FFFFFF" }}>
       {/* Subtle decorative element */}
       <div
-        className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-[0.03] pointer-events-none"
+        className="absolute top-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] rounded-full opacity-[0.03] pointer-events-none"
         style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)", transform: "translate(0, -40%)" }}
       />
 
@@ -177,7 +177,7 @@ const ResearchHighlight = () => {
       `}</style>
 
       {/* Stacked sticky scroll cards */}
-      <div className="relative" style={{ marginLeft: "24px", marginRight: "24px" }}>
+      <div className="relative mx-4 sm:mx-6">
         {cards.map((card, index) => {
           const stickyTop = 72 + index * CARD_HEADER_HEIGHT;
           const CARD_HEIGHT = 500;
@@ -252,8 +252,8 @@ const ResearchHighlight = () => {
                           {card.title}
                         </h3>
                       </div>
-                      {/* Two-column instrument grid — full width */}
-                      <div className="grid grid-cols-2 gap-x-5 gap-y-2.5 px-8 md:px-12">
+                      {/* Instrument grid — responsive */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 px-4 sm:px-8 md:px-12">
                         {card.instruments.map((inst) => (
                           <div
                             key={inst.name}

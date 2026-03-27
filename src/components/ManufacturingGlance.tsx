@@ -17,7 +17,7 @@ const capabilities = [
 
 const ManufacturingGlance = () => {
   return (
-    <section className="w-full relative overflow-hidden" style={{ minHeight: "520px", borderRadius: "24px", margin: "0 16px", width: "calc(100% - 32px)" }}>
+    <section className="w-full relative overflow-hidden mx-4 sm:mx-4" style={{ minHeight: "520px", borderRadius: "24px", width: "calc(100% - 32px)" }}>
       {/* Full-width background image */}
       <img
         src={apiPlant}
@@ -38,8 +38,8 @@ const ManufacturingGlance = () => {
       <div
         className="relative z-10 flex items-center justify-end"
         style={{
-          paddingLeft: "48px",
-          paddingRight: "clamp(24px, 4vw, 48px)",
+          paddingLeft: "clamp(16px, 4vw, 48px)",
+          paddingRight: "clamp(16px, 4vw, 48px)",
           paddingTop: SPACING.sectionPy.desktop,
           paddingBottom: SPACING.sectionPy.desktop,
           minHeight: "520px",

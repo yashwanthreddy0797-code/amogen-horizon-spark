@@ -70,10 +70,10 @@ const PipelinePreview = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="pipeline" style={{ position: "relative", overflow: "hidden", minHeight: "100vh", display: "flex", alignItems: "flex-end", background: "#001965" }}>
+    <section id="pipeline" style={{ position: "relative", overflow: "hidden", minHeight: "100vh", background: "#001965" }}>
 
-      <div style={{ position: "relative", zIndex: 1, display: "flex", width: "100%", maxWidth: "1400px", margin: "0 auto", alignItems: "flex-end" }}>
-        <div style={{ flex: "0 0 32%", padding: "0 48px 80px", paddingTop: "60px" }}>
+      <div className="relative z-10 flex flex-col md:flex-row w-full items-end" style={{ maxWidth: "1400px", margin: "0 auto" }}>
+        <div className="w-full md:w-[32%] px-6 md:px-12 pt-24 pb-10 md:pb-20">
           <p style={{ ...TYPE.label, color: "rgba(255,255,255,0.5)", marginBottom: SPACING.labelToH2 }}>{"\n"}</p>
           <h2 style={{ ...TYPE.h2, fontWeight: 300, letterSpacing: "-0.03em", color: "#FFFFFF", marginBottom: SPACING.headingToSub }}>A Pipeline<br />Built on<br />Platform Advantage.</h2>
           <p style={{ ...TYPE.body, color: "rgba(255,255,255,0.6)", marginBottom: SPACING.subToCta }} className="max-w-[380px]">
@@ -90,10 +90,11 @@ const PipelinePreview = () => {
           </button>
         </div>
 
-        <div style={{ flex: 1, padding: "clamp(24px, 4vw, 56px)", paddingBottom: 0, alignSelf: "flex-end" }}>
-          <div style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", borderBottom: "none", borderRadius: "16px 16px 0 0", padding: "28px 32px", boxShadow: "0 -4px 24px -8px rgba(0,0,0,0.12)" }}>
+        <div className="w-full md:flex-1 px-4 md:px-6 lg:px-14 pb-0 self-end">
+          <div className="overflow-x-auto">
+          <div style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", borderBottom: "none", borderRadius: "16px 16px 0 0", padding: "20px 16px", boxShadow: "0 -4px 24px -8px rgba(0,0,0,0.12)", minWidth: "540px" }}>
             {/* Header row */}
-            <div style={{ display: "grid", gridTemplateColumns: "180px 1fr 140px", gap: "16px", alignItems: "end", marginBottom: "8px", paddingBottom: "12px", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "140px 1fr 120px", gap: "12px", alignItems: "end", marginBottom: "8px", paddingBottom: "12px", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
               <span style={{ ...TYPE.label, color: "rgba(0,0,0,0.4)", fontSize: "11px" }}>Program</span>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0", position: "relative" }}>
                 {phaseHeaders.map((h) =>
@@ -115,12 +116,12 @@ const PipelinePreview = () => {
               }
               const row = item;
               return (
-              <div key={row.name} style={{ display: "grid", gridTemplateColumns: "180px 1fr 140px", gap: "16px", alignItems: "center", padding: "14px 0", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-                <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+              <div key={row.name} style={{ display: "grid", gridTemplateColumns: "140px 1fr 120px", gap: "12px", alignItems: "center", padding: "14px 0", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+                <div style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>
                   <div style={{ width: "3px", borderRadius: "2px", background: row.accent, alignSelf: "stretch", minHeight: "32px", flexShrink: 0 }} />
                   <div>
-                    <span style={{ ...TYPE.bodySm, fontWeight: 600, color: "#1A1A1A", display: "block", whiteSpace: "pre-line", lineHeight: 1.3 }}>{row.name}</span>
-                    <span style={{ fontSize: "12px", color: "rgba(0,0,0,0.45)", fontStyle: "italic", display: "block", marginTop: "2px" }}>{row.indication}</span>
+                    <span style={{ ...TYPE.bodySm, fontWeight: 600, color: "#1A1A1A", display: "block", whiteSpace: "pre-line", lineHeight: 1.3, fontSize: "12px" }}>{row.name}</span>
+                    <span style={{ fontSize: "11px", color: "rgba(0,0,0,0.45)", fontStyle: "italic", display: "block", marginTop: "2px" }}>{row.indication}</span>
                   </div>
                 </div>
 
@@ -142,11 +143,12 @@ const PipelinePreview = () => {
                 </div>
 
                 <div>
-                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#1A1A1A", display: "block", lineHeight: 1.3, whiteSpace: "pre-line" }}>{row.milestone} {row.milestoneDate}</span>
+                  <span style={{ fontSize: "12px", fontWeight: 600, color: "#1A1A1A", display: "block", lineHeight: 1.3, whiteSpace: "pre-line" }}>{row.milestone} {row.milestoneDate}</span>
                 </div>
               </div>
               );
             })}
+          </div>
           </div>
         </div>
       </div>
