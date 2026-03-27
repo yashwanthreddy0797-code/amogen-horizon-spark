@@ -70,26 +70,27 @@ const ProductsRDHighlights = () => {
                   return (
                     <div
                       key={i}
-                      className="rounded-xl aspect-square lg:aspect-auto lg:h-full"
-                      style={{ backgroundColor: (item as any).bg, minHeight: "240px" }}
+                      className="rounded-xl"
+                      style={{ backgroundColor: (item as any).bg, height: "240px" }}
                     />
                   );
                 }
                 const stat = item as { label: string; value: string; suffix: string; description: string };
+                const isLongValue = stat.value.length > 3;
                 return (
                   <div
                     key={i}
-                    className="bg-white/90 backdrop-blur-sm rounded-xl p-6 lg:p-8 flex flex-col justify-between"
-                    style={{ minHeight: "240px" }}
+                    className="bg-white/90 backdrop-blur-sm rounded-xl p-6 lg:p-8 flex flex-col justify-between overflow-hidden"
+                    style={{ height: "240px" }}
                   >
                     <p className="text-xs font-bold tracking-[0.1em] uppercase text-foreground">
                       {stat.label}
                     </p>
                     <div className="my-4">
-                      <span className="text-5xl lg:text-6xl font-light text-[#001965]">
+                      <span className={`${isLongValue ? 'text-3xl lg:text-4xl' : 'text-5xl lg:text-6xl'} font-light text-[#001965]`}>
                         {stat.value}
                       </span>
-                      <span className="text-2xl lg:text-3xl font-light text-[#001965]">
+                      <span className={`${isLongValue ? 'text-xl lg:text-2xl' : 'text-2xl lg:text-3xl'} font-light text-[#001965]`}>
                         {stat.suffix}
                       </span>
                     </div>
@@ -105,20 +106,21 @@ const ProductsRDHighlights = () => {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               {stats.slice(4).map((item, i) => {
                 const stat = item as { label: string; value: string; suffix: string; description: string };
+                const isLongValue = stat.value.length > 3;
                 return (
                   <div
                     key={i}
-                    className="bg-white/90 backdrop-blur-sm rounded-xl p-6 lg:p-8 flex flex-col justify-between"
-                    style={{ minHeight: "200px" }}
+                    className="bg-white/90 backdrop-blur-sm rounded-xl p-6 lg:p-8 flex flex-col justify-between overflow-hidden"
+                    style={{ height: "200px" }}
                   >
                     <p className="text-xs font-bold tracking-[0.1em] uppercase text-foreground">
                       {stat.label}
                     </p>
                     <div className="my-4">
-                      <span className="text-5xl lg:text-6xl font-light text-[#001965]">
+                      <span className={`${isLongValue ? 'text-3xl lg:text-4xl' : 'text-5xl lg:text-6xl'} font-light text-[#001965]`}>
                         {stat.value}
                       </span>
-                      <span className="text-2xl lg:text-3xl font-light text-[#001965]">
+                      <span className={`${isLongValue ? 'text-xl lg:text-2xl' : 'text-2xl lg:text-3xl'} font-light text-[#001965]`}>
                         {stat.suffix}
                       </span>
                     </div>
