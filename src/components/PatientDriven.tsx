@@ -151,9 +151,7 @@ const PatientDriven = () => {
                           fontWeight: 500,
                           color: isHovered ? "#FFFFFF" : card.textColor,
                           transition: "color 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-                          wordBreak: "break-word",
-                          overflowWrap: "break-word",
-                          hyphens: "auto",
+                          whiteSpace: "pre-line",
                         }}
                       >
                         {card.title}
