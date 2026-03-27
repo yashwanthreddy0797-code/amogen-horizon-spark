@@ -195,6 +195,7 @@ const PatientDriven = () => {
                   </div>
                 </div>
               </ScrollReveal>
+              </div>
             );
           })}
         </div>
