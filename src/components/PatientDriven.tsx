@@ -8,7 +8,7 @@ import cardPartnerships from "@/assets/card-partnerships.jpg";
 
 const cards = [
   {
-    title: "Healthcare professionals",
+    title: "Healthcare\nprofessionals",
     description: "Using science to make a difference in patients' lives",
     bg: "#D4D8DC",
     textColor: "#0B1E33",
