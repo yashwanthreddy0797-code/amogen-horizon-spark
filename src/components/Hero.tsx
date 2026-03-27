@@ -62,7 +62,7 @@ const Hero = () => {
             paddingLeft: SPACING.sectionPx,
             paddingRight: SPACING.sectionPx,
             paddingTop: "20px",
-            paddingBottom: "clamp(60px, 8vw, 100px)",
+            paddingBottom: "32px",
           }}
         >
           <div
