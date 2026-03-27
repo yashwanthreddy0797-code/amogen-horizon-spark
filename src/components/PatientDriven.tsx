@@ -113,7 +113,7 @@ const PatientDriven = () => {
                       position: "absolute",
                       inset: 0,
                       opacity: isHovered ? 1 : 0,
-                      transition: "opacity 0.5s ease",
+                      transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                       zIndex: 0,
                     }}
                   >
