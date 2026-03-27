@@ -149,24 +149,15 @@ const AnimatedCard = ({ card, index, stickyTop }: { card: CardData; index: numbe
           <motion.h3
             style={{
               fontFamily: TYPE.h2.fontFamily,
-              fontSize: fontSize.get ? undefined : "44px",
-              letterSpacing: letterSpacing.get ? undefined : "0.02em",
-              fontWeight: fontWeight.get ? undefined : 400,
+              fontSize,
+              letterSpacing,
+              fontWeight,
               color: card.accentColor,
               textTransform: "uppercase",
               lineHeight: 1.1,
             }}
           >
-            <motion.span
-              style={{
-                fontSize,
-                letterSpacing,
-                fontWeight,
-                display: "inline-block",
-              }}
-            >
-              {card.title}
-            </motion.span>
+            {card.title}
           </motion.h3>
         </div>
 
