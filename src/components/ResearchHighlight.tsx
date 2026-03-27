@@ -334,7 +334,7 @@ const ResearchHighlight = () => {
         <div
           className="mx-6 mt-0 rounded-b-3xl overflow-hidden"
           style={{
-            background: "#5B2D8E",
+            background: "#FFFFFF",
             padding: "clamp(40px, 5vw, 64px) clamp(32px, 4vw, 64px)",
           }}
         >
@@ -342,14 +342,14 @@ const ResearchHighlight = () => {
             <div className="flex items-start gap-4">
               <div
                 className="w-5 h-5 rounded-full flex-shrink-0 mt-3"
-                style={{ background: "#FFFFFF" }}
+                style={{ background: "#001965" }}
               />
               <h3
                 style={{
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: "clamp(28px, 4vw, 48px)",
                   fontWeight: 300,
-                  color: "#FFFFFF",
+                  color: "#001965",
                   lineHeight: 1.15,
                   letterSpacing: "-0.02em",
                 }}
@@ -363,7 +363,7 @@ const ResearchHighlight = () => {
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: "14px",
                   fontWeight: 400,
-                  color: "rgba(255,255,255,0.8)",
+                  color: "rgba(0,25,101,0.7)",
                   lineHeight: 1.6,
                 }}
               >
@@ -376,14 +376,14 @@ const ResearchHighlight = () => {
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: "14px",
                   fontWeight: 500,
-                  color: "#FFFFFF",
+                  color: "#001965",
                   textDecoration: "underline",
                   textUnderlineOffset: "4px",
                 }}
               >
                 Visit Careers
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-white/50 group-hover/careers:bg-white/20 transition-colors">
-                  <ArrowRight size={12} />
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[#001965]/30 group-hover/careers:bg-[#001965]/10 transition-colors">
+                   <ArrowRight size={12} />
                 </span>
               </a>
             </div>
