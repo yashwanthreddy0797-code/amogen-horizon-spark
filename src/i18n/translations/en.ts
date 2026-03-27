@@ -70,10 +70,10 @@ export const en = {
 
   // ResearchHighlight
   research: {
-    label: "CDMO SERVICES",
+    label: "OUR CAPABILITIES",
     title: "One facility.",
-    titleEm: "multi-microbial platform.",
-    description: "Built for any microbial expression system. Available to pharma partners globally.",
+    titleEm: "\nMulti-microbial platforms.",
+    description: "Built for any microbial expression system. \nAvailable to pharma partners globally.\n",
     overlayText: "With over two decades of experience in drug development, our multidisciplinary teams work across discovery, preclinical, and clinical stages to ensure scientific rigor at every step.",
     cta: "\n",
   },
