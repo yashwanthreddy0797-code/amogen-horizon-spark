@@ -172,7 +172,7 @@ const AboutHero = () => {
                       letterSpacing: "-0.03em",
                     }}
                   >
-                    {t.aboutHero.card2Value}
+                    {t.aboutHero.card4Value}
                   </span>
                 </div>
                 <p
