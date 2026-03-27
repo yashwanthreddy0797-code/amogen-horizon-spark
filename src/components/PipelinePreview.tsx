@@ -13,7 +13,7 @@ const pipelineItems: PipelineItem[] = [
   milestone: "Clinical Phase -1",
   milestoneDate: "H2 2026",
   strategy: "FDF + Licensing",
-  accent: "#F97316"
+  accent: "#EF4444"
 },
 {
   type: "row",
@@ -36,7 +36,7 @@ const pipelineItems: PipelineItem[] = [
   milestone: "DMF",
   milestoneDate: "August 2026",
   strategy: "API + FDF",
-  accent: "#EC4899"
+  accent: "#4C1D95"
 },
 {
   type: "row",
@@ -47,7 +47,7 @@ const pipelineItems: PipelineItem[] = [
   milestone: "DMF",
   milestoneDate: "Q4 2026",
   strategy: "API + FDF",
-  accent: "#2A918B"
+  accent: "#0E7490"
 },
 { type: "divider", label: "IMMUNOLOGY" },
 {
@@ -142,7 +142,7 @@ const PipelinePreview = () => {
                 </div>
 
                 <div>
-                  <span style={{ fontSize: "13px", fontWeight: 600, color: row.accent, display: "block", lineHeight: 1.3, whiteSpace: "pre-line" }}>{row.milestone}{"\n"}{row.milestoneDate}</span>
+                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#1A1A1A", display: "block", lineHeight: 1.3, whiteSpace: "pre-line" }}>{row.milestone}{"\n"}{row.milestoneDate}</span>
                 </div>
               </div>
               );
