@@ -147,10 +147,13 @@ const PatientDriven = () => {
                       <h3
                         style={{
                           ...TYPE.h3,
-                          fontSize: "clamp(24px, 3vw, 32px)",
+                          fontSize: "clamp(20px, 2.5vw, 32px)",
                           fontWeight: 500,
                           color: isHovered ? "#FFFFFF" : card.textColor,
                           transition: "color 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+                          wordBreak: "break-word",
+                          overflowWrap: "break-word",
+                          hyphens: "auto",
                         }}
                       >
                         {card.title}
