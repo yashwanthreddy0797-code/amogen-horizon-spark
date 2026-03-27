@@ -39,7 +39,7 @@ const ManufacturingGlance = () => {
         className="relative z-10 flex items-center justify-end"
         style={{
           paddingLeft: "48px",
-          paddingRight: "clamp(32px, 5vw, 80px)",
+          paddingRight: "clamp(24px, 4vw, 48px)",
           paddingTop: SPACING.sectionPy.desktop,
           paddingBottom: SPACING.sectionPy.desktop,
           minHeight: "520px",
