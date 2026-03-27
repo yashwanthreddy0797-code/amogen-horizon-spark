@@ -83,7 +83,156 @@ const cards = [
   },
 ];
 
-const CARD_HEADER_HEIGHT = 48;
+const CARD_HEADER_HEIGHT = 56;
+
+interface CardData {
+  title: string;
+  tag: string;
+  image: string;
+  details: string[];
+  bg: string;
+  blur: number;
+  headerBg: string;
+  accentColor: string;
+  textColor: string;
+  dark: boolean;
+  instruments?: { name: string; image: string }[];
+}
+
+const AnimatedCard = ({ card, index, stickyTop }: { card: CardData; index: number; stickyTop: number }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "start start"],
+  });
+
+  const fontSize = useTransform(scrollYProgress, [0, 0.5], [44, 11]);
+  const letterSpacing = useTransform(scrollYProgress, [0, 0.5], [0.02, 0.25]);
+  const fontWeight = useTransform(scrollYProgress, [0, 0.4, 0.5], [400, 400, 500]);
+
+  const CARD_HEIGHT = 500;
+  const wrapperStyle: React.CSSProperties = index < cards.length - 1
+    ? { height: `${CARD_HEIGHT}px`, marginBottom: "0px" }
+    : { marginBottom: "0px" };
+
+  const cardBgStyle: React.CSSProperties = {
+    background: card.bg,
+    backdropFilter: `blur(${card.blur}px)`,
+    WebkitBackdropFilter: `blur(${card.blur}px)`,
+    border: "none",
+    boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
+    height: `${CARD_HEIGHT}px`,
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      key={card.title}
+      className="sticky"
+      style={{
+        top: `${stickyTop}px`,
+        zIndex: index + 1,
+        ...wrapperStyle,
+      }}
+    >
+      <section className="luxury-card rounded-3xl" style={cardBgStyle}>
+        {/* Animated heading strip */}
+        <div
+          className="flex items-center rounded-t-3xl px-8 md:px-12"
+          style={{
+            height: `${CARD_HEADER_HEIGHT}px`,
+            borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
+          }}
+        >
+          <motion.h3
+            style={{
+              fontFamily: TYPE.h2.fontFamily,
+              fontSize: fontSize.get ? undefined : "44px",
+              letterSpacing: letterSpacing.get ? undefined : "0.02em",
+              fontWeight: fontWeight.get ? undefined : 400,
+              color: card.accentColor,
+              textTransform: "uppercase",
+              lineHeight: 1.1,
+            }}
+          >
+            <motion.span
+              style={{
+                fontSize,
+                letterSpacing,
+                fontWeight,
+                display: "inline-block",
+              }}
+            >
+              {card.title}
+            </motion.span>
+          </motion.h3>
+        </div>
+
+        {/* Card body */}
+        <div
+          className="mx-auto gap-0"
+          style={{ maxWidth: "1200px", padding: card.instruments ? "4px 0 16px" : "16px 0 48px" }}
+        >
+          {card.instruments ? (
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2 px-8 md:px-12 pt-2">
+              {card.instruments.map((inst) => (
+                <div
+                  key={inst.name}
+                  className="rounded-xl px-4 py-2.5 flex items-center gap-3"
+                  style={{
+                    background: "rgba(255, 255, 255, 0.7)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.5)",
+                  }}
+                >
+                  <img
+                    src={inst.image}
+                    alt={inst.name}
+                    className="w-11 h-11 object-contain flex-shrink-0"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <p style={{ ...TYPE.bodySm, fontSize: "13px", fontWeight: 600, color: "#0B1E33" }}>
+                    {inst.name}
+                  </p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-[1fr_0.8fr] gap-0 items-start">
+              <div className="flex flex-col justify-start p-8 md:px-12" style={{ paddingTop: "16px" }}>
+                <div className="flex flex-col gap-2.5">
+                  {card.details.map((detail, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <div
+                        className="w-1.5 h-1.5 rounded-full shrink-0"
+                        style={{ background: card.accentColor }}
+                      />
+                      <p style={{ ...TYPE.bodySm, fontSize: "14px", color: card.dark ? "rgba(255,255,255,0.75)" : "rgba(11,30,51,0.7)" }}>
+                        {detail}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="relative p-4 md:p-6 flex items-start justify-center">
+                <div className="relative overflow-hidden rounded-2xl w-full" style={{ maxHeight: "320px", aspectRatio: "4/3" }}>
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
+  );
+};
 
 
 const ResearchHighlight = () => {
