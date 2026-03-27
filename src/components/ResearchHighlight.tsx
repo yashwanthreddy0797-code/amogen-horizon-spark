@@ -7,6 +7,11 @@ import uhplcImg from "@/assets/uhplc.png";
 import hplcUvImg from "@/assets/hplc-uv.png";
 import lcMsImg from "@/assets/lc-ms.png";
 import hrmsImg from "@/assets/hrms.png";
+import secHplcImg from "@/assets/sec-hplc.png";
+import qpcrImg from "@/assets/qpcr.png";
+import microplateImg from "@/assets/microplate-reader.png";
+import campImg from "@/assets/camp-bioassay.png";
+import cdSpecImg from "@/assets/cd-spectrometry.png";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { TYPE, SPACING } from "@/typography";
@@ -60,14 +65,13 @@ const cards = [
       { name: "HPLC-UV/PDA", image: hplcUvImg },
       { name: "LC–MS", image: lcMsImg },
       { name: "HRMS", image: hrmsImg },
+      { name: "SEC-HPLC", image: secHplcImg },
+      { name: "qPCR", image: qpcrImg },
+      { name: "Microplate Reader", image: microplateImg },
+      { name: "cAMP Bioassay", image: campImg },
+      { name: "CD-Spectrometry", image: cdSpecImg },
     ],
-    details: [
-      "SEC-HPLC",
-      "qPCR",
-      "Microplate Reader",
-      "cAMP Bioassay",
-      "CD-Spectrometry",
-    ],
+    details: [],
     bg: "rgba(204, 197, 189, 0.55)",
     blur: 25,
     headerBg: "rgba(204, 197, 189, 0.55)",
