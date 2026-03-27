@@ -81,7 +81,13 @@ const PipelinePreview = () => {
           <p style={{ ...TYPE.body, color: "rgba(255,255,255,0.6)", marginBottom: SPACING.subToCta }} className="max-w-[380px]">
             High-barrier biosimilars where our fermentation and chemical ligation platform delivers a structural cost and quality advantage — built on the same Saccharomyces cerevisiae expression system as the innovator.
           </p>
-          <button onClick={() => navigate("/products")} style={{ ...TYPE.button, background: "#FFFFFF", color: "#1A1A1A", padding: "14px 28px", borderRadius: "100px", border: "none", cursor: "pointer" }}>
+          <button
+            onClick={() => navigate("/products")}
+            className="pipeline-cta-btn"
+            style={{ ...TYPE.button, background: "#FFFFFF", color: "#1A1A1A", padding: "14px 28px", borderRadius: "100px", border: "none", cursor: "pointer", transition: "all 0.3s ease" }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "#0B736D"; e.currentTarget.style.color = "#FFFFFF"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "#FFFFFF"; e.currentTarget.style.color = "#1A1A1A"; }}
+          >
             View Full Pipeline →
           </button>
         </div>
