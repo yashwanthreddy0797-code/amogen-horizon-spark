@@ -292,17 +292,18 @@ const ResearchHighlight = () => {
 
                       {/* Right: Image */}
                       <div className="relative p-4 md:p-6 flex items-start justify-center">
-                      <div className="relative overflow-hidden rounded-2xl w-full" style={{ maxHeight: "320px", aspectRatio: "4/3" }}>
-                        <img
-                          src={card.image}
-                          alt={card.title}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                          decoding="async"
-                        />
+                        <div className="relative overflow-hidden rounded-2xl w-full" style={{ maxHeight: "320px", aspectRatio: "4/3" }}>
+                          <img
+                            src={card.image}
+                            alt={card.title}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
                       </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </section>
             </div>
