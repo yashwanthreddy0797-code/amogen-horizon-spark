@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef } from "react";
 import { TYPE } from "@/typography";
 
 interface Instrument {
@@ -17,66 +17,56 @@ const AnalyticalCapabilitiesCard = ({
   title,
   instruments,
   textColor,
-  accentColor,
 }: AnalyticalCapabilitiesCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0); // 0 = full heading, 1 = eyebrow
-
-  const handleScroll = useCallback(() => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const cardHeight = rect.height;
-    // How far the card top has scrolled past viewport top
-    // We want transition to happen as user scrolls through the card
-    // Trigger: 0% at card visible, 100% at 40% scrolled through
-    const scrolled = -rect.top + 72; // offset for sticky top
-    const triggerEnd = cardHeight * 0.4;
-    const raw = Math.max(0, Math.min(1, scrolled / triggerEnd));
-    setProgress(raw);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
-
-  // Interpolate values based on progress
-  const fontSize = 36 - progress * (36 - 11); // 36px → 11px
-  const fontWeight = progress < 0.5 ? 400 : 500;
-  const letterSpacing = 0.02 + progress * (0.18 - 0.02); // 0.02em → 0.18em
-  const opacity = 1 - progress * 0.25; // 1 → 0.75
-  const textTransform = progress > 0.5 ? "uppercase" : "none";
-  // Color transition: from textColor to teal
-  const color = progress > 0.5 ? "hsl(var(--primary))" : textColor;
-  // Move heading up: from normal position to eyebrow position
-  const translateY = -progress * 20; // moves up 20px
 
   return (
-    <div ref={cardRef}>
-      {/* Animated heading that becomes eyebrow */}
-      <div className="px-8 md:px-12 pt-3 pb-4" style={{ position: "relative" }}>
+    <div ref={cardRef} className="analytical-card-scroll relative">
+      <style>{`
+        @keyframes shrink-to-eyebrow {
+          0% {
+            font-size: 36px;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            opacity: 1;
+            color: ${textColor};
+          }
+          100% {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            opacity: 0.75;
+            color: hsl(var(--primary));
+          }
+        }
+        .analytical-heading {
+          position: sticky;
+          top: 0;
+          z-index: 5;
+          text-transform: uppercase;
+          animation: shrink-to-eyebrow linear both;
+          animation-timeline: scroll(nearest);
+          animation-range: 0% 40%;
+          transform-origin: left center;
+          white-space: nowrap;
+        }
+      `}</style>
+
+      {/* Sticky heading that animates to eyebrow */}
+      <div className="px-8 md:px-12 pt-3 pb-4">
         <h3
+          className="analytical-heading"
           style={{
             fontFamily: TYPE.h2.fontFamily,
-            fontSize: `${fontSize}px`,
-            fontWeight,
             lineHeight: 1.1,
-            letterSpacing: `${letterSpacing}em`,
-            color,
-            opacity,
-            textTransform: textTransform as React.CSSProperties["textTransform"],
-            transform: `translateY(${translateY}px)`,
-            transition: "font-size 300ms cubic-bezier(0.4, 0, 0.2, 1), letter-spacing 300ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1)",
-            transformOrigin: "left center",
-            whiteSpace: "nowrap",
           }}
         >
           {title}
         </h3>
       </div>
+
       {/* Two-column instrument grid */}
-      <div className="grid grid-cols-2 gap-x-6 gap-y-2 px-8 md:px-12">
+      <div className="grid grid-cols-2 gap-x-6 gap-y-2 px-8 md:px-12 pb-4">
         {instruments.map((inst) => (
           <div
             key={inst.name}
