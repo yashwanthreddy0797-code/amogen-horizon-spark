@@ -83,7 +83,7 @@ const PipelinePreview = () => {
             onClick={() => navigate("/products")}
             className="pipeline-cta-btn"
             style={{ ...TYPE.button, background: "#FFFFFF", color: "#1A1A1A", padding: "14px 28px", borderRadius: "100px", border: "none", cursor: "pointer", transition: "all 0.3s ease" }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "#0B736D"; e.currentTarget.style.color = "#FFFFFF"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "#3ECFBF"; e.currentTarget.style.color = "#001965"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#FFFFFF"; e.currentTarget.style.color = "#1A1A1A"; }}
           >
             View Full Pipeline →
