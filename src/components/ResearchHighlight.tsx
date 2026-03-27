@@ -262,7 +262,7 @@ const ResearchHighlight = () => {
       <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <div className="flex items-center justify-between py-12">
           <p style={{ ...TYPE.bodySm, color: "hsl(var(--muted-foreground))" }} className="hidden md:block">
-            World-class infrastructure across 3 facilities
+            {"\n"}
           </p>
           <a
             href="/cdmo"
