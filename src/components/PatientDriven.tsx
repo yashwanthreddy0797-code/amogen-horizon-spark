@@ -81,6 +81,7 @@ const PatientDriven = () => {
             display: "flex",
             gap: 0,
             height: 520,
+            width: "100%",
           }}
         >
           {cards.map((card, i) => {
@@ -88,21 +89,15 @@ const PatientDriven = () => {
             const someHovered = hoveredIndex !== null;
 
             return (
-              <ScrollReveal key={card.title} delay={i * 0.1} className="h-full">
+              <div key={card.title} style={{ flex: isHovered ? 3 : someHovered ? 1 : 1, transition: "flex 0.85s cubic-bezier(0.16, 1, 0.3, 1)", minWidth: 0, height: "100%" }}>
+              <ScrollReveal delay={i * 0.1} className="h-full">
                 <div
-                  className="relative overflow-hidden cursor-pointer h-full"
+                  className="relative overflow-hidden cursor-pointer h-full w-full"
                   style={{
                     backgroundColor: card.bg,
                     color: card.textColor,
                     borderRadius: "20px",
-                    width: isHovered
-                      ? "calc(60vw - 80px)"
-                      : someHovered
-                      ? "calc(20vw - 10px)"
-                      : "calc(33.333vw - 40px)",
-                    maxWidth: isHovered ? "780px" : someHovered ? "280px" : "440px",
-                    minWidth: someHovered && !isHovered ? "200px" : undefined,
-                    transition: "width 0.85s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.85s cubic-bezier(0.16, 1, 0.3, 1)",
+                    transition: "all 0.85s cubic-bezier(0.16, 1, 0.3, 1)",
                   }}
                   onMouseEnter={() => setHoveredIndex(i)}
                   onMouseLeave={() => setHoveredIndex(null)}
@@ -200,6 +195,7 @@ const PatientDriven = () => {
                   </div>
                 </div>
               </ScrollReveal>
+              </div>
             );
           })}
         </div>
