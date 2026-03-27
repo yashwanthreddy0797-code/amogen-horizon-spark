@@ -1,6 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 
-import facility1Img from "@/assets/facility-1.jpg";
+import facility1Img from "@/assets/fermentors.png";
 import facility2Img from "@/assets/biologics-types.png";
 import facility3Img from "@/assets/bioinformatics-banner.jpg";
 import { ArrowRight } from "lucide-react";
