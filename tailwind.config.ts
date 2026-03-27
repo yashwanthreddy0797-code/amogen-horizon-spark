@@ -14,8 +14,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["'Outfit'", "'Helvetica Neue'", "sans-serif"],
-        mono: ["'DM Mono'", "monospace"],
+        display: ["'Syne'", "sans-serif"],
+        body: ["'IBM Plex Mono'", "monospace"],
+        code: ["'Cascadia Code'", "monospace"],
+        sans: ["'IBM Plex Mono'", "monospace"],
+        mono: ["'Cascadia Code'", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",
