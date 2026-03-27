@@ -252,8 +252,8 @@ const ResearchHighlight = () => {
                           {card.title}
                         </h3>
                       </div>
-                      {/* Two-column instrument grid — full width */}
-                      <div className="grid grid-cols-2 gap-x-5 gap-y-2.5 px-8 md:px-12">
+                      {/* Instrument grid — responsive */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 px-4 sm:px-8 md:px-12">
                         {card.instruments.map((inst) => (
                           <div
                             key={inst.name}
