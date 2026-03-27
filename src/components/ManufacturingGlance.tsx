@@ -17,7 +17,7 @@ const capabilities = [
 
 const ManufacturingGlance = () => {
   return (
-    <section className="w-full relative overflow-hidden" style={{ minHeight: "520px" }}>
+    <section className="w-full relative overflow-hidden" style={{ minHeight: "520px", borderRadius: "24px", margin: "0 16px", width: "calc(100% - 32px)" }}>
       {/* Full-width background image */}
       <img
         src={apiPlant}
