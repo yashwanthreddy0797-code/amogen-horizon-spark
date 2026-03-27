@@ -89,7 +89,8 @@ const PatientDriven = () => {
             const someHovered = hoveredIndex !== null;
 
             return (
-              <ScrollReveal key={card.title} delay={i * 0.1} className="h-full" style={{ flex: isHovered ? 3 : someHovered ? 1 : 1, transition: "flex 0.85s cubic-bezier(0.16, 1, 0.3, 1)", minWidth: 0 }}>
+              <div key={card.title} style={{ flex: isHovered ? 3 : someHovered ? 1 : 1, transition: "flex 0.85s cubic-bezier(0.16, 1, 0.3, 1)", minWidth: 0, height: "100%" }}>
+              <ScrollReveal delay={i * 0.1} className="h-full">
                 <div
                   className="relative overflow-hidden cursor-pointer h-full w-full"
                   style={{
