@@ -68,17 +68,19 @@ const PatientDriven = () => {
         </ScrollReveal>
 
         <div
-          className="grid md:grid-cols-3 gap-4"
+          className="grid md:grid-cols-3"
+          style={{ gap: 0 }}
         >
           {cards.map((card, i) => (
             <ScrollReveal key={card.title} delay={i * 0.1}>
               <div
-                className="relative rounded-2xl flex flex-col justify-between"
+                className="relative flex flex-col justify-between"
                 style={{
                   backgroundColor: card.bg,
                   color: card.textColor,
-                  minHeight: 380,
-                  padding: "32px",
+                  minHeight: 480,
+                  padding: "36px",
+                  borderRadius: i === 0 ? "20px 0 0 20px" : i === 2 ? "0 20px 20px 0" : "0",
                 }}
               >
                 <div>
