@@ -245,11 +245,11 @@ const ResearchHighlight = () => {
                         </h3>
                       </div>
                       {/* Two-column instrument grid */}
-                      <div className="grid grid-cols-2 gap-x-6 gap-y-2 px-8 md:px-12">
+                      <div className="grid grid-cols-2 gap-x-5 gap-y-3 px-8 md:px-12" style={{ maxWidth: "680px" }}>
                         {card.instruments.map((inst) => (
                           <div
                             key={inst.name}
-                            className="rounded-xl px-4 py-2.5 flex items-center gap-3"
+                            className="rounded-xl px-4 py-3.5 flex items-center gap-4"
                             style={{
                               background: "rgba(255, 255, 255, 0.7)",
                               backdropFilter: "blur(10px)",
@@ -259,7 +259,7 @@ const ResearchHighlight = () => {
                             <img
                               src={inst.image}
                               alt={inst.name}
-                              className="w-11 h-11 object-contain flex-shrink-0"
+                              className="w-14 h-14 object-contain flex-shrink-0"
                               loading="lazy"
                               decoding="async"
                             />
