@@ -217,10 +217,10 @@ const ResearchHighlight = () => {
                 {/* Card body: text + image */}
                 <div
                   className="mx-auto grid md:grid-cols-[1fr_0.8fr] gap-0 items-start"
-                  style={{ maxWidth: "1200px", padding: "16px 0 48px" }}
+                  style={{ maxWidth: "1200px", padding: card.instruments ? "4px 0 16px" : "16px 0 48px" }}
                 >
                   {/* Left: Text content */}
-                  <div className="flex flex-col justify-center p-8 md:px-12 md:py-8">
+                  <div className="flex flex-col justify-start p-8 md:px-12" style={{ paddingTop: card.instruments ? "12px" : "32px" }}>
                     <h3
                       style={{
                         ...TYPE.h2,
