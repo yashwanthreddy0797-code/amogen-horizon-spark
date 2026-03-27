@@ -149,7 +149,7 @@ const ResearchHighlight = () => {
       `}</style>
 
       {/* Stacked sticky scroll cards */}
-      <div className="relative" style={{ marginLeft: "24px", marginRight: "24px", paddingBottom: `${CARD_HEADER_HEIGHT * 2 + 24}px` }}>
+      <div className="relative" style={{ marginLeft: "24px", marginRight: "24px", paddingBottom: `${CARD_HEADER_HEIGHT * 2}px` }}>
         {cards.map((card, index) => {
           const isLast = index === cards.length - 1;
 
@@ -260,7 +260,7 @@ const ResearchHighlight = () => {
 
       {/* CTA row */}
       <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
-        <div className="flex items-center justify-between py-12">
+        <div className="flex items-center justify-between py-6">
           <p style={{ ...TYPE.bodySm, color: "hsl(var(--muted-foreground))" }} className="hidden md:block">
             {"\n"}
           </p>
