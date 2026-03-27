@@ -47,7 +47,7 @@ const pipelineItems: PipelineItem[] = [
   milestone: "DMF",
   milestoneDate: "Q4 2026",
   strategy: "API + FDF",
-  accent: "#2A918B"
+  accent: "#0E7490"
 },
 { type: "divider", label: "IMMUNOLOGY" },
 {
