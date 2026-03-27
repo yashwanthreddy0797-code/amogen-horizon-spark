@@ -80,7 +80,7 @@ const PatientDriven = () => {
                   color: card.textColor,
                   minHeight: 480,
                   padding: "36px",
-                  borderRadius: i === 0 ? "20px 0 0 20px" : i === 2 ? "0 20px 20px 0" : "0",
+                  borderRadius: "20px",
                 }}
               >
                 <div>
