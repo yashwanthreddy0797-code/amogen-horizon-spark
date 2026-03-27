@@ -37,7 +37,7 @@ const PatientDriven = () => {
     <section
       className="bg-background"
       style={{
-        paddingTop: SPACING.sectionPy.desktop,
+        paddingTop: 0,
         paddingBottom: SPACING.sectionPy.desktop,
       }}
     >
