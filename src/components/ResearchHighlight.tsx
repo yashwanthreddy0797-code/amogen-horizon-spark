@@ -121,7 +121,7 @@ const ResearchHighlight = () => {
               <p style={{ ...TYPE.label, color: "hsl(var(--muted-foreground))", marginBottom: SPACING.labelToH2 }}>
                 {t.research.label}
               </p>
-              <h2 style={TYPE.h2} className="text-foreground">
+              <h2 style={TYPE.h2} className="text-foreground whitespace-pre-line">
                 {t.research.title}{" "}
                 <em className="italic">{t.research.titleEm}</em>
               </h2>
@@ -132,7 +132,7 @@ const ResearchHighlight = () => {
             <div className="md:text-right">
               <p
                 style={{ ...TYPE.body, color: "hsl(var(--muted-foreground))" }}
-                className="max-w-md md:ml-auto"
+                className="max-w-md md:ml-auto whitespace-pre-line"
               >
                 {t.research.description}
               </p>
