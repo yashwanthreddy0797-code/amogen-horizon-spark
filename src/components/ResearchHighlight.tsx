@@ -158,6 +158,7 @@ const ResearchHighlight = () => {
       <div className="relative" style={{ marginLeft: "24px", marginRight: "24px" }}>
         {cards.map((card, index) => {
           const stickyTop = 72 + index * CARD_HEADER_HEIGHT;
+          const CARD_HEIGHT = 500;
 
           const cardBgStyle: React.CSSProperties = {
             background: card.bg,
@@ -165,8 +166,7 @@ const ResearchHighlight = () => {
             WebkitBackdropFilter: `blur(${card.blur}px)`,
             border: "none",
             boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-            minHeight: "480px",
-            maxHeight: "540px",
+            height: `${CARD_HEIGHT}px`,
           };
 
           const headerStyle: React.CSSProperties = {
@@ -181,7 +181,7 @@ const ResearchHighlight = () => {
               style={{
                 top: `${stickyTop}px`,
                 zIndex: index + 1,
-                marginBottom: index < cards.length - 1 ? `${CARD_HEADER_HEIGHT}px` : "0px",
+                marginBottom: index < cards.length - 1 ? `${CARD_HEIGHT - CARD_HEADER_HEIGHT}px` : "0px",
               }}
             >
               <section
