@@ -57,12 +57,31 @@ const NewsPreview = () => {
           ))}
         </div>
 
-        <div className="flex items-center justify-center gap-4 mt-12">
-          <button onClick={() => setCurrentPage(Math.max(1, currentPage - 1))} className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Previous page"><ArrowLeft size={18} /></button>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <button key={page} onClick={() => setCurrentPage(page)} className={`transition-colors ${currentPage === page ? "text-primary" : "text-muted-foreground hover:text-foreground"}`} style={{ ...TYPE.bodySm, fontWeight: 500 }}>{page}</button>
-          ))}
-          <button onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))} className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Next page"><ArrowRight size={18} /></button>
+        <div className="flex items-center justify-center gap-6 mt-12">
+          {/* Progress line */}
+          <div className="flex items-center gap-3">
+            <div className="relative w-48 h-[2px] bg-border/40 rounded-full overflow-hidden">
+              <div
+                className="absolute top-0 left-0 h-full rounded-full transition-all duration-500"
+                style={{
+                  background: "hsl(var(--foreground))",
+                  width: `${(currentPage / totalPages) * 100}%`,
+                }}
+              />
+            </div>
+            <span style={{ ...TYPE.bodySm, fontSize: "12px", fontWeight: 400 }} className="text-muted-foreground">
+              {currentPage} of {totalPages}
+            </span>
+          </div>
+          {/* Nav buttons */}
+          <div className="flex items-center gap-4 ml-auto">
+            <button onClick={() => setCurrentPage(Math.max(1, currentPage - 1))} className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1" style={{ ...TYPE.bodySm, fontSize: "13px" }}>
+              <ArrowLeft size={14} /> Previous
+            </button>
+            <button onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))} className="text-foreground hover:text-primary transition-colors flex items-center gap-1 font-medium" style={{ ...TYPE.bodySm, fontSize: "13px", fontWeight: 600 }}>
+              Next <ArrowRight size={14} />
+            </button>
+          </div>
         </div>
       </div>
     </section>
