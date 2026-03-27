@@ -106,8 +106,10 @@ const AnimatedCard = ({ card, index, stickyTop }: { card: CardData; index: numbe
     offset: ["start end", "start start"],
   });
 
-  const fontSize = useTransform(scrollYProgress, [0, 0.5], [44, 11]);
-  const letterSpacing = useTransform(scrollYProgress, [0, 0.5], [0.02, 0.25]);
+  const rawFontSize = useTransform(scrollYProgress, [0, 0.5], [44, 11]);
+  const fontSize = useTransform(rawFontSize, (v) => `${v}px`);
+  const rawLetterSpacing = useTransform(scrollYProgress, [0, 0.5], [0.02, 0.25]);
+  const letterSpacing = useTransform(rawLetterSpacing, (v) => `${v}em`);
   const fontWeight = useTransform(scrollYProgress, [0, 0.4, 0.5], [400, 400, 500]);
 
   const CARD_HEIGHT = 500;
