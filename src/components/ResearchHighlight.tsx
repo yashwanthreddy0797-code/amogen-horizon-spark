@@ -1,8 +1,15 @@
 import ScrollReveal from "@/components/ScrollReveal";
 
 import facility1Img from "@/assets/fermentors.png";
-import facility2Img from "@/assets/biologics-types.png";
 import facility3Img from "@/assets/bioinformatics-banner.jpg";
+import sequenceEngImg from "@/assets/sequence-engineering.png";
+import multiHostImg from "@/assets/multi-host-expression.png";
+import strainCloneImg from "@/assets/strain-clone-dev.png";
+import cellBankingImg from "@/assets/cell-banking.png";
+import mediaSeedTrainImg from "@/assets/media-seed-train.png";
+import scalableFermentationImg from "@/assets/scalable-fermentation.png";
+import inclusionBodyImg from "@/assets/inclusion-body-recovery.png";
+import integratedPurificationImg from "@/assets/integrated-purification.png";
 import preSeedBioreactorImg from "@/assets/pre-seed-bioreactor.png";
 import seedBioreactor1000lImg from "@/assets/seed-bioreactor-1000l.png";
 import productionBioreactor10000lImg from "@/assets/production-bioreactor-10000l.png";
