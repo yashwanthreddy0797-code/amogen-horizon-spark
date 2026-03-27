@@ -4,6 +4,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import ProductsCDMOBanner from "@/components/products/ProductsCDMOBanner";
+import ProductsRDHighlights from "@/components/products/ProductsRDHighlights";
 import semaglutideImg from "@/assets/semaglutide.png";
 import liraglutideImg from "@/assets/liraglutide.png";
 import tirzepatideImg from "@/assets/tirzepatide.png";
@@ -111,6 +112,9 @@ const Products = () => {
             </motion.div>
           </div>
         </section>
+
+        {/* R&D Highlights - AbbVie style */}
+        <ProductsRDHighlights />
 
         {/* Intro */}
         <section className="py-16 lg:py-20 bg-background">
