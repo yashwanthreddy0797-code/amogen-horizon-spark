@@ -155,7 +155,7 @@ const ResearchHighlight = () => {
       `}</style>
 
       {/* Stacked sticky scroll cards */}
-      <div className="relative" style={{ marginLeft: "24px", marginRight: "24px", paddingBottom: `${CARD_HEADER_HEIGHT * 2}px` }}>
+      <div className="relative" style={{ marginLeft: "24px", marginRight: "24px", paddingBottom: `${CARD_HEADER_HEIGHT * (cards.length - 1)}px` }}>
         {cards.map((card, index) => {
           const isLast = index === cards.length - 1;
 
@@ -179,15 +179,12 @@ const ResearchHighlight = () => {
               style={{
                 top: `${72 + index * CARD_HEADER_HEIGHT}px`,
                 zIndex: index + 1,
-                marginBottom: isLast ? 0 : 0,
+                marginBottom: isLast ? 0 : `-${CARD_HEADER_HEIGHT}px`,
               }}
             >
               <section
                 className="luxury-card rounded-3xl"
-                style={{
-                  ...cardBgStyle,
-                  marginTop: index > 0 ? `${index * CARD_HEADER_HEIGHT}px` : 0,
-                }}
+                style={cardBgStyle}
               >
                 {/* Persistent header strip */}
                 <div
