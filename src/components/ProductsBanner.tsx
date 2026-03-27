@@ -7,8 +7,9 @@ const ProductsBanner = () => {
     <section className="relative overflow-hidden min-h-[260px] md:min-h-[320px] flex items-stretch rounded-2xl mx-4 md:mx-8 mb-12 border border-border">
       {/* Left: Text panel with diagonal clip */}
       <div
-        className="relative z-10 w-full md:w-[55%] bg-background flex items-center rounded-l-2xl"
+        className="relative z-10 w-full md:w-[55%] flex items-center rounded-l-2xl"
         style={{
+          background: "#FFFFFF",
           clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 100%)",
         }}
       >
