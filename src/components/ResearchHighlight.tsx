@@ -272,9 +272,6 @@ const ResearchHighlight = () => {
             <span className="text-foreground group-hover/cta:text-primary transition-colors">
               {t.research.cta}
             </span>
-            <span className="w-10 h-10 rounded-full bg-footer-bg text-footer-foreground flex items-center justify-center group-hover/cta:bg-primary transition-colors">
-              <ArrowRight size={16} />
-            </span>
           </a>
         </div>
       </div>
