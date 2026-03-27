@@ -1,4 +1,6 @@
+import React, { useRef } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 import facility1Img from "@/assets/fermentors.png";
 import facility2Img from "@/assets/biologics-types.png";
