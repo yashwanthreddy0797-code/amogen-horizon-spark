@@ -183,11 +183,9 @@ const ResearchHighlight = () => {
               }}
             >
               <section
-                className={`luxury-card ${index === 0 ? 'rounded-t-3xl' : ''}`}
+                className="luxury-card rounded-3xl"
                 style={{
                   ...cardBgStyle,
-                  borderTopLeftRadius: index === 0 ? undefined : '24px',
-                  borderTopRightRadius: index === 0 ? undefined : '24px',
                   marginTop: index > 0 ? `${index * CARD_HEADER_HEIGHT}px` : 0,
                 }}
               >
