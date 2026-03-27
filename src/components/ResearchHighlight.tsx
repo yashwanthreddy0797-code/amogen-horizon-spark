@@ -249,7 +249,7 @@ const ResearchHighlight = () => {
                         {card.instruments.map((inst) => (
                           <div
                             key={inst.name}
-                            className="rounded-xl px-4 py-3 flex items-center gap-4"
+                            className="rounded-xl px-4 py-3 flex items-center justify-center gap-4"
                             style={{
                               background: "rgba(255, 255, 255, 0.7)",
                               backdropFilter: "blur(10px)",
