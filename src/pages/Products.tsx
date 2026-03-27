@@ -113,6 +113,9 @@ const Products = () => {
           </div>
         </section>
 
+        {/* R&D Highlights - AbbVie style */}
+        <ProductsRDHighlights />
+
         {/* Intro */}
         <section className="py-16 lg:py-20 bg-background">
           <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
