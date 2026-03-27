@@ -35,8 +35,8 @@ const PatientDriven = () => {
 
   return (
     <section
-      style={{ background: "#FFFFFF" }}
       style={{
+        background: "#FFFFFF",
         paddingTop: 0,
         paddingBottom: SPACING.sectionPy.desktop,
       }}

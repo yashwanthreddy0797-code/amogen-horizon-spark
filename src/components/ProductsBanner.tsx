@@ -8,8 +8,8 @@ const ProductsBanner = () => {
       {/* Left: Text panel with diagonal clip */}
       <div
         className="relative z-10 w-full md:w-[55%] flex items-center rounded-l-2xl"
-        style={{ background: "#FFFFFF" }}
         style={{
+          background: "#FFFFFF",
           clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 100%)",
         }}
       >
