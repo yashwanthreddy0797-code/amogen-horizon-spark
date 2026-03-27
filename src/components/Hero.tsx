@@ -1,9 +1,6 @@
 import { motion } from "framer-motion";
 import { TYPE, SPACING } from "@/typography";
 import { useLanguage } from "@/i18n/LanguageContext";
-import facilityImg from "@/assets/facility-1.jpg";
-import manufacturingImg from "@/assets/manufacturing.jpg";
-import researchImg from "@/assets/research-lab.jpg";
 
 const Hero = () => {
   const { t } = useLanguage();
