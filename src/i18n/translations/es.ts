@@ -70,7 +70,7 @@ export const es: typeof en = {
     titleEm: "vidas de pacientes",
     description: "Nuestros programas de investigación se basan en una comprensión profunda de la biología de las enfermedades, aprovechando plataformas propietarias en ingeniería de proteínas, genómica y medicina traslacional para llevar terapias diferenciadas a los pacientes más rápidamente.",
     overlayText: "Con más de dos décadas de experiencia en desarrollo de medicamentos, nuestros equipos multidisciplinarios trabajan en las etapas de descubrimiento, preclínica y clínica para garantizar el rigor científico en cada paso.",
-    cta: "Explore nuestra investigación",
+    cta: "\n",
   },
   pipeline: {
     label: "Pipeline",
