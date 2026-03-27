@@ -3,11 +3,9 @@ import ScrollReveal from "@/components/ScrollReveal";
 import facility1Img from "@/assets/fermentors.png";
 import facility2Img from "@/assets/biologics-types.png";
 import facility3Img from "@/assets/bioinformatics-banner.jpg";
-import flaskCultureImg from "@/assets/flask-culture.png";
-import waveBioreactorImg from "@/assets/wave-bioreactor.png";
-import seedBioreactorImg from "@/assets/seed-bioreactor.png";
-import seedBioreactor200lImg from "@/assets/seed-bioreactor-200l.png";
-import productionBioreactorImg from "@/assets/production-bioreactor.png";
+import preSeedBioreactorImg from "@/assets/pre-seed-bioreactor.png";
+import seedBioreactor1000lImg from "@/assets/seed-bioreactor-1000l.png";
+import productionBioreactor10000lImg from "@/assets/production-bioreactor-10000l.png";
 import centrifugeImg from "@/assets/centrifuge.png";
 import downstreamPurificationImg from "@/assets/downstream-purification.png";
 import prepChromatographyImg from "@/assets/prep-chromatography.png";
@@ -31,11 +29,9 @@ const cards = [
     tag: "API MANUFACTURING",
     image: facility1Img,
     instruments: [
-      { name: "Flask Culture", image: flaskCultureImg },
-      { name: "Wave Bioreactor (20L)", image: waveBioreactorImg },
-      { name: "Seed Bioreactor (40–50L)", image: seedBioreactorImg },
-      { name: "Seed Bioreactor (200L)", image: seedBioreactor200lImg },
-      { name: "Production Bioreactor (1000L)", image: productionBioreactorImg },
+      { name: "Pre-Seed Bioreactor (100L) x2", image: preSeedBioreactorImg },
+      { name: "Seed Bioreactor (1000L) x4", image: seedBioreactor1000lImg },
+      { name: "Production Bioreactor (10000L) x5", image: productionBioreactor10000lImg },
       { name: "Continuous Centrifuge", image: centrifugeImg },
       { name: "Downstream Purification", image: downstreamPurificationImg },
       { name: "Preparative Chromatography", image: prepChromatographyImg },
