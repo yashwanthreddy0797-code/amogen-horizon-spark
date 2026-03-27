@@ -25,7 +25,7 @@ const NewsPreview = () => {
   ];
 
   return (
-    <section id="news" className="bg-background" style={{ paddingTop: "40px", paddingBottom: SPACING.sectionPy.desktop }}>
+    <section id="news" style={{ background: "#FFFFFF", paddingTop: "40px", paddingBottom: SPACING.sectionPy.desktop }}>
       <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
         <ScrollReveal>
           <h2 style={{ ...TYPE.h2, marginBottom: "48px" }} className="text-foreground">News and insights</h2>
