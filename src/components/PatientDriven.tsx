@@ -168,7 +168,7 @@ const PatientDriven = () => {
                           color: isHovered ? "#FFFFFF" : card.textColor,
                           opacity: 0.85,
                           maxWidth: "260px",
-                          transition: "color 0.4s ease",
+                          transition: "color 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                         }}
                       >
                         {card.description}
