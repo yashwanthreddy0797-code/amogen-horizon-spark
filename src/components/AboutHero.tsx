@@ -172,7 +172,7 @@ const AboutHero = () => {
                       letterSpacing: "-0.03em",
                     }}
                   >
-                    {t.aboutHero.card2Value}
+                    {t.aboutHero.card4Value}
                   </span>
                 </div>
                 <p
@@ -184,7 +184,7 @@ const AboutHero = () => {
                     marginBottom: "8px",
                   }}
                 >
-                  {t.aboutHero.card2Desc}
+                  {t.aboutHero.card4Desc}
                 </p>
                 <p
                   style={{
@@ -195,7 +195,7 @@ const AboutHero = () => {
                     lineHeight: 1.5,
                   }}
                 >
-                  Advancing a robust pipeline targeting diabetes, obesity, and immunology.
+                  Scientific and manufacturing expertise driving biosimilar innovation.
                 </p>
               </div>
             </div>
@@ -307,7 +307,7 @@ const AboutHero = () => {
                         letterSpacing: "-0.03em",
                       }}
                     >
-                      {t.aboutHero.card4Value}
+                      {t.aboutHero.card2Value}
                     </span>
                   </div>
                   <p
@@ -321,7 +321,7 @@ const AboutHero = () => {
                       marginBottom: "12px",
                     }}
                   >
-                    {t.aboutHero.card4Desc}
+                    {t.aboutHero.card2Desc}
                   </p>
                   <a
                     href="/about"
