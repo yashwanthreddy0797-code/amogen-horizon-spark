@@ -184,7 +184,7 @@ const AboutHero = () => {
                     marginBottom: "8px",
                   }}
                 >
-                  {t.aboutHero.card2Desc}
+                  {t.aboutHero.card4Desc}
                 </p>
                 <p
                   style={{
