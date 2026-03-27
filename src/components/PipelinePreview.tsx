@@ -36,7 +36,7 @@ const pipelineItems: PipelineItem[] = [
   milestone: "DMF",
   milestoneDate: "August 2026",
   strategy: "API + FDF",
-  accent: "#EC4899"
+  accent: "#4C1D95"
 },
 {
   type: "row",
