@@ -10,7 +10,7 @@ const pipelineItems: PipelineItem[] = [
   indication: "T2DM, Obesity",
   progress: 95,
   gradient: "linear-gradient(90deg, #EF4444 0%, #A855F7 100%)",
-  milestone: "Clinical Phase -1",
+  milestone: "Clinical Phase 1",
   milestoneDate: "H2 2026",
   strategy: "FDF + Licensing",
   accent: "#EF4444"
