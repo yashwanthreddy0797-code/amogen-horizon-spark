@@ -6,6 +6,7 @@ import PipelinePreview from "@/components/PipelinePreview";
 import ManufacturingGlance from "@/components/ManufacturingGlance";
 import ResearchHighlight from "@/components/ResearchHighlight";
 import NewsPreview from "@/components/NewsPreview";
+import PatientDriven from "@/components/PatientDriven";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -18,6 +19,7 @@ const Index = () => {
         <PipelinePreview />
         <ResearchHighlight />
         <ManufacturingGlance />
+        <PatientDriven />
         <NewsPreview />
         <ProductsBanner />
       </main>
