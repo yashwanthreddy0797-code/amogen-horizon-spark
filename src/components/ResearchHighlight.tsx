@@ -149,7 +149,7 @@ const ResearchHighlight = () => {
       `}</style>
 
       {/* Stacked sticky scroll cards */}
-      <div className="relative" style={{ marginLeft: "24px", marginRight: "24px", paddingBottom: `${CARD_HEADER_HEIGHT * 2 + 24}px` }}>
+      <div className="relative" style={{ marginLeft: "24px", marginRight: "24px", paddingBottom: `${CARD_HEADER_HEIGHT * 2}px` }}>
         {cards.map((card, index) => {
           const isLast = index === cards.length - 1;
 
