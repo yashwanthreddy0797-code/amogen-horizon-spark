@@ -72,7 +72,7 @@ export const en = {
   research: {
     label: "OUR CAPABILITIES",
     title: "One facility.",
-    titleEm: "\nMulti-microbial platforms.",
+    titleEm: "Multi-microbial platforms.",
     description: "Built for any microbial expression system. \nAvailable to pharma partners globally.\n",
     overlayText: "With over two decades of experience in drug development, our multidisciplinary teams work across discovery, preclinical, and clinical stages to ensure scientific rigor at every step.",
     cta: "\n",
