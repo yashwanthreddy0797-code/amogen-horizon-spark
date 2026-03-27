@@ -46,7 +46,7 @@ const ManufacturingGlance = () => {
           minHeight: "520px",
         }}
       >
-        <div style={{ maxWidth: "480px" }}>
+        <div style={{ maxWidth: "440px", marginLeft: "auto" }}>
           <ScrollReveal>
             <p
               style={{
