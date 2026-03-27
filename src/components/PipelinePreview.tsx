@@ -22,7 +22,7 @@ const pipelineItems: PipelineItem[] = [
   progress: 75,
   gradient: "linear-gradient(90deg, #F97316 0%, #EAB308 100%)",
   milestone: "DMF",
-  milestoneDate: "Q3-2026",
+  milestoneDate: "Q3 2026",
   strategy: "API + FDF",
   accent: "#F97316"
 },
