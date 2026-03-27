@@ -56,8 +56,8 @@ const pipelineItems: PipelineItem[] = [
   indication: "Rheumatoid Arthritis",
   progress: 17,
   gradient: "linear-gradient(90deg, #059669 0%, #34D399 100%)",
-  milestone: "DMF",
-  milestoneDate: "2027",
+  milestone: "CMC Data",
+  milestoneDate: "July 2026",
   strategy: "API + FDF",
   accent: "#2A918B"
 },
