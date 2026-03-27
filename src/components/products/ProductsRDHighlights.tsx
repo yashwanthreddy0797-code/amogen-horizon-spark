@@ -66,16 +66,13 @@ const ProductsRDHighlights = () => {
             {/* Top row: 4 items */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
               {stats.slice(0, 4).map((item, i) => {
-                if ("type" in item && item.type === "image") {
+                if ("type" in item && item.type === "color") {
                   return (
-                    <div key={i} className="rounded-xl overflow-hidden aspect-square lg:aspect-auto lg:h-full">
-                      <img
-                        src={item.src}
-                        alt=""
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
+                    <div
+                      key={i}
+                      className="rounded-xl aspect-square lg:aspect-auto lg:h-full"
+                      style={{ backgroundColor: (item as any).bg, minHeight: "240px" }}
+                    />
                   );
                 }
                 const stat = item as { label: string; value: string; suffix: string; description: string };
