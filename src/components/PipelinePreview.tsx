@@ -70,7 +70,7 @@ const PipelinePreview = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="pipeline" style={{ position: "relative", overflow: "hidden", minHeight: "100vh", display: "flex", alignItems: "flex-end", background: "#001965", borderRadius: "24px", margin: "0 16px" }}>
+    <section id="pipeline" style={{ position: "relative", overflow: "hidden", minHeight: "100vh", display: "flex", alignItems: "flex-end", background: "#001965" }}>
 
       <div style={{ position: "relative", zIndex: 1, display: "flex", width: "100%", maxWidth: "1400px", margin: "0 auto", alignItems: "flex-end" }}>
         <div style={{ flex: "0 0 32%", padding: "0 48px 80px", paddingTop: "60px" }}>
