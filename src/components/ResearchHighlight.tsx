@@ -115,18 +115,17 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
     target: ref,
     offset: ["start 70%", "end 35%"],
   });
-  const animateIntoEyebrow = index === 0 && !isLast;
 
-  // Heading animates up into eyebrow position when card is being overlapped
-  const headingY = useTransform(scrollYProgress, [0.45, 0.8], [0, -56]);
-  const headingScale = useTransform(scrollYProgress, [0.45, 0.8], [1, 0.34]);
-  const eyebrowOpacity = useTransform(scrollYProgress, [0.45, 0.72], [1, 0]);
-
+  const shouldAnimateHeader = !isLast;
   const stickyTop = 72 + index * CARD_HEADER_HEIGHT;
-  const CARD_HEIGHT = 500;
+  const cardHeight = 500;
+
+  const titleY = useTransform(scrollYProgress, [0.15, 0.55], [52, 0]);
+  const titleScale = useTransform(scrollYProgress, [0.15, 0.55], [1, 0.34]);
+  const eyebrowOpacity = useTransform(scrollYProgress, [0.15, 0.4], [1, 0]);
 
   const wrapperStyle: React.CSSProperties = index < cards.length - 1
-    ? { height: `${CARD_HEIGHT}px`, marginBottom: "0px" }
+    ? { height: `${cardHeight}px`, marginBottom: "0px" }
     : { marginBottom: "0px" };
 
   const cardBgStyle: React.CSSProperties = {
@@ -135,7 +134,7 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
     WebkitBackdropFilter: `blur(${card.blur}px)`,
     border: "none",
     boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-    height: `${CARD_HEIGHT}px`,
+    height: `${cardHeight}px`,
   };
 
   const headerStyle: React.CSSProperties = {
@@ -143,9 +142,19 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
     borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
   };
 
-  // First card: remove the separate eyebrow and animate the title directly into that slot
-  const firstCardTitleY = useTransform(scrollYProgress, [0.15, 0.65], [34, 0]);
-  const firstCardTitleScale = useTransform(scrollYProgress, [0.15, 0.65], [1, 0.34]);
+  const eyebrowStyle: React.CSSProperties = {
+    ...TYPE.label,
+    fontSize: "11px",
+    letterSpacing: "0.25em",
+    color: card.accentColor,
+  };
+
+  const titleStyle: React.CSSProperties = {
+    ...TYPE.h2,
+    fontSize: "clamp(26px, 3vw, 40px)",
+    letterSpacing: "0.02em",
+    color: card.textColor,
+  };
 
   return (
     <div
@@ -153,124 +162,94 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
       className="sticky"
       style={{
         top: `${stickyTop}px`,
-        zIndex: index + 1,
-        overflow: animateIntoEyebrow ? "visible" : undefined,
+        zIndex: cards.length - index,
+        overflow: shouldAnimateHeader ? "visible" : undefined,
         ...wrapperStyle,
       }}
     >
-      <section
-        className="luxury-card rounded-3xl"
-        style={{
-          ...cardBgStyle,
-          overflow: animateIntoEyebrow ? "visible" : undefined,
-        }}
-      >
-        {animateIntoEyebrow ? (
-          <>
-            <div
-              className="relative px-8 md:px-12 pt-6"
-              style={{ height: "96px", overflow: "visible" }}
+      <section className="luxury-card relative rounded-3xl" style={{ overflow: "visible" }}>
+        {shouldAnimateHeader && (
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-28 overflow-visible px-8 md:px-12">
+            <motion.span
+              style={{
+                ...eyebrowStyle,
+                position: "absolute",
+                left: 0,
+                top: 14,
+                opacity: eyebrowOpacity,
+              }}
             >
-              <motion.h3
-                style={{
-                  ...TYPE.h2,
-                  fontSize: "clamp(26px, 3vw, 40px)",
-                  lineHeight: 1,
-                  letterSpacing: "0.02em",
-                  color: card.textColor,
-                  position: "absolute",
-                  left: "clamp(32px, 4vw, 48px)",
-                  top: 14,
-                  margin: 0,
-                  y: firstCardTitleY,
-                  scale: firstCardTitleScale,
-                  transformOrigin: "top left",
-                }}
-              >
-                {card.title}
-              </motion.h3>
-            </div>
-            {card.instruments && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 px-4 sm:px-8 md:px-12 pb-4 pt-2">
-                {card.instruments.map((inst) => (
-                  <div
-                    key={inst.name}
-                    className="rounded-xl px-4 py-3 flex items-center justify-center gap-4"
-                    style={{
-                      background: "rgba(255, 255, 255, 0.7)",
-                      backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(255, 255, 255, 0.5)",
-                    }}
-                  >
-                    <img src={inst.image} alt={inst.name} className="w-14 h-14 object-contain flex-shrink-0" loading="lazy" decoding="async" />
-                    <p style={{ ...TYPE.bodySm, fontSize: "13px", fontWeight: 600, color: "#0B1E33" }}>{inst.name}</p>
-                  </div>
-                ))}
+              {card.tag}
+            </motion.span>
+            <motion.h3
+              style={{
+                ...titleStyle,
+                position: "absolute",
+                left: 0,
+                top: 14,
+                margin: 0,
+                lineHeight: 1,
+                y: titleY,
+                scale: titleScale,
+                transformOrigin: "top left",
+              }}
+            >
+              {card.title}
+            </motion.h3>
+          </div>
+        )}
+
+        <div className="luxury-card__clip rounded-3xl" style={cardBgStyle}>
+          <div
+            className={shouldAnimateHeader ? "rounded-t-3xl" : "flex items-center rounded-t-3xl px-8 md:px-12"}
+            style={headerStyle}
+          >
+            {!shouldAnimateHeader && <span style={eyebrowStyle}>{card.tag}</span>}
+          </div>
+
+          <div
+            className="mx-auto gap-0"
+            style={{
+              maxWidth: "1200px",
+              padding: shouldAnimateHeader ? "112px 0 16px" : "0px 0 16px",
+            }}
+          >
+            {!shouldAnimateHeader && (
+              <div className="px-8 md:px-12 pt-1 pb-3">
+                <h3 style={titleStyle}>{card.title}</h3>
               </div>
             )}
-          </>
-        ) : (
-          <>
-            {/* Normal header strip */}
-            <div className="flex items-center rounded-t-3xl px-8 md:px-12" style={headerStyle}>
-              {isLast ? (
-                <span style={{ ...TYPE.label, fontSize: "11px", letterSpacing: "0.25em", color: card.accentColor }}>{card.tag}</span>
-              ) : (
-                <motion.span style={{ ...TYPE.label, fontSize: "11px", letterSpacing: "0.25em", color: card.accentColor, opacity: eyebrowOpacity }}>{card.tag}</motion.span>
-              )}
-            </div>
-            {/* Card body */}
-            <div className="mx-auto gap-0" style={{ maxWidth: "1200px", padding: card.instruments ? "0px 0 16px" : "16px 0 48px" }}>
-              {card.instruments ? (
-                <>
-                  <div className="px-8 md:px-12 pt-1 pb-3">
-                    {isLast ? (
-                      <h3 style={{ ...TYPE.h2, fontSize: "clamp(26px, 3vw, 40px)", letterSpacing: "0.02em", color: card.textColor }}>{card.title}</h3>
-                    ) : (
-                      <motion.h3 style={{ ...TYPE.h2, fontSize: "clamp(26px, 3vw, 40px)", letterSpacing: "0.02em", color: card.textColor, y: headingY, scale: headingScale, transformOrigin: "left top" }}>{card.title}</motion.h3>
-                    )}
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 px-4 sm:px-8 md:px-12">
-                    {card.instruments.map((inst) => (
-                      <div key={inst.name} className="rounded-xl px-4 py-3 flex items-center justify-center gap-4" style={{ background: "rgba(255, 255, 255, 0.7)", backdropFilter: "blur(10px)", border: "1px solid rgba(255, 255, 255, 0.5)" }}>
-                        <img src={inst.image} alt={inst.name} className="w-14 h-14 object-contain flex-shrink-0" loading="lazy" decoding="async" />
-                        <p style={{ ...TYPE.bodySm, fontSize: "13px", fontWeight: 600, color: "#0B1E33" }}>{inst.name}</p>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              ) : (
-                <div className="grid md:grid-cols-[1fr_0.8fr] gap-0 items-start">
-                  <div className="flex flex-col justify-start p-8 md:px-12" style={{ paddingTop: "32px" }}>
-                    {isLast ? (
-                      <h3 style={{ ...TYPE.h2, fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "0.02em", color: card.textColor }}>{card.title}</h3>
-                    ) : (
-                      <motion.h3 style={{ ...TYPE.h2, fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "0.02em", color: card.textColor, y: headingY, scale: headingScale, transformOrigin: "left top" }}>{card.title}</motion.h3>
-                    )}
-                    <div className="mt-6 flex flex-col gap-2.5">
-                      {card.details.map((detail, i) => (
-                        <div key={i} className="flex items-center gap-3">
-                          <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: card.accentColor }} />
-                          <p style={{ ...TYPE.bodySm, fontSize: "14px", color: card.dark ? "rgba(255,255,255,0.75)" : "rgba(11,30,51,0.7)" }}>{detail}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="relative p-4 md:p-6 flex items-start justify-center">
-                    <div className="relative overflow-hidden rounded-2xl w-full" style={{ maxHeight: "320px", aspectRatio: "4/3" }}>
-                      <img src={card.image} alt={card.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
-                    </div>
-                  </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 px-4 sm:px-8 md:px-12">
+              {card.instruments.map((inst) => (
+                <div
+                  key={inst.name}
+                  className="rounded-xl px-4 py-3 flex items-center justify-center gap-4"
+                  style={{
+                    background: "rgba(255, 255, 255, 0.7)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.5)",
+                  }}
+                >
+                  <img
+                    src={inst.image}
+                    alt={inst.name}
+                    className="w-14 h-14 object-contain flex-shrink-0"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <p style={{ ...TYPE.bodySm, fontSize: "13px", fontWeight: 600, color: "#0B1E33" }}>
+                    {inst.name}
+                  </p>
                 </div>
-              )}
+              ))}
             </div>
-          </>
-        )}
+          </div>
+        </div>
       </section>
     </div>
   );
 };
-
 
 const ResearchHighlight = () => {
   const { t } = useLanguage();
@@ -320,6 +299,9 @@ const ResearchHighlight = () => {
       <style>{`
         .luxury-card {
           position: relative;
+          overflow: visible;
+        }
+        .luxury-card__clip {
           overflow: hidden;
         }
         .luxury-card::after {
