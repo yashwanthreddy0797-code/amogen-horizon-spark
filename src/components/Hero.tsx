@@ -42,6 +42,53 @@ const Hero = () => {
           >
             {t.hero.title}
           </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.55 }}
+            className="max-w-xl mx-auto text-center"
+            style={{
+              ...TYPE.body,
+              color: "rgba(255,255,255,0.7)",
+              marginTop: "20px",
+            }}
+          >
+            Pioneering peptide therapeutics from discovery through commercial-scale manufacturing.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.7 }}
+            className="flex items-center justify-center gap-6"
+            style={{ marginTop: "32px" }}
+          >
+            <a
+              href="/partner"
+              className="inline-flex items-center justify-center rounded-md transition-all duration-300 hover:opacity-90"
+              style={{
+                ...TYPE.button,
+                backgroundColor: "#FFFFFF",
+                color: "#001965",
+                padding: "14px 32px",
+              }}
+            >
+              Request a demo
+            </a>
+            <a
+              href="/products"
+              className="inline-flex items-center justify-center transition-all duration-300 hover:opacity-80"
+              style={{
+                ...TYPE.button,
+                color: "#FFFFFF",
+                borderBottom: "1.5px solid rgba(255,255,255,0.6)",
+                paddingBottom: "4px",
+              }}
+            >
+              Explore products
+            </a>
+          </motion.div>
         </div>
       </div>
 
