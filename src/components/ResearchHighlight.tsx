@@ -103,6 +103,8 @@ const cards = [
 
 const CARD_HEADER_HEIGHT = 48;
 const CARD_HEIGHT = 500;
+const CARD_OVERLAP = 96;
+const HEADER_STAGE_HEIGHT = 108;
 
 interface StickyCardProps {
   card: typeof cards[number];
@@ -111,21 +113,16 @@ interface StickyCardProps {
 }
 
 const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
-  // Ref on the scroll spacer (the tall non-sticky wrapper), not the sticky element
-  const spacerRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: spacerRef,
-    offset: ["start start", "end start"],
+    target: cardRef,
+    offset: ["start 78%", "end 30%"],
   });
 
   const shouldAnimate = !isLast;
-  const stickyTop = 72 + index * CARD_HEADER_HEIGHT;
-
-  // Animation: heading moves from its title position (y=52) up into eyebrow slot (y=0)
-  // Triggers in the second half of scroll progress when the next card is overlapping
-  const headingY = useTransform(scrollYProgress, [0.4, 0.75], [52, 0]);
-  const headingScale = useTransform(scrollYProgress, [0.4, 0.75], [1, 0.34]);
-  const eyebrowFade = useTransform(scrollYProgress, [0.4, 0.6], [1, 0]);
+  const headingY = useTransform(scrollYProgress, [0.18, 0.68], [52, 0]);
+  const headingScale = useTransform(scrollYProgress, [0.18, 0.68], [1, 0.34]);
+  const eyebrowOpacity = useTransform(scrollYProgress, [0.18, 0.48], [1, 0]);
 
   const eyebrowStyle: React.CSSProperties = {
     ...TYPE.label,
@@ -141,127 +138,109 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
     color: card.textColor,
   };
 
-  const cardBgStyle: React.CSSProperties = {
+  const cardSurfaceStyle: React.CSSProperties = {
     background: card.bg,
     backdropFilter: `blur(${card.blur}px)`,
     WebkitBackdropFilter: `blur(${card.blur}px)`,
     border: "none",
     boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-    height: `${CARD_HEIGHT}px`,
+    minHeight: `${CARD_HEIGHT}px`,
   };
 
   return (
-    // Layer 1: Scroll spacer — tall div that gives scroll room for the sticky effect
     <div
-      ref={spacerRef}
+      className="relative"
       style={{
-        height: isLast ? `${CARD_HEIGHT}px` : `${CARD_HEIGHT + 200}px`,
+        zIndex: cards.length - index,
+        marginTop: index === 0 ? "0px" : `-${CARD_OVERLAP}px`,
+        paddingBottom: isLast ? "0px" : `${CARD_OVERLAP}px`,
       }}
     >
-      {/* Layer 2: Sticky shell — only handles position:sticky and z-index */}
       <div
-        className="sticky"
-        style={{
-          top: `${stickyTop}px`,
-          zIndex: cards.length - index,
-        }}
+        ref={cardRef}
+        className="sticky overflow-visible"
+        style={{ top: `${72 + index * CARD_HEADER_HEIGHT}px` }}
       >
-        {/* Layer 3: Card surface — rounded, clipped, contains all content */}
-        <section
-          className="luxury-card relative rounded-3xl"
-          style={{ overflow: "hidden" }}
-        >
-          <div className="rounded-3xl" style={cardBgStyle}>
-            {/* Header area with eyebrow + heading animation */}
-            {shouldAnimate ? (
-              // Animated header: eyebrow and heading share the same coordinate space
-              <div
-                className="relative px-8 md:px-12"
-                style={{ height: "100px" }}
+        <article className="luxury-card relative overflow-hidden rounded-3xl" style={cardSurfaceStyle}>
+          {shouldAnimate ? (
+            <div className="relative px-8 md:px-12" style={{ height: `${HEADER_STAGE_HEIGHT}px` }}>
+              <motion.span
+                style={{
+                  ...eyebrowStyle,
+                  position: "absolute",
+                  left: 32,
+                  top: 18,
+                  opacity: eyebrowOpacity,
+                }}
               >
-                {/* Eyebrow — fades out as heading arrives */}
-                <motion.span
-                  style={{
-                    ...eyebrowStyle,
-                    position: "absolute",
-                    left: 32,
-                    top: 14,
-                    opacity: eyebrowFade,
-                  }}
-                >
-                  {card.tag}
-                </motion.span>
-
-                {/* Heading — starts at y=52 (title position), animates to y=0 (eyebrow position) */}
-                <motion.h3
-                  style={{
-                    ...titleStyle,
-                    position: "absolute",
-                    left: 32,
-                    top: 14,
-                    margin: 0,
-                    lineHeight: 1,
-                    y: headingY,
-                    scale: headingScale,
-                    transformOrigin: "top left",
-                  }}
-                >
-                  {card.title}
-                </motion.h3>
+                {card.tag}
+              </motion.span>
+              <motion.h3
+                style={{
+                  ...titleStyle,
+                  position: "absolute",
+                  left: 32,
+                  top: 18,
+                  margin: 0,
+                  lineHeight: 1,
+                  y: headingY,
+                  scale: headingScale,
+                  transformOrigin: "top left",
+                }}
+              >
+                {card.title}
+              </motion.h3>
+            </div>
+          ) : (
+            <>
+              <div
+                className="flex items-center px-8 md:px-12"
+                style={{
+                  height: `${CARD_HEADER_HEIGHT}px`,
+                  borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
+                }}
+              >
+                <span style={eyebrowStyle}>{card.tag}</span>
               </div>
-            ) : (
-              // Static header for the last card (no animation needed)
-              <>
+              <div className="px-8 md:px-12 pt-1 pb-3">
+                <h3 style={titleStyle}>{card.title}</h3>
+              </div>
+            </>
+          )}
+
+          <div
+            className="mx-auto"
+            style={{
+              maxWidth: "1200px",
+              padding: shouldAnimate ? "12px 0 16px" : "0px 0 16px",
+            }}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 px-4 sm:px-8 md:px-12">
+              {card.instruments.map((inst) => (
                 <div
-                  className="flex items-center rounded-t-3xl px-8 md:px-12"
+                  key={inst.name}
+                  className="rounded-xl px-4 py-3 flex items-center justify-center gap-4"
                   style={{
-                    height: `${CARD_HEADER_HEIGHT}px`,
-                    borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
+                    background: "rgba(255, 255, 255, 0.7)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.5)",
                   }}
                 >
-                  <span style={eyebrowStyle}>{card.tag}</span>
+                  <img
+                    src={inst.image}
+                    alt={inst.name}
+                    className="w-14 h-14 object-contain flex-shrink-0"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <p style={{ ...TYPE.bodySm, fontSize: "13px", fontWeight: 600, color: "#0B1E33" }}>
+                    {inst.name}
+                  </p>
                 </div>
-                <div className="px-8 md:px-12 pt-1 pb-3">
-                  <h3 style={titleStyle}>{card.title}</h3>
-                </div>
-              </>
-            )}
-
-            {/* Instruments grid */}
-            <div
-              className="mx-auto"
-              style={{
-                maxWidth: "1200px",
-                padding: shouldAnimate ? "8px 0 16px" : "0px 0 16px",
-              }}
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 px-4 sm:px-8 md:px-12">
-                {card.instruments.map((inst) => (
-                  <div
-                    key={inst.name}
-                    className="rounded-xl px-4 py-3 flex items-center justify-center gap-4"
-                    style={{
-                      background: "rgba(255, 255, 255, 0.7)",
-                      backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(255, 255, 255, 0.5)",
-                    }}
-                  >
-                    <img
-                      src={inst.image}
-                      alt={inst.name}
-                      className="w-14 h-14 object-contain flex-shrink-0"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <p style={{ ...TYPE.bodySm, fontSize: "13px", fontWeight: 600, color: "#0B1E33" }}>
-                      {inst.name}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
-        </section>
+        </article>
       </div>
     </div>
   );
@@ -271,15 +250,13 @@ const ResearchHighlight = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative" style={{ paddingTop: "96px", paddingBottom: "0px", background: "#FFFFFF" }}>
-      {/* Subtle decorative element */}
+    <section className="relative bg-background" style={{ paddingTop: "96px", paddingBottom: "0px" }}>
       <div
         className="absolute top-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] rounded-full opacity-[0.03] pointer-events-none"
         style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)", transform: "translate(0, -40%)" }}
       />
 
       <div className="mx-auto" style={{ maxWidth: SPACING.maxWidth, paddingLeft: SPACING.sectionPx, paddingRight: SPACING.sectionPx }}>
-        {/* Two-column header layout */}
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-end mb-16">
           <ScrollReveal>
             <div>
@@ -305,20 +282,14 @@ const ResearchHighlight = () => {
           </ScrollReveal>
         </div>
 
-        {/* Thin separator line */}
         <ScrollReveal delay={0.12}>
           <div className="w-full h-px bg-border mb-10" />
         </ScrollReveal>
       </div>
 
-      {/* Shimmer hover CSS */}
       <style>{`
         .luxury-card {
           position: relative;
-          overflow: visible;
-        }
-        .luxury-card__clip {
-          overflow: hidden;
         }
         .luxury-card::after {
           content: '';
@@ -344,8 +315,7 @@ const ResearchHighlight = () => {
         }
       `}</style>
 
-      {/* Stacked sticky scroll cards */}
-      <div className="relative mx-4 sm:mx-6">
+      <div className="relative mx-4 sm:mx-6 pb-6">
         {cards.map((card, index) => (
           <StickyCard
             key={card.title}
