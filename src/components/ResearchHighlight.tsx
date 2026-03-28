@@ -120,7 +120,7 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
   // Heading animates up into eyebrow position when card is being overlapped
   const headingY = useTransform(scrollYProgress, [0.45, 0.8], [0, -56]);
   const headingScale = useTransform(scrollYProgress, [0.45, 0.8], [1, 0.34]);
-  const eyebrowOpacity = useTransform(scrollYProgress, [0.45, 0.65], [1, 0]);
+  const eyebrowOpacity = useTransform(scrollYProgress, [0.45, 0.72], [1, 0]);
 
   const stickyTop = 72 + index * CARD_HEADER_HEIGHT;
   const CARD_HEIGHT = 500;
@@ -143,10 +143,9 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
     borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
   };
 
-  // For first card: heading moves from title pos (top:48px) to eyebrow pos (top:0)
-  const titleY = useTransform(scrollYProgress, [0.45, 0.8], [48, 0]);
-  const titleScale = useTransform(scrollYProgress, [0.45, 0.8], [1, 0.32]);
-  const titleOpacity = useTransform(scrollYProgress, [0.7, 0.8], [0, 1]);
+  // First card: title starts at its own row and lands exactly in the eyebrow row
+  const titleY = useTransform(scrollYProgress, [0.45, 0.8], [0, -34]);
+  const titleScale = useTransform(scrollYProgress, [0.45, 0.8], [1, 0.34]);
 
   return (
     <div
@@ -155,16 +154,23 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
       style={{
         top: `${stickyTop}px`,
         zIndex: index + 1,
+        overflow: animateIntoEyebrow ? "visible" : undefined,
         ...wrapperStyle,
       }}
     >
-      <section className="luxury-card rounded-3xl" style={cardBgStyle}>
+      <section
+        className="luxury-card rounded-3xl"
+        style={{
+          ...cardBgStyle,
+          overflow: animateIntoEyebrow ? "visible" : undefined,
+        }}
+      >
         {animateIntoEyebrow ? (
           <>
             {/* Shared header stage for first card */}
             <div
               className="relative px-8 md:px-12"
-              style={{ height: "100px" }}
+              style={{ height: "112px", overflow: "visible" }}
             >
               <motion.span
                 style={{
@@ -188,7 +194,7 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
                   color: card.textColor,
                   position: "absolute",
                   left: "clamp(32px, 4vw, 48px)",
-                  top: 0,
+                  top: 48,
                   margin: 0,
                   y: titleY,
                   scale: titleScale,
