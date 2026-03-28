@@ -113,13 +113,13 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
+    offset: ["start 70%", "end 35%"],
   });
 
   // Heading animates up into eyebrow position when card is being overlapped
-  const headingY = useTransform(scrollYProgress, [0.5, 1], [0, -60]);
-  const headingScale = useTransform(scrollYProgress, [0.5, 1], [1, 0.45]);
-  const eyebrowOpacity = useTransform(scrollYProgress, [0.5, 0.7], [1, 0]);
+  const headingY = useTransform(scrollYProgress, [0.45, 0.8], [0, -56]);
+  const headingScale = useTransform(scrollYProgress, [0.45, 0.8], [1, 0.34]);
+  const eyebrowOpacity = useTransform(scrollYProgress, [0.45, 0.65], [1, 0]);
 
   const stickyTop = 72 + index * CARD_HEADER_HEIGHT;
   const CARD_HEIGHT = 500;
