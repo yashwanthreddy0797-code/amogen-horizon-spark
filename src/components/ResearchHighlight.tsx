@@ -307,7 +307,7 @@ const ResearchHighlight = () => {
             key={card.title}
             card={card}
             index={index}
-            isLast={index === cards.length - 1}
+            total={cards.length}
           />
         ))}
       </div>
