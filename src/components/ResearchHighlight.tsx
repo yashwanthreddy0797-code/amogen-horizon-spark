@@ -158,7 +158,7 @@ const StickyCard = ({ card, index, total }: StickyCardProps) => {
       ref={wrapperRef}
       className="relative"
       style={{
-        height: isLast ? "260vh" : "120vh",
+        height: `${isLast ? LAST_SECTION_HEIGHT : BASE_SECTION_HEIGHT}px`,
         marginTop: index === 0 ? 0 : `-${STACK_OVERLAP}px`,
         zIndex: index + 1,
       }}
