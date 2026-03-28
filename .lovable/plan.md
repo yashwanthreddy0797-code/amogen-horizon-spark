@@ -1,71 +1,53 @@
 
-Fix this in two phases, with the sticky stack restored first before touching the animation again.
+Goal: fix the sticky stack first, while preserving the heading-to-eyebrow transition that is already working for the first two cards.
 
-What is actually blocking it
-- The sticky card stack is currently being mixed with the animated header layer inside each sticky item.
-- In `src/components/ResearchHighlight.tsx`, the heading/eyebrow overlay is absolutely positioned above the card (`absolute ... z-30 h-28`) while the sticky wrapper itself also has custom overflow/z-index handling.
-- That changed the original stacking behavior: instead of later cards sliding behind the active card, the cards are now visually competing at the same layer, which is why the stack feels broken in your screenshots.
-- The transition is now “working”, but it is being positioned in a way that interferes with the sticky illusion.
+What is actually blocking the sticky behavior now
+- In `src/components/ResearchHighlight.tsx`, each card wrapper is only as tall as the card itself, with negative margins used to fake overlap.
+- Because there is no dedicated tall scroll spacer per card, the sticky items do not get enough scroll distance to create the real “next card goes behind current card” behavior.
+- The current `top: 72 + index * CARD_HEADER_HEIGHT` plus the compressed wrapper layout makes the cards appear as normal stacked blocks instead of one overlapping sticky sequence.
+- The heading transition is mostly fine for cards 1 and 2, so the main blocker is now structural, not animation-related.
 
-Plan
+Implementation plan
+1. Rebuild the stack using tall wrapper sections
+- Replace the current `marginTop/paddingBottom` stack setup with one wrapper per card that has real scroll height.
+- Use the advisor pattern: each wrapper becomes a `relative` section with large height (`~120vh`, last card taller).
+- Keep overlap by applying negative top spacing between wrappers, not by collapsing the card itself.
 
-1. Restore the sticky stack structure first
-- Refactor the cards into a clean 3-layer structure:
-  - stack wrapper
-  - sticky card shell
-  - clipped card inner
-- Keep `position: sticky` only on the outer shell.
-- Keep `overflow: visible` on the sticky shell.
-- Move `overflow: hidden` only to the inner rounded card surface.
-- Remove any animation/layout behavior from the sticky container itself.
-- Reintroduce proper overlap spacing between cards so the next cards move behind the current one again.
+2. Keep sticky logic isolated
+- Move `position: sticky` to a dedicated sticky shell only.
+- Keep `overflow: visible` on that sticky shell.
+- Use a stable sticky top value so all cards pin consistently and later cards can slide behind the active one.
+- Keep z-index descending from first to last card.
 
-2. Normalize z-index and overlap rules
-- Give the first card the highest stack order, then descend for later cards.
-- Add controlled negative vertical overlap/margin between cards so the stack reads like it did before.
-- Make sure no transformed ancestor or misplaced overlay is breaking the sticky containing block.
+3. Keep clipping only on the card surface
+- Move `overflow: hidden` only to the rounded inner card surface.
+- Keep the animated header stage inside that inner card surface, not on the outer sticky wrapper.
+- This preserves the first-two-card heading transition while stopping it from interfering with sticky containment.
 
-3. Rebuild the animated header in a non-blocking layer
-- After the sticky stack is fixed, place the eyebrow + heading animation inside a dedicated header stage that belongs to the card content, not the sticky shell logic.
-- Keep this stage visually above the card surface but still within the card’s own coordinate system.
-- This preserves the sticky behavior while letting the heading animate cleanly into the eyebrow slot.
+4. Restore the visual “pass behind” effect
+- Ensure the outer stack container does not clip.
+- Reintroduce controlled overlap between card wrappers so card 2 and card 3 travel behind card 1 as you scroll.
+- Remove any remaining layout tricks that flatten the cards into one normal column.
 
-4. Tune the first card transition precisely
-- Use the first card as the reference pass.
-- Align the heading’s final animated position exactly to the current eyebrow baseline.
-- Adjust the start/end offsets so the transition completes before the next card visually takes over.
-- Remove the “too close to border” feel by adding a slightly safer left/top inset for the animated stage.
+5. Preserve and lightly tune the current header animation
+- Keep the working heading-to-eyebrow motion for cards 1 and 2.
+- After the stack is fixed, slightly adjust the header inset so the animated title sits farther from the border.
+- Leave card 3 static unless the same motion also looks clean there.
 
-5. Apply the same transition system to cards 2 and 3
-- Once card 1 behaves correctly, reuse the same motion mapping for the other cards.
-- Keep the last card’s static behavior if needed, or match the same pattern only where it makes visual sense.
-
-6. Verify the final behavior
-- Scroll down: heading should move into the eyebrow slot while the next card goes behind the current one.
-- Scroll up: heading should return to its original title position and the stack should still feel layered and premium.
-- Confirm there is no clipping, no header drift, and no broken overlap between cards.
-
-File to update
+Files to update
 - `src/components/ResearchHighlight.tsx`
 
-Implementation approach
-- Replace the current single mixed structure with something conceptually like:
-
+Technical shape to implement
 ```text
-research-stack
-  research-stack__card   (sticky, overflow visible, z-index only)
-    research-stack__cardInner   (rounded surface, overflow hidden)
-      animated header stage
-      card body grid
+stack container
+  card wrapper (relative, tall height, negative overlap between wrappers)
+    sticky shell (sticky, overflow visible, z-index only)
+      card inner (rounded, overflow hidden)
+        animated header stage
+        instruments grid
 ```
 
-Technical notes
-- Keep sticky logic isolated from motion styling.
-- Avoid putting transform-like layout effects on the sticky ancestor.
-- Keep the animated title/eyebrow inside the card’s content layer, not as a floating layer that disrupts stacking.
-- Use the advisor guidance directly here: clean sticky container first, clipped inner surface second, then animation on top.
-
 Expected result
-- The sticky stacking behavior will work again exactly like before, with following cards passing behind the active card.
-- The heading-to-eyebrow transition will then sit correctly inside each card without breaking the stack.
-- The heading/eyebrow alignment will look cleaner and no longer hug the border awkwardly.
+- The three cards will behave like a true sticky stack again.
+- Card 2 and card 3 will scroll behind the active card instead of sitting as flat sections underneath.
+- The first two heading-to-eyebrow transitions will remain intact, with cleaner spacing from the card border.
