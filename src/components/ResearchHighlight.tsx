@@ -105,7 +105,10 @@ const CARD_HEIGHT = 500;
 const HEADER_BAND = 56;
 const STICKY_TOP = 72;
 const SECTION_HEIGHT = "120vh";
-const LAST_SECTION_HEIGHT = "60vh";
+const LAST_SECTION_HEIGHT = "160vh";
+const STACK_OVERLAP = "-72vh";
+const HEADER_LEFT_INSET = 36;
+const HEADER_TOP_INSET = 24;
 
 interface StickyCardProps {
   card: typeof cards[number];
@@ -122,9 +125,9 @@ const StickyCard = ({ card, index, total }: StickyCardProps) => {
   });
 
   // All cards get the heading-to-eyebrow transition
-  const headingY = useTransform(scrollYProgress, [0.15, 0.45], [48, 0]);
-  const headingScale = useTransform(scrollYProgress, [0.15, 0.45], [1, 0.38]);
-  const eyebrowOpacity = useTransform(scrollYProgress, [0.15, 0.35], [1, 0]);
+  const headingY = useTransform(scrollYProgress, [0.16, 0.46], [48, 0]);
+  const headingScale = useTransform(scrollYProgress, [0.16, 0.46], [1, 0.38]);
+  const eyebrowOpacity = useTransform(scrollYProgress, [0.16, 0.34], [1, 0]);
 
   const eyebrowStyle: React.CSSProperties = {
     ...TYPE.label,
@@ -156,25 +159,25 @@ const StickyCard = ({ card, index, total }: StickyCardProps) => {
       className="relative"
       style={{
         height: isLast ? LAST_SECTION_HEIGHT : SECTION_HEIGHT,
-        marginTop: index === 0 ? 0 : `calc(-100vh + ${HEADER_BAND}px)`,
-        zIndex: total - index,
+        marginTop: index === 0 ? 0 : STACK_OVERLAP,
+        zIndex: index + 1,
       }}
     >
       {/* Layer 2: Sticky shell — pins card, stepped top so previous eyebrow stays visible */}
       <div
         className="sticky overflow-visible"
-        style={{ top: `${STICKY_TOP + index * HEADER_BAND}px` }}
+        style={{ top: `${STICKY_TOP + index * HEADER_BAND}px`, zIndex: index + 1 }}
       >
         {/* Layer 3: Card surface — clipped, rounded, contains all content */}
         <article className="luxury-card relative overflow-hidden rounded-3xl" style={cardSurfaceStyle}>
           {/* Animated header stage — shared for all cards */}
-          <div className="relative px-8 md:px-12" style={{ height: "100px" }}>
+          <div className="relative px-8 md:px-12" style={{ height: "104px" }}>
             <motion.span
               style={{
                 ...eyebrowStyle,
                 position: "absolute",
-                left: 32,
-                top: 20,
+                left: HEADER_LEFT_INSET,
+                top: HEADER_TOP_INSET,
                 opacity: eyebrowOpacity,
               }}
             >
@@ -184,8 +187,8 @@ const StickyCard = ({ card, index, total }: StickyCardProps) => {
               style={{
                 ...titleStyle,
                 position: "absolute",
-                left: 32,
-                top: 20,
+                left: HEADER_LEFT_INSET,
+                top: HEADER_TOP_INSET,
                 margin: 0,
                 lineHeight: 1,
                 y: headingY,
