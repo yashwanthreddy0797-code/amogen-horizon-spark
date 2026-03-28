@@ -143,9 +143,9 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
     borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
   };
 
-  // First card: title starts at its own row and lands exactly in the eyebrow row
-  const titleY = useTransform(scrollYProgress, [0.45, 0.8], [0, -34]);
-  const titleScale = useTransform(scrollYProgress, [0.45, 0.8], [1, 0.34]);
+  // First card: remove the separate eyebrow and animate the title directly into that slot
+  const firstCardTitleY = useTransform(scrollYProgress, [0.15, 0.65], [34, 0]);
+  const firstCardTitleScale = useTransform(scrollYProgress, [0.15, 0.65], [1, 0.34]);
 
   return (
     <div
@@ -167,46 +167,31 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
       >
         {animateIntoEyebrow ? (
           <>
-            {/* Shared header stage for first card */}
             <div
-              className="relative px-8 md:px-12"
-              style={{ height: "112px", overflow: "visible" }}
+              className="relative px-8 md:px-12 pt-6"
+              style={{ height: "96px", overflow: "visible" }}
             >
-              <motion.span
-                style={{
-                  ...TYPE.label,
-                  fontSize: "11px",
-                  letterSpacing: "0.25em",
-                  color: card.accentColor,
-                  opacity: eyebrowOpacity,
-                  position: "absolute",
-                  left: "clamp(32px, 4vw, 48px)",
-                  top: "14px",
-                }}
-              >
-                {card.tag}
-              </motion.span>
               <motion.h3
                 style={{
                   ...TYPE.h2,
                   fontSize: "clamp(26px, 3vw, 40px)",
+                  lineHeight: 1,
                   letterSpacing: "0.02em",
                   color: card.textColor,
                   position: "absolute",
                   left: "clamp(32px, 4vw, 48px)",
-                  top: 48,
+                  top: 14,
                   margin: 0,
-                  y: titleY,
-                  scale: titleScale,
-                  transformOrigin: "left top",
+                  y: firstCardTitleY,
+                  scale: firstCardTitleScale,
+                  transformOrigin: "top left",
                 }}
               >
                 {card.title}
               </motion.h3>
             </div>
-            {/* Instruments grid for first card */}
             {card.instruments && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 px-4 sm:px-8 md:px-12 pb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 px-4 sm:px-8 md:px-12 pb-4 pt-2">
                 {card.instruments.map((inst) => (
                   <div
                     key={inst.name}
