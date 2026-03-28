@@ -104,9 +104,7 @@ const cards = [
 const CARD_HEIGHT = 500;
 const HEADER_BAND = 56;
 const STICKY_TOP = 72;
-const SECTION_HEIGHT = "120vh";
-const LAST_SECTION_HEIGHT = "160vh";
-const STACK_OVERLAP = "-72vh";
+const STACK_OVERLAP = CARD_HEIGHT - HEADER_BAND; // 444px — pixel-based, not viewport
 const HEADER_LEFT_INSET = 36;
 const HEADER_TOP_INSET = 24;
 
@@ -158,8 +156,8 @@ const StickyCard = ({ card, index, total }: StickyCardProps) => {
       ref={wrapperRef}
       className="relative"
       style={{
-        height: isLast ? LAST_SECTION_HEIGHT : SECTION_HEIGHT,
-        marginTop: index === 0 ? 0 : STACK_OVERLAP,
+        height: isLast ? "260vh" : "120vh",
+        marginTop: index === 0 ? 0 : `-${STACK_OVERLAP}px`,
         zIndex: index + 1,
       }}
     >
