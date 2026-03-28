@@ -1,37 +1,61 @@
 
+Fix the transition by moving the first card’s eyebrow and heading into one shared animated header stage instead of animating the heading inside the body only.
 
-## Fix: Sticky Card Heading → Eyebrow Transition
+What’s wrong now
+- The eyebrow (`API MANUFACTURING`) sits in the fixed header strip.
+- The heading (`Manufacturing Capacity`) sits below in a separate body block.
+- Because they are in different layout areas, the heading can only shrink and move upward visually; it never actually lands in and replaces the eyebrow slot.
 
-### Problem
-The current `useScroll` offset `["start start", "end start"]` doesn't work with sticky-positioned elements because the card's position stays pinned, so `scrollYProgress` never reaches the 0.5–1.0 range needed to trigger the animation.
+What I will change
+1. Rebuild the first card header/body handoff in `src/components/ResearchHighlight.tsx`
+   - Create a shared “header stage” area for the first card only.
+   - Layer the eyebrow and heading absolutely in that same coordinate space.
+   - Keep the eyebrow at the true eyebrow coordinates.
+   - Place the heading at its normal title coordinates inside the same stage.
 
-### Solution
-Change the scroll offset to `["start 70%", "end 35%"]` which tracks the card's scroll container (the wrapper div with explicit height) rather than its visual position. This means:
-- As the user scrolls past each card's scroll range, progress goes 0→1
-- At progress 0.45–0.8, the heading moves up and shrinks into the eyebrow position
-- The eyebrow text fades out simultaneously
-- Scrolling back up reverses everything
+2. Drive a true slot-to-slot transition
+   - Use the existing `useScroll` progress for the first card.
+   - Animate the heading from its title position to the exact eyebrow position.
+   - Fade the original eyebrow out while the heading arrives there.
+   - Reverse the same motion on scroll-up.
 
-### Changes in `src/components/ResearchHighlight.tsx`
+3. Match the heading to the eyebrow destination properly
+   - Tune the final `y` offset and `scale` so the transformed heading sits exactly where `API MANUFACTURING` was.
+   - Set `transformOrigin: "top left"` so the shrink feels anchored and precise.
+   - Keep spacing/layout stable by reserving fixed stage height.
 
-**1. Update `useScroll` offset** (line 114-117):
-```tsx
-const { scrollYProgress } = useScroll({
-  target: ref,
-  offset: ["start 70%", "end 35%"],
-});
-```
+4. Limit this pass to the first card
+   - Apply the corrected shared-stage transition only to card 1 first, exactly as requested.
+   - Leave cards 2 and 3 unchanged for now until the first one feels perfect.
 
-**2. Update transform ranges** (lines 120-122):
-```tsx
-const headingY = useTransform(scrollYProgress, [0.45, 0.8], [0, -56]);
-const headingScale = useTransform(scrollYProgress, [0.45, 0.8], [1, 0.34]);
-const eyebrowOpacity = useTransform(scrollYProgress, [0.45, 0.65], [1, 0]);
-```
+Implementation shape
+- Replace the current split setup:
+  - header strip renders eyebrow
+  - body renders animated heading
+- With:
+  - header strip/body-top area renders one relative container
+  - eyebrow and heading are both absolutely positioned inside it
+  - motion values animate heading into eyebrow coordinates
 
-These tighter ranges and the corrected offset ensure the animation triggers precisely when the next card overlaps the current one, and reverses cleanly on scroll-up.
+Technical details
+- File: `src/components/ResearchHighlight.tsx`
+- Main adjustment:
+  - first card gets a `relative h-[~90px]` header stage
+  - eyebrow: `absolute left-0 top-0`
+  - heading: `absolute left-0 top-[~28px]`
+- Motion logic:
+  - `titleProgress = useTransform(scrollYProgress, [0.45, 0.8], [0, 1])`
+  - `titleY` moves heading into eyebrow row
+  - `titleScale` shrinks heading to eyebrow-sized visual weight
+  - `eyebrowOpacity` fades default eyebrow out as heading replaces it
 
-### What stays the same
-- All card content, layout, colours, images, instruments grid
-- Only the scroll tracking parameters change
+What will stay unchanged
+- Card content
+- Colors
+- Card sizes and sticky stacking layout
+- Other sections/components
 
+Expected result
+- On scroll down, `Manufacturing Capacity` will visibly move into and sit in the exact `API MANUFACTURING` eyebrow position.
+- At the same time, `API MANUFACTURING` fades away.
+- On scroll up, the heading returns to its original title position and the default eyebrow reappears.
