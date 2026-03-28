@@ -101,10 +101,10 @@ const cards = [
   },
 ];
 
-const CARD_HEADER_HEIGHT = 48;
 const CARD_HEIGHT = 500;
-const CARD_OVERLAP = 96;
 const HEADER_STAGE_HEIGHT = 108;
+const STICKY_TOP = 72;
+const WRAPPER_HEIGHT = "120vh";
 
 interface StickyCardProps {
   card: typeof cards[number];
@@ -113,16 +113,16 @@ interface StickyCardProps {
 }
 
 const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
-  const cardRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start 78%", "end 30%"],
+    target: wrapperRef,
+    offset: ["start 60%", "end 40%"],
   });
 
   const shouldAnimate = !isLast;
-  const headingY = useTransform(scrollYProgress, [0.18, 0.68], [52, 0]);
-  const headingScale = useTransform(scrollYProgress, [0.18, 0.68], [1, 0.34]);
-  const eyebrowOpacity = useTransform(scrollYProgress, [0.18, 0.48], [1, 0]);
+  const headingY = useTransform(scrollYProgress, [0.1, 0.5], [52, 0]);
+  const headingScale = useTransform(scrollYProgress, [0.1, 0.5], [1, 0.34]);
+  const eyebrowOpacity = useTransform(scrollYProgress, [0.1, 0.35], [1, 0]);
 
   const eyebrowStyle: React.CSSProperties = {
     ...TYPE.label,
@@ -148,19 +148,21 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
   };
 
   return (
+    /* Layer 1: Tall wrapper gives each card real scroll distance */
     <div
+      ref={wrapperRef}
       className="relative"
       style={{
+        height: isLast ? "auto" : WRAPPER_HEIGHT,
         zIndex: cards.length - index,
-        marginTop: index === 0 ? "0px" : `-${CARD_OVERLAP}px`,
-        paddingBottom: isLast ? "0px" : `${CARD_OVERLAP}px`,
       }}
     >
+      {/* Layer 2: Sticky shell pins the card, overflow visible for stacking */}
       <div
-        ref={cardRef}
         className="sticky overflow-visible"
-        style={{ top: `${72 + index * CARD_HEADER_HEIGHT}px` }}
+        style={{ top: `${STICKY_TOP}px` }}
       >
+        {/* Layer 3: Card surface — clipped, rounded, contains all content */}
         <article className="luxury-card relative overflow-hidden rounded-3xl" style={cardSurfaceStyle}>
           {shouldAnimate ? (
             <div className="relative px-8 md:px-12" style={{ height: `${HEADER_STAGE_HEIGHT}px` }}>
@@ -196,7 +198,7 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
               <div
                 className="flex items-center px-8 md:px-12"
                 style={{
-                  height: `${CARD_HEADER_HEIGHT}px`,
+                  height: "48px",
                   borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
                 }}
               >
