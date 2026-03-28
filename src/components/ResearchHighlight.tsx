@@ -143,6 +143,11 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
     borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
   };
 
+  // For first card: heading moves from title pos (top:48px) to eyebrow pos (top:0)
+  const titleY = useTransform(scrollYProgress, [0.45, 0.8], [48, 0]);
+  const titleScale = useTransform(scrollYProgress, [0.45, 0.8], [1, 0.32]);
+  const titleOpacity = useTransform(scrollYProgress, [0.7, 0.8], [0, 1]);
+
   return (
     <div
       ref={ref}
@@ -154,20 +159,13 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
       }}
     >
       <section className="luxury-card rounded-3xl" style={cardBgStyle}>
-        {/* Persistent header strip */}
-        <div className="flex items-center rounded-t-3xl px-8 md:px-12" style={headerStyle}>
-          {isLast ? (
-            <span
-              style={{
-                ...TYPE.label,
-                fontSize: "11px",
-                letterSpacing: "0.25em",
-                color: card.accentColor,
-              }}
-            >
-              {card.tag}
-            </span>
-          ) : animateIntoEyebrow ? (
+        {animateIntoEyebrow ? (
+          /* Shared header stage: eyebrow + heading in same coordinate space */
+          <div
+            className="relative px-8 md:px-12"
+            style={{ height: "100px" }}
+          >
+            {/* Eyebrow — fades out as heading arrives */}
             <motion.span
               style={{
                 ...TYPE.label,
@@ -175,80 +173,92 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
                 letterSpacing: "0.25em",
                 color: card.accentColor,
                 opacity: eyebrowOpacity,
+                position: "absolute",
+                left: "clamp(32px, 4vw, 48px)",
+                top: "14px",
               }}
             >
               {card.tag}
             </motion.span>
-          ) : (
-            <motion.span
-              style={{
-                ...TYPE.label,
-                fontSize: "11px",
-                letterSpacing: "0.25em",
-                color: card.accentColor,
-                opacity: eyebrowOpacity,
-              }}
-            >
-              {card.tag}
-            </motion.span>
-          )}
-        </div>
 
-        {/* Card body */}
-        <div
-          className="mx-auto gap-0"
-          style={{ maxWidth: "1200px", padding: card.instruments ? "0px 0 16px" : "16px 0 48px" }}
-        >
-          {card.instruments ? (
-            <>
-              <div className="px-8 md:px-12 pt-1 pb-3">
-                {isLast ? (
-                  <h3
-                    style={{
-                      ...TYPE.h2,
-                      fontSize: "clamp(26px, 3vw, 40px)",
-                      letterSpacing: "0.02em",
-                      color: card.textColor,
-                    }}
-                  >
-                    {card.title}
-                  </h3>
-                ) : animateIntoEyebrow ? (
-                  <div className="relative overflow-visible" style={{ height: "56px" }}>
-                    <motion.h3
-                      style={{
-                        ...TYPE.h2,
-                        position: "absolute",
-                        left: 0,
-                        top: 24,
-                        margin: 0,
-                        fontSize: "clamp(26px, 3vw, 40px)",
-                        letterSpacing: "0.02em",
-                        color: card.textColor,
-                        y: headingY,
-                        scale: headingScale,
-                        transformOrigin: "left top",
-                      }}
-                    >
-                      {card.title}
-                    </motion.h3>
-                  </div>
-                ) : (
-                  <motion.h3
-                    style={{
-                      ...TYPE.h2,
-                      fontSize: "clamp(26px, 3vw, 40px)",
-                      letterSpacing: "0.02em",
-                      color: card.textColor,
-                      y: headingY,
-                      scale: headingScale,
-                      transformOrigin: "left top",
-                    }}
-                  >
-                    {card.title}
-                  </motion.h3>
-                )}
-              </div>
+            {/* Heading — animates from title position up into eyebrow slot */}
+            <motion.h3
+              style={{
+                ...TYPE.h2,
+                fontSize: "clamp(26px, 3vw, 40px)",
+                letterSpacing: "0.02em",
+                color: card.textColor,
+                position: "absolute",
+                left: "clamp(32px, 4vw, 48px)",
+                top: 0,
+                margin: 0,
+                y: titleY,
+                scale: titleScale,
+                transformOrigin: "left top",
+              }}
+            >
+              {card.title}
+            </motion.h3>
+          </div>
+        ) : (
+          <>
+            {/* Normal header strip for cards 2, 3 */}
+            <div className="flex items-center rounded-t-3xl px-8 md:px-12" style={headerStyle}>
+              {isLast ? (
+                <span
+                  style={{
+                    ...TYPE.label,
+                    fontSize: "11px",
+                    letterSpacing: "0.25em",
+                    color: card.accentColor,
+                  }}
+                >
+                  {card.tag}
+                </span>
+              ) : (
+                <motion.span
+                  style={{
+                    ...TYPE.label,
+                    fontSize: "11px",
+                    letterSpacing: "0.25em",
+                    color: card.accentColor,
+                    opacity: eyebrowOpacity,
+                  }}
+                >
+                  {card.tag}
+                </motion.span>
+              )}
+            </div>
+
+            {/* Card body heading for non-first cards */}
+            <div className="px-8 md:px-12 pt-1 pb-3">
+              {isLast ? (
+                <h3
+                  style={{
+                    ...TYPE.h2,
+                    fontSize: "clamp(26px, 3vw, 40px)",
+                    letterSpacing: "0.02em",
+                    color: card.textColor,
+                  }}
+                >
+                  {card.title}
+                </h3>
+              ) : (
+                <motion.h3
+                  style={{
+                    ...TYPE.h2,
+                    fontSize: "clamp(26px, 3vw, 40px)",
+                    letterSpacing: "0.02em",
+                    color: card.textColor,
+                    y: headingY,
+                    scale: headingScale,
+                    transformOrigin: "left top",
+                  }}
+                >
+                  {card.title}
+                </motion.h3>
+              )}
+            </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 px-4 sm:px-8 md:px-12">
                 {card.instruments.map((inst) => (
                   <div
