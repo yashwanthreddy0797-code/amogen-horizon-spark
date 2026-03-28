@@ -102,27 +102,29 @@ const cards = [
 ];
 
 const CARD_HEIGHT = 500;
-const HEADER_STAGE_HEIGHT = 108;
+const HEADER_BAND = 56;
 const STICKY_TOP = 72;
-const WRAPPER_HEIGHT = "120vh";
+const SECTION_HEIGHT = "120vh";
+const LAST_SECTION_HEIGHT = "60vh";
 
 interface StickyCardProps {
   card: typeof cards[number];
   index: number;
-  isLast: boolean;
+  total: number;
 }
 
-const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
+const StickyCard = ({ card, index, total }: StickyCardProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const isLast = index === total - 1;
   const { scrollYProgress } = useScroll({
     target: wrapperRef,
-    offset: ["start 60%", "end 40%"],
+    offset: ["start end", "end start"],
   });
 
-  const shouldAnimate = !isLast;
-  const headingY = useTransform(scrollYProgress, [0.1, 0.5], [52, 0]);
-  const headingScale = useTransform(scrollYProgress, [0.1, 0.5], [1, 0.34]);
-  const eyebrowOpacity = useTransform(scrollYProgress, [0.1, 0.35], [1, 0]);
+  // All cards get the heading-to-eyebrow transition
+  const headingY = useTransform(scrollYProgress, [0.15, 0.45], [48, 0]);
+  const headingScale = useTransform(scrollYProgress, [0.15, 0.45], [1, 0.38]);
+  const eyebrowOpacity = useTransform(scrollYProgress, [0.15, 0.35], [1, 0]);
 
   const eyebrowStyle: React.CSSProperties = {
     ...TYPE.label,
@@ -148,74 +150,56 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
   };
 
   return (
-    /* Layer 1: Tall wrapper gives each card real scroll distance */
-    <div
+    /* Layer 1: Tall wrapper — provides scroll distance, negative overlap pulls cards together */
+    <section
       ref={wrapperRef}
       className="relative"
       style={{
-        height: isLast ? "auto" : WRAPPER_HEIGHT,
-        zIndex: cards.length - index,
+        height: isLast ? LAST_SECTION_HEIGHT : SECTION_HEIGHT,
+        marginTop: index === 0 ? 0 : `calc(-100vh + ${HEADER_BAND}px)`,
+        zIndex: total - index,
       }}
     >
-      {/* Layer 2: Sticky shell pins the card, overflow visible for stacking */}
+      {/* Layer 2: Sticky shell — pins card, stepped top so previous eyebrow stays visible */}
       <div
         className="sticky overflow-visible"
-        style={{ top: `${STICKY_TOP}px` }}
+        style={{ top: `${STICKY_TOP + index * HEADER_BAND}px` }}
       >
         {/* Layer 3: Card surface — clipped, rounded, contains all content */}
         <article className="luxury-card relative overflow-hidden rounded-3xl" style={cardSurfaceStyle}>
-          {shouldAnimate ? (
-            <div className="relative px-8 md:px-12" style={{ height: `${HEADER_STAGE_HEIGHT}px` }}>
-              <motion.span
-                style={{
-                  ...eyebrowStyle,
-                  position: "absolute",
-                  left: 32,
-                  top: 18,
-                  opacity: eyebrowOpacity,
-                }}
-              >
-                {card.tag}
-              </motion.span>
-              <motion.h3
-                style={{
-                  ...titleStyle,
-                  position: "absolute",
-                  left: 32,
-                  top: 18,
-                  margin: 0,
-                  lineHeight: 1,
-                  y: headingY,
-                  scale: headingScale,
-                  transformOrigin: "top left",
-                }}
-              >
-                {card.title}
-              </motion.h3>
-            </div>
-          ) : (
-            <>
-              <div
-                className="flex items-center px-8 md:px-12"
-                style={{
-                  height: "48px",
-                  borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
-                }}
-              >
-                <span style={eyebrowStyle}>{card.tag}</span>
-              </div>
-              <div className="px-8 md:px-12 pt-1 pb-3">
-                <h3 style={titleStyle}>{card.title}</h3>
-              </div>
-            </>
-          )}
+          {/* Animated header stage — shared for all cards */}
+          <div className="relative px-8 md:px-12" style={{ height: "100px" }}>
+            <motion.span
+              style={{
+                ...eyebrowStyle,
+                position: "absolute",
+                left: 32,
+                top: 20,
+                opacity: eyebrowOpacity,
+              }}
+            >
+              {card.tag}
+            </motion.span>
+            <motion.h3
+              style={{
+                ...titleStyle,
+                position: "absolute",
+                left: 32,
+                top: 20,
+                margin: 0,
+                lineHeight: 1,
+                y: headingY,
+                scale: headingScale,
+                transformOrigin: "top left",
+              }}
+            >
+              {card.title}
+            </motion.h3>
+          </div>
 
           <div
             className="mx-auto"
-            style={{
-              maxWidth: "1200px",
-              padding: shouldAnimate ? "12px 0 16px" : "0px 0 16px",
-            }}
+            style={{ maxWidth: "1200px", padding: "4px 0 16px" }}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 px-4 sm:px-8 md:px-12">
               {card.instruments.map((inst) => (
@@ -244,7 +228,7 @@ const StickyCard = ({ card, index, isLast }: StickyCardProps) => {
           </div>
         </article>
       </div>
-    </div>
+    </section>
   );
 };
 
