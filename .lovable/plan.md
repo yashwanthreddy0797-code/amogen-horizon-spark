@@ -1,53 +1,63 @@
 
-Goal: fix the sticky stack first, while preserving the heading-to-eyebrow transition that is already working for the first two cards.
+Fix `src/components/ResearchHighlight.tsx` by restoring the original sticky-stack geometry first, then extending the working heading-to-eyebrow transition to card 3.
 
-What is actually blocking the sticky behavior now
-- In `src/components/ResearchHighlight.tsx`, each card wrapper is only as tall as the card itself, with negative margins used to fake overlap.
-- Because there is no dedicated tall scroll spacer per card, the sticky items do not get enough scroll distance to create the real “next card goes behind current card” behavior.
-- The current `top: 72 + index * CARD_HEADER_HEIGHT` plus the compressed wrapper layout makes the cards appear as normal stacked blocks instead of one overlapping sticky sequence.
-- The heading transition is mostly fine for cards 1 and 2, so the main blocker is now structural, not animation-related.
+What is broken now
+- The current wrapper uses `height: isLast ? "auto" : "120vh"` with no negative overlap between card sections.
+- Because of that, the cards sit as normal large blocks with gaps, instead of behaving like sequential sticky segments.
+- The sticky shell also uses one fixed `top: 72px` for every card, so card 2 and card 3 never lock higher while leaving the previous card’s eyebrow visible.
+- The first two heading transitions mostly work, but the third card’s motion is tied to the same broken wrapper geometry.
 
-Implementation plan
-1. Rebuild the stack using tall wrapper sections
-- Replace the current `marginTop/paddingBottom` stack setup with one wrapper per card that has real scroll height.
-- Use the advisor pattern: each wrapper becomes a `relative` section with large height (`~120vh`, last card taller).
-- Keep overlap by applying negative top spacing between wrappers, not by collapsing the card itself.
+What to change
+1. Restore the previous sticky stacking structure
+- Keep one tall scroll section per card.
+- Use the working overlap pattern from the advisor:
+  - wrapper height around `120vh`
+  - last wrapper taller, around `160vh`
+  - negative `marginTop` for cards after the first so each next card rises over the previous one
+- This removes the large dead space and brings back the “lock one by one” behavior.
 
-2. Keep sticky logic isolated
-- Move `position: sticky` to a dedicated sticky shell only.
-- Keep `overflow: visible` on that sticky shell.
-- Use a stable sticky top value so all cards pin consistently and later cards can slide behind the active one.
-- Keep z-index descending from first to last card.
+2. Reintroduce stepped sticky offsets
+- Set sticky top per card instead of one flat value:
+  - card 1 locks first
+  - card 2 locks lower by one header band
+  - card 3 locks lower by another header band
+- Use the card header height as the step so the previous card’s eyebrow remains visible above the next card.
 
-3. Keep clipping only on the card surface
-- Move `overflow: hidden` only to the rounded inner card surface.
-- Keep the animated header stage inside that inner card surface, not on the outer sticky wrapper.
-- This preserves the first-two-card heading transition while stopping it from interfering with sticky containment.
+3. Keep the 3-layer card structure clean
+- Wrapper: controls scroll height and overlap only
+- Sticky shell: controls `position: sticky`, `top`, `z-index`, `overflow: visible`
+- Card surface: controls rounded clipping and contains the header animation + grid
+- Do not let animation layout rules affect the sticky container.
 
-4. Restore the visual “pass behind” effect
-- Ensure the outer stack container does not clip.
-- Reintroduce controlled overlap between card wrappers so card 2 and card 3 travel behind card 1 as you scroll.
-- Remove any remaining layout tricks that flatten the cards into one normal column.
+4. Preserve the working transition for cards 1 and 2
+- Keep the shared animated header stage already used for the first two cards.
+- Slightly adjust header inset so the animated heading sits less close to the border.
 
-5. Preserve and lightly tune the current header animation
-- Keep the working heading-to-eyebrow motion for cards 1 and 2.
-- After the stack is fixed, slightly adjust the header inset so the animated title sits farther from the border.
-- Leave card 3 static unless the same motion also looks clean there.
+5. Apply the same transition to card 3
+- Remove the current “last card is static” behavior.
+- Use the same `useScroll`-driven heading-to-eyebrow animation for the third card, but map it to the corrected wrapper geometry so it triggers at the right moment.
 
-Files to update
-- `src/components/ResearchHighlight.tsx`
+6. Expected end result
+- Card 1 pins first.
+- Card 2 rises and locks on top of card 1, leaving card 1’s eyebrow visible.
+- Card 3 rises and locks on top of card 2, leaving card 2’s eyebrow visible.
+- As each card gets covered, its heading transitions into the eyebrow slot; on scroll up, the motion reverses cleanly.
 
-Technical shape to implement
+Implementation shape
 ```text
-stack container
-  card wrapper (relative, tall height, negative overlap between wrappers)
-    sticky shell (sticky, overflow visible, z-index only)
-      card inner (rounded, overflow hidden)
+cards container
+  card section (relative, tall height, negative overlap except first)
+    sticky shell (sticky, top = 72 + index * headerHeight, z-index desc)
+      card surface (rounded, overflow hidden)
         animated header stage
         instruments grid
 ```
 
-Expected result
-- The three cards will behave like a true sticky stack again.
-- Card 2 and card 3 will scroll behind the active card instead of sitting as flat sections underneath.
-- The first two heading-to-eyebrow transitions will remain intact, with cleaner spacing from the card border.
+Files to update
+- `src/components/ResearchHighlight.tsx`
+
+Technical notes
+- Replace `isLast ? "auto"` with a real tall final wrapper.
+- Add back negative overlap between wrappers using `CARD_HEIGHT - HEADER_STAGE_HEIGHT` or equivalent tuned value.
+- Use descending `z-index` so earlier cards stay above until the next card reaches its sticky slot.
+- Animate all three cards from the same shared header coordinate system after the stack is fixed.
